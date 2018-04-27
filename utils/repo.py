@@ -1,5 +1,5 @@
 owners = [
-    86477779717066752      # AlexFlipnote
+    158750488563679232      # not AlexFlipnote
 ]
 
 version = "v1.2.3"
