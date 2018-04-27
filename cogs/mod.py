@@ -187,7 +187,7 @@ class Moderator:
 
         if ctx.invoked_subcommand is None:
             help_cmd = self.bot.get_command('help')
-            await ctx.invoke(help_cmd, 'remove')
+            await ctx.invoke(help_cmd, 'prune')
 
     async def do_removal(self, ctx, limit, predicate, *, before=None, after=None, message=True):
         if limit > 2000:
