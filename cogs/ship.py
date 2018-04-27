@@ -48,43 +48,43 @@ class ship:
                 bar = "██████████"
                 emoji = '💞'
             elif n > 90: 
-                bar = "█████████ "
+                bar = "█████████ "
                 emoji = '💕'
             elif n > 80:
-                bar = "████████  "
+                bar = "████████  "
                 emoji = '😍'
             elif n > 70:
-                bar = "███████   "
+                bar = "███████   "
                 emoji = '💗'
             elif n > 60:
-                bar = "██████    "
+                bar = "██████    "
                 
             elif n > 50:
-                bar = '█████     '
+                bar = '█████     '
                 emoji = '❤'
             elif n > 40:
-                bar = "████      "
+                bar = "████      "
                 emoji = '💔'
             elif n > 30:
-                bar = "███       "
+                bar = "███       "
                 emoji = '💔'
             elif n > 20:
-                bar = "██        "
+                bar = "██        "
                 emoji = '💔'
             elif n > 10:
-                bar = "█         "
+                bar = "█         "
                 emoji = '💔'
             elif n < 10:
-                bar = "          "
+                bar = "          "
                 emoji ='🖤'
             else:
-                bar = "          "
+                bar = "          "
                 emoji ='🖤'
 
             link = "https://cdn.discordapp.com/emojis/359420199050674176.png"
             ship = discord.Embed(title=" " + user.display_name + "  x  " + user2.display_name + " ", description="**{}%** **`{}`** {}".format(n, bar, emoji), colour=0xDEADBF)
             await ctx.send(embed=ship)
-            #  < the invisible character if needed.
+            # < the invisible character if needed.
 
     @commands.command()
     @commands.guild_only()
