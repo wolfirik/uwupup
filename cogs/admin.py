@@ -49,7 +49,7 @@ class Admin:
     async def cogs_list(self, ctx):
         """Lists all cogs"""
         for file in os.listdir("cogs"):
-            list = list(file.endswith(".py")
+            list = list(file.endswith(".py"))
             await ctx.send(f"```\n{list}\```")
 
     @commands.command()
