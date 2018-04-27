@@ -14,8 +14,9 @@ class NSFW():
     def __init__(self, bot):
         self.bot = bot
 
-    @permissions.is_nsfw()
+    
     @commands.command()
+    @commands.check(permissions.is_nsfw)
     async def rule34(self, ctx, *, tags:str):
         try:
             await ctx.message.delete()
@@ -41,8 +42,8 @@ class NSFW():
             images.append("http://img.rule34.xxx/images/{}/{}".format(image["directory"], image["image"]))
         await ctx.send("Showing {} out of {} results for `{}`\n{}".format(image_count, count, tags, "\n".join(images)))
 
-    @permissions.is_nsfw()
     @commands.command()
+    @commands.check(permissions.is_nsfw)
     async def e621(self, ctx, *, t:str):
         """Searches e621.net for the specified tagged images"""
         #needed for searching
@@ -79,8 +80,8 @@ class NSFW():
             images.append(data[random.randint(0, count)]["file_url"])
         await ctx.send("Showing `{}` out of `{}` results for `{}`\n{}".format(image_count, count, t, "\n".join(images)))
 
-    @permissions.is_nsfw()
     @commands.command()
+    @commands.check(permissions.is_nsfw)
     async def yandere(self, ctx, *, tags:str):
         """Searches yande.re for the specified tagged images"""
         try:
@@ -105,8 +106,8 @@ class NSFW():
             images.append(data[random.randint(0, count)]["file_url"])
         await ctx.send("Showing {} out of {} results for `{}`\n{}".format(image_count, count, tags, "\n".join(images)))
 
-    @permissions.is_nsfw()
     @commands.command()
+    @commands.check(permissions.is_nsfw)
     async def danbooru(self, ctx, *, tags:str):
         """Searches danbooru.donmai.us for the specified tagged images"""
         try:
@@ -135,8 +136,8 @@ class NSFW():
                 return
         await ctx.send("Showing {} out of {} results for `{}`\n{}".format(image_count, count, tags, "\n".join(images)))
 
-    @permissions.is_nsfw()
     @commands.command()
+    @commands.check(permissions.is_nsfw)
     async def gelbooru(self, ctx, *, tags:str):
         """Searches gelbooru.com for the specified tagged images"""
         try:
@@ -165,8 +166,8 @@ class NSFW():
                 return
         await ctx.send("Showing {} out of {} results for `{}`\n{}".format(image_count, count, tags, "\n".join(images)))
 
-    @permissions.is_nsfw()
     @commands.command()
+    @commands.check(permissions.is_nsfw)
     async def xbooru(self, ctx, *, tags: str):
         """Searches xbooru.com for the specified tagged images"""
         try:
