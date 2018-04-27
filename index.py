@@ -26,6 +26,9 @@ bot = Bot(command_prefix=commands.when_mentioned_or("owo "), prefix=commands.whe
 for file in os.listdir("cogs"):
     if file.endswith(".py"):
         name = file[:-3]
-        bot.load_extension(f"cogs.{name}")
+        try:
+            bot.load_extension(f"cogs.{name}")
+        except:
+            pass
 
 bot.run(os.environ["TOKEN"])
