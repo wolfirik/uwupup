@@ -1,3 +1,17 @@
 git+https://github.com/Rapptz/discord.py@rewrite
 psutil
 asyncio
+aiohttp
+wikipedia
+python-forecastio
+geocoder
+pyping
+youtube_dl
+postgres
+asyncqlio
+colorlog
+psutil
+random-cat
+nmap
+pythonwhois
+retry
