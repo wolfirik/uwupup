@@ -50,7 +50,7 @@ class NSFW():
         header = {'Content-Type': 'application/json', 'User-Agent': 'owopup by skullbite'}
         #for json
         tags = t.replace(" ", "%20")
-        tags = tags + "-loli%20-shota%20-baby%20-young%20-scat%20-gore%20-watersports%20-not_furry%20-feral" # keeping things safe
+        tags = "".join(tags, "-loli%20-shota%20-baby%20-young%20-scat%20-gore%20-watersports%20-not_furry%20-feral") # keeping things safe
         #for human readable tags
         url = "https://e621.net/post/index.json?limit={}&tags={}".format(limit, tags)
         try:
