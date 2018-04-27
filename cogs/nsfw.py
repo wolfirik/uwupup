@@ -14,7 +14,7 @@ class NSFW():
     def __init__(self, bot):
         self.bot = bot
 
-    @checks.is_nsfw_channel()
+    @permissions.is_nsfw()
     @commands.command()
     async def rule34(self, ctx, *, tags:str):
         try:
@@ -41,7 +41,7 @@ class NSFW():
             images.append("http://img.rule34.xxx/images/{}/{}".format(image["directory"], image["image"]))
         await ctx.send("Showing {} out of {} results for `{}`\n{}".format(image_count, count, tags, "\n".join(images)))
 
-    @checks.is_nsfw_channel()
+    @permissions.is_nsfw()
     @commands.command()
     async def e621(self, ctx, *, t:str):
         """Searches e621.net for the specified tagged images"""
@@ -79,7 +79,7 @@ class NSFW():
             images.append(data[random.randint(0, count)]["file_url"])
         await ctx.send("Showing `{}` out of `{}` results for `{}`\n{}".format(image_count, count, t, "\n".join(images)))
 
-    @checks.is_nsfw_channel()
+    @permissions.is_nsfw()
     @commands.command()
     async def yandere(self, ctx, *, tags:str):
         """Searches yande.re for the specified tagged images"""
@@ -105,7 +105,7 @@ class NSFW():
             images.append(data[random.randint(0, count)]["file_url"])
         await ctx.send("Showing {} out of {} results for `{}`\n{}".format(image_count, count, tags, "\n".join(images)))
 
-    @checks.is_nsfw_channel()
+    @permissions.is_nsfw()
     @commands.command()
     async def danbooru(self, ctx, *, tags:str):
         """Searches danbooru.donmai.us for the specified tagged images"""
@@ -135,7 +135,7 @@ class NSFW():
                 return
         await ctx.send("Showing {} out of {} results for `{}`\n{}".format(image_count, count, tags, "\n".join(images)))
 
-    @checks.is_nsfw_channel()
+    @permissions.is_nsfw()
     @commands.command()
     async def gelbooru(self, ctx, *, tags:str):
         """Searches gelbooru.com for the specified tagged images"""
@@ -165,7 +165,7 @@ class NSFW():
                 return
         await ctx.send("Showing {} out of {} results for `{}`\n{}".format(image_count, count, tags, "\n".join(images)))
 
-    @checks.is_nsfw_channel()
+    @permissions.is_nsfw()
     @commands.command()
     async def xbooru(self, ctx, *, tags: str):
         """Searches xbooru.com for the specified tagged images"""
