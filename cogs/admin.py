@@ -46,6 +46,14 @@ class Admin:
 
     @commands.command()
     @commands.check(repo.is_owner)
+    async def cogs_list(self, ctx):
+        """Lists all cogs"""
+        for file in os.listdir("cogs"):
+            list = list(file.endswith(".py")
+            await ctx.send(f"```\n{list}\```")
+
+    @commands.command()
+    @commands.check(repo.is_owner)
     async def load(self, ctx, name: str):
         """ Reloads an extension. """
         try:
