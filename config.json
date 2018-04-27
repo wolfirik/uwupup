@@ -1,0 +1,5 @@
+{
+  "token": os.environ["TOKEN"],
+  "prefix": ["owo "],
+  "playing": "oof"
+}
