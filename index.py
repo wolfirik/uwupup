@@ -21,11 +21,11 @@ class HelpFormat(HelpFormatter):
 
 print("Logging in...")
 help_attrs = dict(hidden=True)
-bot = Bot(command_prefix=config.prefix, prefix=config.prefix, pm_help=True, help_attrs=help_attrs, formatter=HelpFormat())
+bot = Bot(command_prefix=commands.when_mentioned_or("owo "), prefix=commands.when_mentioned_or("owo "), pm_help=True, help_attrs=help_attrs, formatter=HelpFormat())
 
 for file in os.listdir("cogs"):
     if file.endswith(".py"):
         name = file[:-3]
         bot.load_extension(f"cogs.{name}")
 
-bot.run(config.token)
+bot.run(os.environ["TOKEN"])
