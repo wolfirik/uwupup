@@ -31,7 +31,7 @@ class Events:
             _traceback = ''.join(_traceback)
             error = ('```py\n{2}{0}: {3}\n```').format(type(err).__name__, ctx.message.content, _traceback, err)
 
-            await ctx.send(f"There was an error processing the command ;-;\n{error}")
+            await ctx.send(f"There was a hecc ;w;\n{error}")
 
         elif isinstance(err, errors.CheckFailure):
             pass
