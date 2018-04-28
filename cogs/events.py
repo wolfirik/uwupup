@@ -34,7 +34,7 @@ class Events:
             await ctx.send(f"There was a hecc ;w;\n{error}")
 
         elif isinstance(err, errors.CheckFailure):
-            pass
+            await ctx.send("you can\'t use this command, sowwy.")
 
         elif isinstance(err, errors.CommandOnCooldown):
             await ctx.send(f"This command is on cooldown... try again in {err.retry_after:.0f} seconds.")
@@ -42,6 +42,8 @@ class Events:
         elif isinstance(err, errors.CommandNotFound):
             pass
 
+        elif isinstance(err, errors.NoPrivateMessage):
+            await ctx.send("This command can't be used in dms, sowwy.")
     async def on_ready(self):
         print(f'Ready: {self.bot.user} | Servers: {len(self.bot.guilds)}')
         await self.bot.change_presence(activity=discord.Game(type=0, name="hecc."), status=discord.Status.dnd)
