@@ -82,6 +82,40 @@ class Admin:
         output = subprocess.check_output(text_parsed).decode()
         await ctx.send(f"```fix\n{output}\n```")
 
+    @commands.command()
+    @commands.check(repo.is_owner)
+    async def debug(self, ctx, *, code):
+        """Evaluates code"""
+        def check(m):
+            if m.content.strip().lower() == "more":
+                return True
+
+        author = ctx.message.author
+        channel = ctx.message.channel
+
+        code = code.strip('` ')
+        result = None
+
+        global_vars = globals().copy()
+        global_vars['bot'] = self.bot
+        global_vars['ctx'] = ctx
+        global_vars['message'] = ctx.message
+        global_vars['author'] = ctx.message.author
+        global_vars['channel'] = ctx.message.channel
+        global_vars['server'] = ctx.message.guild
+
+        try:
+            result = eval(code, global_vars, locals())
+        except Exception as e:
+            await ctx.send('```\n{}: {}\n```'.format(type(e).__name__, str(e)))
+            return
+
+        if asyncio.iscoroutine(result):
+            result = await result
+
+        result = str(result)
+        result = list(pagify(result, shorten_by=16))
+        await ctx.send(f"```py\n{result}\n```")
 
 def setup(bot):
     bot.add_cog(Admin(bot))
