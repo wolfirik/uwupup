@@ -43,6 +43,12 @@ class Fun_Commands:
     async def duck(self, ctx):
         """ Posts a random duck """
         await self.randomimageapi(ctx, 'https://random-d.uk/api/v1/random', 'url')
+    
+    @commands.command()
+    @commands.check(permissions.is_nsfw)
+    async def yiff(self, ctx):
+        """posts a yiff >:3 [thanks waspy]"""
+        await self.randomimageapi(ctx, 'https://sheri.fun/api/v1/yiff', 'url')
 
     @commands.command(aliases=['flip', 'coin'])
     async def coinflip(self, ctx):
