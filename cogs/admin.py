@@ -84,7 +84,7 @@ class Admin:
 
     @commands.command()
     @commands.check(repo.is_owner)
-    async def debug(self, ctx, *, code):
+    async def eval(self, ctx, *, code):
         """Evaluates code"""
         def check(m):
             if m.content.strip().lower() == "more":
