@@ -49,7 +49,7 @@ class Fun_Commands:
     async def yiff(self, ctx):
         """posts a yiff >:3 [thanks waspy]"""
         urll = self.randomimageapi(ctx, 'https://sheri.fun/api/v1/yiff', 'url')
-        yiff = discord.embed(color=0x356a21)
+        yiff = discord.Embed(color=0x356a21)
         yiff.set_image(url=urll)
         await ctx.send(embed=yiff)
 
