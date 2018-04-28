@@ -44,6 +44,7 @@ class Events:
 
         elif isinstance(err, errors.NoPrivateMessage):
             await ctx.send("This command can't be used in dms, sowwy.")
+
     async def on_ready(self):
         print(f'Ready: {self.bot.user} | Servers: {len(self.bot.guilds)}')
         await self.bot.change_presence(activity=discord.Game(type=0, name="hecc."), status=discord.Status.dnd)
