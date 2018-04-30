@@ -24,7 +24,7 @@ class ship:
         elif user.id == 365255872181567489 and user2.id == ctx.message.author or user2.id == 365255872181567489 and user.id == ctx.message.author:
             await ctx.send("0////0")
         elif user.id == 212726258188943360 and user2.id == 158750488563679232 or user2.id == 212726258188943360 and user.id == 15875048856367923:
-            ship = discord.Embed(title=" " + user.display_name + "  x  " + user2.display_name + " ", description="**69%** **`██████████`** ❤",", colour=0xDEADBF)
+            ship = discord.Embed(title=" " + user.display_name + "  x  " + user2.display_name + " ", description="**69%** **`██████████`** ❤", colour=0xDEADBF)
             await ctx.send(embed=ship)
         elif user2.id == 212726258188943360 and user.id == 158750488563679232 or user.id == 212726258188943360 and user2.id == 158750488563679232:
             ship = discord.Embed(title=" " + user.display_name + " x " + user2.display_name + " ", description="**100%** **`██████████`** 💞", colour=0xDEADBF)
