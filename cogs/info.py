@@ -44,7 +44,7 @@ class Information:
         """ About the bot """
         ramUsage = self.process.memory_full_info().rss / 1024**2
 
-        embed = discord.Embed(colour=ctx.me.top_role.colour else 0)
+        embed = discord.Embed(colour=ctx.me.top_role.colour if isinstance(ctx.guild) else 0)
         embed.set_thumbnail(url=ctx.bot.user.avatar_url)
         embed.add_field(name="Source Owner", value="AlexFlipnote#0001", inline=True)
         embed.add_field(name="Bot Owner", value=f"Still Away .w.#5245", inline=True)
