@@ -97,6 +97,12 @@ class Fun_Commands:
         t_rev = text[::-1].replace("@", "@\u200B").replace("&", "&\u200B")
         await ctx.send(f"🔁 {t_rev}")
 
+    @commands.command(aliases=['owolang'])
+    async def hewwo(self, ctx, text: str):
+        """Takes something you say and puts it in owo"""         
+        owo_t = text.replace("o", "owo").replace("n", "ny").replace("l", "w").replace("r", "w") #i was gonna add an @everyone and @here blocker but the r to w change already handles that XD
+        await ctx.send(f"OwO {owo_t}")
+        
     @commands.command()
     async def rate(self, ctx, *, thing: commands.clean_content):
         """ Rates what you desire """
