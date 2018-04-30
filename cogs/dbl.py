@@ -21,12 +21,7 @@ class DiscordBotsOrgAPI:
 
         while True:
             try:
-                channel = self.bot.get_channel(433715765129248770)
                 await self.dblpy.post_server_count()
-                up = await self.dblpy.get_upvotes()
-
-                em = discord.Embed(title="DBL Update", description='<a:dblspin:393548363879940108> | Posted server count ({})\n'.format(len(self.bot.guilds)), color=0x7289da)
-                await channel.send(embed=em)
                 print(f"Servers: {len(self.bot.guilds)}\n Posted on dbl successfully.")
             except Exception as e:
                 print('Failed to post server count\n{}: {}'.format(type(e).__name__, e))
