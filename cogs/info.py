@@ -2,9 +2,9 @@ import time
 import discord
 import psutil
 import os
-
+import random
 from discord.ext import commands
-from utils import repo, default
+from utils import repo, default, lists
 
 
 class Information:
@@ -44,7 +44,7 @@ class Information:
         """ About the bot """
         ramUsage = self.process.memory_full_info().rss / 1024**2
 
-        embed = discord.Embed(colour=ctx.me.top_role.colour)
+        embed = discord.Embed(colour=ctx.me.top_role.colour else 0)
         embed.set_thumbnail(url=ctx.bot.user.avatar_url)
         embed.add_field(name="Developer", value="AlexFlipnote#0001", inline=True)
         embed.add_field(name="Library", value="discord.py", inline=True)
