@@ -29,7 +29,8 @@ for file in os.listdir("cogs"):
         try:
             bot.load_extension(f"cogs.{name}")
         except Exception as e:
-            print(e)
+            print(type(e).__name__)
+            print(f"\n{e}")
             print(f"\nFailed to load {name}")
             pass
 
