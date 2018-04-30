@@ -19,7 +19,7 @@ class Information:
         before = time.monotonic()
         message = await ctx.send("Pong")
         ping = (time.monotonic() - before) * 1000
-        await message.edit(content=f"Pong {list.owos} |   {int(ping)}ms")
+        await message.edit(content=f"Pong   |   {int(ping)}ms")
 
     @commands.command(aliases=['joinme', 'join', 'botinvite'])
     async def invite(self, ctx):
@@ -43,8 +43,9 @@ class Information:
     async def about(self, ctx):
         """ About the bot """
         ramUsage = self.process.memory_full_info().rss / 1024**2
+        color = discord.Color.Green()
 
-        embed = discord.Embed(colour=ctx.me.top_role.colour if isinstance(ctx.guild) else 0)
+        embed = discord.Embed(colour=color)
         embed.set_thumbnail(url=ctx.bot.user.avatar_url)
         embed.add_field(name="Source Owner", value="AlexFlipnote#0001", inline=True)
         embed.add_field(name="Bot Owner", value=f"Still Away .w.#5245", inline=True)
