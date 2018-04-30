@@ -46,7 +46,8 @@ class Information:
 
         embed = discord.Embed(colour=ctx.me.top_role.colour else 0)
         embed.set_thumbnail(url=ctx.bot.user.avatar_url)
-        embed.add_field(name="Developer", value="AlexFlipnote#0001", inline=True)
+        embed.add_field(name="Source Owner", value="AlexFlipnote#0001", inline=True)
+        embed.add_field(name="Bot Owner", value=f"Still Away .w.#5245", inline=True)
         embed.add_field(name="Library", value="discord.py", inline=True)
         embed.add_field(name="Servers", value=len(ctx.bot.guilds), inline=True)
         embed.add_field(name="RAM", value=f"{ramUsage:.2f} MB", inline=True)
