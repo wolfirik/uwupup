@@ -3,7 +3,7 @@ import traceback
 
 from discord.ext.commands import errors
 from utils import default
-
+from collections import Counter
 
 async def send_cmd_help(ctx):
     if ctx.invoked_subcommand:
@@ -18,6 +18,7 @@ async def send_cmd_help(ctx):
 class Events:
     def __init__(self, bot):
         self.bot = bot
+        self.counter = Counter()
         self.config = default.get("config.json")
 
     async def on_command_error(self, ctx, err):
@@ -48,7 +49,9 @@ class Events:
     async def on_ready(self):
         print(f'Ready: {self.bot.user} | Servers: {len(self.bot.guilds)} | Users: {len(set(bot.get_all_members()))}')
         await self.bot.change_presence(activity=discord.Game(type=0, name="hecc."), status=discord.Status.dnd)
-
-
+    
+    async def on_command(self, ctx):
+        bot.counter["cmds_used"] += 1
+        
 def setup(bot):
     bot.add_cog(Events(bot))
