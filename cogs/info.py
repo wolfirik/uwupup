@@ -19,7 +19,7 @@ class Information:
         before = time.monotonic()
         message = await ctx.send("Pong")
         ping = (time.monotonic() - before) * 1000
-        await message.edit(content=f"Pong   |   {int(ping)}ms")
+        await message.edit(content=f"Pong {list.owos} |   {int(ping)}ms")
 
     @commands.command(aliases=['joinme', 'join', 'botinvite'])
     async def invite(self, ctx):
