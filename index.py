@@ -29,8 +29,8 @@ for file in os.listdir("cogs"):
         try:
             bot.load_extension(f"cogs.{name}")
         except Exception as e:
-            print(e.__name__)
             print(e)
+            print(f"\nFailed to load {name}")
             pass
 
 bot.run(os.environ["TOKEN"])
