@@ -43,7 +43,7 @@ class Information:
     async def about(self, ctx):
         """ About the bot """
         ramUsage = self.process.memory_full_info().rss / 1024**2
-        color = discord.Color.Green()
+        color = 0x33353
 
         embed = discord.Embed(colour=color)
         embed.set_thumbnail(url=ctx.bot.user.avatar_url)
