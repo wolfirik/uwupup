@@ -19,7 +19,7 @@ class HelpFormat(HelpFormatter):
         return await super().format_help_for(context, command_or_bot)
 
 
-print("Logging in...")
+print("-w- zzz...")
 help_attrs = dict(hidden=True)
 bot = Bot(command_prefix=commands.when_mentioned_or("owo "), prefix=commands.when_mentioned_or("owo "), pm_help=True, help_attrs=help_attrs, formatter=HelpFormat())
 
