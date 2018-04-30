@@ -47,11 +47,11 @@ class Events:
             await ctx.send("This command can't be used in dms, sowwy.")
 
     async def on_ready(self):
-        print(f'Ready: {self.bot.user} | Servers: {len(self.bot.guilds)} | Users: {len(set(bot.get_all_members()))}')
+        print(f'Ready: {self.bot.user} | Servers: {len(self.bot.guilds)} | Users: {len(set(self.bot.get_all_members()))}')
         await self.bot.change_presence(activity=discord.Game(type=0, name="hecc."), status=discord.Status.dnd)
     
     async def on_command(self, ctx):
-        bot.counter["cmds_used"] += 1
+        self.bot.counter["cmds_used"] += 1
         
 def setup(bot):
     bot.add_cog(Events(bot))
