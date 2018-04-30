@@ -50,7 +50,7 @@ class Admin:
         """Lists all cogs"""
         for file in os.listdir("cogs"):
             list = list(file.endswith(".py"))
-            await ctx.send(f"```\n{list}\```")
+            await ctx.send(f"```\n{list}\n```")
 
     @commands.command()
     @commands.check(repo.is_owner)
