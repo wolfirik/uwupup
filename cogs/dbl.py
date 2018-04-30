@@ -5,7 +5,7 @@ from discord.ext import commands
 import aiohttp
 import asyncio
 import logging
-
+import os
 
 class DiscordBotsOrgAPI:
     """Handles interactions with the discordbots.org API"""
