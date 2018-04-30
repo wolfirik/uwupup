@@ -31,11 +31,11 @@ class ship:
         elif user2.id == 254599284425621505 and user.id == 158750488563679232:
             ship = discord.Embed(title=" " + user.display_name + " x " + user2.display_name + " ", description="**69%** **`██████    `** ❤", colour=0xDEADBF)
             await ctx.send(embed=ship)
-        elif user.id == 212726258188943360 and user2.id == 158750488563679232:
-            ship = discord.Embed(title=" " + user.display_name + "  x  " + user2.display_name + " ", description="**69%** **`██████████`** ❤", colour=0xDEADBF)
+        elif user.id == 212726258188943360 and user2.id == 158750488563679232 or user2.id == 212726258188943360 and user.id == 15875048856367923:
+            ship = discord.Embed(title=" " + user.display_name + "  x  " + user2.display_name + " ", description="**69%** **`██████████`** 💞",", colour=0xDEADBF)
             await ctx.send(embed=ship)
         elif user2.id == 212726258188943360 and user.id == 158750488563679232:
-            ship = discord.Embed(title=" " + user.display_name + " x " + user2.display_name + " ", description="**100%** **`██████████`** ❤", colour=0xDEADBF)
+            ship = discord.Embed(title=" " + user.display_name + " x " + user2.display_name + " ", description="**100%** **`██████████`** 💞", colour=0xDEADBF)
             await ctx.send(embed=ship)
 
         else:
@@ -95,10 +95,10 @@ class ship:
             user2 = author
        
         if not user:
-            await self.bot.say("ack, i need people y'know :P")
+            await ctx.send("ack, i need people y'know :P")
         
         if user.id == user2.id:
-            await self.bot.say("{} >:1".format(user.name))
+            await ctx.send("{} >:1".format(user.name))
         else:
             await ctx.send("lemme work! \n- Skull")
     
