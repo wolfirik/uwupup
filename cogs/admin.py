@@ -1,6 +1,5 @@
 import time
 import subprocess
-import git
 from utils import repo, default
 from discord.ext import commands
 
