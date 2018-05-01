@@ -6,6 +6,7 @@ import aiohttp
 import asyncio
 import logging
 import os
+from utils import repo
 
 class DiscordBotsOrgAPI:
     """Handles interactions with the discordbots.org API"""
@@ -13,22 +14,19 @@ class DiscordBotsOrgAPI:
     def __init__(self, bot):
         self.bot = bot
         self.token = os.environ["DBL_TOKEN"]
-        self.dblpy = dbl.Client(self.bot, self.token, bot=bot.loop)
-        self.bot.loop.create_task(self.update_stats())
-
-    async def update_stats(self):
-        """This function runs every 30 minutes to automatically update your server count"""
-
-        while True:
-            try:
-                await self.dblpy.post_server_count()
-                print(f"Servers: {len(self.bot.guilds)}\n Posted on dbl successfully.")
-            except Exception as e:
-                print('Failed to post server count\n{}: {}'.format(type(e).__name__, e))
-            await asyncio.sleep(1800)
-
+        self.dblpy = dbl.Client(self.bot, self.token)
         
 
+    @commands.command()
+    @commands.cooldown(rate=1, per=1800, type=commands.BucketType.user)
+    @commands.check(repo.owners)
+    async def updated(self, ctx):
+        """Updates server count on dbl"""
+        try:
+            await self.dblpy.post_server_count()
+            await ctx.send(f"oki my dbl page now shows i'm in {len(self.bot.guilds)} guilds ^w^")
+        except:
+            await ctx.send("hmph.. there was an error.. try again later i guess..")
 
 def setup(bot):
     bot.add_cog(DiscordBotsOrgAPI(bot))
