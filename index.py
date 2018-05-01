@@ -1,5 +1,5 @@
 import os
-from discord.ext import commands
+
 from discord.ext.commands import HelpFormatter
 from data import Bot
 from utils import permissions, default
@@ -17,7 +17,6 @@ class HelpFormat(HelpFormatter):
             await context.message.add_reaction(chr(0x2709))
 
         return await super().format_help_for(context, command_or_bot)
-
 
 print("-w- zzz...")
 help_attrs = dict(hidden=True)
