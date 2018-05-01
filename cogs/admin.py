@@ -1,6 +1,6 @@
 import time
 import subprocess
-
+import git
 from utils import repo, default
 from discord.ext import commands
 
@@ -82,5 +82,14 @@ class Admin:
         output = subprocess.check_output(text_parsed).decode()
         await ctx.send(f"```fix\n{output}\n```")
 
+   @commands.group()
+   async def git(ctx):
+    if ctx.invoked_subcommand is None:
+        await ctx.send('Invalid git command passed...')
+
+  @git.command()
+    async def push(ctx, remote: str, branch: str):
+        await ctx.send('Pushing to {} {}'.format(remote, branch))
+  
 def setup(bot):
     bot.add_cog(Admin(bot))
