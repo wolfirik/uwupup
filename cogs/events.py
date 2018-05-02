@@ -48,7 +48,7 @@ class Events:
 
     async def on_ready(self):
         print(f'Ready: {self.bot.user} | Servers: {len(self.bot.guilds)} | Users: {len(set(self.bot.get_all_members()))}')
-        await self.bot.change_presence(activity=discord.Game(type=0, name="hecc."), status=discord.Status.dnd)
+        await self.bot.change_presence(activity=discord.Game(type=0, name="Being rewritten, Please wait..."), status=discord.Status.dnd)
     
         
 def setup(bot):
