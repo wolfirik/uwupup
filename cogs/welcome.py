@@ -1,10 +1,11 @@
 import discord
 from discord.ext import commands
-from utils import DataIO as dataIO
+from utils import dataIO
 import os
 import asyncio
 from random import choice as rand
 from copy import deepcopy
+import json
 
 # interpreting from irdumbs welcome cog
 
