@@ -17,7 +17,7 @@ class DiscordBotsOrgAPI:
 
     async def update_stats(self):
         """This function runs every 30 minutes to automatically update your server count"""
-       await self.bot.is_ready()
+        await self.bot.is_ready()
         while not bot.is_closed:
             print('Attempting to post server count')
             try:
