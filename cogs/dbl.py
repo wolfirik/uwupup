@@ -24,7 +24,7 @@ class DiscordBotsOrgAPI:
         """Updates server count on dbl"""
         try:
             await self.dblpy.post_server_count()
-            await ctx.send(f"oki my dbl page now shows i'm in {len(self.bot.guilds)} guilds ^w^")
+            await ctx.send(f"oki my dbl page now shows i'm in {len(ctx.bot.guilds)} guilds ^w^")
         except:
             await ctx.send("hmph.. there was an error.. try again later i guess..")
 
