@@ -81,9 +81,6 @@ def check_folders():
 
 def check_files():
     f = path
-    if not dataIO.is_valid_json("data/welcome/settings.json"):
-        print("Creating welcome settings.json...")
-        dataIO.save_json(f, {})
     else:  # consistency check
         current = dataIO.load_json(f)
         for k, v in current.items():
