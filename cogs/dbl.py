@@ -20,12 +20,13 @@ class DiscordBotsOrgAPI:
     @commands.command()
     @commands.cooldown(rate=1, per=1800, type=commands.BucketType.user)
     @commands.check(repo.is_owner)
-    async def updated(self, ctx):
+    async def update(self, ctx):
         """Updates server count on dbl"""
         try:
             await self.dblpy.post_server_count()
             await ctx.send(f"oki my dbl page now shows i'm in {len(ctx.bot.guilds)} guilds ^w^")
-        except:
+        except Exception as e:
+            print(e)
             await ctx.send("hmph.. there was an error.. try again later i guess..")
 
 def setup(bot):
