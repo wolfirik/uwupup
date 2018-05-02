@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from utils import DataIO
+from utils import DataIO as dataIO
 import os
 import asyncio
 from random import choice as rand
