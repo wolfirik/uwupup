@@ -81,20 +81,20 @@ def check_folders():
 
 def check_files():
     f = path
-    else:  # consistency check
-        current = dataIO.load_json(f)
-        for k, v in current.items():
-            if v.keys() != de_settings.keys():
-                for key in de_settings.keys():
-                    if key not in v.keys():
-                        current[k][key] = deepcopy(de_settings)[key]
-                        print("Adding " + str(key) +
-                              " field to welcome settings.json")
+      
+    current = dataIO.load_json(f)
+    for k, v in current.items():
+        if v.keys() != de_settings.keys():
+            for key in de_settings.keys():
+                if key not in v.keys():
+                    current[k][key] = deepcopy(de_settings)[key]
+                    print("Adding " + str(key) +
+                          " field to welcome settings.json")
         # upgrade. Before GREETING was 1 string
-        for guild in current.values():
-            if isinstance(guild["MSGS"], str):
-                guild["MSGS"] = [guild["MSGS"]]
-        dataIO.save_json(f, current)
+    for guild in current.values():
+        if isinstance(guild["MSGS"], str):
+            guild["MSGS"] = [guild["MSGS"]]
+     dataIO.save_json(f, current)
 
 
 def setup(bot):
