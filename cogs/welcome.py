@@ -20,7 +20,6 @@ class Welcome:
         self.bot = bot
         self.settings = dataIO.load_json(path)
 
-
     @bot.group()
     @commands.guild_only()
     @commands.has_permissions(manage_server=True)
@@ -46,7 +45,7 @@ class Welcome:
         except:
             return None
 
-    async def member_join(self, member):
+    async def member_join(guild):
         guild = member.guild
         if guild.id not in self.settings:
             self.settings[guild.id] = deepcopy(de_settings)
