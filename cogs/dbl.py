@@ -4,7 +4,7 @@ import dbl
 import aiohttp
 import asyncio
 import logging
-
+import os
 
 class DiscordBotsOrgAPI:
     """Handles interactions with the discordbots.org API"""
