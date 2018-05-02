@@ -94,7 +94,7 @@ def check_files():
     for guild in current.values():
         if isinstance(guild["MSGS"], str):
             guild["MSGS"] = [guild["MSGS"]]
-     dataIO.save_json(f, current)
+    dataIO.save_json(f, current)
 
 
 def setup(bot):
