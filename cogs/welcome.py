@@ -36,6 +36,10 @@ class Welcome:
             msg += "```"
             await ctx.send(msg)
 
+    @welcomeset.command()
+    async def test(self, ctx):
+        """oof"""
+        await ctx.send("hecc.")
 
     def get_welcome_channel(self, guild):
         try:
