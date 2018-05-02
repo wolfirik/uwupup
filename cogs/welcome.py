@@ -13,9 +13,7 @@ de_settings = {"MSGS": [de_greeting], "ON": False, "CHANNEL": None}
 path = "data/welcome/settings.json"
 
 class Welcome:
-    """Cog for welcoming new users to the server"""
-       
-
+    """Cog for welcoming new users to the server"""   
     def __init__(self, bot):
         self.bot = bot
         self.settings = dataIO.load_json(path)
