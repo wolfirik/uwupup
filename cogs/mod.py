@@ -113,11 +113,14 @@ class Moderator:
         try:
             therole = discord.Object(id=message[0])
         except IndexError:
+            return ctx.guild.create_role(name="Muted", Permissions=discord.Permissions(send_messages=False), reason="Mod invoked.")
             return await ctx.send("Are you sure you've made a role called **Muted**? Remember that it's case sensetive too...")
 
         try:
             await member.add_roles(therole, reason=default.responsible(ctx.author, reason))
             await ctx.send(default.actionmessage("muted"))
+        except discord.HTTPException as e:
+            await ctx.send("Am i allowed to manage roles? :thinking:")
         except Exception as e:
             await ctx.send(e)
 
