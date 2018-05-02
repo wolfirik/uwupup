@@ -18,7 +18,7 @@ class Welcome:
         self.bot = bot
         self.settings = dataIO.load_json(path)
 
-    @bot.group()
+    @commands.group()
     @commands.guild_only()
     @commands.has_permissions(manage_server=True)
     async def welcomeset(self, ctx):
