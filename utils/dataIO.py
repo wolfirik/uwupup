@@ -6,7 +6,10 @@ from random import randint
 class InvalidFileIO(Exception):
     pass
 
-class DataIO():   
+class DataIO():
+    def __init__(self):
+        self.logger = logging.getLogger("red")
+
     def save_json(self, filename, data):
         """Atomically saves json file"""
         rnd = randint(1000, 9999)
@@ -16,7 +19,7 @@ class DataIO():
         try:
             self._read_json(tmp_file)
         except json.decoder.JSONDecodeError:
-            print("Attempted to write file {} but JSON "
+            self.logger.exception("Attempted to write file {} but JSON "
                                   "integrity check on tmp file has failed. "
                                   "The original file is unaltered."
                                   "".format(filename))
