@@ -19,7 +19,7 @@ class DiscordBotsOrgAPI:
 
     @commands.command()
     @commands.cooldown(rate=1, per=1800, type=commands.BucketType.user)
-    @commands.check(repo.owners)
+    @commands.check(repo.is_owner)
     async def updated(self, ctx):
         """Updates server count on dbl"""
         try:
