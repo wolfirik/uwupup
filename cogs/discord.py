@@ -17,7 +17,7 @@ class Discord_Info:
             user = ctx.author
 
         embed = discord.Embed(colour=0xC29FAF)
-        embed.description = f"Avatar to **{user.name}**\nClick [here]({user.avatar_url}) to get image"
+        embed.description = f"Avatar to **{user.name}**\nClick [here]({user.avatar_url_as(format=png)}) to get image"
         embed.set_thumbnail(url=user.avatar_url)
         await ctx.send(embed=embed)
 
