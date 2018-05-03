@@ -2,6 +2,7 @@ import time
 import subprocess
 from utils import repo, default
 from discord.ext import commands
+import os
 
 
 class Admin:
@@ -42,14 +43,18 @@ class Admin:
         await ctx.send('Rebooting now...')
         time.sleep(1)
         await self.bot.logout()
-
+        
     @commands.command()
     @commands.check(repo.is_owner)
     async def cogs_list(self, ctx):
         """Lists all cogs"""
-        for file in os.listdir("cogs"):
-            list = list(file.endswith(".py"))
-            await ctx.send(f"```\n{list}\n```")
+        try:
+            for file in os.listdir("cogs"):
+                list = list(file.endswith(".py"))
+                await ctx.send(f"```\n{list}\n```")
+        except Exception as e:
+            em = discord.Embed(description=f"`{type(e).__name__}`\n {e}", color=0xe74c3c)
+            await ctx.send(content="err", embed=em)
 
     @commands.command()
     @commands.check(repo.is_owner)
