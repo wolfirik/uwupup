@@ -53,8 +53,8 @@ class Admin:
                 list = list(file.endswith(".py"))
                 await ctx.send(f"```\n{list}\n```")
         except Exception as e:
-            em = discord.Embed(description=f"`{type(e).__name__}`\n {e}", color=0xe74c3c)
-            await ctx.send(content="err", embed=em)
+            embed = discord.Embed(colour=0xe74c3c, description=f"`{type(e).__name__}`\n {e}")
+            await ctx.send(embed=embed)
 
     @commands.command()
     @commands.check(repo.is_owner)
