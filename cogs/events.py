@@ -30,9 +30,9 @@ class Events:
 
             _traceback = traceback.format_tb(err.__traceback__)
             _traceback = ''.join(_traceback)
-            error = ('```py\n{2}{0}: {3}\n```').format(type(err).__name__, ctx.message.content, _traceback, err)
-
-            await ctx.send(f"There was a hecc ;w;\n{error}")
+            error = ('{2}\n{0}: {3}').format(type(err).__name__, ctx.message.content, _traceback, err)
+            errem = discord.Embed(description=f"{error}")
+            await ctx.send(embed=errem)
 
         elif isinstance(err, errors.CheckFailure):
             pass
