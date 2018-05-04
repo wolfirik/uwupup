@@ -119,9 +119,9 @@ class Admin:
 
     @commands.command(hidden=True)
     @commands.check(repo.is_owner)
-    async def update(self, ctx):
-        """Lazy much? Whatever..."""
-        await ctx.invoke(self.bot.get_command('shell'), command='git pull')
+    async def git(self, ctx, *, command: str):
+        """Easier use of shell + git"""
+        await ctx.invoke(self.bot.get_command('shell'), command=f'git {command}')
 
     @commands.command(pass_context=True, hidden=True, name='eval')
     @commands.check(repo.is_owner) 
