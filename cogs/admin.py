@@ -123,6 +123,7 @@ class Admin:
     @commands.check(repo.is_owner)
     async def update(self, ctx):
         """gets latest commits and applies them from git"""
+        await ctx.typing()
         await run_cmd('git init')
         await run_cmd('git remote add pup https://github.com/Skullbite/uwupup')
         checking = await run_cmd('git pull pup master --no-commit --no-edit')
