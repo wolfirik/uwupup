@@ -112,7 +112,8 @@ class Admin:
         with ctx.typing():
             result = await run_cmd(command)
             if len(result) >= 1500:
-                await ctx.send(f'`{command}`: Too long for Discord!')
+                for i, page in enumerate(result):
+                await ctx.send(f'`{command}`: ```{page}```')
             else:
                 await ctx.send(f"`{command}`: ```{result}```\n")
 
