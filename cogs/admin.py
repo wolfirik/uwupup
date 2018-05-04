@@ -51,7 +51,7 @@ class Admin:
         except Exception as e:
             await ctx.send(f"```\n{e}```")
             return
-        await ctx.send(f"Reloaded extension **{name}.py**")
+        await ctx.send(f"Reloaded extension **{name}** ^w^")
 
     @commands.command()
     @commands.check(repo.is_owner)
