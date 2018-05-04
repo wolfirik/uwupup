@@ -107,21 +107,22 @@ class Admin:
 
     @commands.command(hidden=True)
     @commands.check(repo.is_owner)
-    async def shell(self, ctx, *, command: str):
+    async def debug(self, ctx, *, command: str):
         """Run stuff"""
         with ctx.typing():
             result = await run_cmd(command)
+            em = discord.Embed(description="```fix\n{result}\n```", color=0x00695c)
             if len(result) >= 1500:
                 await ctx.send(f'wew. {command} has a big output.. i-i\'ll print it instead..')
                 print(result)
             else:
-                await ctx.send(f"`{command}`: ```{result}```\n")
+                await ctx.send(embed=em)
 
     @commands.command(hidden=True)
     @commands.check(repo.is_owner)
     async def git(self, ctx, *, command: str):
         """Easier use of shell + git"""
-        await ctx.invoke(self.bot.get_command('shell'), command=f'git {command}')
+        await ctx.invoke(self.bot.get_command('debug'), command=f'git {command}')
 
                 
 def setup(bot):
