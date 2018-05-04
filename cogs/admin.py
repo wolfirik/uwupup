@@ -121,9 +121,14 @@ class Admin:
 
     @commands.command(hidden=True)
     @commands.check(repo.is_owner)
-    async def git(self, ctx, *, command: str):
-        """Easier use of shell + git"""
-        await ctx.invoke(self.bot.get_command('debug'), command=f'git {command}')
+    async def update(self, ctx):
+        """gets latest commits and applies them from git"""
+        await run_cmd('git init')
+        await run_cmd('git remote add pup https://github.com/Skullbite/uwupup')
+        await run_cmd('git fetch --all')
+        ack = await run_cmd('git reset --hard pup/master')
+        await ctx.send(ack)
+        
 
                 
 def setup(bot):
