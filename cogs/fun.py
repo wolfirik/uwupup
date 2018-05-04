@@ -29,7 +29,7 @@ class Fun_Commands:
     @commands.command(name='nya')
     async def neko_search(self, ctx):
         """Posts a neko"""
-        await self.randomimageapi(ctx, 'https://nekos.life/api/neko', 'url')
+        await self.randomimageapi(ctx, 'https://nekos.life/api/v2/img/neko', 'url')
 
     @commands.command()
     @commands.cooldown(rate=1, per=1.5, type=commands.BucketType.user)
