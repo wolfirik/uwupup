@@ -112,8 +112,8 @@ class Admin:
         with ctx.typing():
             result = await run_cmd(command)
             if len(result) >= 1500:
-                for i, page in enumerate(result):
-                    await ctx.send(f'`{command}`: ```{page}```')
+                await ctx.send(f'owo\' {command} has a big output.. i\'ll print it instead..')
+                print(result)
             else:
                 await ctx.send(f"`{command}`: ```{result}```\n")
 
