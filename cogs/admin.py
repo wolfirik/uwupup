@@ -4,6 +4,7 @@ from utils import repo, default
 from discord.ext import commands
 import os
 import asyncio
+import discord
 
 async def run_cmd(cmd: str) -> str:
     """Runs a subprocess and returns the output."""
