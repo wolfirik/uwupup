@@ -128,7 +128,8 @@ class Admin:
         checking = await run_cmd('git pull pup master --no-commit --no-edit')
         await run_cmd('git fetch --all')
         ack = await run_cmd('git reset --hard pup/master')
-        await ctx.send(f"`pull:` {checking}\n`result:`\n{ack}")
+        info = discord.embed(description=f"```py\n{checking}```", color=0x00695c)
+        await ctx.send(embed=info)
         
 
                 
