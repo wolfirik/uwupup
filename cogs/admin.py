@@ -125,8 +125,8 @@ class Admin:
         """gets latest commits and applies them from git"""
         await run_cmd('git init')
         await run_cmd('git remote add pup https://github.com/Skullbite/uwupup')
+        checking = await run_cmd('git pull pup master --no-commit --no-edit')
         await run_cmd('git fetch --all')
-        checking = await run_cmd('git pull pup master --no-commit')
         ack = await run_cmd('git reset --hard pup/master')
         await ctx.send(f"`pull:` {checking}\n`result:`\n{ack}")
         
