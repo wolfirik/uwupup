@@ -134,9 +134,9 @@ class Admin:
         info = discord.Embed(description=f"```py\nｏｗｏ\n{pull}```", color=0x00695c)
         await ctx.send(embed=info)
         
-   @commands.command()
-   @commands.check(repo.is_owner)
-   async def servers(self, ctx):
+    @commands.command()
+    @commands.check(repo.is_owner)
+    async def servers(self, ctx):
         guilds = sorted(list(self.bot.guilds),
                          key=lambda s: s.name.lower())
         msg = ""
