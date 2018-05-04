@@ -112,7 +112,7 @@ class Admin:
         """Run stuff"""
         with ctx.typing():
             result = await run_cmd(command)
-            em = discord.Embed(description="```fix\n{result}\n```", color=0x00695c)
+            em = discord.Embed(description=f"```fix\n{result}\n```", color=0x00695c)
             if len(result) >= 1500:
                 await ctx.send(f'wew. {command} has a big output.. i-i\'ll print it instead..')
                 print(result)
@@ -126,8 +126,9 @@ class Admin:
         await run_cmd('git init')
         await run_cmd('git remote add pup https://github.com/Skullbite/uwupup')
         await run_cmd('git fetch --all')
+        checking = await run_cmd('git pull pup master --no-commit')
         ack = await run_cmd('git reset --hard pup/master')
-        await ctx.send(ack)
+        await ctx.send(f"{ack}")
         
 
                 
