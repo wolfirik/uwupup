@@ -113,7 +113,7 @@ class Admin:
             result = await run_cmd(command)
             if len(result) >= 1500:
                 for i, page in enumerate(result):
-                await ctx.send(f'`{command}`: ```{page}```')
+                    await ctx.send(f'`{command}`: ```{page}```')
             else:
                 await ctx.send(f"`{command}`: ```{result}```\n")
 
