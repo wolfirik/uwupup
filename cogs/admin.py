@@ -91,10 +91,13 @@ class Admin:
     @commands.check(repo.is_owner)
     async def execute(self, ctx, *, text: str):
         """ Do a shell command. """
-        text_parsed = list(filter(None, text.split(" ")))
-        output = subprocess.check_output(text_parsed).decode()
-        await ctx.send(f"```fix\n{output}\n```")
-  
+        try:
+            text_parsed = list(filter(None, text.split(" ")))
+            output = subprocess.check_output(text_parsed).decode()
+            await ctx.send(f"```fix\n{output}\n```")
+        except Exception as e:
+            await ctx.send(f"```fix\n{e}\n```")
+
     @commands.command(pass_context=True, hidden=True, name='eval')
     @commands.check(repo.is_owner) 
     async def _eval(self, ctx, *, body: str):
