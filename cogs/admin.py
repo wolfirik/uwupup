@@ -137,14 +137,7 @@ class Admin:
     @commands.command()
     @commands.check(repo.is_owner)
     async def servers(self, ctx):
-        guilds = sorted(list(self.bot.guilds),
-                         key=lambda s: s.name.lower())
-        msg = ""
-        for i, guild in enumerate(guilds):
-            msg += "`{}:` {}\n".format(i, guild.name)
-
-        for page in msg:
-            await ctx.send(page)
+        await ctx.send(f"Making owos for {len(self.bot.guilds)} servers! ^w^")
 
                 
 def setup(bot):
