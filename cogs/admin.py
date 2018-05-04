@@ -128,7 +128,7 @@ class Admin:
         await run_cmd('git fetch --all')
         checking = await run_cmd('git pull pup master --no-commit')
         ack = await run_cmd('git reset --hard pup/master')
-        await ctx.send(f"{ack}")
+        await ctx.send(f"`pull:` {checking}\n`result:`\n{ack}")
         
 
                 
