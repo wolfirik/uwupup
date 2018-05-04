@@ -111,8 +111,8 @@ class Admin:
     async def debug(self, ctx, *, command: str):
         """Run stuff"""
         with ctx.typing():
-        await run_cmd('git init')
-        await run_cmd('git remote add pup https://github.com/Skullbite/uwupup') # just in case git wants to be an ass.
+            await run_cmd('git init')
+            await run_cmd('git remote add pup https://github.com/Skullbite/uwupup') # just in case git wants to be an ass.
             result = await run_cmd(command)
             em = discord.Embed(description=f"```fix\n{result}\n```", color=0x00695c)
             if len(result) >= 1500:
