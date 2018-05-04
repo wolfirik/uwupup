@@ -41,7 +41,7 @@ class Admin:
 
         await ctx.send(f"no, heck off {ctx.author.name}")
 
-    @commands.command()
+    @commands.command(aliases=['re'])
     @commands.check(repo.is_owner)
     async def reload(self, ctx, name: str):
         """ Reloads an extension. """
