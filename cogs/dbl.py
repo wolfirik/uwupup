@@ -5,19 +5,19 @@ import aiohttp
 import asyncio
 import logging
 import os
+from utils import dbl_config
 
 class DiscordBotsOrgAPI:
     """Handles interactions with the discordbots.org API"""
 
     def __init__(self, bot):
         self.bot = bot
-        self.token = os.environ["DBL_TOKEN"] #  set this to your DBL token
+        self.token = dbl_config.dbl_token 
         self.dblpy = dbl.Client(self.bot, self.token, loop=bot.loop)
         self.updating = bot.loop.create_task(self.update_stats())
 
     async def update_stats(self):
         """This function runs every 30 minutes to automatically update your server count"""
-        self.bot.is_ready()
         while not bot.is_closed:
             print('Attempting to post server count')
             try:
