@@ -3,7 +3,14 @@ import subprocess
 from utils import repo, default
 from discord.ext import commands
 import os
+import asyncio
 
+async def run_cmd(cmd: str) -> str:
+    """Runs a subprocess and returns the output."""
+    process = await asyncio.create_subprocess_shell(
+        cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE)
+    results = await process.communicate()
+    return "".join(x.decode("utf-8") for x in results)
 
 class Admin:
     def __init__(self, bot):
@@ -97,6 +104,23 @@ class Admin:
             await ctx.send(f"```fix\n{output}\n```")
         except Exception as e:
             await ctx.send(f"```fix\n{e}\n```")
+
+    @commands.command(hidden=True)
+    @commands.check(repo.is_owner)
+    async def shell(self, ctx, *, command: str):
+        """Run stuff"""
+        with ctx.typing():
+            result = await run_cmd(command)
+            if len(result) >= 1500:
+                await ctx.send(f'`{command}`: Too long for Discord!')
+            else:
+                await ctx.send(f"`{command}`: ```{result}```\n")
+
+    @commands.command(hidden=True)
+    @commands.check(repo.is_owner)
+    async def update(self, ctx):
+        """Lazy much? Whatever..."""
+        await ctx.invoke(self.bot.get_command('shell'), command='git pull')
 
     @commands.command(pass_context=True, hidden=True, name='eval')
     @commands.check(repo.is_owner) 
