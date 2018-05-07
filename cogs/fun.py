@@ -93,6 +93,7 @@ class Fun_Commands:
             await ctx.send(embed=embed)
         except discord.Forbidden:
             await ctx.send("I found something, but have no access to post it... [Embed permissions]")
+
     @commands.command()
     async def say(self, ctx, text: str):
         """Makes me repeat something you say!"""
