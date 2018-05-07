@@ -12,7 +12,7 @@ class DiscordBotsOrgAPI:
 
     def __init__(self, bot):
         self.bot = bot
-        self.token = dbl_config.dbl_token 
+        self.token = os.environ["DBL_TOKEN"] 
         self.dblpy = dbl.Client(self.bot, self.token, loop=bot.loop)
         self.updating = bot.loop.create_task(self.update_stats())
 
