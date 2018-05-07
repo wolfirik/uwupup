@@ -2,8 +2,11 @@ import discord
 import traceback
 
 from discord.ext.commands import errors
+from discord import Webhook, AsyncWebhookAdapter
+import aiohttp
 from utils import default
 from collections import Counter
+import os
 
 async def send_cmd_help(ctx):
     if ctx.invoked_subcommand:
@@ -51,6 +54,10 @@ class Events:
         print(f'Ready: {self.bot.user} | Servers: {len(self.bot.guilds)} | Users: {len(set(self.bot.get_all_members()))}')
         await self.bot.change_presence(activity=discord.Game(type=0, name="ｏｗｏ"), status=discord.Status.online)
     
+    async def on_guild_join(guild):
+        async with aiohttp.ClientSession() as session:
+            webhook = Webhook.from_url(os.eviron["WEBHOOK"], adapter=AsyncWebhookAdapter(session))
+            await webhook.send("owopup has been added to {guild.name}\nTotal Guilds: {len(self.bot.guilds)}")
         
 def setup(bot):
     bot.add_cog(Events(bot))
