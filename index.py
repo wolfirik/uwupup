@@ -3,6 +3,8 @@ from discord.ext import commands
 from discord.ext.commands import HelpFormatter
 from data import Bot
 from utils import permissions, default
+from discord import Webhook, AsyncWebhookAdapter
+import aiohttp
 
 config = default.get("config.json")
 description = """
@@ -25,5 +27,12 @@ for file in os.listdir("cogs"):
             print(f"{e}")
             print(f"\nFailed to load {name}")
             pass
+
+@bot.event
+async def on_ready(self):
+    print(f'Ready: {self.bot.user} | Servers: {len(self.bot.guilds)} | Users: {len(set(self.bot.get_all_members()))}')
+    async with aiohttp.ClientSession() as session:
+        webhook = Webhook.from_url(os.eviron["WEBHOOK"], adapter=AsyncWebhookAdapter(session))
+        await webhook.send("owo has successfully booted, i think")
 
 bot.run(os.environ["TOKEN"])
