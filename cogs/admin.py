@@ -62,18 +62,6 @@ class Admin:
         await ctx.send('Rebooting now...')
         time.sleep(1)
         await self.bot.logout()
-        
-    @commands.command()
-    @commands.check(repo.is_owner)
-    async def cogs_list(self, ctx):
-        """Lists all cogs"""
-        try:
-            for file in os.listdir("cogs"):
-                list = list(file.endswith(".py"))
-                await ctx.send(f"```\n{list}\n```")
-        except Exception as e:
-            embed = discord.Embed(colour=0xe74c3c, description=f"`{type(e).__name__}`\n {e}")
-            await ctx.send(embed=embed)
 
     @commands.command()
     @commands.check(repo.is_owner)
