@@ -93,6 +93,17 @@ class Fun_Commands:
             await ctx.send(embed=embed)
         except discord.Forbidden:
             await ctx.send("I found something, but have no access to post it... [Embed permissions]")
+    @commands.command()
+    async def say(self, ctx, text: str):
+        """Makes me repeat something you say!"""
+
+        text = text.replace("@everyone", "&everyone").replace("@here", "&here")
+        try:
+            await ctx.message.delete()
+            await ctx.send(text)
+            print(f"{author} said: {text}")
+        except:
+            await ctx.send("am i allowed to manage messages?")
 
     @commands.command()
     async def reverse(self, ctx, *, text: str):
