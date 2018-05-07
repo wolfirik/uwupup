@@ -139,6 +139,7 @@ class Admin:
     @commands.command()
     async def servers(self, ctx):
         await ctx.send(f"Making owos for {len(self.bot.guilds)} servers! ^w^")
+
     @commands.command()
     @commands.check(repo.is_owner)
     async def whtest(self, ctx, whlink: str):
