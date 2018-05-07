@@ -5,6 +5,8 @@ from discord.ext import commands
 import os
 import asyncio
 import discord
+from discord import Webhook, AsyncWebhookAdapter
+import aiohttp
 
 async def run_cmd(cmd: str) -> str:
     """Runs a subprocess and returns the output."""
@@ -137,7 +139,13 @@ class Admin:
     @commands.command()
     async def servers(self, ctx):
         await ctx.send(f"Making owos for {len(self.bot.guilds)} servers! ^w^")
-
+    @commands.command()
+    @commands.check(repo.is_owner)
+    async def whtest(self, ctx, whlink: str):
+        async with aiohttp.ClientSession() as session:
+            webhook = Webhook.from_url(f'{whlink}', adapter=AsyncWebhookAdapter(session))
+            await webhook.send("owo has successfully booted, i think")
+    
                 
 def setup(bot):
     bot.add_cog(Admin(bot))
