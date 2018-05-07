@@ -14,9 +14,7 @@ Made by AlexFlipnote
 
 
 print("-w- zzz...")
-async with aiohttp.ClientSession() as session:
-    webhook = Webhook.from_url(os.eviron["WEBHOOK"], adapter=AsyncWebhookAdapter(session))
-    await webhook.send("owo has successfully booted, i think")
+
 bot = Bot(command_prefix=commands.when_mentioned_or("owo "), prefix=commands.when_mentioned_or("owo "), pm_help=True)
 
 for file in os.listdir("cogs"):
