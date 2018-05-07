@@ -95,7 +95,7 @@ class Fun_Commands:
             await ctx.send("I found something, but have no access to post it... [Embed permissions]")
 
     @commands.command()
-    async def say(self, ctx, text: str):
+    async def say(self, ctx, *, text: str):
         """Makes me repeat something you say!"""
 
         text = text.replace("@everyone", "&everyone").replace("@here", "&here")
