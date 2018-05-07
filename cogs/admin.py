@@ -135,7 +135,6 @@ class Admin:
         msg = await ctx.send(embed=info, delete_after=20)
         
     @commands.command()
-    @commands.check(repo.is_owner)
     async def servers(self, ctx):
         await ctx.send(f"Making owos for {len(self.bot.guilds)} servers! ^w^")
 
