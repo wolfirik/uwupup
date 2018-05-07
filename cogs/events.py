@@ -1,5 +1,6 @@
 import discord
 import traceback
+import datetime
 
 from discord.ext.commands import errors
 from discord import Webhook, AsyncWebhookAdapter
@@ -34,7 +35,7 @@ class Events:
             _traceback = traceback.format_tb(err.__traceback__)
             _traceback = ''.join(_traceback)
             error = ('{2}\n{0}: {3}').format(type(err).__name__, ctx.message.content, _traceback, err)
-            error = error.replace("Heroku", "owo")
+            error = error.replace(".heroku", "owo")
             errem = discord.Embed(description=f"{error}")
             await ctx.send(embed=errem)
 
@@ -51,6 +52,7 @@ class Events:
             await ctx.send("This command can't be used in dms, sowwy.")
 
     async def on_ready(self):
+        info = discord.Embed(title="owopup is online)
         print(f'Ready: {self.bot.user} | Servers: {len(self.bot.guilds)} | Users: {len(set(self.bot.get_all_members()))}')
         await self.bot.change_presence(activity=discord.Game(type=0, name="ｏｗｏ"), status=discord.Status.online)
         async with aiohttp.ClientSession() as session:
