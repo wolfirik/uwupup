@@ -59,7 +59,7 @@ class Events:
         await self.bot.change_presence(activity=discord.Game(type=0, name="ｏｗｏ"), status=discord.Status.online)
         async with aiohttp.ClientSession() as session:
             webhook = Webhook.from_url(os.environ["WEBHOOK"], adapter=AsyncWebhookAdapter(session))
-            await webhook.send("owo has successfully booted, i think")
+            await webhook.send(content="owo has successfully booted, i think", embed=info)
         
     
     async def on_guild_join(guild):
