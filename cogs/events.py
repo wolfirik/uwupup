@@ -52,9 +52,7 @@ class Events:
             await ctx.send("This command can't be used in dms, sowwy.")
 
     async def on_ready(self):
-        time = datetime.now(EST)
-        info = discord.Embed(title="owopup is online", description=f"Guilds: `{len(self.bot.guilds)}`\nUsers: `{len(set(self.bot.get_all_members()))}`")
-        info.set_footer(text=f"Booted at: {time}") 
+        info = discord.Embed(title="owopup is online", description=f"Guilds: `{len(self.bot.guilds)}`\nUsers: `{len(set(self.bot.get_all_members()))}`") 
         print(f'Ready: {self.bot.user} | Servers: {len(self.bot.guilds)} | Users: {len(set(self.bot.get_all_members()))}')
         await self.bot.change_presence(activity=discord.Game(type=0, name="ｏｗｏ"), status=discord.Status.online)
         async with aiohttp.ClientSession() as session:
