@@ -97,7 +97,7 @@ class Fun_Commands:
     @commands.command()
     async def say(self, ctx, *, text: str):
         """Makes me repeat something you say!"""
-
+        author = ctx.message.author
         text = text.replace("@everyone", "&everyone").replace("@here", "&here")
         try:
             await ctx.message.delete()
