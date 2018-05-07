@@ -53,6 +53,10 @@ class Events:
     async def on_ready(self):
         print(f'Ready: {self.bot.user} | Servers: {len(self.bot.guilds)} | Users: {len(set(self.bot.get_all_members()))}')
         await self.bot.change_presence(activity=discord.Game(type=0, name="ｏｗｏ"), status=discord.Status.online)
+        async with aiohttp.ClientSession() as session:
+            webhook = Webhook.from_url(os.eviron["WEBHOOK"], adapter=AsyncWebhookAdapter(session))
+            await webhook.send("owo has successfully booted")
+        
     
     async def on_guild_join(guild):
         async with aiohttp.ClientSession() as session:
