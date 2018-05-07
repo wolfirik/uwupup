@@ -103,7 +103,7 @@ class Fun_Commands:
             await ctx.message.delete()
             await ctx.send(text)
             print(f"{author} said: {text}")
-        except:
+        except discord.Forbidden:
             await ctx.send("am i allowed to manage messages?")
 
     @commands.command()
