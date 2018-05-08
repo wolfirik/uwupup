@@ -280,8 +280,6 @@ class Admin:
 
         self._last_result = result
 
-        result = self.sanitize_output(ctx, str(result))
-
         await ctx.send_interactive(self.get_pages(result), box_lang="py")
 
     @commands.command()
