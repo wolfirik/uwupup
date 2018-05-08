@@ -69,7 +69,7 @@ class Events:
             await to_send.send("hewwooo!! ^w^")
 
         join = discord.Embed(description=f"owopup has been added to {ctx.guild.name}! ^w^", color=0xDE6DA2)
-        join.set_thumbnail(url=ctx.guild.icon_url)
+        join.set_thumbnail(url=ctx.guild.icon_url if guild.icon_url else pass)
         join.set_footer(text="Total Guilds: {len(self.bot.guilds)}")
         async with aiohttp.ClientSession() as session:
             webhook = Webhook.from_url(os.environ["WEBHOOK"], adapter=AsyncWebhookAdapter(session))
