@@ -68,7 +68,7 @@ class Events:
         else:
             await to_send.send("hewwooo!! ^w^")
 
-        join = discord.Embed(title="Added to Guild", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members: len{guild.members}\n:small_blue_diamond: | Owner: {guild.owner}", color=discord.Color.dark_green())
+        join = discord.Embed(title="Added to Guild ^w^", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members: len{guild.members}\n:small_blue_diamond: | Owner: {guild.owner}", color=discord.Color.dark_green())
         join.set_thumbnail(url=guild.icon_url)
         join.set_footer(text=f"Total Guilds: {len(self.bot.guilds)}")
         async with aiohttp.ClientSession() as session:
@@ -76,7 +76,7 @@ class Events:
             await webhook.send(embed=join)
 
     async def on_guild_remove(self, guild):
-        leave = discord.Embed(title="Removed from Guild", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members: len{guild.members}\n:small_blue_diamond: | Owner: {guild.owner}", color=discord.Color.dark_red())
+        leave = discord.Embed(title="Removed from Guild umu", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members: len{guild.members}\n:small_blue_diamond: | Owner: {guild.owner}", color=discord.Color.dark_red())
         leave.set_thumbnail(url=guild.icon_url)
         leave.set_footer(text=f"Total Guilds: {len(self.bot.guilds)}")
         async with aiohttp.ClientSession() as session:
