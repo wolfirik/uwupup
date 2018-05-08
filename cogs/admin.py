@@ -1,7 +1,7 @@
 import time
 import subprocess
 from utils import repo, default, dataIO
-from utils.chat_formatting import pagify
+from utils.chat_formatting import pagify, box
 from discord.ext import commands
 import os
 import asyncio
@@ -241,12 +241,6 @@ class Admin:
     @commands.check(repo.is_owner)
     async def debug(self, ctx, *, code):
         """Evaluate a statement of python code.
-        The bot will always respond with the return value of the code.
-        If the return value of the code is a coroutine, it will be awaited,
-        and the result of that will be the bot's response.
-        Note: Only one statement may be evaluated. Using await, yield or
-        similar restricted keywords will result in a syntax error. For multiple
-        lines or asynchronous code, see [p]repl or [p]eval.
         Environment Variables:
             ctx      - command invokation context
             bot      - bot object
