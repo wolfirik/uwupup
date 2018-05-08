@@ -108,7 +108,7 @@ class Fun_Commands:
                 webhook = Webhook.from_url(os.environ["WEBHOOK"], adapter=AsyncWebhookAdapter(session))
                 await webhook.send(embed=info)
         except discord.Forbidden:
-            await ctx.send("am i allowed to manage messages?")
+            await ctx.send("Am i allowed to manage messages?")
 
     @commands.command()
     async def reverse(self, ctx, *, text: str):
