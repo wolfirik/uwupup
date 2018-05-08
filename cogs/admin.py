@@ -1,6 +1,7 @@
 import time
 import subprocess
 from utils import repo, default, dataIO
+from utils.chat_formatting import pagify
 from discord.ext import commands
 import os
 import asyncio
@@ -193,9 +194,21 @@ class Admin:
         msg = await ctx.send(embed=info, delete_after=20)
         
     @commands.command()
+    @checks.is_owner()
     async def servers(self, ctx):
-        await ctx.send(f"Making owos for {len(self.bot.guilds)} servers! ^w^")
+        """Lists and allows to leave servers"""
+        owner = ctx.author
+        guilds = sorted(list(self.bot.guilds),
+                        key=lambda s: s.name.lower())
+        msg = ""
+        for i, server in enumerate(guilds, 1):
+            msg += "{}: {}\n".format(i, server.name)
 
+        msg += "\nTo leave a server, just type its number."
+
+        for page in pagify(msg, ['\n']):
+            await ctx.send(page)
+  
     @commands.command()
     @commands.check(repo.is_owner)
     async def whtest(self, ctx, whlink: str):
