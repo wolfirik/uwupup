@@ -194,7 +194,7 @@ class Admin:
         msg = await ctx.send(embed=info, delete_after=20)
         
     @commands.command()
-    @checks.is_owner()
+    @commands.check(repo.is_owner)
     async def servers(self, ctx):
         """Lists and allows to leave servers"""
         owner = ctx.author
@@ -203,8 +203,6 @@ class Admin:
         msg = ""
         for i, server in enumerate(guilds, 1):
             msg += "{}: {}\n".format(i, server.name)
-
-        msg += "\nTo leave a server, just type its number."
 
         for page in pagify(msg, ['\n']):
             await ctx.send(page)
