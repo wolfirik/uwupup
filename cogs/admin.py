@@ -111,7 +111,7 @@ class Admin:
             else:
                 await ctx.send(embed=em)
 
-    @commands.command(hidden=True)
+    @commands.command(hidden=True, aliases=["pull"])
     @commands.check(repo.is_owner)
     async def update(self, ctx):
         """gets latest commits and applies them from git"""
