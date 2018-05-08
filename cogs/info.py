@@ -13,6 +13,25 @@ class Information:
         self.config = default.get("config.json")
         self.process = psutil.Process(os.getpid())
 
+    def get_bot_uptime(self, *, brief=False):
+        now = datetime.utcnow()
+        delta = now - self.bot.uptime
+        hours, remainder = divmod(int(delta.total_seconds()), 3600)
+        minutes, seconds = divmod(remainder, 60)
+        days, hours = divmod(hours, 24)
+
+        if not brief:
+            if days:
+                fmt = '{d} days, {h} hours, {m} minutes, and {s} seconds'
+            else:
+                fmt = '{h} hours, {m} minutes, and {s} seconds'
+        else:
+            fmt = '{h}h {m}m {s}s'
+            if days:
+                fmt = '{d}d ' + fmt
+
+        return fmt.format(d=days, h=hours, m=minutes, s=seconds)
+
     @commands.command()
     async def ping(self, ctx):
         """ Pong! """
@@ -47,6 +66,7 @@ class Information:
 
         embed = discord.Embed(colour=color)
         embed.set_thumbnail(url=ctx.bot.user.avatar_url)
+        embed.add_field(name="Uptime", value=self.get_bot_uptime(), inline=False)
         embed.add_field(name="Source Owner", value="AlexFlipnote#0001", inline=True)
         embed.add_field(name="Bot Owner", value=f"Still Away .w.#5245", inline=True)
         embed.add_field(name="Library", value="discord.py", inline=True)
