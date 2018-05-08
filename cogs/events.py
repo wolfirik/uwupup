@@ -68,7 +68,7 @@ class Events:
         else:
             await to_send.send("hewwooo!! ^w^")
 
-        join = discord.Embed(description=f"owopup has been added to {guild.name}! ^w^", color=discord.Color.dark_red())
+        join = discord.Embed(title="Added to Guild", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members: len{guild.members}\n:small_blue_diamond: | Owner: {guild.owner}", color=discord.Color.dark_green())
         join.set_thumbnail(url=guild.icon_url)
         join.set_footer(text=f"Total Guilds: {len(self.bot.guilds)}")
         async with aiohttp.ClientSession() as session:
@@ -76,7 +76,7 @@ class Events:
             await webhook.send(embed=join)
 
     async def on_guild_remove(self, guild):
-        leave = discord.Embed(description=f"owopup has been removed from {guild.name}. -m-", color=discord.Color.dark_green())
+        leave = discord.Embed(description=f"owopup has been removed from {guild.name}. -m-", color=discord.Color.dark_red())
         leave.set_thumbnail(url=guild.icon_url)
         leave.set_footer(text=f"Total Guilds: {len(self.bot.guilds)}")
         async with aiohttp.ClientSession() as session:
