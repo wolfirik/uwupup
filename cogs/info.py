@@ -73,7 +73,7 @@ class Information:
         embed.add_field(name="Servers", value=len(ctx.bot.guilds), inline=True)
         embed.add_field(name="RAM", value=f"{ramUsage:.2f} MB", inline=True)
 
-        await ctx.send(content=f"ℹ About **{ctx.bot.user}** | **{repo.version}**", embed=embed)
+        await ctx.send(content=f"ℹ About **{ctx.bot.user}**", embed=embed)
 
 
 def setup(bot):
