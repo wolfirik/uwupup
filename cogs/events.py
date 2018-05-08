@@ -60,7 +60,14 @@ class Events:
             await webhook.send(embed=info)
         
     
-    async def on_guild_join(guild):
+    async def on_guild_join(self, guild):
+        try:
+            to_send = sorted([chan for chan in guild.channels if chan.permissions_for(guild.me).send_messages and isinstance(chan, discord.TextChannel)], key=lambda x: x.position)[0]
+        except IndexError:
+            pass
+        else:
+            await to_send.send("hewwooo!! ^w^")
+
         join = discord.Embed(description=f"owopup has been added to {ctx.guild.name}! ^w^", color=0xDE6DA2)
         join.set_thumbnail(url=ctx.guild.icon_url)
         join.set_footer(text="Total Guilds: {len(self.bot.guilds)}")
@@ -68,7 +75,7 @@ class Events:
             webhook = Webhook.from_url(os.environ["WEBHOOK"], adapter=AsyncWebhookAdapter(session))
             await webhook.send(embed=join)
 
-    async def on_guild_remove(guild):
+    async def on_guild_remove(self, guild):
         leave = discord.Embed(description=f"owopup has been removed from {ctx.guild.name}. -m-", color=0x8A282A)
         leave.set_thumbnail(url=ctx.guild.icon_url)
         leave.set_footer(text="Total Guilds: {len(self.bot.guilds)}")
