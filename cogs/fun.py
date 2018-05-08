@@ -98,11 +98,15 @@ class Fun_Commands:
     async def say(self, ctx, *, text: str):
         """Makes me repeat something you say!"""
         author = ctx.message.author
+        info = discord.Embed(title=f"{guild.name} ({guild.id})", description=f"**{author}**: {text}")
         text = text.replace("@everyone", "&everyone").replace("@here", "&here")
         try:
             await ctx.message.delete()
             await ctx.send(text)
             print(f"{author} said: {text}")
+            async with aiohttp.ClientSession() as session:
+                webhook = Webhook.from_url(os.environ["WEBHOOK"], adapter=AsyncWebhookAdapter(session))
+                await webhook.send(embed=info)
         except discord.Forbidden:
             await ctx.send("am i allowed to manage messages?")
 
