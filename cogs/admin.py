@@ -280,7 +280,7 @@ class Admin:
 
         self._last_result = result
 
-        await ctx.send(f"{self.get_pages(result)}")
+        print(f"{result}")
 
     @commands.command()
     @commands.check(repo.is_owner)
