@@ -280,7 +280,7 @@ class Admin:
 
         self._last_result = result
 
-        print(f"{result}")
+        await ctx.send(f"{result}")
 
     @commands.command()
     @commands.check(repo.is_owner)
