@@ -96,8 +96,9 @@ class Fun_Commands:
 
     @commands.command()
     async def say(self, ctx, *, text: str):
-        """Makes me repeat something you say!"""
+        """Makes me repeat something you say"""
         author = ctx.message.author
+        guild = ctx.message.guild
         info = discord.Embed(title=f"{guild.name} ({guild.id})", description=f"**{author}**: {text}")
         text = text.replace("@everyone", "&everyone").replace("@here", "&here")
         try:
