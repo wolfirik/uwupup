@@ -5,6 +5,8 @@ import os
 from io import BytesIO
 from discord.ext import commands
 from utils import lists, permissions, http, default
+from discord import Webhook, AsyncWebhookAdapter
+import aiohttp
 
 
 class Fun_Commands:
