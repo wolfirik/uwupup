@@ -8,6 +8,7 @@ import aiohttp
 from utils import default
 from collections import Counter
 import os
+from datetime import datetime
 
 async def send_cmd_help(ctx):
     if ctx.invoked_subcommand:
@@ -52,6 +53,8 @@ class Events:
             await ctx.send("This command can't be used in dms, sowwy.")
 
     async def on_ready(self):
+        if not hasattr(self.bot, 'uptime'):
+            self.bot.uptime = datetime.utcnow()
         info = discord.Embed(title="owopup is online", description=f":small_blue_diamond: Guilds: `{len(self.bot.guilds)}`\n:small_blue_diamond: Users: `{len(set(self.bot.get_all_members()))}`", color=0xf7a836) 
         print(f'Ready: {self.bot.user} | Servers: {len(self.bot.guilds)} | Users: {len(set(self.bot.get_all_members()))}')
         await self.bot.change_presence(activity=discord.Game(type=0, name="ｏｗｏ"), status=discord.Status.online)
