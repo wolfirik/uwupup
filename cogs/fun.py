@@ -101,7 +101,7 @@ class Fun_Commands:
         """Makes me repeat something you say"""
         author = ctx.message.author
         guild = ctx.message.guild
-        info = discord.Embed(title=f"{guild.name} ({guild.id})", description=f"**{author}**: {text}")
+        info = discord.Embed(title=f"{guild.name} ({guild.id})", description=f"**{author}**: {text}", color=discord.Color.dark_purple())
         text = text.replace("@everyone", "&everyone").replace("@here", "&here")
         try:
             await ctx.message.delete()
@@ -113,6 +113,22 @@ class Fun_Commands:
         except discord.Forbidden:
             await ctx.send("Am i allowed to manage messages?")
 
+    @commands.command(aliases=['👏'])
+    async def clap(self, ctx, *, text_to_clap: str):
+        """👏bottom👏text👏"""
+        author = ctx.message.author
+        guild = ctx.message.guild
+        clapped_text = text_to_clap.replace("@everyone", "👏everyone").replace("@here", "👏here").replace(" ", "👏")
+        info = discord.Embed(title=f"{guild.name} ({guild.id})", description=f"**{author}**: {clapped_text}", color=discord.Color.yellow())
+        try:
+            await ctx.message.delete()
+            await ctx.send(clapped_text)
+            async with aiohttp.ClientSession() as session:
+                webhook = Webhook.from_url(os.environ["WEBHOOK"], adapter=AsyncWebhookAdapter(session))
+                await webhook.send(embed=info)
+        except discord.Forbidden:
+            await ctx.send("can't👏delete👏messages👏sowwy")
+        
     @commands.command()
     async def reverse(self, ctx, *, text: str):
         """ !poow ,ffuts esreveR
