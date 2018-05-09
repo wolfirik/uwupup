@@ -291,7 +291,7 @@ class Admin:
     
     @commands.command()
     @commands.check(repo.is_owner)
-    async def gsi(self, ctx, guild_id: str):
+    async def gsi(self, ctx, *, guild_id: str):
         """ Makes me get the information from a guild id"""
         guild = self.bot.get_guild(guild_id)
         try:
