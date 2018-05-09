@@ -52,7 +52,7 @@ class Events:
             await ctx.send("This command can't be used in dms, sowwy.")
 
     async def on_ready(self):
-        info = discord.Embed(title="owopup is online", description=f"Guilds: `{len(self.bot.guilds)}`\nUsers: `{len(set(self.bot.get_all_members()))}`", color=0xf7a836) 
+        info = discord.Embed(title="owopup is online", description=f"<a:blobdoggocoffee:443761479116783619> Guilds: `{len(self.bot.guilds)}`\n<a:blobdoggocoffee:443761479116783619> Users: `{len(set(self.bot.get_all_members()))}`", color=0xf7a836) 
         print(f'Ready: {self.bot.user} | Servers: {len(self.bot.guilds)} | Users: {len(set(self.bot.get_all_members()))}')
         await self.bot.change_presence(activity=discord.Game(type=0, name="ｏｗｏ"), status=discord.Status.online)
         async with aiohttp.ClientSession() as session:
@@ -61,6 +61,9 @@ class Events:
         
     
     async def on_guild_join(self, guild):
+        members = set(guild.members)
+        bots = filter(lambda m: m.bot, members)
+        bots = set(bots)
         try:
             to_send = sorted([chan for chan in guild.channels if chan.permissions_for(guild.me).send_messages and isinstance(chan, discord.TextChannel)], key=lambda x: x.position)[0]
         except IndexError:
@@ -68,7 +71,7 @@ class Events:
         else:
             await to_send.send("hewwooo!! ^w^")
 
-        join = discord.Embed(title="Added to Guild ^w^", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members: len{guild.members}\n:small_blue_diamond: | Owner: {guild.owner}", color=discord.Color.dark_green())
+        join = discord.Embed(title="Added to Guild ^w^", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members/Bots: {len(guild.members)}\n:small_blue_diamond: | Members/Bots: {len(guild.members)}/{len(bots)}\n:small_blue_diamond: | Owner: {guild.owner}", color=discord.Color.dark_green())
         join.set_thumbnail(url=guild.icon_url)
         join.set_footer(text=f"Total Guilds: {len(self.bot.guilds)}")
         async with aiohttp.ClientSession() as session:
@@ -76,7 +79,7 @@ class Events:
             await webhook.send(embed=join)
 
     async def on_guild_remove(self, guild):
-        leave = discord.Embed(title="Removed from Guild umu", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members: len{guild.members}\n:small_blue_diamond: | Owner: {guild.owner}", color=discord.Color.dark_red())
+        leave = discord.Embed(title="Removed from Guild umu", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members: {len(guild.members)}\n:small_blue_diamond: | Owner: {guild.owner}", color=discord.Color.dark_red())
         leave.set_thumbnail(url=guild.icon_url)
         leave.set_footer(text=f"Total Guilds: {len(self.bot.guilds)}")
         async with aiohttp.ClientSession() as session:
