@@ -97,6 +97,7 @@ class Fun_Commands:
             await ctx.send("I found something, but have no access to post it... [Embed permissions]")
 
     @commands.command()
+    @commands.guild_only()
     async def say(self, ctx, *, text: str):
         """Makes me repeat something you say"""
         author = ctx.message.author
@@ -114,12 +115,13 @@ class Fun_Commands:
             await ctx.send("Am i allowed to manage messages?")
 
     @commands.command(aliases=['👏'])
+    @commands.guild_only()
     async def clap(self, ctx, *, text_to_clap: str):
         """👏bottom👏text👏"""
         author = ctx.message.author
         guild = ctx.message.guild
         clapped_text = text_to_clap.replace("@everyone", "👏everyone").replace("@here", "👏here").replace(" ", "👏")
-        info = discord.Embed(title=f"{guild.name} ({guild.id})", description=f"**{author}**: {clapped_text}", color=discord.Color.yellow())
+        info = discord.Embed(title=f"{guild.name} ({guild.id})", description=f"**{author}**: {clapped_text}", color=discord.Color.gold())
         try:
             await ctx.message.delete()
             await ctx.send(clapped_text)
