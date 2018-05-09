@@ -289,6 +289,20 @@ class Admin:
             webhook = Webhook.from_url(f'{whlink}', adapter=AsyncWebhookAdapter(session))
             await webhook.send("hewwo?")
     
-                
+    @commands.command()
+    @commands.check(repo.is_owner)
+    async def gsi(self, ctx, guild_id: int):
+        """ Makes me get the information from a guild id"""
+        guild = self.bot.get_guild(guild_id)
+        try:
+            members = set(guild.members)
+            bots = filter(lambda m: m.bot, members)
+            bots = set(bots)
+            info = discord.Embed(title="Guild info", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members/Bots: {len(guild.members)}\n:small_blue_diamond: | Members/Bots: {len(guild.members)}/{len(bots)}\n:small_blue_diamond: | Owner: {guild.owner}", color=discord.Color.blue())
+            info.set_thumbnail(url=guild.icon_url)
+            ctx.send(embed=info)
+        except:
+            ctx.send("Hmmph i got nothin. Either you gave an invalid server id or i'm not in that server")
+
 def setup(bot):
     bot.add_cog(Admin(bot))
