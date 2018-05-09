@@ -295,6 +295,7 @@ class Admin:
         """ Makes me get the information from a guild id"""
         guild = self.bot.get_guild(guild_id)
         try:
+            guild = self.bot.get_guild(guild_id)
             members = set(guild.members)
             bots = filter(lambda m: m.bot, members)
             bots = set(bots)
