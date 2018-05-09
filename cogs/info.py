@@ -5,7 +5,7 @@ import os
 import random
 from discord.ext import commands
 from utils import repo, default, lists
-
+from datetime import datetime
 
 class Information:
     def __init__(self, bot):
