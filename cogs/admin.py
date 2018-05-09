@@ -300,7 +300,7 @@ class Admin:
             bots = set(bots)
             info = discord.Embed(title="Guild info", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members/Bots: {len(guild.members)}\n:small_blue_diamond: | Members/Bots: {len(guild.members)}/{len(bots)}\n:small_blue_diamond: | Owner: {guild.owner}", color=discord.Color.blue())
             info.set_thumbnail(url=guild.icon_url)
-            ctx.send(content='Hey i got somethin!", embed=info)
+            ctx.send(embed=info)
         except:
             ctx.send("Hmmph i got nothin. Either you gave an invalid server id or i'm not in that server")
 
