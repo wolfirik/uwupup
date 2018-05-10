@@ -99,7 +99,7 @@ class Events:
             await webhook.send(embed=leave)
 
     async def update_stats(self):
-        update = discord.Embed(title="Updating Server Count",  description="<a:dblspin:393548363879940108> My dbl page now says i'm in {}".format(len(self.bot.guilds)), color=discord.Color.blurple()) 
+        update = discord.Embed(title="Updating Server Count",  description="<a:dblspin:393548363879940108> Posted {} Guilds".format(len(self.bot.guilds)), color=discord.Color.blurple()) 
         async with aiohttp.ClientSession() as session:
             webhook = Webhook.from_url(os.environ["WEBHOOK"], adapter=AsyncWebhookAdapter(session))
         while True:
@@ -109,7 +109,7 @@ class Events:
                 await webhook.send(embed=update)
             except Exception as e:
                 try: #if the webhook is online
-                    err = discord.Embed(description=f"failed to post owo's server count, sowwy.\n{(type(e).__name__}```{e}```", color=discord.Color.red())
+                    err = discord.Embed(description=f"failed to post owo's server count, sowwy.\n{type(e).__name__}```{e}```", color=discord.Color.red())
                     await webhook.send(embed=err)
                 except: #if not... 
                     print('Failed to post server count\n{}: {}'.format(type(e).__name__, e))
