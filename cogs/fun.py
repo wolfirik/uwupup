@@ -142,7 +142,7 @@ class Fun_Commands:
     @commands.command(aliases=['owolang'])
     async def hewwo(self, ctx, *, text: str):
         """Takes something you say and puts it in owo"""         
-        owo_t = text.replace("o", "owo").replace("n", "ny").replace("l", "w").replace("r", "w") #i was gonna add an @everyone and @here blocker but the r to w change already handles that XD
+        owo_t = text.replace("o", "owo").replace("n", "ny").replace("l", "w").replace("r", "w") 
         await ctx.send(f"OwO {owo_t}")
         
     @commands.command()
