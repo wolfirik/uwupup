@@ -9,6 +9,7 @@ from utils import default
 from collections import Counter
 import os
 from datetime import datetime
+import dbl
 
 async def send_cmd_help(ctx):
     if ctx.invoked_subcommand:
@@ -25,6 +26,9 @@ class Events:
         self.bot = bot
         self.counter = Counter()
         self.config = default.get("config.json")
+        self.token = os.environ["DBL_TOKEN"] 
+        self.dblpy = dbl.Client(self.bot, self.token, loop=bot.loop)
+        self.updating = bot.loop.create_task(self.update_stats())
 
     async def on_command_error(self, ctx, err):
         if isinstance(err, errors.MissingRequiredArgument) or isinstance(err, errors.BadArgument):
@@ -93,6 +97,23 @@ class Events:
         async with aiohttp.ClientSession() as session:
             webhook = Webhook.from_url(os.environ["WEBHOOK"], adapter=AsyncWebhookAdapter(session))
             await webhook.send(embed=leave)
+
+    async def update_stats(self):
+        update = discord.Embed(title="Updating Server Count",  description="<a:dblspin:393548363879940108> My dbl page now says i'm in {}".format(len(self.bot.guilds)), color=discord.Color.blurple()) 
+        async with aiohttp.ClientSession() as session:
+            webhook = Webhook.from_url(os.environ["WEBHOOK"], adapter=AsyncWebhookAdapter(session))
+        while True:
+            print('Attempting to post server count')
+            try:
+                await self.dblpy.post_server_count()
+                await webhook.send(embed=update)
+            except Exception as e:
+                try: #if the webhook is online
+                    err = discord.Embed(description=f"failed to post owo's server count, sowwy.\n{(type(e).__name__}\n{e}", color=discord.Color.red())
+                    await webhook.send(embed=err)
+                except: #if not... 
+                    print('Failed to post server count\n{}: {}'.format(type(e).__name__, e))
+            await asyncio.sleep(1800)
         
 def setup(bot):
     bot.add_cog(Events(bot))
