@@ -1,6 +1,7 @@
 pip
 git+https://github.com/Rapptz/discord.py@rewrite
 git+https://github.com/DiscordBotList/DBL-Python-Library
+git+https://github.com/mongodb/mongo-python-driver
 psutil
 asyncio
 aiohttp
@@ -9,12 +10,4 @@ python-forecastio
 geocoder
 pyping
 youtube_dl
-postgres
-asyncqlio
-colorlog
-psutil
-random-cat
-nmap
-pythonwhois
-retry
 heroku 
