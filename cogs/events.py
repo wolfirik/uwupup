@@ -74,7 +74,12 @@ class Events:
         else:
             await to_send.send("hewwooo!! ^w^")
 
-        join = discord.Embed(title="Added to Guild ^w^", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members/Bots: {len(guild.members)}\n:small_blue_diamond: | Members/Bots: {len(guild.members)}/{len(bots)}\n:small_blue_diamond: | Owner: {guild.owner}", color=discord.Color.dark_green())
+        if len(bots) >= len(guild.members):
+            sketchy_msg = "\n<:blobdoggothink:444122378260185088> | **Prolly a bot farm or bot testing guild**"
+        else: 
+            sketchy_msg = ""
+
+        join = discord.Embed(title="Added to Guild ^w^", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members:Bots: `{len(guild.members)}:{len(bots}`\n:small_blue_diamond: | Owner: {guild.owner}{sketchy_msg}", color=discord.Color.dark_green())
         join.set_thumbnail(url=guild.icon_url)
         join.set_footer(text=f"Total Guilds: {len(self.bot.guilds)}")
         async with aiohttp.ClientSession() as session:
