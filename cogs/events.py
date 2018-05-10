@@ -61,7 +61,7 @@ class Events:
             self.bot.uptime = datetime.utcnow()
         info = discord.Embed(title=f"{ctx.bot.user} is online", description=f":small_blue_diamond: Guilds: `{len(self.bot.guilds)}`\n:small_blue_diamond: Users: `{len(set(self.bot.get_all_members()))}`", color=0xf7a836) 
         print(f'Ready: {self.bot.user} | Servers: {len(self.bot.guilds)} | Users: {len(set(self.bot.get_all_members()))}')
-        await self.bot.change_presence(activity=discord.Game(type=0, name="ｏｗｏ"), status=discord.Status.online)
+        await self.bot.change_presence(activity=discord.Game(type=0, name=os.environ["PLAYING"]), status=discord.Status.online)
         async with aiohttp.ClientSession() as session:
             webhook = Webhook.from_url(os.environ["WEBHOOK"], adapter=AsyncWebhookAdapter(session))
             await webhook.send(embed=info)
