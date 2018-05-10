@@ -15,7 +15,7 @@ Made by AlexFlipnote
 
 print("-w- zzz...")
 
-bot = Bot(command_prefix=os.environ["PREFIX"], prefix=os.environ["PREFIX"], pm_help=True)
+bot = Bot(command_prefix=commands.when_mentioned_or("owo "), prefix=commands.when_mentioned_or("owo "), pm_help=True)
 
 for file in os.listdir("cogs"):
     if file.endswith(".py"):
