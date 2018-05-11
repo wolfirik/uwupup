@@ -117,7 +117,7 @@ class Events:
             await asyncio.sleep(1800)
 
     async def on_member_join(self, member):
-        if not guild.id == 433011085369409551: #personal thing since i can't manage data across guilds rn
+        if not ctx.guild.id == 433011085369409551: #personal thing since i can't manage data across guilds rn
             pass
         else:
             channel = self.bot.get_channel(433011085843628043)
