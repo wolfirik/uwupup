@@ -116,12 +116,6 @@ class Events:
                     print('Failed to post server count\n{}: {}'.format(type(e).__name__, e))
             await asyncio.sleep(1800)
 
-    async def on_member_join(self, member):
-        if not ctx.guild.id == 433011085369409551: #personal thing since i can't manage data across guilds rn
-            pass
-        else:
-            channel = self.bot.get_channel(433011085843628043)
-            channel.send(f"hewwo {member.mention}!")
         
 def setup(bot):
     bot.add_cog(Events(bot))
