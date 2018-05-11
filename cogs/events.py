@@ -71,6 +71,7 @@ class Events:
         members = set(guild.members)
         bots = filter(lambda m: m.bot, members)
         bots = set(bots)
+        members = len(members) - len(bots)
         try:
             to_send = sorted([chan for chan in guild.channels if chan.permissions_for(guild.me).send_messages and isinstance(chan, discord.TextChannel)], key=lambda x: x.position)[0]
         except IndexError:
@@ -83,7 +84,7 @@ class Events:
         else: 
             sketchy_msg = ""
 
-        join = discord.Embed(title="Added to Guild ^w^", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members:Bots: `{len(guild.members)}:{len(bots)}`\n:small_blue_diamond: | Owner: {guild.owner}{sketchy_msg}", color=discord.Color.dark_green())
+        join = discord.Embed(title="Added to Guild ^w^", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members/Bots: `{members}:{len(bots)}`\n:small_blue_diamond: | Owner: {guild.owner}{sketchy_msg}", color=discord.Color.dark_green())
         join.set_thumbnail(url=guild.icon_url)
         join.set_footer(text=f"Total Guilds: {len(self.bot.guilds)}")
         async with aiohttp.ClientSession() as session:
@@ -114,6 +115,13 @@ class Events:
                 except: #if not... 
                     print('Failed to post server count\n{}: {}'.format(type(e).__name__, e))
             await asyncio.sleep(1800)
+
+   async def on_member_join(self, member):
+       if not guild.id == 433011085369409551: #personal thing since i can't manage data across guilds rn
+           pass
+       else:
+           channel = self.bot.get_channel(433011085843628043)
+           channel.send(f"hewwo {member.mention}!")
         
 def setup(bot):
     bot.add_cog(Events(bot))
