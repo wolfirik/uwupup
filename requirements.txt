@@ -1,7 +1,7 @@
 pip
 git+https://github.com/Rapptz/discord.py@rewrite
 git+https://github.com/DiscordBotList/DBL-Python-Library
-git+https://github.com/rethinkdb/rethinkdb
+
 psutil
 asyncio
 aiohttp
