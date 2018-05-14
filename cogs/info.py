@@ -44,7 +44,8 @@ class Information:
     @commands.command(aliases=['joinme', 'join', 'botinvite'])
     async def invite(self, ctx):
         """ Invite me to your server """
-        await ctx.send(f"**{ctx.author.name}**, use this URL to invite me\n<{discord.utils.oauth_url(self.bot.user.id)}>")
+        invite = discord.Embed(description="[invite me OwO](https://discordapp.com/oauth2/authorize?client_id=365255872181567489&scope=bot&permissions=470150214)\n[join the support guild if you have questions uwu](https://discord.gg/tBrtd)", color=0x254d16)
+        await ctx.send(embed=invite)
 
     @commands.command()
     async def source(self, ctx):
