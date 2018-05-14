@@ -222,6 +222,14 @@ class Admin:
         pull = pull.replace('https://github.com/Skullbite/uwupup', 'owopup')
         info = discord.Embed(description=f"ｏｗｏ```py\n{pull}```", color=0x00695c)
         msg = await ctx.send(embed=info, delete_after=20)
+        for file in os.listdir("cogs"):
+            if file.endswith(".py"):
+            name = file[:-3]
+        try:
+            self.bot.unload_extension(f"cogs.{name}")
+            self.bot.load_extension(f"cogs.{name}")
+        except:
+            pass
         
     @commands.command()
     @commands.check(repo.is_owner)
@@ -239,7 +247,7 @@ class Admin:
 
     @commands.command()
     @commands.check(repo.is_owner)
-    async def debug(self, ctx, *, code):
+    async def eval(self, ctx, *, code):
         """Evaluate a statement of python code.
         Environment Variables:
             ctx      - command invokation context
