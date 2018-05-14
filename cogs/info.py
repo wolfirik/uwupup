@@ -64,12 +64,12 @@ class Information:
         """ About the bot """
         ramUsage = self.process.memory_full_info().rss / 1024**2
         color = 0x33353
+        owner = self.bot.get_user_info(158750488563679232)
 
         embed = discord.Embed(colour=color)
         embed.set_thumbnail(url=ctx.bot.user.avatar_url)
         embed.add_field(name="Uptime", value=self.get_bot_uptime(), inline=False)
-        embed.add_field(name="Source Owner", value="AlexFlipnote#0001", inline=True)
-        embed.add_field(name="Bot Owner", value=f"Still Away .w.#5245", inline=True)
+        embed.add_field(name="Dev", value=f"{owner}", inline=True)
         embed.add_field(name="Library", value="discord.py", inline=True)
         embed.add_field(name="Servers", value=len(ctx.bot.guilds), inline=True)
         embed.add_field(name="RAM", value=f"{ramUsage:.2f} MB", inline=True)
