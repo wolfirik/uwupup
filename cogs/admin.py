@@ -279,8 +279,11 @@ class Admin:
             result = await result
 
         self._last_result = result
-
-        await ctx.send(f"{result}")
+        try:
+            await ctx.send(f"{result}")
+        except:
+            print(result)
+            await ctx.send("it was too long so i just printed it.")
 
     @commands.command()
     @commands.check(repo.is_owner)
