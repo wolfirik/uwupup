@@ -42,7 +42,7 @@ class Information:
         await message.edit(content=f"Pong   |   {int(ping)}ms")
 
     @commands.command(aliases=['joinme', 'join', 'botinvite'])
-    async def invite(self, ctx):
+    async def links(self, ctx):
         """ Invite me to your server """
         invite = discord.Embed(description="[invite me OwO](https://discordapp.com/oauth2/authorize?client_id=365255872181567489&scope=bot&permissions=470150214)\n[join the support guild if you have questions uwu](https://discord.gg/tBrtd)", color=0x254d16)
         await ctx.send(embed=invite)
@@ -51,14 +51,6 @@ class Information:
     async def source(self, ctx):
         """ Invite me to your server """
         await ctx.send(f"**{ctx.bot.user}** is powered by this source code:\nhttps://github.com/xelA/discord_bot.py")
-
-    @commands.command(aliases=['supportserver', 'feedbackserver'])
-    async def botserver(self, ctx):
-        """ Get an invite to our support server! """
-        if isinstance(ctx.channel, discord.DMChannel) or ctx.guild.id != 86484642730885120:
-            return await ctx.send(f"**Here you go {ctx.author.name} 🍻\n<{repo.invite}>**")
-
-        await ctx.send(f"**{ctx.author.name}** this is my home you know :3")
 
     @commands.command(aliases=['info', 'stats', 'status'])
     async def about(self, ctx):
