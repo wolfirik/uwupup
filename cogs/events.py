@@ -39,7 +39,7 @@ class Events:
 
             _traceback = traceback.format_tb(err.__traceback__)
             _traceback = ''.join(_traceback)
-            error = ('{2}\n{0}: {3}').format(type(err).__name__, ctx.message.content, _traceback, err)
+            error = ('{2}\n: {3}').format(type(err).__name__, err)
             error = error.replace(".heroku", "owo")
             errem = discord.Embed(description=f"{error}")
             await ctx.send(embed=errem)
