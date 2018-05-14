@@ -55,7 +55,7 @@ class Fun_Commands:
     async def floof(self, ctx):
         """Posts a cute floof :3""" 
         pic = random.choice(lists.floof)
-        floof = discord.Embed(description=f"{ctx.author.name}, heres a floof >w>", color=discord.Colors.blue())
+        floof = discord.Embed(description=f"{ctx.author.name}, heres a floof >w>", color=discord.Color.blue())
         floof.set_image(url=pic)
         await ctx.send(embed=floof)
 
