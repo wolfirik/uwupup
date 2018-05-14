@@ -49,7 +49,7 @@ class Information:
 
     @commands.command()
     async def source(self, ctx):
-        """ Invite me to your server """
+        """ Credits """
         await ctx.send(f"**{ctx.bot.user}** is powered by this source code:\nhttps://github.com/xelA/discord_bot.py")
 
     @commands.command(aliases=['info', 'stats', 'status'])
