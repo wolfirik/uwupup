@@ -51,6 +51,14 @@ class Fun_Commands:
         """ Posts a random duck """
         await self.randomimageapi(ctx, 'https://random-d.uk/api/v1/random', 'url')
     
+    @commands.command(aliases=['fur'])
+    async def floof(self, ctx):
+        """Posts a cute floof :3""" 
+        pic = random.choice(lists.floof)
+        floof = discord.Embed(description=f"{ctx.author.name}, heres a floof >w>", color=discord.Colors.blue())
+        floof.set_image(url=pic)
+        await ctx.send(embed=floof)
+
     @commands.command()
     @commands.check(permissions.is_nsfw) # TODO: Make a nsfw cog.
     async def yiff(self, ctx):
