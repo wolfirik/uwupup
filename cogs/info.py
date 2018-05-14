@@ -64,7 +64,7 @@ class Information:
         """ About the bot """
         ramUsage = self.process.memory_full_info().rss / 1024**2
         color = 0x33353
-        owner = self.bot.get_user_profile(158750488563679232)
+        owner = self.bot.get_user(158750488563679232)
 
         embed = discord.Embed(colour=color)
         embed.set_thumbnail(url=ctx.bot.user.avatar_url)
