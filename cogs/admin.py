@@ -225,11 +225,11 @@ class Admin:
         for file in os.listdir("cogs"):
             if file.endswith(".py"):
             name = file[:-3]
-        try:
-            self.bot.unload_extension(f"cogs.{name}")
-            self.bot.load_extension(f"cogs.{name}")
-        except:
-            pass
+            try:
+                self.bot.unload_extension(f"cogs.{name}")
+                self.bot.load_extension(f"cogs.{name}")
+            except:
+                pass
         
     @commands.command()
     @commands.check(repo.is_owner)
