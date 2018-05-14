@@ -121,7 +121,8 @@ class Fun_Commands:
         author = ctx.message.author
         guild = ctx.message.guild
         clapped_text = text_to_clap.replace("@everyone", "👏everyone").replace("@here", "👏here").replace(" ", "👏")
-        info = discord.Embed(title=f"{guild.name} ({guild.id})", description=f"**{author}**: {clapped_text}", color=discord.Color.gold())
+        clapped_text = f"👏{clapped_text}👏"
+        info = discord.Embed(title=f"{guild.name} ({guild.id})", description=f"**{author}**: {text_to_clap}", color=discord.Color.gold())
         try:
             await ctx.message.delete()
             await ctx.send(clapped_text)
