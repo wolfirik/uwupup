@@ -74,7 +74,7 @@ class ship:
                 emoji ='🖤'
 
             link = "https://cdn.discordapp.com/emojis/359420199050674176.png"
-            ship = discord.Embed(title=" " + user.display_name + "  x  " + user2.display_name + " ", description="**{}%** **`\[{}]`** {}".format(n, bar, emoji), colour=0xDEADBF)
+            ship = discord.Embed(title=" " + user.display_name + "  x  " + user2.display_name + " ", description="**{}%** **`[{}]`** {}".format(n, bar, emoji), colour=0xDEADBF)
             await ctx.send(embed=ship)
             # < the invisible character if needed.
 
@@ -86,10 +86,10 @@ class ship:
         if not user2:
             user2 = author
        
-        if not user:
+        elif not user:
             await ctx.send("ack, i need people y'know :P")
         
-        if user.id == user2.id:
+        elif user.id == user2.id:
             await ctx.send("{} >:1".format(user.name))
         else:
             await ctx.send("lemme work! \n- Skull")
