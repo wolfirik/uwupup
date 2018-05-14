@@ -132,6 +132,12 @@ class Fun_Commands:
         except discord.Forbidden:
             await ctx.send("👏can't👏delete👏messages👏sowwy👏")
         
+    @commands.command(aliases=['randowo', 'owogen'])
+    async def rowo(self, ctx):
+        """Sends a random owo face"""
+        owo = random.choice(lists.owos)
+        await ctx.send(f"{owo} whats this?")
+
     @commands.command()
     async def reverse(self, ctx, *, text: str):
         """ !poow ,ffuts esreveR
