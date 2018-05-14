@@ -12,3 +12,6 @@ owos = ["✪w✪", "¤w¤", "∅w∅", "⊗w⊗", "⊕w⊕", "∞w∞", "∆w∆
                     "✸w✸", "※w※","↻w↻", "σwσ", "✹w✹", "✺w✺", "✻w✻", "✼w✼", "✽w✽", "✾w✾", "✿w✿", "❀w❀", "❁w❁", "❂w❂", "❃w❃", "❅w❅",
                     "❆w❆", "❈w❈", "❉w❉", "❊w❊", "❋w❋", "❍w❍", "❏w❏", "❐w❐", "❑w❑", "❒w❒", "◈w◈", "◉w◉", "◊w◊", "○w○", "ФwФ", "фwф", "юwю", "ЮwЮ"
                     "#w#", "@w@", "0w0", ";w;", "¢w¢", "×w×", "°w°", "OwO", "owo", "uwu", "UwU", "QwQ", "ОмО", "ОпО", "ОшО", "OnO", "ДwД", "ЖwЖ", "XwX", "qwq", "dwd", "DwD" "ИwИ", "ーwー"]
+
+floof = ['https://i.redditmedia.com/_Fs0HRxbLyaxjIpshBd2Nk9f5eoSXf8Ne08GvnvJXNw.png?w=768&s=ab018facf300ad3627ae9739090353d6', 'https://i.redditmedia.com/Ki1i84dYZxgvwVl9fBcT2Bp0igxR6JGrGkAgPlQQrRw.png?w=679&s=fca81ed4753dd713c4f29d22b11bc259',
+         'https://static1.e926.net/data/sample/02/3b/023b17b0521738f054f9f7a8a62e1382.jpg', 'https://static1.e926.net/data/sample/7f/e0/7fe0569be85e3a4cc97f177a1d1cd902.jpg'] # i'll add more later
