@@ -54,9 +54,10 @@ class Information:
 
     @commands.command()
     @commands.cooldown(rate=2, per=900, type=commands.BucketType.user)
-    async def suggest(self, ctx, *, suggestion: str):
+    async def suggest(self, ctx, *, suggestion_txt: str):
         """ Send a suggestion to my owner or just tell him hes doing a bad job -w- """
         channel = self.bot.get_channel(409168557147160587)
+        suggestion = suggestion_txt
         if len(suggestion) >= 2000:
             ctx.send(f"xwx {ctx.author.mention} thats a bit too long for me to send. Shorten it and try again. (2000 character limit)")
         else:
