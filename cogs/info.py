@@ -49,8 +49,22 @@ class Information:
 
     @commands.command(aliases=['upvote'])
     async def vote(self, ctx):
-        """Gimme an upvotes if you like me uwu"""
+        """Gimme an upvote if you like me uwu"""
         await ctx.send(f"{ctx.author.mention} Upvoting me here would be greatly appriciated ^w^\nhttps://discordbots.org/bot/365255872181567489/vote")
+
+    @commands.command()
+    @commands.cooldown(rate=1, per=900, type=commands.BucketType.user)
+    async def suggest(self, ctx, *, suggestion: str):
+        """ Send a suggestion to my owner or just tell him hes doing a bad job -w- """
+        owner = self.bot.get_user(158750488563679232)
+        if len(suggestion) >= 2000:
+            ctx.send(f"xwx {ctx.author.mention} thats a bit too long for me to send. Shorten it and try again. (2000 character limit)")
+        else:
+            try:
+                suggestionem = discord.Embed(title=f"From {ctx.author}", description=f"{suggestion}") 
+                owner.send(embed=suggestionem)
+            except Exception as e:
+                ctx.send(e)
 
     @commands.command()
     async def source(self, ctx):
