@@ -104,7 +104,7 @@ class Events:
         async with aiohttp.ClientSession() as session:
             webhook = Webhook.from_url(os.environ["WEBHOOK"], adapter=AsyncWebhookAdapter(session))
         while True:
-            await asyncio.wait(120)
+            await asyncio.wait(20)
             print('Attempting to post server count')
             try:
                 await self.dblpy.post_server_count()
