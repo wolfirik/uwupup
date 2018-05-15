@@ -53,7 +53,7 @@ class Information:
         await ctx.send(f"{ctx.author.mention} Upvoting me here would be greatly appriciated ^w^\nhttps://discordbots.org/bot/365255872181567489/vote")
 
     @commands.command()
-    @commands.cooldown(rate=12, per=900, type=commands.BucketType.user)
+    @commands.cooldown(rate=2, per=900, type=commands.BucketType.user)
     async def suggest(self, ctx, *, suggestion: str):
         """ Send a suggestion to my owner or just tell him hes doing a bad job -w- """
         owner = self.bot.get_user(158750488563679232)
