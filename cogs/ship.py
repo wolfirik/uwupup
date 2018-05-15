@@ -14,16 +14,18 @@ class ship:
     async def ship(self, ctx, user : discord.Member, *, user2 : discord.Member=None):
         """Checks the shiprate for 2 users"""
         author = ctx.message.author
-        
+        owo = self.bot.get_user(365255872181567489)
+        skull = self.bot.get_user(158750488563679232)
+        draggy = self.bot.get_user(212726258188943360)
         if not user2:
             user2 = author
         # preset ships don't mind these...
         if user.id == user2.id:
             await ctx.send("i-i can't ship the same person..")
         # ships with owopup
-        elif user.id == 365255872181567489 and user2.id == ctx.message.author or user2.id == 365255872181567489 and user.id == ctx.message.author:
+        elif user == owo and user2 == author or user2 == owo and user == author:
             await ctx.send("0////0")
-        elif user.id == 212726258188943360 and user2.id == 158750488563679232 or user2.id == 212726258188943360 and user.id == 15875048856367923:
+        elif user == draggy and user2.id == skull or user2 == draggy and user == skull:
             ship = discord.Embed(title=" " + user.display_name + "  x  " + user2.display_name + " ", description="**69%** **`██████████`** ❤", colour=0xDEADBF)
             await ctx.send(embed=ship)
         elif user2.id == 212726258188943360 and user.id == 158750488563679232 or user.id == 212726258188943360 and user2.id == 158750488563679232:
