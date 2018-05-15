@@ -1,5 +1,6 @@
 from utils import permissions
 from discord.ext.commands import AutoShardedBot
+from collections import Counter
 
 class Bot(AutoShardedBot):
     def __init__(self, *args, prefix=None, **kwargs):
