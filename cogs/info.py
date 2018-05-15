@@ -61,6 +61,7 @@ class Information:
             ctx.send(f"xwx {ctx.author.mention} thats a bit too long for me to send. Shorten it and try again. (2000 character limit)")
         else:
             try:
+                ctx.send("oki! your suggestion has been sent successfully! ^w^")
                 suggestionem = discord.Embed(title=f"From {ctx.author}", description=f"{suggestion}") 
                 channel.send(embed=suggestionem)
             except Exception as e:
