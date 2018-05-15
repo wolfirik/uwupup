@@ -216,9 +216,9 @@ class Admin:
         """gets latest commits and applies them from git"""
         await run_cmd('git init')
         await run_cmd('git remote add pup https://github.com/Skullbite/uwupup')
+        await run_cmd('git fetch --all')
         ack = await run_cmd('git reset --hard pup/master')
         pull = await run_cmd('git pull pup master --no-commit --no-edit --ff-only')
-        await run_cmd('git fetch --all')
         pull = pull.replace('https://github.com/Skullbite/uwupup', 'owopup')
         info = discord.Embed(description=f"ｏｗｏ```py\n{pull}```", color=0x00695c)
         msg = await ctx.send(embed=info, delete_after=20)
