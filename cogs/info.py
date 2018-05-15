@@ -52,22 +52,22 @@ class Information:
         """Gimme an upvote if you like me uwu"""
         await ctx.send(f"{ctx.author.mention} Upvoting me here would be greatly appriciated ^w^\nhttps://discordbots.org/bot/365255872181567489/vote")
 
-    @commands.command()
-    @commands.cooldown(rate=2, per=900, type=commands.BucketType.user)
-    async def suggest(self, ctx, *, suggestion_txt: str):
-        """ Send a suggestion to my owner or just tell him hes doing a bad job -w- """
-        channel = self.bot.get_channel(409168557147160587)
-        suggestion = suggestion_txt
-        if len(suggestion) >= 2000:
-            ctx.send(f"xwx {ctx.author.mention} thats a bit too long for me to send. Shorten it and try again. (2000 character limit)")
-        else:
-            try:
-                ctx.send("oki! your suggestion has been sent successfully! ^w^")
-                suggestionem = discord.Embed(title=f"From {ctx.author}", description=f"{suggestion}") 
-                channel.send(embed=suggestionem)
-            except Exception as e:
-                print(e)
-
+   # @commands.command()
+   # @commands.cooldown(rate=2, per=900, type=commands.BucketType.user)
+   # async def suggest(self, ctx, *, suggestion_txt: str):
+    #    """ Send a suggestion to my owner or just tell him hes doing a bad job -w- """
+    #    channel = self.bot.get_channel(409168557147160587)
+     #   suggestion = suggestion_txt
+      #  if len(suggestion) >= 2000:
+      #      ctx.send(f"xwx {ctx.author.mention} thats a bit too long for me to send. Shorten it and try again. (2000 character limit)")
+       # else:
+        #    try:
+         #       ctx.send("oki! your suggestion has been sent successfully! ^w^")
+          #      suggestionem = discord.Embed(title=f"From {ctx.author}", description=f"{suggestion}") 
+           #     channel.send(embed=suggestionem)
+            #except Exception as e:
+             #   print(e)
+# not working x~x
     @commands.command()
     async def source(self, ctx):
         """ Credits """
