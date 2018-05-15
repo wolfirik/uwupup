@@ -16,7 +16,8 @@ class ship:
         author = ctx.message.author
         owo = self.bot.get_user(365255872181567489)
         skull = self.bot.get_user(158750488563679232)
-        draggy = self.bot.get_user(212726258188943360)
+        draggy = self.bot.get_user(254599284425621505)
+        heh = self.bot.get_user(212726258188943360)
         if not user2:
             user2 = author
         # preset ships don't mind these...
@@ -24,11 +25,12 @@ class ship:
             await ctx.send("i-i can't ship the same person..")
         # ships with owopup
         elif user == owo and user2 == author or user2 == owo and user == author:
-            await ctx.send("0////0")
-        elif user == draggy and user2.id == skull or user2 == draggy and user == skull:
+            blushes = ["m-me..? 0////0", "m-me..? >////<"]
+            await ctx.send(random.choice(blushes))
+        elif user == draggy and user2 == skull or user2 == draggy and user == skull:
             ship = discord.Embed(title=" " + user.display_name + "  x  " + user2.display_name + " ", description="**69%** **`██████████`** ❤", colour=0xDEADBF)
             await ctx.send(embed=ship)
-        elif user2.id == 212726258188943360 and user.id == 158750488563679232 or user.id == 212726258188943360 and user2.id == 158750488563679232:
+        elif user2 == heh and user.id == skull or user.id == skull and user2.id == heh:
             ship = discord.Embed(title=" " + user.display_name + " x " + user2.display_name + " ", description="**100%** **`██████████`** 💞", colour=0xDEADBF)
             await ctx.send(embed=ship)
 
@@ -75,7 +77,7 @@ class ship:
                 bar = "          "
                 emoji ='🖤'
 
-            link = "https://cdn.discordapp.com/emojis/359420199050674176.png"
+            link = "https://cdn.discordapp.com/emojis/359420199050674176.png" # never used this :P
             ship = discord.Embed(title=" " + user.display_name + "  x  " + user2.display_name + " ", description="**{}%** **`[{}]`** {}".format(n, bar, emoji), colour=0xDEADBF)
             await ctx.send(embed=ship)
             # < the invisible character if needed.
