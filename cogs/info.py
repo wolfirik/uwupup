@@ -47,6 +47,11 @@ class Information:
         invite = discord.Embed(description="[invite me OwO](https://discordapp.com/oauth2/authorize?client_id=365255872181567489&scope=bot&permissions=470150214)\n[join the support guild if you have questions uwu](https://discord.gg/tBrtd)", color=0x254d16)
         await ctx.send(embed=invite)
 
+    @commands.command(aliases=['upvote'])
+    async def vote(self, ctx):
+        """Gimme an upvotes if you like me uwu"""
+        await ctx.send(f"{ctx.author.mention} Upvoting me here would be greatly appriciated ^w^\nhttps://discordbots.org/bot/365255872181567489/vote")
+
     @commands.command()
     async def source(self, ctx):
         """ Credits """
