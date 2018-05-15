@@ -56,15 +56,15 @@ class Information:
     @commands.cooldown(rate=2, per=900, type=commands.BucketType.user)
     async def suggest(self, ctx, *, suggestion: str):
         """ Send a suggestion to my owner or just tell him hes doing a bad job -w- """
-        owner = self.bot.get_channel(409168557147160587)
+        channel = self.bot.get_channel(409168557147160587)
         if len(suggestion) >= 2000:
             ctx.send(f"xwx {ctx.author.mention} thats a bit too long for me to send. Shorten it and try again. (2000 character limit)")
         else:
             try:
                 suggestionem = discord.Embed(title=f"From {ctx.author}", description=f"{suggestion}") 
-                owner.send(embed=suggestionem)
+                channel.send(embed=suggestionem)
             except Exception as e:
-                ctx.send(e)
+                print(e)
 
     @commands.command()
     async def source(self, ctx):
