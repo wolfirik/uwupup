@@ -12,4 +12,4 @@ class Bot(AutoShardedBot):
             return
 
         await self.process_commands(msg)
-        self.counter["commands_ran"] += 1
+        self.counter["cmds_ran"] += 1
