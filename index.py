@@ -5,6 +5,8 @@ from data import Bot
 from utils import permissions, default
 from discord import Webhook, AsyncWebhookAdapter
 import aiohttp
+from sqlalchemy import create_engine
+from sqlalchemy.orm import scoped_session, sessionmaker
 
 config = default.get("config.json")
 description = """
@@ -20,11 +22,11 @@ bot = Bot(command_prefix=commands.when_mentioned_or("owo "), prefix=commands.whe
 def init_function(bot):
 	global cursor, engine, Session
 	if bot.dev_mode:
-		db = 'discord_dev'
+		db = 'owo'
 	elif bot.self_bot:
-		db = 'discord_self'
+		db = 'owo'
 	else:
-		db = 'discord'
+		db = 'owo'
 	engine = create_engine('mysql+pymysql://0:@localhost/{1}?charset=utf8mb4'.format(db), encoding='utf8')
 	session_factory = sessionmaker(bind=engine)
 	Session = scoped_session(session_factory)
