@@ -302,7 +302,7 @@ class Admin:
         except:
             ctx.send("Hmmph i got nothin. Either you gave an invalid server id or i'm not in that server")
 
-    @commands.command(hidden=True)
+    @commands.command()
     @commands.check(repo.is_owner)
     async def sqltest(self, ctx, *, command: str):
         sql = f'INSERT INTO `welcome` (`message`) VALUES (%s)'
