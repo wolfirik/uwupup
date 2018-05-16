@@ -312,7 +312,7 @@ class Admin:
     @commands.command()
     @commands.check(repo.is_owner)
     async def extenstions(self, ctx):
-        mod = "\n- ".join(list(bot.cogs))
+        mod = "\n- ".join(list(self.bot.cogs))
         await ctx.send(f"the current modules i can see are:\n-{mod}")
 
 def setup(bot):
