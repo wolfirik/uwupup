@@ -312,8 +312,8 @@ class Admin:
     @commands.command()
     @commands.check(repo.is_owner)
     async def cogs(self, ctx):
-        mod = "\n- ".join(list(self.bot.cogs))
-        await ctx.send(f"The current modules I can see are:\n- {mod}")
+        mod = ", ".join(list(self.bot.cogs))
+        await ctx.send(f"The current modules I can see are:\n{mod}")
 
 def setup(bot):
     bot.add_cog(Admin(bot))
