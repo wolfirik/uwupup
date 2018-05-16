@@ -11,6 +11,8 @@ import aiohttp
 from contextlib import redirect_stdout
 from copy import copy
 import inspect
+import pymysql
+import sqlalchemy
 import textwrap
 
 async def run_cmd(cmd: str) -> str:
@@ -24,6 +26,7 @@ class Admin:
     def __init__(self, bot):
         self.bot = bot
         self.config = default.get("config.json")
+        self.cursor = bot.mysql.cursor
         self._last_result = None
 
     def cleanup_code(self, content):
@@ -184,17 +187,6 @@ class Admin:
         except discord.HTTPException as err:
             await ctx.send(err)
 
-    @commands.command(aliases=['exec'])
-    @commands.check(repo.is_owner)
-    async def execute(self, ctx, *, text: str):
-        """ Do a shell command. """
-        try:
-            text_parsed = list(filter(None, text.split(" ")))
-            output = subprocess.check_output(text_parsed).decode()
-            await ctx.send(f"```fix\n{output}\n```")
-        except Exception as e:
-            await ctx.send(f"```fix\n{e}\n```")
-
     @commands.command(hidden=True)
     @commands.check(repo.is_owner)
     async def debug(self, ctx, *, command: str):
@@ -310,5 +302,12 @@ class Admin:
         except:
             ctx.send("Hmmph i got nothin. Either you gave an invalid server id or i'm not in that server")
 
+    @commands.command(hidden=True)
+    @commands.check(repo.is_owner)
+    async def sqltest(self, ctx, *, command: str):
+        sql = f'SELECT message FROM `test` WHERE message'
+        self.cursor.execute(sql)
+        self.cursor.commit()
+        
 def setup(bot):
     bot.add_cog(Admin(bot))
