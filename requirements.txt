@@ -10,3 +10,4 @@ geocoder
 pyping
 youtube_dl
 heroku 
+PyMySQL==0.7.9
