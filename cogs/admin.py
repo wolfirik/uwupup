@@ -305,9 +305,10 @@ class Admin:
     @commands.command(hidden=True)
     @commands.check(repo.is_owner)
     async def sqltest(self, ctx, *, command: str):
-        sql = f'SELECT message FROM `test` WHERE message'
-        self.cursor.execute(sql)
+        sql = f'INSERT INTO `welcome` (`message`) VALUES (%s)'
+        self.cursor.execute(sql, (command))
         self.cursor.commit()
-        
+        await ctx.send("saved {command} to sql")
+
 def setup(bot):
     bot.add_cog(Admin(bot))
