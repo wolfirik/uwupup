@@ -311,7 +311,7 @@ class Admin:
         except:
             await ctx.send("the class exsists so i'll edit it instead")
             self.c.execute(f"""UPDATE test SET msg={thing}""")
-
+        self.conn.commit()
         await ctx.send(f"saved `{thing}` to sql")
 
     @commands.command()
