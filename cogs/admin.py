@@ -14,6 +14,8 @@ import inspect
 import pymysql
 import sqlalchemy
 import textwrap
+import sqlite3
+
 
 async def run_cmd(cmd: str) -> str:
     """Runs a subprocess and returns the output."""
@@ -26,6 +28,8 @@ class Admin:
     def __init__(self, bot):
         self.bot = bot
         self.config = default.get("config.json")
+        self.conn = sqlite3.connect('owo.db')
+        self.c = self.conn.cursor()
         self._last_result = None
 
     def cleanup_code(self, content):
@@ -304,10 +308,18 @@ class Admin:
     @commands.command()
     @commands.check(repo.is_owner)
     async def sqltest(self, ctx, *, command: str):
-        sql = f'INSERT INTO `welcome` (`message`) VALUES (%s)'
-        self.cursor.execute(sql, (command))
-        self.cursor.commit()
+        sql = f'INSERT INTO `test` (`message`) VALUES (%s)'
+        self.c.execute(sql, (command))
+        self.conn.commit()
         await ctx.send("saved {command} to sql")
+
+    @commands.command()
+    @commands.check(repo.is_owner)
+    async def recall(self, ctx):
+        sql = 'SELECT * FROM `test`'
+        result = self.cursor.execute(sql).fetchall()
+        msg = result[0]['message']
+        await ctx.send(msg)
 
     @commands.command()
     @commands.check(repo.is_owner)
