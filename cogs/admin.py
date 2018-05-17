@@ -307,6 +307,7 @@ class Admin:
     async def sqltest(self, ctx):
         self.c.execute("""CREATE TABLE test (msg, text)""")
         self.conn.commit()
+        self.conn.close()
         await ctx.send("saved {command} to sql")
 
     @commands.command()
