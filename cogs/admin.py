@@ -305,10 +305,14 @@ class Admin:
     @commands.command()
     @commands.check(repo.is_owner)
     async def sql(self, ctx, *, thing: str):
-        self.c.execute("""CREATE TABLE test (msg text)""")
-        self.c.execute(f"""INSERT INTO test VALUES ('{thing}')""")
-        self.conn.commit()
-        await ctx.send(f"saved {thing} to sql")
+        try:
+            self.c.execute("""CREATE TABLE test (msg text)""")
+            self.c.execute(f"""INSERT INTO test VALUES ('{thing}')""")
+        except:
+            await ctx.send("the class exsists so i'll edit it instead")
+            self.c.execute(f"""UPDATE test SET msg={thing}""")
+
+        await ctx.send(f"saved `{thing}` to sql")
 
     @commands.command()
     @commands.check(repo.is_owner)
