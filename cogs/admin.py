@@ -315,7 +315,7 @@ class Admin:
     async def recall(self, ctx): 
         result = self.c.execute("""SELECT msg FROM test""").fetchall()
         msg = str(result[0]['msg'])
-        for row in result:
+        for row in self.c.execute("""SELECT msg FROM test""").fetchall():
            await ctx.send(row)
 
     @commands.command()
