@@ -316,8 +316,7 @@ class Admin:
     async def recall(self, ctx): 
         result = self.c.execute("""SELECT msg FROM test""").fetchall()
         msg = str(result[0]['msg'])
-        for row in self.c.execute("""SELECT msg FROM test""").fetchonw():
-           await ctx.send([0]row)
+        await ctx.send(result)
 
     @commands.command()
     @commands.check(repo.is_owner)
