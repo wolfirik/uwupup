@@ -304,16 +304,17 @@ class Admin:
 
     @commands.command()
     @commands.check(repo.is_owner)
-    async def sqltest(self, ctx):
+    async def sqltest(self, ctx, thing: str):
         self.c.execute("""CREATE TABLE test (msg, text)""")
+        self.c.execute(""""INSERT INTO test VALUES test ({value)""")
         self.conn.commit()
         self.conn.close()
-        await ctx.send("saved {command} to sql")
+        await ctx.send(f"saved {thing} to sql")
 
     @commands.command()
     @commands.check(repo.is_owner)
     async def recall(self, ctx):
-        sql = 'SELECT * FROM `test`'
+        sql = 'SELECT * FROM test'
         result = self.cursor.execute(sql).fetchall()
         msg = result[0]['message']
         await ctx.send(msg)
