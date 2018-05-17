@@ -27,6 +27,7 @@ class Admin:
         self.bot = bot
         self.config = default.get("config.json")
         self.conn = sqlite3.connect('owo.db')
+        self.conn.row_factory = lambda cursor, row: row[0]
         self.c = self.conn.cursor()
         self._last_result = None
 
