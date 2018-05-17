@@ -11,8 +11,6 @@ import aiohttp
 from contextlib import redirect_stdout
 from copy import copy
 import inspect
-import pymysql
-import sqlalchemy
 import textwrap
 import sqlite3
 
@@ -268,8 +266,7 @@ class Admin:
             await ctx.send(self.get_syntax_error(e))
             return
         except Exception as e:
-            await ctx.send(
-                box('{}: {!s}'.format(type(e).__name__, e), lang='py'))
+            await ctx.send('{}: {!s}'.format(type(e).__name__, e))
             return
 
         if asyncio.iscoroutine(result):
