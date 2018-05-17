@@ -18,7 +18,9 @@ async def send_cmd_help(ctx):
         _help = await ctx.bot.formatter.format_help_for(ctx, ctx.command)
 
     for page in _help:
-        await ctx.send(page)
+        page = page.replace("```", "`") # TODO: Stop being lazy and write a custom help commands.
+        page = discord.Embed(description=page, color=0x254d16)
+        await ctx.send(embed=page)
 
 
 class Events:
