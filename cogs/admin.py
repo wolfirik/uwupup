@@ -308,16 +308,13 @@ class Admin:
         try:
             self.c.execute("""CREATE TABLE test (msg text)""")
             self.c.execute(f"""INSERT INTO test VALUES ('{thing}')""")
-        except:
-            await ctx.send("the class exsists so i'll edit it instead")
-            self.c.execute(f"""UPDATE test SET msg={thing}""")
         self.conn.commit()
         await ctx.send(f"saved `{thing}` to sql")
 
     @commands.command()
     @commands.check(repo.is_owner)
     async def recall(self, ctx): 
-        result = self.c.execute("""SELECT * FROM test""").fetchall()
+        result = self.c.execute("""SELECT msg FROM test""").fetchall()
         msg = str(result[0]['msg'])
         for row in result:
            await ctx.send(row)
