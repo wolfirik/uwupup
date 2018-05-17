@@ -308,7 +308,6 @@ class Admin:
         self.c.execute("""CREATE TABLE test (msg text)""")
         self.c.execute(f"""INSERT INTO test VALUES ('{thing}')""")
         self.conn.commit()
-        self.conn.close()
         await ctx.send(f"saved {thing} to sql")
 
     @commands.command()
