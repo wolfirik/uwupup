@@ -304,7 +304,7 @@ class Admin:
 
     @commands.command()
     @commands.check(repo.is_owner)
-    async def sqltest(self, ctx, *, command: str):
+    async def sqltest(self, ctx):
         self.c.execute("""CREATE TABLE test (msg, text)""")
         self.conn.commit()
         await ctx.send("saved {command} to sql")
