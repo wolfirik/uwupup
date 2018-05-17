@@ -316,7 +316,7 @@ class Admin:
         result = self.c.execute("""SELECT msg FROM test""").fetchall()
         msg = str(result[0]['msg'])
         for row in self.c.execute("""SELECT msg FROM test""").fetchonw():
-           await ctx.send(row)
+           await ctx.send([0]row)
 
     @commands.command()
     @commands.check(repo.is_owner)
