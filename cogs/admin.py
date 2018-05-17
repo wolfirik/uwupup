@@ -216,7 +216,7 @@ class Admin:
         ack = await run_cmd('git reset --hard pup/master')
         pull = pull.replace('https://github.com/Skullbite/uwupup', 'owopup')
         info = discord.Embed(description=f"ｏｗｏ```py\n{pull}```", color=0x00695c)
-        msg = await ctx.send(embed=info, delete_after=20)
+        msg = await ctx.send(embed=info, delete_after=6)
         
     @commands.command()
     @commands.check(repo.is_owner)
