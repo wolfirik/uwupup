@@ -26,7 +26,6 @@ class Admin:
     def __init__(self, bot):
         self.bot = bot
         self.config = default.get("config.json")
-        self.conn = r.connect(db='test')
         self._last_result = None
 
     def cleanup_code(self, content):
