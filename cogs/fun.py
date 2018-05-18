@@ -66,10 +66,10 @@ class Fun_Commands:
     @commands.check(permissions.is_nsfw) # TODO: Make a nsfw cog.
     async def yiff(self, ctx):
         """posts a yiff >:3 [thanks waspy]"""
-        r = await self.session.get('https://sheri.fun/api/v1/yiff')
-        img = await r.json()
+        r = await self.randomimageapi(ctx, 'https://sheri.fun/api/v1/yiff', 'url')
+
         yiff = discord.Embed(title=">w>", color=0xDEADBF)
-        yiff.set_image(url=img['yiff'])
+        yiff.set_image(url=r)
 
         try:
             await ctx.send(embed=yiff)
