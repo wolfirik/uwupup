@@ -1,4 +1,5 @@
 pip
+rethinkdb
 git+https://github.com/Rapptz/discord.py@rewrite
 git+https://github.com/DiscordBotList/DBL-Python-Library
 psutil
@@ -12,4 +13,4 @@ youtube_dl
 heroku 
 PyMySQL==0.7.9
 SQLAlchemy==1.1.5
-rethinkdb
+
