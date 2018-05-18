@@ -67,7 +67,7 @@ class Fun_Commands:
             await ctx.send("aww i can't send embeds ;w;")
 
     @commands.command()
-    @commands.is_nsfw # TODO: Make a nsfw cog.
+    @commands.is_nsfw() # TODO: Make a nsfw cog.
     async def yiff(self, ctx):
         """posts a yiff >:3 [thanks waspy]"""
         r = await self.randomimageapi(ctx, 'https://sheri.fun/api/v1/yiff', 'url')
