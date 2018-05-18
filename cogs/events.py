@@ -48,7 +48,7 @@ class Events:
 
         elif isinstance(err, errors.CheckFailure):
             try:
-                await ctx.message.add_reaction("<:tickNo:315009174163685377>")
+                await ctx.message.add_reaction(<:tickNo:315009174163685377>)
             except:
                 await ctx.send("either you're in the wrong channel or you don't have perms to use this command :thinking:")
 
