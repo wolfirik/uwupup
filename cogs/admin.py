@@ -27,7 +27,7 @@ class Admin:
         self.bot = bot
         self.config = default.get("config.json")
         self.conn = sqlite3.connect('owo.db')
-        self.conn.row_factory = lambda cursor, row: row[0]
+        self.conn.text_factory = str
         self.c = self.conn.cursor()
         self._last_result = None
 
@@ -314,10 +314,11 @@ class Admin:
     @commands.command()
     @commands.check(repo.is_owner)
     async def recall(self, ctx): 
-        result = self.c.execute("""SELECT msg FROM test""").fetchall()
+        result = self.c.execute("""SELECT msg FROM test""")
+        row = result.fetchone()
+        row = assert type(row[0]) is str
         msg = result['msg']
-        for row in c.execute('SELECT * FROM test'):
-              await ctx.send(row)
+        await ctx.send(row)
 
     @commands.command()
     @commands.check(repo.is_owner)
