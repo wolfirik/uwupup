@@ -47,8 +47,9 @@ class Events:
             await ctx.send(embed=errem)
 
         elif isinstance(err, errors.CheckFailure):
+            no = self.bot.get_emoji(315009174163685377)
             try:
-                await ctx.message.add_reaction(<:tickNo:315009174163685377>)
+                await ctx.message.add_reaction(no)
             except:
                 await ctx.send("either you're in the wrong channel or you don't have perms to use this command :thinking:")
 
