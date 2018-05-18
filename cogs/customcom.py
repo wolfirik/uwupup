@@ -153,7 +153,7 @@ class CustomCommands:
             return
 
         guild = message.guild
-        prefix = self.bot.prefix
+        prefix = "owo "
         if not prefix:
             return
         if not message.content.startswith(prefix):
