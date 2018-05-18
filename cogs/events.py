@@ -47,7 +47,7 @@ class Events:
             await ctx.send(embed=errem)
 
         elif isinstance(err, errors.CheckFailure):
-            await ctx.add_reaction("<:tickNo:315009174163685377>")
+            await ctx.message.add_reaction("<:tickNo:315009174163685377>")
 
         elif isinstance(err, errors.CommandOnCooldown):
             await ctx.send(f"This command is on cooldown... try again in {err.retry_after:.0f} seconds.")
