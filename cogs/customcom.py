@@ -5,8 +5,8 @@ import rethinkdb as r
 from __main__ import send_cmd_help
 from discord.ext import commands
 
-from .utils import checks
-from .utils.chat_formatting import pagify
+from utils import permissions
+from utils.chat_formatting import pagify
 
 
 class CustomCommands:
@@ -40,11 +40,10 @@ class CustomCommands:
 
     @staticmethod
     async def save_coms(guildid: str, ncommands: dict):
-        a = await r.connect(host="localhost", port=28015, db='fur')
+        a = await r.connect(host="localhost", port=28015, db='owo')
         await r.table("guilds").update({"commands": ncommands}, conflict="replace").run(a)
 
     @customcom.command(name="add", pass_context=True)
-    @checks.mod_or_permissions(administrator=True)
     async def cc_add(self, ctx, command: str, *, text):
         """Adds a custom command
 
@@ -72,7 +71,6 @@ class CustomCommands:
             await ctx.send(embed=em)
 
     @customcom.command(name="edit", pass_context=True)
-    @checks.mod_or_permissions(administrator=True)
     async def cc_edit(self, ctx, command: str, *, text):
         """Edits a custom command
 
@@ -99,7 +97,6 @@ class CustomCommands:
             await ctx.send(embed=em)
 
     @customcom.command(name="delete", pass_context=True)
-    @checks.mod_or_permissions(administrator=True)
     async def cc_delete(self, ctx, command: str):
         """Deletes a custom command
         Example:
