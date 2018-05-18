@@ -26,7 +26,7 @@ class Fun_Commands:
         except json.JSONDecodeError:
             return await ctx.send("Couldn't find anything from the API")
 
-        await ctx.send(r[endpoint])
+        return r[endpoint]
 
     @commands.command(name='nya')
     async def neko_search(self, ctx):
