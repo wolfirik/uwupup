@@ -110,7 +110,7 @@ class Events:
             await asyncio.sleep(20)
             print('Attempting to post server count')
             try:
-                await self.dblpy.post_server_count()
+                await aiohttp.ClientSession().post('https://discordbots.org/api/bots/' + str(self.bot.user.id) + '/stats', json={"server_count": len(self.bot.guilds)}, headers={'Authorization': os.environ["DBL_TOKEN"] })
                 await webhook.send(embed=update)
             except Exception as e:
                 try: #if the webhook is online
