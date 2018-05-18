@@ -31,26 +31,30 @@ class Fun_Commands:
     @commands.command(name='nya')
     async def neko_search(self, ctx):
         """Posts a neko"""
-        await self.randomimageapi(ctx, 'https://nekos.life/api/v2/img/neko', 'url')
-
+        pic = await self.randomimageapi(ctx, 'https://nekos.life/api/v2/img/neko', 'url')
+        await ctx.send(pic)
+        
     @commands.command()
     @commands.cooldown(rate=1, per=1.5, type=commands.BucketType.user)
     async def cat(self, ctx):
         """ Posts a random cat """
-        await self.randomimageapi(ctx, 'https://nekos.life/api/v2/img/meow', 'url')
-
+        pic = await self.randomimageapi(ctx, 'https://nekos.life/api/v2/img/meow', 'url')
+        await ctx.send(pic)
+        
     @commands.command()
     @commands.cooldown(rate=1, per=1.5, type=commands.BucketType.user)
     async def dog(self, ctx):
         """ Posts a random dog """
-        await self.randomimageapi(ctx, 'https://random.dog/woof.json', 'url')
-
+        arf = await self.randomimageapi(ctx, 'https://random.dog/woof.json', 'url')
+        await ctx.send(arf)
+        
     @commands.command()
     @commands.cooldown(rate=1, per=1.5, type=commands.BucketType.user)
     async def duck(self, ctx):
         """ Posts a random duck """
-        await self.randomimageapi(ctx, 'https://random-d.uk/api/v1/random', 'url')
-    
+        quack = await self.randomimageapi(ctx, 'https://random-d.uk/api/v1/random', 'url')
+        await ctx.send(quack) 
+        
     @commands.command(aliases=['fur'])
     async def floof(self, ctx):
         """Posts a cute floof :3""" 
@@ -63,7 +67,7 @@ class Fun_Commands:
             await ctx.send("aww i can't send embeds ;w;")
 
     @commands.command()
-    @commands.check(permissions.is_nsfw) # TODO: Make a nsfw cog.
+    @commands.is_nsfw # TODO: Make a nsfw cog.
     async def yiff(self, ctx):
         """posts a yiff >:3 [thanks waspy]"""
         r = await self.randomimageapi(ctx, 'https://sheri.fun/api/v1/yiff', 'url')
