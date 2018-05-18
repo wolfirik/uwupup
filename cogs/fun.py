@@ -66,7 +66,13 @@ class Fun_Commands:
     @commands.check(permissions.is_nsfw) # TODO: Make a nsfw cog.
     async def yiff(self, ctx):
         """posts a yiff >:3 [thanks waspy]"""
-        await self.randomimageapi(ctx, 'https://sheri.fun/api/v1/yiff', 'url')
+        r = await http.get('https://sheri.fun/api/v1/yiff', res_method="json", no_cache=True)
+        yiff = discord.Embed(title=">w>", color=0xDEADBF)
+        yiff.set_image(url=r[endpoint])
+        try:
+            await ctx.send(embed=yiff)
+        except:
+            await ctx.send("aww i can't send embeds ;w;")
 
     @commands.command(aliases=['flip', 'coin'])
     async def coinflip(self, ctx):
@@ -141,8 +147,11 @@ class Fun_Commands:
                 webhook = Webhook.from_url(os.environ["WEBHOOK"], adapter=AsyncWebhookAdapter(session))
                 await webhook.send(embed=info)
         except discord.Forbidden:
-            await ctx.send("👏can't👏delete👏messages👏sowwy👏")
-        
+            await ctx.send(clapped_text)
+            async with aiohttp.ClientSession() as session:
+                webhook = Webhook.from_url(os.environ["WEBHOOK"], adapter=AsyncWebhookAdapter(session))
+                await webhook.send(content="no delet", embed=info)
+
     @commands.command(aliases=['randowo', 'owogen'])
     async def rowo(self, ctx):
         """Sends a random owo face"""
