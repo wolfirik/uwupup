@@ -60,7 +60,7 @@ class Admin:
     def sanitize_output(ctx: commands.Context, input_: str) -> str:
         """Hides the bot's token from a string."""
         token = ctx.bot.http.token
-        r = "[EXPUNGED]"
+        r = "XD"
         result = input_.replace(token, r)
         result = result.replace(token.lower(), r)
         result = result.replace(token.upper(), r)
