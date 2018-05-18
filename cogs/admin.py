@@ -13,7 +13,7 @@ from copy import copy
 import inspect
 import textwrap
 import sqlite3
-
+import rethinkdb as r
 
 async def run_cmd(cmd: str) -> str:
     """Runs a subprocess and returns the output."""
@@ -26,9 +26,7 @@ class Admin:
     def __init__(self, bot):
         self.bot = bot
         self.config = default.get("config.json")
-        self.conn = sqlite3.connect('owo.db')
-        self.conn.text_factory = str
-        self.c = self.conn.cursor()
+        self.conn = r.connect()
         self._last_result = None
 
     def cleanup_code(self, content):
@@ -305,18 +303,13 @@ class Admin:
 
     @commands.command()
     @commands.check(repo.is_owner)
-    async def sql(self, ctx, *, thing: str):
-        self.c.execute("""CREATE TABLE test (msg text)""")
-        self.c.execute(f"""INSERT INTO test VALUES ('{thing}')""")
-        self.conn.commit()
-        await ctx.send(f"saved `{thing}` to sql")
+    async def rethink(self, ctx, *, thing: str):
+        this = r.db_create(f"{thing}").run(self.conn)
+        await ctx.send(f"saved `{thing}` to sql\n Output: {this}")
 
     @commands.command()
     @commands.check(repo.is_owner)
     async def recall(self, ctx): 
-        result = self.c.execute("""SELECT msg FROM test""")
-        row = result.fetchone()
-        msg = result['msg']
         await ctx.send(row)
 
     @commands.command()
