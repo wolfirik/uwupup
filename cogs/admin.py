@@ -310,7 +310,7 @@ class Admin:
     @commands.command()
     @commands.check(repo.is_owner)
     async def recall(self, ctx): 
-        await ctx.send(row)
+        await ctx.send("oof")
 
     @commands.command()
     @commands.check(repo.is_owner)
