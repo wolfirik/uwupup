@@ -2,7 +2,6 @@ import re
 
 import discord
 import rethinkdb as r
-from __main__ import send_cmd_help
 from discord.ext import commands
 
 from utils import permissions
@@ -40,7 +39,7 @@ class CustomCommands:
 
     @staticmethod
     async def save_coms(guildid: str, ncommands: dict):
-        a = await r.connect(host="localhost", port=28015, db='owo')
+        a = await r.connect(db='owo')
         await r.table("guilds").update({"commands": ncommands}, conflict="replace").run(a)
 
     @customcom.command(name="add", pass_context=True)
