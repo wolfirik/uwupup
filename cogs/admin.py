@@ -316,7 +316,6 @@ class Admin:
     async def recall(self, ctx): 
         result = self.c.execute("""SELECT msg FROM test""")
         row = result.fetchone()
-        row = assert type(row[0]) is str
         msg = result['msg']
         await ctx.send(row)
 
