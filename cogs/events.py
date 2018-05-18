@@ -107,7 +107,6 @@ class Events:
         async with aiohttp.ClientSession() as session:
             webhook = Webhook.from_url(os.environ["WEBHOOK"], adapter=AsyncWebhookAdapter(session))
         while True:
-            await asyncio.sleep(20)
             print('Attempting to post server count')
             try:
                 await aiohttp.ClientSession().post('https://discordbots.org/api/bots/' + str(self.bot.user.id) + '/stats', json={"server_count": len(self.bot.guilds)}, headers={'Authorization': os.environ["DBL_TOKEN"] })
