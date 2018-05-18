@@ -107,8 +107,8 @@ class Events:
             await webhook.send(embed=leave)
 
     async def on_message(self, msg):
-        self.bot.counter["msgs_read"] += 1
-        return
+        self.counter["msgs_read"] += 1
+        
 
     async def update_stats(self):
         update = discord.Embed(title="Updating Server Count",  description="<a:dblspin:393548363879940108> Posted {} Guilds".format(len(self.bot.guilds)), color=discord.Color.blurple()) 
