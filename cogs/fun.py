@@ -79,7 +79,8 @@ class Fun_Commands:
 
         try:
             await ctx.send(embed=yiff)
-            self.bot.counter["yiff_viewed"]
+            self.bot.counter["yiff_viewed"] += 1
+            
         except:
             await ctx.send("aww i can't send embeds ;w;")
 
