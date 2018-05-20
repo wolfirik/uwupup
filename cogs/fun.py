@@ -3,6 +3,7 @@ import discord
 import json
 import os
 from io import BytesIO
+from collections import Counter
 from discord.ext import commands
 from utils import lists, permissions, http, default
 from discord import Webhook, AsyncWebhookAdapter
@@ -12,6 +13,7 @@ import aiohttp
 class Fun_Commands:
     def __init__(self, bot):
         self.bot = bot
+        self.counter = Counter()
         self.config = default.get("config.json")
 
     @commands.command(aliases=['8ball'])
@@ -77,6 +79,7 @@ class Fun_Commands:
 
         try:
             await ctx.send(embed=yiff)
+            self.bot.counter["yiff_viewed"]
         except:
             await ctx.send("aww i can't send embeds ;w;")
 
