@@ -14,6 +14,7 @@ import inspect
 import textwrap
 import sqlite3
 import rethinkdb as r
+import psutil
 
 async def run_cmd(cmd: str) -> str:
     """Runs a subprocess and returns the output."""
@@ -25,7 +26,7 @@ async def run_cmd(cmd: str) -> str:
 class Admin:
     def __init__(self, bot):
         self.bot = bot
-        self.conn = r.connect(host='uwupup.herokuapp.com', port=80, db='owo', timeout=30)
+        # self.conn = r.connect(host='uwupup.herokuapp.com', port=80, db='owo', timeout=30)
         self.config = default.get("config.json")
         self._last_result = None
 
@@ -252,6 +253,7 @@ class Admin:
         env = {
             'bot': ctx.bot,
             'ctx': ctx,
+            'ps': psutil,
             'channel': ctx.channel,
             'author': ctx.author,
             'guild': ctx.guild,
