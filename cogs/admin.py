@@ -25,7 +25,7 @@ async def run_cmd(cmd: str) -> str:
 class Admin:
     def __init__(self, bot):
         self.bot = bot
-        self.conn = r.connect(host='uwupup.herokuapp.com', port=80, db='owo', timeout=90)
+        self.conn = r.connect(host='uwupup.herokuapp.com', port=80, db='owo', timeout=30)
         self.config = default.get("config.json")
         self._last_result = None
 
