@@ -25,7 +25,7 @@ async def run_cmd(cmd: str) -> str:
 class Admin:
     def __init__(self, bot):
         self.bot = bot
-        self.conn = r.connect(db='owo')
+        self.conn = r.connect(host='localhost', port=14224, db='owo')
         self.config = default.get("config.json")
         self._last_result = None
 
@@ -111,7 +111,7 @@ class Admin:
     @commands.command()
     @commands.check(repo.is_owner)
     async def unload(self, ctx, name: str):
-        """ Reloads an extension. """
+        """ Unloads an extension. """
         if name == "admin":
             ctx.send("prolly not a good idea to unload this. don't ya think..?")
             return
