@@ -25,6 +25,7 @@ async def run_cmd(cmd: str) -> str:
 class Admin:
     def __init__(self, bot):
         self.bot = bot
+        self.conn = r.connect(db='owo')
         self.config = default.get("config.json")
         self._last_result = None
 
@@ -111,12 +112,16 @@ class Admin:
     @commands.check(repo.is_owner)
     async def unload(self, ctx, name: str):
         """ Reloads an extension. """
-        try:
-            self.bot.unload_extension(f"cogs.{name}")
-        except Exception as e:
-            await ctx.send(f"```diff\n- {e}```")
+        if name == "admin":
+            ctx.send("prolly not a good idea to unload this. don't ya think..?")
             return
-        await ctx.send(f"Unloaded extension **{name}.py**")
+        else:
+            try:
+                self.bot.unload_extension(f"cogs.{name}")
+            except Exception as e:
+                await ctx.send(f"```diff\n- {e}```")
+                return
+            await ctx.send(f"Unloaded extension **{name}.py**")
 
     @commands.group()
     @commands.check(repo.is_owner)
@@ -304,7 +309,7 @@ class Admin:
     @commands.check(repo.is_owner)
     async def rethink(self, ctx, *, thing: str):
         this = r.db_create(f"{thing}").run(self.conn)
-        await ctx.send(f"saved `{thing}` to sql\n Output: {this}")
+        await ctx.send(f"saved `{thing}` to rethink\n Output: {this}")
 
     @commands.command()
     @commands.check(repo.is_owner)
