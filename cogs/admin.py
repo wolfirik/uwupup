@@ -224,7 +224,7 @@ class Admin:
     @commands.command()
     @commands.check(repo.is_owner)
     async def servers(self, ctx):
-        """Lists and allows to leave servers"""
+        """Lists servers"""
         owner = ctx.author
         guilds = sorted(list(self.bot.guilds),
                         key=lambda s: s.name.lower())
