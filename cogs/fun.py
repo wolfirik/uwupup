@@ -8,6 +8,7 @@ from discord.ext import commands
 from utils import lists, permissions, http, default
 from discord import Webhook, AsyncWebhookAdapter
 import aiohttp
+import urllib.request
 
 
 class Fun_Commands:
@@ -60,9 +61,13 @@ class Fun_Commands:
     @commands.command(aliases=['fur'])
     async def floof(self, ctx):
         """Posts a cute floof :3""" 
+        url = 'https://e926.net/post/index.json?limit=1&tags=cute%20solo'
         pic = random.choice(lists.floof)
         floof = discord.Embed(description=f"**{ctx.author.name}, heres a floof >w>**", color=discord.Color.blue())
-        floof.set_image(url=pic)
+        p = urllib.request.Request(url, None, header)
+        q = urllib.request.urlopen(p).read()
+        data = json.loads(q.decode())
+        floof.set_image(url=data["file_url"])
         try:
             await ctx.send(embed=floof)
         except:
