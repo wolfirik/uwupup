@@ -62,7 +62,7 @@ class Fun_Commands:
     async def floof(self, ctx):
         """Posts a cute floof :3""" 
         r = requests.get('https://e926.net/post/index.json?limit=1&tags=cute%20solo%20order:random', headers={'User-Agent': "owopup"})
-        website = await r.json()
+        website = r.json()
         if website != []:
             if "success" not in website:
                 imageURL = website[0].get('file_url')
