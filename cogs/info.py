@@ -88,7 +88,7 @@ class Information:
         embed.add_field(name="Library", value="discord.py", inline=True)
         embed.add_field(name="Servers", value=len(ctx.bot.guilds), inline=True)
         embed.add_field(name="Commands used", value=self.bot.counter["cmds_ran"], inline=True)
-        embed.add_field(name="Medsages read", value=self.bot.counter["msgs_read"], inline=True)
+        embed.add_field(name="Messages read", value=self.bot.counter["msgs_read"], inline=True)
         embed.add_field(name="RAM", value=f"{ramUsage:.2f} MB", inline=True)
 
         await ctx.send(content=f"ℹ About **{ctx.bot.user}**", embed=embed)
