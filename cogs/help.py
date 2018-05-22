@@ -20,18 +20,17 @@ async def send_help(ctx):
 
     for page in _help:
         page = page.replace("```", "`") 
-        page = discord.Embed(title="owopup", description=page, color=0x254d16)
-        page.set_footer(text="You most likely had dms blocked for me so i sent it here.")
-        await ctx.send(embed=page)
+        return page
 
     @commands.command()
     async def help(self, ctx):
-        """This does stuff!"""
+        """:3"""
+        page = discord.Embed(title="owopup", description=send_help, color=0x254d16)
         try: 
             await ctx.send(f"oki, {ctx.author.name} check your dms uwu")
-            await send_help_dm(ctx)
+            await ctx.author.send(embed=page)
         except:
-            await send_help(ctx)
+            await ctx.send(embed=page)
 
 def setup(bot):
     bot.remove_command('help')
