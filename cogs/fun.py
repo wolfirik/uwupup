@@ -68,7 +68,7 @@ class Fun_Commands:
         p = urllib.request.Request(url, None, header)
         q = urllib.request.urlopen(p).read()
         data = json.loads(q.decode())
-        floof.set_image(url=data["file_url"])
+        floof.set_image(url=data[random.randint(0, count)]["file_url"])
         try:
             await ctx.send(embed=floof)
         except:
