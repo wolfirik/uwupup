@@ -9,7 +9,7 @@ from utils import lists, permissions, http, default
 from discord import Webhook, AsyncWebhookAdapter
 import aiohttp
 import urllib.request
-
+import requests
 
 class Fun_Commands:
     def __init__(self, bot):
@@ -61,8 +61,8 @@ class Fun_Commands:
     @commands.command(aliases=['fur'])
     async def floof(self, ctx):
         """Posts a cute floof :3""" 
-        async with aiohttp.get('https://e926.net/post/index.json?limit=1&tags=cute%20solo%20order:random', headers={'User-Agent': "owopup"}) as r:
-            website = await r.json()
+        r = requests.get('https://e926.net/post/index.json?limit=1&tags=cute%20solo%20order:random', headers={'User-Agent': "owopup"})
+        website = await r.json()
         if website != []:
             if "success" not in website:
                 imageURL = website[0].get('file_url')
