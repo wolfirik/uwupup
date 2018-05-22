@@ -61,10 +61,12 @@ class Fun_Commands:
     @commands.command(aliases=['fur'])
     async def floof(self, ctx):
         """Posts a cute floof :3""" 
-        r = await self.randomimageapi(ctx, 'https://e926.net/post/index.json?limit=1&tags=cute%20solo%20order:random', "file_url")
+        r = requests.get('https://e926.net/post/index.json?limit=1&tags=cute%20solo%20order:random')
+        r = r.json()
+        link = r[0].get('file_url')
         pic = random.choice(lists.floof)
         floof = discord.Embed(description=f"**{ctx.author.name}, heres a floof >w>**", color=discord.Color.blue())
-        floof.set_image(url=r)
+        floof.set_image(url=link)
         try:
             await ctx.send(embed=floof)
         except:
