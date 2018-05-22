@@ -28,7 +28,7 @@ port = int(os.environ['PORT'])
 class Admin:
     def __init__(self, bot):
         self.bot = bot
-        self.conn = r.connect(host='uwupup.herokuapp.com', port=port, timeout=30)
+        #self.conn = r.connect(host='uwupup.herokuapp.com', port=port, timeout=30)
         self.config = default.get("config.json")
         self._last_result = None
 
