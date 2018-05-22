@@ -1,5 +1,5 @@
 import discord
-from discord.ext import commands, formatter
+from discord.ext import commands
 
 class Help:
     """OwOpup's help formatter"""
