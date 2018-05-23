@@ -65,7 +65,7 @@ class Fun_Commands:
         r = r.json()
         link = r[0].get('file_url')
         pic = random.choice(lists.floof)
-        floof = discord.Embed(description=f"**{ctx.author.name}, heres a floof >w>**", color=discord.Color.blue())
+        floof = discord.Embed(description=f"**{ctx.author.name}, heres a floof >w>**", color=0x002d55)
         floof.set_image(url=link)
         try:
             await ctx.send(embed=floof)
