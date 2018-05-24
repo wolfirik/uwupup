@@ -87,7 +87,6 @@ class Fun_Commands:
                 r = requests.get('https://e621.net/post/index.json?limit=1&tags=cute%20order:random%20hug%20rating:s%20fur') 
                 r = r.json()
                 link = r[0].get('file_url')
-                link = link.replace("<", "").replace(">", "")
             except:
                 return await ctx.send("I think e926 is being dumb.. try again later..")
 
