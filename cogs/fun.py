@@ -92,9 +92,8 @@ class Fun_Commands:
 
             hugge = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a hug uwu**", color=0xd25e92)
             hugge.set_image(url=hug)
-            hug = BytesIO(await http.get(hug, res_method="read"))
             try:
-                await ctx.send(content="{ctx.author.name} gave {user.name} a hug uwu", file=hug)
+                await ctx.send(embed=hugge)
             except:
                 await ctx.send("aww i can't send embeds ;w;")
 
