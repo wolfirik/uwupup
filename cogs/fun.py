@@ -70,7 +70,7 @@ class Fun_Commands:
         floof = discord.Embed(description=f"**{ctx.author.name}, heres a floof >w>**", color=0x002d55)
         floof.set_image(url=link)
         try:
-            await ctx.send(embed=floof)
+            await ctx.send(link)
         except:
             await ctx.send("aww i can't send embeds ;w;")
 
@@ -93,7 +93,7 @@ class Fun_Commands:
             hugge = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a hug uwu**", color=0xd25e92)
             hugge.set_image(url=link)
             try:
-                await ctx.send(embed=hugge)
+                await ctx.send(f"{ctx.author.name} gave {user.name} a hug uwu\n{link}")
             except:
                 await ctx.send("aww i can't send embeds ;w;")
 
