@@ -79,7 +79,7 @@ class Fun_Commands:
         """Give someone a hug >w<""" 
         if not user:
             await ctx.send("u-uhm who do you wanna hug..?")
-        elif user == self.bot.user
+        elif user == self.bot.user:
             await ctx.send("d-don't hug me..!") 
 
         else:
@@ -90,7 +90,7 @@ class Fun_Commands:
             except:
                 ctx.send("I think e926 is being dumb.. try again later..")
 
-            hugge = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a hug uwu**", color=0x002d55)
+            hugge = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a hug uwu**", color=0xd25e92)
             hugge.set_image(url=link)
             try:
                 await ctx.send(embed=hugge)
