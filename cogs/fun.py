@@ -61,10 +61,12 @@ class Fun_Commands:
     @commands.command(aliases=['fur'])
     async def floof(self, ctx):
         """Posts a cute floof :3""" 
-        r = requests.get('https://e926.net/post/index.json?limit=1&tags=cute%20order:random%20-suggestive%20-type:swf') #a lot more complex than the other apis
-        r = r.json()
-        link = r[0].get('file_url')
-        pic = random.choice(lists.floof)
+        try:
+            r = requests.get('https://e926.net/post/index.json?limit=1&tags=cute%20order:random%20-suggestive%20-type:swf%20fur') #a lot more complex than the other apis
+            r = r.json()
+            link = r[0].get('file_url')
+        except:
+            ctx.send("I think e926 is being dumb.. try again later..")
         floof = discord.Embed(description=f"**{ctx.author.name}, heres a floof >w>**", color=0x002d55)
         floof.set_image(url=link)
         try:
