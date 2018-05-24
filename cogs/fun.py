@@ -66,11 +66,11 @@ class Fun_Commands:
             r = r.json()
             link = r[0].get('file_url')
         except:
-            ctx.send("I think e926 is being dumb.. try again later..")
+            return await ctx.send("I think e926 is being dumb.. try again later..")
         floof = discord.Embed(description=f"**{ctx.author.name}, heres a floof >w>**", color=0x002d55)
         floof.set_image(url=link)
         try:
-            await ctx.send(link)
+            await ctx.send(embed=floof)
         except:
             await ctx.send("aww i can't send embeds ;w;")
 
@@ -84,7 +84,7 @@ class Fun_Commands:
 
         else:
             try:
-                r = requests.get('https://e621.net/post/index.json?limit=1&tags=cute%20order:random%20hug%20rating:s%20fur') 
+                r = requests.get('https://e926.net/post/index.json?limit=1&tags=cute%20order:random%20hug%20-type:swf%20fur') 
                 r = r.json()
                 link = r[0].get('file_url')
             except:
