@@ -96,7 +96,7 @@ class Fun_Commands:
             hugge = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a hug uwu**", color=0xd25e92)
             hugge.set_image(url=link)
             try:
-                await ctx.send(file=discord.File(thing))
+                await ctx.send(embed=hugge)
             except:
                 await ctx.send("something oofed.")
 
