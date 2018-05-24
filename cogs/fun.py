@@ -102,7 +102,7 @@ class Fun_Commands:
             #except:
                 #await ctx.send("something oofed..")
 
-    #@commands.command()
+    #@commands.command() oof
     #async def lick(self, ctx, user: discord.Member=None):
         #"""lick someone >w<""" 
         #if not user:
