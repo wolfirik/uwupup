@@ -95,6 +95,8 @@ class Fun_Commands:
 
             hugge = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a hug uwu**", color=0xd25e92)
             hugge.set_image(url=link)
+            try:
+                await ctx.send(embed=hugge)
             except discord.Forbidden:
                 await ctx.send("aww i can't send embeds.. ;w;")
             except:
@@ -118,10 +120,10 @@ class Fun_Commands:
             except:
                 return await ctx.send("I think e926 is being dumb.. try again later..")
 
-            hugge = discord.Embed(description=f"**{ctx.author.name} licked {user.name} XP**", color=0xf26522)
-            hugge.set_image(url=link)
+            lick = discord.Embed(description=f"**{ctx.author.name} licked {user.name} XP**", color=0xf26522)
+            lick.set_image(url=link)
             try:
-                await ctx.send(embed=hugge)
+                await ctx.send(embed=lick)
             except discord.Forbidden:
                 await ctx.send("aww i can't send embeds.. ;w;")
             except:
