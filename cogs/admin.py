@@ -101,6 +101,17 @@ class Admin:
         await self.bot.logout()
 
     @commands.command()
+    @ccommands.check(repo.is_owner)
+    async def sudo(self, ctx, user: discord.Member, *, command):
+        """Runs a [command] as if [user] had run it.
+        """
+        new_msg = deepcopy(ctx.message)
+        new_msg.author = user
+        new_msg.content =f"owo {command}"
+        await self.bot.process_commands(new_msg)
+
+
+    @commands.command()
     @commands.check(repo.is_owner)
     async def load(self, ctx, name: str):
         """ Reloads an extension. """
