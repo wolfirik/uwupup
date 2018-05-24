@@ -82,7 +82,7 @@ class Fun_Commands:
         elif user == self.bot.user:
             await ctx.send("d-don't hug me..!") 
         elif user == ctx.author:
-            await ctx.send(f"maybe someone other than your self {author.name}..?")
+            await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
 
         else:
             try:
