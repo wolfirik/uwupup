@@ -79,9 +79,12 @@ class Fun_Commands:
         """Give someone a hug >w<""" 
         if not user:
             await ctx.send("u-uhm who do you wanna hug..?")
+        elif user == self.bot.user
+            await ctx.send("d-don't hug me..!") 
+
         else:
             try:
-                r = requests.get('https://e926.net/post/index.json?limit=1&tags=cute%20order:random%20-hug%20-type:swf%20fur') #a lot more complex than the other apis
+                r = requests.get('https://e926.net/post/index.json?limit=1&tags=cute%20order:random%20hug%20-type:swf%20fur') #a lot more complex than the other apis
                 r = r.json()
                 link = r[0].get('file_url')
             except:
