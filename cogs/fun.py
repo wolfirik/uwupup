@@ -110,7 +110,7 @@ class Fun_Commands:
         elif user == self.bot.user:
             await ctx.send("d-don't lick me..! >~<") 
         elif user == ctx.author:
-            await ctx.send(f"maybe someone other than your self {author.name}..?")
+            await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
         else:
             try:
                 r = requests.get('https://e926.net/post/index.json?limit=1&tags=cute%20order:random%20lick%20-type:swf%20duo') 
