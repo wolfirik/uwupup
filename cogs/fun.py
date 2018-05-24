@@ -74,9 +74,9 @@ class Fun_Commands:
         except:
             await ctx.send("aww i can't send embeds ;w;")
 
-    @commands.command(aliases=['fur'])
-    async def floof(self, ctx, user: discord.Member=None):
-        """Posts a cute floof :3""" 
+    @commands.command(aliases=['hugge'])
+    async def hug(self, ctx, user: discord.Member=None):
+        """Give someone a hug >w<""" 
         if not user:
             await ctx.send("u-uhm who do you wanna hug..?")
         else:
