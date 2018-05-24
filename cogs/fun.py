@@ -58,76 +58,76 @@ class Fun_Commands:
         quack = await self.randomimageapi(ctx, 'https://random-d.uk/api/v1/random', 'url')
         await ctx.send(quack) 
         
-    @commands.command(aliases=['fur'])
-    async def floof(self, ctx):
-        """Posts a cute floof :3""" 
-        try:
-            r = requests.get('https://e926.net/post/index.json?limit=1&tags=cute%20order:random%20-suggestive%20-equine%20fur') #a lot more complex than the other apis
-            r = r.json()
-            link = r[0].get('file_url')
-        except:
-            return await ctx.send("I think e926 is being dumb.. try again later..")
-        floof = discord.Embed(description=f"**{ctx.author.name}, heres a floof >w>**", color=0x002d55)
-        floof.set_image(url=link)
-        try:
-            await ctx.send(embed=floof)
-        except:
-            await ctx.send("aww i can't send embeds ;w;")
+    #@commands.command(aliases=['fur'])
+    #async def floof(self, ctx):
+        #"""Posts a cute floof :3""" 
+        #try:
+            #r = requests.get('https://e926.net/post/index.json?limit=1&tags=cute%20order:random%20-suggestive%20-equine%20fur') #a lot more complex than the other apis
+            #r = r.json()
+            #link = r[0].get('file_url')
+        #except:
+            #return await ctx.send("I think e926 is being dumb.. try again later..")
+        #floof = discord.Embed(description=f"**{ctx.author.name}, heres a floof >w>**", color=0x002d55)
+        #floof.set_image(url=link)
+        #try:
+            #await ctx.send(embed=floof)
+        #except:
+            #await ctx.send("aww i can't send embeds ;w;")
 
-    @commands.command(aliases=['hugge'])
-    async def hug(self, ctx, user: discord.Member=None):
-        """Give someone a hug >w<""" 
-        if not user:
-            await ctx.send("u-uhm who do you wanna hug..?")
-        elif user == self.bot.user:
-            await ctx.send("d-don't hug me..!") 
-        elif user == ctx.author:
-            await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
+    #@commands.command(aliases=['hugge'])
+    #async def hug(self, ctx, user: discord.Member=None):
+        #"""Give someone a hug >w<""" 
+        #if not user:
+            #await ctx.send("u-uhm who do you wanna hug..?")
+        #elif user == self.bot.user:
+            #await ctx.send("d-don't hug me..!") 
+        #elif user == ctx.author:
+            #await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
 
-        else:
-            try:
-                r = requests.get('https://e926.net/post/index.json?limit=1&tags=cute%20order:random%20hug%20-equine%20fur') 
-                r = r.json()
-                link = r[0].get('file_url')
-                thing = BytesIO(await http.get(link, res_method="read"))
-            except:
-                return await ctx.send("I think e926 is being dumb.. try again later..")
+        #else:
+            #try:
+                #r = requests.get('https://e926.net/post/index.json?limit=1&tags=cute%20order:random%20hug%20-equine%20fur') 
+                #r = r.json()
+                #link = r[0].get('file_url')
+                #thing = BytesIO(await http.get(link, res_method="read"))
+            #except:
+                #return await ctx.send("I think e926 is being dumb.. try again later..")
 
-            hugge = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a hug uwu**", color=0xd25e92)
-            hugge.set_image(url=link)
-            try:
-                await ctx.send(embed=hugge)
-            except discord.Forbidden:
-                await ctx.send("aww i can't send embeds.. ;w;")
-            except:
-                await ctx.send("something oofed..")
+            #hugge = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a hug uwu**", color=0xd25e92)
+            #hugge.set_image(url=link)
+            #try:
+                #await ctx.send(embed=hugge)
+            #except discord.Forbidden:
+                #await ctx.send("aww i can't send embeds.. ;w;")
+            #except:
+                #await ctx.send("something oofed..")
 
-    @commands.command()
-    async def lick(self, ctx, user: discord.Member=None):
-        """lick someone >w<""" 
-        if not user:
-            await ctx.send("u-uhm who do you wanna lick..?")
-        elif user == self.bot.user:
-            await ctx.send("d-don't lick me..! >~<") 
-        elif user == ctx.author:
-            await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
-        else:
-            try:
-                r = requests.get('https://e926.net/post/index.json?limit=1&tags=-not_furry%20order:random%20lick%20-equine%20duo') 
-                r = r.json()
-                link = r[0].get('file_url')
-                thing = BytesIO(await http.get(link, res_method="read"))
-            except:
-                return await ctx.send("I think e926 is being dumb.. try again later..")
+    #@commands.command()
+    #async def lick(self, ctx, user: discord.Member=None):
+        #"""lick someone >w<""" 
+        #if not user:
+            #await ctx.send("u-uhm who do you wanna lick..?")
+        #elif user == self.bot.user:
+            #await ctx.send("d-don't lick me..! >~<") 
+        #elif user == ctx.author:
+            #await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
+        #else:
+            #try:
+                #r = requests.get('https://e926.net/post/index.json?limit=1&tags=-not_furry%20order:random%20lick%20-equine%20duo') 
+                #r = r.json()
+                #link = r[0].get('file_url')
+                #thing = BytesIO(await http.get(link, res_method="read"))
+            #except:
+                #return await ctx.send("I think e926 is being dumb.. try again later..")
 
-            lick = discord.Embed(description=f"**{ctx.author.name} licked {user.name} XP**", color=0xf26522)
-            lick.set_image(url=link)
-            try:
-                await ctx.send(embed=lick)
-            except discord.Forbidden:
-                await ctx.send("aww i can't send embeds.. ;w;")
-            except:
-                await ctx.send("something oofed..")
+            #lick = discord.Embed(description=f"**{ctx.author.name} licked {user.name} XP**", color=0xf26522)
+            #lick.set_image(url=link)
+            #try:
+                #await ctx.send(embed=lick)
+            #except discord.Forbidden:
+                #await ctx.send("aww i can't send embeds.. ;w;")
+            #except:
+                #await ctx.send("something oofed..")
 
     @commands.command()
     @commands.is_nsfw() # TODO: Make a nsfw cog.
