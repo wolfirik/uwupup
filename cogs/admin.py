@@ -102,7 +102,7 @@ class Admin:
         await self.bot.logout()
 
     @commands.command()
-    @ccommands.check(repo.is_owner)
+    @commands.check(repo.is_owner)
     async def sudo(self, ctx, user: discord.Member, *, command):
         """Runs a [command] as if [user] had run it.
         """
