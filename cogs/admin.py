@@ -3,6 +3,7 @@ import subprocess
 from utils import repo, default, dataIO
 from utils.chat_formatting import pagify, box
 from discord.ext import commands
+from copy import deepcopy
 import os
 import asyncio
 import discord
@@ -107,7 +108,7 @@ class Admin:
         """
         new_msg = deepcopy(ctx.message)
         new_msg.author = user
-        new_msg.content =f"owo {command}"
+        new_msg.content = f"owo {command}"
         await self.bot.process_commands(new_msg)
 
 
