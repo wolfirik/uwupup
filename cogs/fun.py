@@ -84,14 +84,14 @@ class Fun_Commands:
 
         else:
             try:
-                r = requests.get('https://e926.net/post/index.json?limit=1&tags=cute%20order:random%20hug%20fur')
+                r = requests.get('https://e926.net/post/index.json?limit=1&tags=cute%20order:random%20hug%20-type:swf%20fur') 
                 r = r.json()
-                hug = r[0].get('file_url')
+                link = r[0].get('file_url')
             except:
                 return await ctx.send("I think e926 is being dumb.. try again later..")
 
             hugge = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a hug uwu**", color=0xd25e92)
-            hugge.set_image(url=hug)
+            hugge.set_image(url=link)
             try:
                 await ctx.send(embed=hugge)
             except:
