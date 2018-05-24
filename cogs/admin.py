@@ -280,6 +280,8 @@ class Admin:
             result = await result
 
         self._last_result = result
+        result = self.sanitize_output(result)
+
         try:
             await ctx.send(f"{result}")
         except:
