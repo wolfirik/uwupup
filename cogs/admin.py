@@ -232,8 +232,11 @@ class Admin:
         ack = await run_cmd('git reset --hard pup/master')
         pull = pull.replace('https://github.com/Skullbite/uwupup', 'owopup')
         info = discord.Embed(description=f"ｏｗｏ:fast_forward: ```diff\n{pull}```", color=0x254d16)
-        msg = await ctx.send(embed=info, delete_after=6)
-        
+        info2 = discord.Embed(description=f"pull complete uwu", color=0x254d16)
+        msg = await ctx.send(embed=info)
+        time.sleep(6)
+        await msg.edit(embed=info2)
+
     @commands.command()
     @commands.check(repo.is_owner)
     async def servers(self, ctx):
