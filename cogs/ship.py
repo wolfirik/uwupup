@@ -1,5 +1,6 @@
 import discord
 from random import randint
+import random
 from discord.ext import commands
 
 class ship:
