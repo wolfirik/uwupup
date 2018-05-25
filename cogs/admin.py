@@ -103,13 +103,11 @@ class Admin:
 
     @commands.command()
     @commands.check(repo.is_owner)
-    async def sudo(self, ctx, user: discord.Member, *, command):
-        """Runs a [command] as if [user] had run it.
+    async def heart(self, ctx):
+        """heh
         """
-        new_msg = deepcopy(ctx.message)
-        new_msg.author = user
-        new_msg.content = f"owo {command}"
-        await self.bot.process_commands(new_msg)
+        hound = self.bot.get_user(212726258188943360)
+        await hound.send("happy b-day houndy~ :tada:\n i want you to know i wuv you so much and im glad to know i got to be with you when you grew a year older.. i hope you enjoy today cuz its all about you and nothing but you i wish i could spend today with you but sadly, i suck at school.. but i sent you all my wuv in this message~\n so do me a favor.. enjoy today oki cutie..?\n~ Skullbite :heart:\n`ps: hang in there i'll get you a better present when im finally back~ >w>`")
 
 
     @commands.command()
