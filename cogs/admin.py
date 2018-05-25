@@ -103,15 +103,6 @@ class Admin:
 
     @commands.command()
     @commands.check(repo.is_owner)
-    async def heart(self, ctx):
-        """heh
-        """
-        hound = self.bot.get_user(212726258188943360)
-        await hound.send("happy b-day houndy~ :tada:\n i want you to know i wuv you so much and im glad to know i got to be with you when you grew a year older.. i hope you enjoy today cuz its all about you and nothing but you i wish i could spend today with you but sadly, i suck at school.. but i sent you all my wuv in this message~\n so do me a favor.. enjoy today oki cutie..?\n~ Skullbite :heart:\n`ps: hang in there i'll get you a better present when im finally back~ >w>`")
-
-
-    @commands.command()
-    @commands.check(repo.is_owner)
     async def load(self, ctx, name: str):
         """ Reloads an extension. """
         try:
