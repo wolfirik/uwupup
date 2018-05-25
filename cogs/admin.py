@@ -284,13 +284,16 @@ class Admin:
             result = await result
 
         self._last_result = result
-        result = self.sanitize_output(result)
+        if "bot.http.token" in code:
+           result = self.sanitize_output(result)
+           return await ctx.send(result)
 
-        try:
-            await ctx.send(f"{result}")
-        except:
-            print(result)
-            await ctx.send("it was too long so i just printed it.")
+        else:
+            try:
+                await ctx.send(f"{result}")
+            except:
+                print(result)
+                await ctx.send("it was too long so i just printed it.")
 
     @commands.command()
     @commands.check(repo.is_owner)
