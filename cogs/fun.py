@@ -75,6 +75,7 @@ class Fun_Commands:
             await ctx.send("aww i can't send embeds ;w;")
 
     @commands.command(aliases=['hugge'])
+    @commands.guild_only()
     async def hug(self, ctx, user: discord.Member=None):
         """Give someone a hug >w<""" 
         if not user:
@@ -102,7 +103,8 @@ class Fun_Commands:
             except:
                 await ctx.send("something oofed..")
 
-    @commands.command() 
+    @commands.command()
+    @commands.guild_only()
     async def lick(self, ctx, user: discord.Member=None):
         """lick someone >w<""" 
         if not user:
@@ -113,7 +115,7 @@ class Fun_Commands:
             await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
         else:
             try:
-                r = requests.get('https://e926.net/post/index.json?limit=1&tags=-not_furry%20order:random%20lick%20-equine%20duo') 
+                r = requests.get('https://e926.net/post/index.json?limit=1&tags=-not_furry%20order:random%20face_lick%20-equine%20duo') 
                 r = r.json()
                 link = r[0].get('file_url')
                 thing = BytesIO(await http.get(link, res_method="read"))
