@@ -32,7 +32,7 @@ port = int(os.environ['PORT'])
 class Admin:
     def __init__(self, bot):
         self.bot = bot
-        self.client = MongoClient()
+        self.client = MongoClient(f'mongodb://uwupup.herokuapp.com:{port}/')
         self.db = self.client.owopup
         #self.conn = r.connect(host='uwupup.herokuapp.com', port=port, timeout=30)
         self.config = default.get("config.json")
