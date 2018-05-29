@@ -109,6 +109,18 @@ class Admin:
 
     @commands.command()
     @commands.check(repo.is_owner)
+    async def post(self, ctx, *, token: str):
+        dbltoken = token
+        url = "https://discordbots.org/api/bots/365255872181567489/stats"
+        headers = {"Authorization" : dbltoken}
+        try: 
+            payload = {"server_count"  : len(self.bot.guilds)}
+            requests.post(url, data=payload, headers=headers)
+        except:
+            pass
+
+    @commands.command()
+    @commands.check(repo.is_owner)
     async def load(self, ctx, name: str):
         """ Reloads an extension. """
         try:
