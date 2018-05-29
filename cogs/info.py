@@ -58,12 +58,14 @@ class Information:
         """ Send a suggestion to my owner or just tell him hes doing a bad job -w- """
         channel = self.bot.get_channel(409168557147160587)
         suggestion = suggestion_txt
+        color = if isintance(ctx.guild) ctx.author.color else 0x254d16
         if len(suggestion) > 2000:
             await ctx.send(f"xwx {ctx.author.mention} thats a bit too long for me to send. Shorten it and try again. (2000 character limit)")
         else:
             try:
                 await ctx.send("oki! your suggestion has been sent successfully! ^w^")
-                suggestionem = discord.Embed(title=f"From {ctx.author}", description=f"{suggestion}") 
+                suggestionem = discord.Embed(title=f"From {ctx.author}", description=f"{suggestion}", color=color) 
+                suggestionem.set_author(icon_url=ctx.author.icon_url)
                 await channel.send(embed=suggestionem)
             except Exception as e:
                 print(e)
