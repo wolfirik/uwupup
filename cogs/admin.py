@@ -109,15 +109,16 @@ class Admin:
 
     @commands.command()
     @commands.check(repo.is_owner)
-    async def post(self, ctx, *, token: str):
-        dbltoken = token
+    async def post(self, ctx):
+        dbltoken = os.environ["DBL_TOKEN"]
         url = "https://discordbots.org/api/bots/365255872181567489/stats"
         headers = {"Authorization" : dbltoken}
         try: 
             payload = {"server_count"  : len(self.bot.guilds)}
             requests.post(url, data=payload, headers=headers)
+            await ctx.send(":ok_hand:")
         except:
-            pass
+            await ctx.send("xwx")
 
     @commands.command()
     @commands.check(repo.is_owner)
@@ -240,7 +241,7 @@ class Admin:
         await run_cmd('git fetch --all')
         ack = await run_cmd('git reset --hard pup/master')
         pull = pull.replace('https://github.com/Skullbite/uwupup', 'owopup')
-        info = discord.Embed(description=f"ｏｗｏ:fast_forward: ```diff\n{pull}```", color=0x254d16)
+        info = discord.Embed(description=f"ｏｗｏ:fast_forward: ```py\n{pull}```", color=0x254d16)
         info2 = discord.Embed(description=f"pull menu closed uwu", color=0x254d16)
         msg = await ctx.send(embed=info)
         time.sleep(6)
