@@ -4,6 +4,8 @@ import psutil
 import os
 
 from discord.ext import commands
+from discord import Webhook, AsyncWebhookAdapter
+import aiohttp
 from datetime import datetime
 from utils import repo, default
 
@@ -56,7 +58,6 @@ class Information:
     @commands.cooldown(rate=2, per=900, type=commands.BucketType.user)
     async def suggest(self, ctx, *, suggestion_txt: str):
         """ Send a suggestion to my owner or just tell him hes doing a bad job -w- """
-        channel = self.bot.get_channel(409168557147160587)
         suggestion = suggestion_txt
         if ctx.guild:
             color = ctx.author.color
@@ -70,13 +71,15 @@ class Information:
             await ctx.send(f"xwx uhm... {ctx.author.mention} thats a bit too long for me to send. Shorten it and try again. (2000 character limit)")
         else:
             try:
-                await ctx.send("oki! your suggestion has been sent successfully! ^w^")
+                await ctx.send("alright, i sent your suggestion!! ^w^")
+                async with aiohttp.ClientSession() as session:
+                    webhook = Webhook.from_url(os.environ["SUGGESTHOOK"], adapter=AsyncWebhookAdapter(session))
                 suggestionem = discord.Embed(description=f"{suggestion}", color=color) 
                 suggestionem.set_author(name=f"From {ctx.author}", icon_url=ctx.author.avatar_url)
                 suggestionem.set_footer(text=footer, icon_url=guild_pic)
-                await channel.send(embed=suggestionem)
+                await webhook.send(embed=suggestionem)
             except Exception as e:
-                print(e)
+                await ctx.send("uhm.. something went wrong, try again later..")
 # not working x~x
 
     @commands.command()
