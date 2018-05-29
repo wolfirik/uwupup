@@ -328,8 +328,8 @@ class Admin:
     async def pymongo(self, ctx, *, thing: str):
         post = {"author": "xwx",
                 "date": datetime.datetime.utcnow()}
-        owo = self.db
-        post_id = self.db.insert_one(post).inserted_id
+        owo = self.db.posts
+        post_id = self.db.posts.insert_one(post).inserted_id
         await ctx.send(post_id)
 
     @commands.command()
