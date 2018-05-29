@@ -65,7 +65,7 @@ class Information:
             try:
                 await ctx.send("oki! your suggestion has been sent successfully! ^w^")
                 suggestionem = discord.Embed(title=f"From {ctx.author}", description=f"{suggestion}", color=color) 
-                suggestionem.set_author(icon_url=ctx.author.icon_url)
+                suggestionem.set_author(icon_url=ctx.author.avatar_url)
                 await channel.send(embed=suggestionem)
             except Exception as e:
                 print(e)
