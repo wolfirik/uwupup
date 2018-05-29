@@ -1,4 +1,5 @@
 import time
+import datetime
 import subprocess
 from utils import repo, default, dataIO
 from utils.chat_formatting import pagify, box
@@ -324,13 +325,16 @@ class Admin:
 
     @commands.command()
     @commands.check(repo.is_owner)
-    async def rethink(self, ctx, *, thing: str):
-        await ctx.send(f"saved `{thing}` to rethink\n Output: {this}")
+    async def pymongo(self, ctx, *, thing: str):
+        post = {"author": "xwx",
+                "date": datetime.datetime.utcnow()}
+        post_id = self.db.insert_one(post).inserted_id
+        await ctx.send(post_id)
 
     @commands.command()
     @commands.check(repo.is_owner)
     async def recall(self, ctx): 
-        await ctx.send("oof")
+        await ctx.send(self.db.find_one())
 
     @commands.command()
     @commands.check(repo.is_owner)
