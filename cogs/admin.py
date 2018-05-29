@@ -17,6 +17,7 @@ import sqlite3
 import rethinkdb as r
 import psutil
 from dataIO import js
+import pymongo 
 
 async def run_cmd(cmd: str) -> str:
     """Runs a subprocess and returns the output."""
@@ -30,6 +31,8 @@ port = int(os.environ['PORT'])
 class Admin:
     def __init__(self, bot):
         self.bot = bot
+        self.client = MongoClient()
+        self.db = self.client.owopup
         #self.conn = r.connect(host='uwupup.herokuapp.com', port=port, timeout=30)
         self.config = default.get("config.json")
         self._last_result = None
@@ -286,8 +289,8 @@ class Admin:
 
         self._last_result = result
         if "bot.http.token" in code:
-           result = self.sanitize_output(result)
-           return await ctx.send(result)
+            result = self.sanitize_output(result)
+            return await ctx.send(result)
 
         else:
             try:
@@ -322,7 +325,6 @@ class Admin:
     @commands.command()
     @commands.check(repo.is_owner)
     async def rethink(self, ctx, *, thing: str):
-        this = r.db_create(f"{thing}").run(self.conn)
         await ctx.send(f"saved `{thing}` to rethink\n Output: {this}")
 
     @commands.command()
