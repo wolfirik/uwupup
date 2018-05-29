@@ -41,7 +41,7 @@ class Information:
         before = time.monotonic()
         message = await ctx.send("Pong")
         ping = (time.monotonic() - before) * 1000
-        await message.edit(content=f"Pong `Edit:` {int(ping)}ms | `Bot speed:` {self.bot.latency}ms")
+        await message.edit(content=f"Pong!\n`Edit {int(ping)}ms\nAPI {self.bot.latency}ms`")
 
     @commands.command(aliases=['joinme', 'join', 'botinvite'])
     async def links(self, ctx):
