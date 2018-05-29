@@ -295,7 +295,7 @@ class Admin:
             await ctx.send(f"{result}")
         except:
             print(result)
-            await ctx.send("it was too long so i just printed it.")
+            await ctx.send("it was too long so i just printed it. :thinking:")
 
     @commands.command()
     @commands.check(repo.is_owner)
