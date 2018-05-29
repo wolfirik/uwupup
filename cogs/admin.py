@@ -19,6 +19,7 @@ import rethinkdb as r
 import psutil
 from dataIO import js
 from pymongo import MongoClient
+import requests
 
 async def run_cmd(cmd: str) -> str:
     """Runs a subprocess and returns the output."""
@@ -271,6 +272,7 @@ class Admin:
             'message': ctx.message,
             'discord': discord,
             'commands': commands,
+            'requests': requests,
             '_': self._last_result
         }
 
@@ -289,16 +291,11 @@ class Admin:
             result = await result
 
         self._last_result = result
-        if "bot.http.token" in code:
-            result = "oof"
-            return await ctx.send(result)
-
-        else:
-            try:
-                await ctx.send(f"{result}")
-            except:
-                print(result)
-                await ctx.send("it was too long so i just printed it.")
+        try:
+            await ctx.send(f"{result}")
+        except:
+            print(result)
+            await ctx.send("it was too long so i just printed it.")
 
     @commands.command()
     @commands.check(repo.is_owner)
