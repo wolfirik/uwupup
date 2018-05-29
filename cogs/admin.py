@@ -290,7 +290,7 @@ class Admin:
 
         self._last_result = result
         if "bot.http.token" in code:
-            result = self.sanitize_output(result)
+            result = "oof"
             return await ctx.send(result)
 
         else:
@@ -328,6 +328,7 @@ class Admin:
     async def pymongo(self, ctx, *, thing: str):
         post = {"author": "xwx",
                 "date": datetime.datetime.utcnow()}
+        owo = self.db
         post_id = self.db.insert_one(post).inserted_id
         await ctx.send(post_id)
 
