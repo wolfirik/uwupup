@@ -58,7 +58,7 @@ class Information:
         """ Send a suggestion to my owner or just tell him hes doing a bad job -w- """
         channel = self.bot.get_channel(409168557147160587)
         suggestion = suggestion_txt
-        color = if isintance(ctx.guild) ctx.author.color else 0x254d16
+        color = 0x254d16
         if len(suggestion) > 2000:
             await ctx.send(f"xwx {ctx.author.mention} thats a bit too long for me to send. Shorten it and try again. (2000 character limit)")
         else:
