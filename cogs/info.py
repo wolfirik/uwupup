@@ -58,7 +58,7 @@ class Information:
         """ Send a suggestion to my owner or just tell him hes doing a bad job -w- """
         channel = self.bot.get_channel(409168557147160587)
         suggestion = suggestion_txt
-        if isinstance(ctx.channel):
+        if ctx.guild:
             color = ctx.author.color
         else:
             color = 0x254d16
