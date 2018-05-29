@@ -60,8 +60,12 @@ class Information:
         suggestion = suggestion_txt
         if ctx.guild:
             color = ctx.author.color
+            footer = f"Sent from {ctx.guild.name}"
+            guild_pic = ctx.guild.icon_url
         else:
             color = 0x254d16
+            footer = "Sent from DMs"
+            guild_pic = ""
         if len(suggestion) > 2000:
             await ctx.send(f"xwx uhm... {ctx.author.mention} thats a bit too long for me to send. Shorten it and try again. (2000 character limit)")
         else:
@@ -69,6 +73,7 @@ class Information:
                 await ctx.send("oki! your suggestion has been sent successfully! ^w^")
                 suggestionem = discord.Embed(description=f"{suggestion}", color=color) 
                 suggestionem.set_author(name=f"From {ctx.author}", icon_url=ctx.author.avatar_url)
+                suggestionem.set_footer(text=footer, icon_url=guild_pic)
                 await channel.send(embed=suggestionem)
             except Exception as e:
                 print(e)
