@@ -333,7 +333,7 @@ class Admin:
     @commands.check(repo.is_owner)
     async def sql(self, ctx, *, thing: str):
         self.c.execute("CREATE TABLE test (msg text);")
-        ree = self.c.execute("INSERT INTO test (msg) VALUES (%(str)s)", ("a thing"))
+        ree = self.c.execute("INSERT INTO test (msg) VALUES (%(str)s)", ("a thing",))
         self.conn.commit()
         await ctx.send(ree)
 
