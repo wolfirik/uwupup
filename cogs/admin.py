@@ -339,8 +339,10 @@ class Admin:
 
     @commands.command()
     @commands.check(repo.is_owner)
-    async def recall(self, ctx): 
-        await ctx.send(self.db.find_one())
+    async def recall(self, ctx):
+        self.c.execute("SELECT * FROM test;") 
+        uhh = self.c.fetchone()
+        await ctx.send(uhh)
 
     @commands.command()
     @commands.check(repo.is_owner)
