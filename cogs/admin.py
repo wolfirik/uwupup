@@ -28,7 +28,7 @@ async def run_cmd(cmd: str) -> str:
     results = await process.communicate()
     return "".join(x.decode("utf-8") for x in results)
 
-port = int(os.environ['PORT'])
+DATABASE_URL = os.environ['DATABASE_URL']
 
 class Admin:
     def __init__(self, bot):
