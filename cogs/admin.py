@@ -14,12 +14,9 @@ from contextlib import redirect_stdout
 from copy import copy
 import inspect
 import textwrap
-import sqlite3
-import rethinkdb as r
 import psutil
-from dataIO import js
-from pymongo import MongoClient
 import requests
+import psycopg2
 
 async def run_cmd(cmd: str) -> str:
     """Runs a subprocess and returns the output."""
@@ -33,9 +30,7 @@ DATABASE_URL = os.environ['DATABASE_URL']
 class Admin:
     def __init__(self, bot):
         self.bot = bot
-        self.client = MongoClient(connect=False)
-        self.db = self.client["owopup"]
-        #self.conn = r.connect(host='uwupup.herokuapp.com', port=port, timeout=30)
+        self.conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         self.config = default.get("config.json")
         self._last_result = None
 
