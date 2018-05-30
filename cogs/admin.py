@@ -31,6 +31,7 @@ class Admin:
     def __init__(self, bot):
         self.bot = bot
         self.conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+        self.c = self.conn.cursor()
         self.config = default.get("config.json")
         self._last_result = None
 
@@ -330,12 +331,11 @@ class Admin:
 
     @commands.command()
     @commands.check(repo.is_owner)
-    async def pymongo(self, ctx, *, thing: str):
-        post = {"author": "xwx",
-                "date": datetime.datetime.utcnow()}
-        owo = self.db.posts
-        post_id = self.db.posts.insert_one(post).inserted_id
-        await ctx.send(post_id)
+    async def sql(self, ctx, *, thing: str):
+        self.c.execute("CREATE TABLE test (msg str);")
+        ree = self.c.execute("INSERT INTO test (msg) VALUES (%s)", (thing))
+        self.conn.commit()
+        await ctx.send(ree)
 
     @commands.command()
     @commands.check(repo.is_owner)
