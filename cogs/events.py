@@ -47,7 +47,7 @@ class Events:
             await ctx.send(embed=errem)
 
         elif isinstance(err, errors.CheckFailure):
-            no = self.bot.get_emoji(315009174163685377)
+            no = self.bot.get_emoji(451741018539163648)
             try:
                 await ctx.message.add_reaction(no)
             except:
