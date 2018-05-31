@@ -162,7 +162,8 @@ class Fun_Commands:
     @commands.command()
     @commands.guild_only()
     async def kiss(self, ctx, user: discord.Member=None):
-        """give someone a kiss >w>""" 
+        """give someone a kiss >w>"""
+        eye = self.bot.get_emoji(451796122311327745)
         if not user:
             await ctx.send("u-uhm who do you wanna kiss..?")
         elif user == self.bot.user:
