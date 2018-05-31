@@ -32,7 +32,7 @@ class Admin:
     def __init__(self, bot):
         self.bot = bot
         self.db_client = MongoClient(db_uri)
-        self.db = db_client['Skullbite']
+        self.db = self.db_client['Skullbite']
         self.config = default.get("config.json")
         self._last_result = None
 
