@@ -160,6 +160,34 @@ class Fun_Commands:
                 await ctx.send("something oofed..")
 
     @commands.command()
+    @commands.guild_only()
+    async def kiss(self, ctx, user: discord.Member=None):
+        """give someone a kiss >w>""" 
+        if not user:
+            await ctx.send("u-uhm who do you wanna kiss..?")
+        elif user == self.bot.user:
+            await ctx.send("i-i don't want any k-kisses..!") 
+        elif user == ctx.author:
+            await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
+        else:
+            try:
+                r = requests.get('https://e926.net/post/index.json?limit=1&tags=kiss%20cute%20fur%20-equine%20order:random') 
+                r = r.json()
+                link = r[0].get('file_url')
+                thing = BytesIO(await http.get(link, res_method="read"))
+            except:
+                return await ctx.send("I think e926 is being dumb.. try again later..")
+
+            lick = discord.Embed(description=f"**{ctx.author.name} kissed {user.name} \:heart:w\:heart:**", color=0xf26522)
+            lick.set_image(url=link)
+            try:
+                await ctx.send(embed=lick)
+            except discord.Forbidden:
+                await ctx.send("aww i can't send embeds.. ;w;")
+            except:
+                await ctx.send("something oofed..")
+
+    @commands.command()
     @commands.is_nsfw() # TODO: Make a nsfw cog.
     async def yiff(self, ctx):
         """posts a yiff >:3 [thanks waspy]"""
