@@ -115,7 +115,7 @@ class Fun_Commands:
 
         else:
             try:
-                r = requests.get('https://e926.net/post/index.json?limit=1&tags=cuddle%20cute%20fur%20-equine%20-breasts%20') 
+                r = requests.get('https://e926.net/post/index.json?limit=1&tags=cuddle%20cute%20fur%20-equine%20order:random') 
                 r = r.json()
                 link = r[0].get('file_url')
                 thing = BytesIO(await http.get(link, res_method="read"))
