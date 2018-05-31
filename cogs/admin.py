@@ -338,7 +338,7 @@ class Admin:
     async def sql(self, ctx, *, thing: str):
         collection = self.db[ctx.guild.id]
         writeDocument = {}
-        writeDocument['_id'] = ctx.author.id
+        writeDocument['_id'] = "hai"
         writeDocument['content'] = thing
         result = collection.update_one({'_id': writeDocument['_id']}, {'$set': writeDocument}, upsert=True)
         await ctx.send("alright done.")
