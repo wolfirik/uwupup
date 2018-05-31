@@ -26,7 +26,7 @@ async def run_cmd(cmd: str) -> str:
     results = await process.communicate()
     return "".join(x.decode("utf-8") for x in results)
 
-DATABASE_URL = os.environ['MONGODB_URI']
+db_uri = os.environ['MONGODB_URI']
 
 class Admin:
     def __init__(self, bot):
@@ -336,7 +336,7 @@ class Admin:
     @commands.command()
     @commands.check(repo.is_owner)
     async def sql(self, ctx, *, thing: str):
-        collection = db[ctx.guild.id]
+        collection = self.db[ctx.guild.id]
         writeDocument = {}
         writeDocument['_id'] = ctx.author.id
         writeDocument['content'] = thing
