@@ -109,12 +109,14 @@ class Admin:
         dbltoken = os.environ["DBL_TOKEN"]
         url = "https://discordbots.org/api/bots/365255872181567489/stats"
         headers = {"Authorization" : dbltoken}
+        yup = self.bot.get_emoji(451741018425917440)
+        nope = self.bot.get_emoji(451741018539163648)
         try: 
             payload = {"server_count"  : len(self.bot.guilds)}
             requests.post(url, data=payload, headers=headers)
-            await ctx.send(":ok_hand:")
+            await ctx.message.add_reaction(yup)
         except:
-            await ctx.send("xwx")
+            await ctx.message.add_reaction(nope)
 
     @commands.command()
     @commands.check(repo.is_owner)
@@ -231,6 +233,7 @@ class Admin:
     @commands.check(repo.is_owner)
     async def update(self, ctx):
         """gets latest commits and applies them from git"""
+        yup = self.bot.get_emoji(451741018425917440)
         await run_cmd('git init')
         await run_cmd('git remote add pup https://github.com/Skullbite/uwupup')
         pull = await run_cmd('git pull pup master --no-commit --no-edit --ff-only')
@@ -238,7 +241,7 @@ class Admin:
         ack = await run_cmd('git reset --hard pup/master')
         pull = pull.replace('https://github.com/Skullbite/uwupup', 'owopup')
         info = discord.Embed(description=f"ｏｗｏ:fast_forward: ```py\n{pull}```", color=0x254d16)
-        info2 = discord.Embed(description=f"pull menu closed uwu", color=0x254d16)
+        info2 = discord.Embed(description=f"{yuppull complete uwu", color=0x254d16)
         msg = await ctx.send(embed=info)
         time.sleep(6)
         await msg.edit(embed=info2)
