@@ -103,6 +103,35 @@ class Fun_Commands:
             except:
                 await ctx.send("something oofed..")
 
+    @commands.command(aliases=['snuggle'])
+    @commands.guild_only()
+    async def cuddle(self, ctx, user: discord.Member=None):
+        """cuddle a cutie uwu""" 
+        if not user:
+            await ctx.send("u-uhm who do you wanna cuddle..? owo")
+        elif user == self.bot.user:
+            await ctx.send("d-don't cuddle me..!") 
+        elif user == ctx.author:
+            await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
+
+        else:
+            try:
+                r = requests.get('https://e926.net/post/index.json?limit=1&tags=cuddle%20cute%20fur%20-equine%20-breasts%20') 
+                r = r.json()
+                link = r[0].get('file_url')
+                thing = BytesIO(await http.get(link, res_method="read"))
+            except:
+                return await ctx.send("I think e926 is being dumb.. try again later..")
+
+            hugge = discord.Embed(description=f"**{ctx.author.name} cuddled {user.name} OwO**", color=0x3f51b5)
+            hugge.set_image(url=link)
+            try:
+                await ctx.send(embed=hugge)
+            except discord.Forbidden:
+                await ctx.send("aww i can't send embeds.. ;w;")
+            except:
+                await ctx.send("something oofed..")
+
     @commands.command()
     @commands.guild_only()
     async def lick(self, ctx, user: discord.Member=None):
