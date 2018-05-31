@@ -178,7 +178,7 @@ class Fun_Commands:
             except:
                 return await ctx.send("I think e926 is being dumb.. try again later..")
 
-            lick = discord.Embed(description=f"**{ctx.author.name} kissed {user.name} \:heart:w\:heart:**", color=0xf26522)
+            lick = discord.Embed(description=f"**{ctx.author.name} kissed {user.name} ❤w❤**", color=0xf26522)
             lick.set_image(url=link)
             try:
                 await ctx.send(embed=lick)
