@@ -92,7 +92,7 @@ class Events:
             await to_send.send("hewwooo!! ^w^")
             invite = await invite_chan.create_invite(reason="Don't mind me")
             invite_msg = f"[**Guild Invite**]({invite})"
-        if len(bots) > len(guild.members):
+        if len(bots) > members:
             sketchy_msg = "\n<:blobdoggothink:444122378260185088> | **Prolly a bot farm or bot testing guild**"
         else: 
             sketchy_msg = ""
