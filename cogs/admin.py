@@ -32,7 +32,7 @@ class Admin:
     def __init__(self, bot):
         self.bot = bot
         self.db_client = MongoClient(db_uri)
-        self.db = self.db_client['Skullbite']
+        self.db = self.db_client['owopup']
         self.config = default.get("config.json")
         self._last_result = None
 
@@ -348,18 +348,22 @@ class Admin:
 
     @commands.command()
     @commands.check(repo.is_owner)
-    async def sql(self, ctx, *, thing: str):
-        collection = self.db[ctx.guild.id]
-        writeDocument = {}
-        writeDocument['_id'] = "hai"
-        writeDocument['content'] = thing
-        result = collection.update_one({'_id': writeDocument['_id']}, {'$set': writeDocument}, upsert=True)
+    async def mongo(self, ctx, *, thing: str):
+        posts = self.db.testpost
+        post_data = {
+            'title': 'Python and MongoDB',
+            'content': 'PyMongo is fun, you guys',
+            'author': 'Scott'
+        }
+        result = posts.insert_one(post_data)
         await ctx.send("alright done.")
 
     @commands.command()
     @commands.check(repo.is_owner)
     async def recall(self, ctx):
-        await ctx.send("uhh")
+        posts = self.db.testpost
+        a_post = posts.find_one({'author': 'Scott'})
+        await ctx.send(a_post)
 
     @commands.command()
     @commands.check(repo.is_owner)
