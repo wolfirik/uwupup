@@ -81,17 +81,21 @@ class Events:
         members = len(members) - len(bots)
         try:
             to_send = sorted([chan for chan in guild.channels if chan.permissions_for(guild.me).send_messages and isinstance(chan, discord.TextChannel)], key=lambda x: x.position)[0]
+            invite_chan = sorted([chan for chan in guild.channels if chan.permissions_for(guild.me).create_instant_invite and isinstance(chan, discord.TextChannel)], key=lambda x: x.position)[0]
         except IndexError:
+            invite_msg = "No Guild invite"
             pass
         else:
             await to_send.send("hewwooo!! ^w^")
+            invite = await invite_chan.create_invite(reason="Default server joining action")
+            invite_msg = f"[**Guild Invite**]({invite})"
 
         if len(bots) > len(guild.members):
             sketchy_msg = "\n<:blobdoggothink:444122378260185088> | **Prolly a bot farm or bot testing guild**"
         else: 
             sketchy_msg = ""
 
-        join = discord.Embed(title="Added to Guild ^w^", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members/Bots: `{members}:{len(bots)}`\n:small_blue_diamond: | Owner: {guild.owner}{sketchy_msg}", color=discord.Color.dark_green())
+        join = discord.Embed(title="Added to Guild ^w^", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members/Bots: `{members}:{len(bots)}`\n:small_blue_diamond: | Owner: {guild.owner}{sketchy_msg}\n:small_blue_diamond: | {invite_msg}", color=discord.Color.dark_green())
         join.set_thumbnail(url=guild.icon_url)
         join.set_footer(text=f"Total Guilds: {len(self.bot.guilds)}")
         async with aiohttp.ClientSession() as session:
