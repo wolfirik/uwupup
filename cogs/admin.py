@@ -351,7 +351,7 @@ class Admin:
     @commands.command()
     @commands.check(repo.is_owner)
     async def mongo(self, ctx):
-        post_data = [{ 'name' : "jeff" }]
+        post_data = [{ 'name' : "jeff", 'meme': "null" }]
         #post_data = json.loads(post_data)
         headers = {'content-type': 'application/json'}
         r = requests.post(f'https://api.mlab.com/api/1/databases/{os.environ["DB_NAME"]}/collections/test?apiKey={os.environ["MLAB_KEY"]}', data=post_data, headers=headers)
