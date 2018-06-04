@@ -328,11 +328,14 @@ class Admin:
         """ Makes me get the information from a guild id"""
         guild = self.bot.get_guild(guild_id)
         try:
-            guild = self.bot.get_guild(guild_id)
             members = set(guild.members)
             bots = filter(lambda m: m.bot, members)
             bots = set(bots)
-            info = discord.Embed(title="Guild info", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members/Bots: {len(guild.members)}\n:small_blue_diamond: | Members/Bots: {len(guild.members)}/{len(bots)}\n:small_blue_diamond: | Owner: {guild.owner}", color=discord.Color.blue())
+            members = len(members) - len(bots)
+            roles = ", ".join([x.mention for x in guild.roles])
+            info = discord.Embed(title="Guild info", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members/Bots: {members}/{len(bots)}"
+                                                                  "\n:small_blue_diamond: | Owner: {guild.owner}\n:small_blue_diamond: | Created at: {guild.crated_at}"
+                                                                  "\n:small_blue_diamond: | Roles: {roles}", color=discord.Color.blue())
             info.set_thumbnail(url=guild.icon_url)
             await ctx.send(embed=info)
         except:
