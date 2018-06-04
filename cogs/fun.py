@@ -35,14 +35,18 @@ class Fun_Commands:
     async def neko_search(self, ctx):
         """Posts a neko"""
         pic = await self.randomimageapi(ctx, 'https://nekos.life/api/v2/img/neko', 'url')
-        await ctx.send(pic)
+        meow = discord.Embed(description=f"n-nya!!", color=0xcb27ff)
+        meow.set_image(url=pic)
+        await ctx.send(meow=pic)
         
     @commands.command()
     @commands.cooldown(rate=1, per=1.5, type=commands.BucketType.user)
     async def cat(self, ctx):
         """ Posts a random cat """
         pic = await self.randomimageapi(ctx, 'https://nekos.life/api/v2/img/meow', 'url')
-        await ctx.send(pic)
+        meow = discord.Embed(description=f"m-meow. hmph", color=0x002d55)
+        meow.set_image(url=pic)
+        await ctx.send(embed=meow)
         
     @commands.command()
     @commands.cooldown(rate=1, per=1.5, type=commands.BucketType.user)
@@ -150,7 +154,7 @@ class Fun_Commands:
             except:
                 return await ctx.send("I think e926 is being dumb.. try again later..")
 
-            lick = discord.Embed(description=f"**{ctx.author.name} licked {user.name} XP**", color=0xf26522)
+            lick = discord.Embed(description=f"**{ctx.author.name} licked {user.name} XP**", color=0x2e7d32)
             lick.set_image(url=link)
             try:
                 await ctx.send(embed=lick)
