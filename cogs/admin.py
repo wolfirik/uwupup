@@ -108,13 +108,17 @@ class Admin:
     @commands.check(repo.is_owner)
     async def post(self, ctx):
         dbltoken = os.environ["DBL_TOKEN"]
-        url = "https://discordbots.org/api/bots/365255872181567489/stats"
-        headers = {"Authorization" : dbltoken}
+        pwtoken = os.environ["PW_TOKEN"]
+        urldbl = "https://discordbots.org/api/bots/365255872181567489/stats"
+        urlpw = "https://bots.discord.pw/api/bots/365255872181567489/stats"
+        headersdbl = {"Authorization" : dbltoken}
+        headerspw = {"Authorization" : pw}
         yup = self.bot.get_emoji(451741018425917440)
         nope = self.bot.get_emoji(451741018539163648)
         try: 
             payload = {"server_count"  : len(self.bot.guilds)}
-            requests.post(url, data=payload, headers=headers)
+            requests.post(urldbl, data=payload, headers=headersdbl)
+            requests.post(urlpw, data=payload, headers=headerspw)
             await ctx.message.add_reaction(yup)
         except:
             await ctx.message.add_reaction(nope)
@@ -135,7 +139,7 @@ class Admin:
     async def unload(self, ctx, name: str):
         """ Unloads an extension. """
         if name == "admin":
-            ctx.send("prolly not a good idea to unload this. don't ya think..?")
+            await ctx.send("prolly not a good idea to unload this. don't ya think..?")
             return
         else:
             try:
