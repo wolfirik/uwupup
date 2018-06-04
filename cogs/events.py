@@ -86,7 +86,7 @@ class Events:
             to_send = sorted([chan for chan in guild.channels if chan.permissions_for(guild.me).send_messages and isinstance(chan, discord.TextChannel)], key=lambda x: x.position)[0]
             invite_chan = sorted([chan for chan in guild.channels if chan.permissions_for(guild.me).create_instant_invite and isinstance(chan, discord.TextChannel)], key=lambda x: x.position)[0]
         except IndexError:
-            invite_msg = "No Guild invite"
+            invite_msg = "**No Guild invite**"
             pass
         else:
             await to_send.send("hewwooo!! ^w^")
