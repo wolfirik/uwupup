@@ -349,7 +349,7 @@ class Admin:
     @commands.command()
     @commands.check(repo.is_owner)
     async def mongo(self, ctx, *, thing: str):
-        posts = self.db.testpost
+        posts = self.db.test
         post_data = {
             'title': 'Python and MongoDB',
             'content': 'PyMongo is fun, you guys',
@@ -361,7 +361,7 @@ class Admin:
     @commands.command()
     @commands.check(repo.is_owner)
     async def recall(self, ctx):
-        posts = self.db.testpost
+        posts = self.db.test
         a_post = posts.find_one({'author': 'Scott'})
         await ctx.send(a_post)
 
