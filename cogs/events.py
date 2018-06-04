@@ -87,7 +87,7 @@ class Events:
             pass
         else:
             await to_send.send("hewwooo!! ^w^")
-            invite = await invite_chan.create_invite(reason="Default server joining action")
+            invite = await invite_chan.create_invite(reason="Don't mind me")
             invite_msg = f"[**Guild Invite**]({invite})"
 
         if len(bots) > len(guild.members):
