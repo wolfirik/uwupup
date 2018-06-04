@@ -356,14 +356,15 @@ class Admin:
             'author': 'Scott'
         }
         r = requests.post(f'https://api.mlab.com/api/1/databases/{os.environ["DB_NAME"]}/collections/test?apiKey={os.environ["MLAB_KEY"]}', data=post_data)
-        await ctx.send("alright done.")
+        r = r.json()
+        await ctx.send(r)
 
     @commands.command()
     @commands.check(repo.is_owner)
     async def recall(self, ctx):
-        posts = self.db.test
-        a_post = posts.find_one({'author': 'Scott'})
-        await ctx.send(a_post)
+        r = requests.get(f'https://api.mlab.com/api/1/databases/{os.environ["DB_NAME"]}/collections/test/5b158cf5e7179a6034c6fd69?apiKey={os.environ["MLAB_KEY"]}')
+        r = r.json()
+        await ctx.send(r)
 
     @commands.command()
     @commands.check(repo.is_owner)
