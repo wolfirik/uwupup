@@ -334,8 +334,8 @@ class Admin:
             members = len(members) - len(bots)
             roles = ", ".join([x.mention for x in guild.roles])
             info = discord.Embed(title="Guild info", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members/Bots: {members}/{len(bots)}"
-                                                                  "\n:small_blue_diamond: | Owner: {guild.owner}\n:small_blue_diamond: | Created at: {guild.crated_at}"
-                                                                  "\n:small_blue_diamond: | Roles: {roles}", color=discord.Color.blue())
+                                                                  f"\n:small_blue_diamond: | Owner: {guild.owner}\n:small_blue_diamond: | Created at: {guild.crated_at}"
+                                                                  f"\n:small_blue_diamond: | Roles: {roles}", color=discord.Color.blue())
             info.set_thumbnail(url=guild.icon_url)
             await ctx.send(embed=info)
         except:
