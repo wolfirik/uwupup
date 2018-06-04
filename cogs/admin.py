@@ -26,13 +26,13 @@ async def run_cmd(cmd: str) -> str:
     results = await process.communicate()
     return "".join(x.decode("utf-8") for x in results)
 
-db_uri = os.environ['MONGODB_URI']
+db_uri = os.environ['MONGOLAB_NAVY_URI']
 
 class Admin:
     def __init__(self, bot):
         self.bot = bot
         self.db_client = MongoClient(db_uri)
-        self.db = self.db_client['Skullbite']
+        self.db = self.db_client['owopup']
         self.config = default.get("config.json")
         self._last_result = None
 
