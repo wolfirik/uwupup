@@ -147,7 +147,7 @@ class Fun_Commands:
             await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
         else:
             try:
-                r = requests.get('https://e926.net/post/index.json?limit=1&tags=-kiss%20order:random%20face_lick%20-equine%20duo') 
+                r = requests.get('https://e926.net/post/index.json?limit=1&tags=-kiss%20order:random%20face_lick%20-equine%20-belly_expansion') 
                 r = r.json()
                 link = r[0].get('file_url')
                 thing = BytesIO(await http.get(link, res_method="read"))
