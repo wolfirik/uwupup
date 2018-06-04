@@ -291,6 +291,7 @@ class Admin:
             'discord': discord,
             'commands': commands,
             'requests': requests,
+            'db': self.db,
             '_': self._last_result
         }
 
