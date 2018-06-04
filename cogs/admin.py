@@ -355,7 +355,8 @@ class Admin:
             'content': 'uhh',
             'author': 'Scott'
         }
-        r = requests.post(f'https://api.mlab.com/api/1/databases/{os.environ["DB_NAME"]}/collections/test?apiKey={os.environ["MLAB_KEY"]}', data=post_data)
+        headers = {'content-type': 'application/json'}
+        r = requests.post(f'https://api.mlab.com/api/1/databases/{os.environ["DB_NAME"]}/collections/test?apiKey={os.environ["MLAB_KEY"]}', data=post_data, headers=headers)
         r = r.json()
         await ctx.send(r)
 
