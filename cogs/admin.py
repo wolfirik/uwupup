@@ -120,7 +120,8 @@ class Admin:
             requests.post(urldbl, data=payload, headers=headersdbl)
             requests.post(urlpw, data=payload, headers=headerspw)
             await ctx.message.add_reaction(yup)
-        except:
+        except Exception as e:
+            await ctx.send(e)
             await ctx.message.add_reaction(nope)
 
     @commands.command()
