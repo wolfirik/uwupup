@@ -112,7 +112,7 @@ class Admin:
         urldbl = "https://discordbots.org/api/bots/365255872181567489/stats"
         urlpw = "https://bots.discord.pw/api/bots/365255872181567489/stats"
         headersdbl = {"Authorization" : dbltoken}
-        headerspw = {"Authorization" : pw}
+        headerspw = {"Authorization" : pwtoken}
         yup = self.bot.get_emoji(451741018425917440)
         nope = self.bot.get_emoji(451741018539163648)
         try: 
