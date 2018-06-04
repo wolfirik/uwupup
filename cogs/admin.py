@@ -368,6 +368,13 @@ class Admin:
 
     @commands.command()
     @commands.check(repo.is_owner)
+    async def mon(self, ctx):
+        r = requests.get(f'https://api.mlab.com/api/1/databases?apiKey={os.environ["MLAB_KEY"]}')
+        r = r.json()
+        await ctx.send(r)
+
+    @commands.command()
+    @commands.check(repo.is_owner)
     async def cogs(self, ctx):
         mod = ", ".join(list(self.bot.cogs))
         await ctx.send(f"The current modules I can see are:\n{mod}")
