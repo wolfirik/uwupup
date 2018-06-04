@@ -29,9 +29,6 @@ class Events:
         self.bot = bot
         self.counter = Counter()
         self.config = default.get("config.json")
-        self.token = os.environ["DBL_TOKEN"] 
-        self.dblpy = dbl.Client(self.bot, self.token, loop=bot.loop)
-        self.updating = bot.loop.create_task(self.update_stats())
 
     async def on_command_error(self, ctx, err):
         if isinstance(err, errors.MissingRequiredArgument) or isinstance(err, errors.BadArgument):
