@@ -339,7 +339,8 @@ class Admin:
 
             info = discord.Embed(title="Guild info", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members/Bots: {members}/{len(bots)}"
                                                                   f"\n:small_blue_diamond: | Owner: {guild.owner}\n:small_blue_diamond: | Created at: {guild.created_at}"
-                                                                  f"\n:small_blue_diamond: | Roles: {roles}", color=discord.Color.blue())
+                                                                  f"\n:small_blue_diamond: | Roles: {roles}"
+                                                                  f"\n:small_blue_diamond: | Shard ID (useless rn): {guild.shard_id}", color=discord.Color.blue())
             info.set_thumbnail(url=guild.icon_url)
             await ctx.send(embed=info)
         except:
