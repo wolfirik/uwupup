@@ -350,13 +350,12 @@ class Admin:
     @commands.command()
     @commands.check(repo.is_owner)
     async def mongo(self, ctx, *, thing: str):
-        posts = self.db.test
         post_data = {
             'title': 'Python and MongoDB',
             'content': 'PyMongo is fun, you guys',
             'author': 'Scott'
         }
-        result = posts.insert_one(post_data)
+        r = requests.post(f'https://api.mlab.com/api/1/databases/{os.environ["DB_NAME"]}/collections/test?apiKey={os.environ["MLAB_KEY"]}', data=post_data)
         await ctx.send("alright done.")
 
     @commands.command()
