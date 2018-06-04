@@ -352,7 +352,7 @@ class Admin:
     async def mongo(self, ctx, *, thing: str):
         post_data = {
             'title': 'Python and MongoDB',
-            'content': 'PyMongo is fun, you guys',
+            'content': 'uhh',
             'author': 'Scott'
         }
         r = requests.post(f'https://api.mlab.com/api/1/databases/{os.environ["DB_NAME"]}/collections/test?apiKey={os.environ["MLAB_KEY"]}', data=post_data)
