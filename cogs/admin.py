@@ -324,7 +324,7 @@ class Admin:
     
     @commands.command()
     @commands.check(repo.is_owner)
-    async def gsi(self, ctx, *, guild_id: str):
+    async def gsi(self, ctx, *, guild_id: int):
         """ Makes me get the information from a guild id"""
         guild = self.bot.get_guild(guild_id)
         try:
@@ -334,9 +334,9 @@ class Admin:
             bots = set(bots)
             info = discord.Embed(title="Guild info", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members/Bots: {len(guild.members)}\n:small_blue_diamond: | Members/Bots: {len(guild.members)}/{len(bots)}\n:small_blue_diamond: | Owner: {guild.owner}", color=discord.Color.blue())
             info.set_thumbnail(url=guild.icon_url)
-            ctx.send(embed=info)
+            await ctx.send(embed=info)
         except:
-            ctx.send("Hmmph i got nothin. Either you gave an invalid server id or i'm not in that server")
+            await ctx.send("Hmmph i got nothin. Either you gave an invalid server id or i'm not in that server")
 
     @commands.command()
     @commands.check(repo.is_owner)
