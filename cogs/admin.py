@@ -32,7 +32,7 @@ class Admin:
     def __init__(self, bot):
         self.bot = bot
         self.db_client = MongoClient(db_uri)
-        self.db = self.db_client['owopup']
+        self.db = self.db_client['Skullbite']
         self.config = default.get("config.json")
         self._last_result = None
 
@@ -350,6 +350,7 @@ class Admin:
     @commands.command()
     @commands.check(repo.is_owner)
     async def mongo(self, ctx, *, thing: str):
+        self.db.auth("uwupup", f"{os.environ["pw"]}")
         posts = self.db.test
         post_data = {
             'title': 'Python and MongoDB',
