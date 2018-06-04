@@ -10,6 +10,7 @@ from collections import Counter
 import os
 from datetime import datetime
 import dbl
+import requests
 
 async def send_cmd_help(ctx):
     if ctx.invoked_subcommand:
