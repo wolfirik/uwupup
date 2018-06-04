@@ -350,7 +350,7 @@ class Admin:
     @commands.command()
     @commands.check(repo.is_owner)
     async def mongo(self, ctx, *, thing: str):
-        self.db.auth("uwupup", f"{os.environ["pw"]}")
+        await self.db.auth("uwupup", f"{os.environ["pw"]}")
         posts = self.db.test
         post_data = {
             'title': 'Python and MongoDB',
