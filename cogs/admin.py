@@ -246,7 +246,7 @@ class Admin:
         await run_cmd('git fetch --all')
         ack = await run_cmd('git reset --hard pup/master')
         pull = pull.replace('https://github.com/Skullbite/uwupup', 'owopup')
-        info = discord.Embed(description=f"ｏｗｏ:fast_forward: ```py\n{pull}```", color=0x254d16)
+        info = discord.Embed(description=f"ｏｗｏ:fast_forward: ```css\n{pull}```", color=0x254d16)
         info2 = discord.Embed(description=f"{yup} pull complete uwu", color=0x254d16)
         msg = await ctx.send(embed=info)
         time.sleep(6)
