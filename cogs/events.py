@@ -106,15 +106,28 @@ class Events:
             webhook = Webhook.from_url(os.environ["WEBHOOK"], adapter=AsyncWebhookAdapter(session))
             await webhook.send(embed=join)
         try: 
-        requests.post(urldbl, data=payload, headers=headersdbl)
-        requests.post(urlpw, data=payload, headers=headerspw)
+            requests.post(urldbl, data=payload, headers=headersdbl)
+            requests.post(urlpw, data=payload, headers=headerspw)
+        except:
+            pass
+
     async def on_guild_remove(self, guild):
+        dbltoken = os.environ["DBL_TOKEN"]
+        pwtoken = os.environ["PW_TOKEN"]
+        urldbl = "https://discordbots.org/api/bots/365255872181567489/stats"
+        urlpw = "https://bots.discord.pw/api/bots/365255872181567489/stats"
+        payload = {"server_count"  : len(self.bot.guilds)}
         leave = discord.Embed(title="Removed from Guild umu", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members: {len(guild.members)}\n:small_blue_diamond: | Owner: {guild.owner}", color=discord.Color.dark_red())
         leave.set_thumbnail(url=guild.icon_url)
         leave.set_footer(text=f"Total Guilds: {len(self.bot.guilds)}")
         async with aiohttp.ClientSession() as session:
             webhook = Webhook.from_url(os.environ["WEBHOOK"], adapter=AsyncWebhookAdapter(session))
             await webhook.send(embed=leave)
+        try: 
+            requests.post(urldbl, data=payload, headers=headersdbl)
+            requests.post(urlpw, data=payload, headers=headerspw)
+        except:
+            pass
 
     async def on_message(self, msg):
         self.bot.counter["msgs_read"] += 1
