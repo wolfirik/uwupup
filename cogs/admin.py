@@ -332,7 +332,11 @@ class Admin:
             bots = filter(lambda m: m.bot, members)
             bots = set(bots)
             members = len(members) - len(bots)
-            roles = ", ".join([x.mention for x in guild.roles])
+            if guild == ctx.guild:
+                roles = ", ".join([x.mention for x in guild.roles])
+            else:
+                roles = "oof"
+
             info = discord.Embed(title="Guild info", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members/Bots: {members}/{len(bots)}"
                                                                   f"\n:small_blue_diamond: | Owner: {guild.owner}\n:small_blue_diamond: | Created at: {guild.created_at}"
                                                                   f"\n:small_blue_diamond: | Roles: {roles}", color=discord.Color.blue())
