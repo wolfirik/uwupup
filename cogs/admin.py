@@ -119,9 +119,10 @@ class Admin:
         yup = self.bot.get_emoji(451741018425917440)
         nope = self.bot.get_emoji(451741018539163648)
         try: 
-            payload = {"server_count"  : len(self.bot.guilds)}
-            dbl = requests.post(urldbl, data=payload, headers=headersdbl)
-            pw = requests.post(urlpw, data=payload, headers=headerspw)
+            payloaddbl = {"server_count"  : len(self.bot.guilds)}
+            payloadpw = {"server_count": len(self.bot.guilds)} #json's formatted differently.
+            dbl = requests.post(urldbl, data=payloaddbl, headers=headersdbl)
+            pw = requests.post(urlpw, data=payloadpw, headers=headerspw)
             dbl = dbl.json()
             pw = pw.json()
             await ctx.send(f"{dblemote} `{dbl}`\n{pwemote} `{pw}`")
