@@ -241,8 +241,6 @@ class Admin:
     async def update(self, ctx):
         """gets latest commits and applies them from git"""
         yup = self.bot.get_emoji(451741018425917440)
-        await run_cmd('git init')
-        await run_cmd('git remote add pup https://github.com/Skullbite/uwupup')
         pull = await run_cmd('git pull pup master --no-commit --no-edit --ff-only')
         await run_cmd('git fetch --all')
         ack = await run_cmd('git reset --hard pup/master')
@@ -377,6 +375,10 @@ class Admin:
     async def cogs(self, ctx):
         mod = ", ".join(list(self.bot.cogs))
         await ctx.send(f"The current modules I can see are:\n{mod}")
+
+    async def on_ready(self):
+        await run_cmd('git init')
+        await run_cmd('git remote add pup https://github.com/Skullbite/uwupup')
 
 def setup(bot):
     bot.add_cog(Admin(bot))
