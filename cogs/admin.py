@@ -1,7 +1,7 @@
 import time
 import datetime
 import subprocess
-from utils import repo, default, dataIO
+from utils import repo, default, dataIO, http
 from utils.chat_formatting import pagify, box
 from discord.ext import commands
 from copy import deepcopy
