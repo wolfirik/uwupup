@@ -120,7 +120,9 @@ class Admin:
         nope = self.bot.get_emoji(451741018539163648)
         try: 
             payloaddbl = {"server_count"  : len(self.bot.guilds)}
-            payloadpw = {"server_count": len(self.bot.guilds)} #json's formatted differently.
+            payloadpw = {
+                            "server_count": len(self.bot.guilds)
+                        } #json's formatted differently.
             dbl = requests.post(urldbl, data=payloaddbl, headers=headersdbl)
             pw = requests.post(urlpw, data=payloadpw, headers=headerspw)
             dbl = dbl.json()
