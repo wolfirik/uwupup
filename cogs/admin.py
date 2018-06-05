@@ -110,6 +110,8 @@ class Admin:
     async def post(self, ctx):
         dbltoken = os.environ["DBL_TOKEN"]
         pwtoken = os.environ["PW_TOKEN"]
+        dblemote = self.bot.get_emoji(338808864352763904)
+        pwemote = self.bot.get_emoji(230104938858938368)
         urldbl = "https://discordbots.org/api/bots/365255872181567489/stats"
         urlpw = "https://bots.discord.pw/api/bots/365255872181567489/stats"
         headersdbl = {"Authorization" : dbltoken}
@@ -118,8 +120,11 @@ class Admin:
         nope = self.bot.get_emoji(451741018539163648)
         try: 
             payload = {"server_count"  : len(self.bot.guilds)}
-            requests.post(urldbl, data=payload, headers=headersdbl)
-            requests.post(urlpw, data=payload, headers=headerspw)
+            dbl = requests.post(urldbl, data=payload, headers=headersdbl)
+            pw = requests.post(urlpw, data=payload, headers=headerspw)
+            dbl = dbl.json()
+            pw = pw.json()
+            await ctx.send(f"{dblemote} `{dbl}`\n{pwemote} `{pw}`")
             await ctx.message.add_reaction(yup)
         except Exception as e:
             await ctx.send(e)
