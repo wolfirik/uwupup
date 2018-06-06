@@ -71,14 +71,20 @@ class Moderator:
     @permissions.has_permissions(ban_members=True)
     async def ban(self, ctx, member: MemberID, *, reason: str = None):
         """ Bans a user from the current server. """
+        member = self.bot.get_user(member)
         if not reason:
             reason = "no reason specified"
         else:
             reason = reason
         try:
-            await discord.Object(id=member).send(f"You've been banned from {ctx.guild.name}\nReason:\n```{reason}```")
-            await ctx.guild.ban(discord.Object(id=member), reason=default.responsible(ctx.author, reason))
+            try:
+                await member.send(f"You've been banned from {ctx.guild.name}\nReason:\n```{reason}```") #try to tell the user they've been banned
+            except discord.Forbidden:
+                pass
+            await ctx.guild.ban(member, reason=default.responsible(ctx.author, reason))
             await ctx.send("bai bai")
+        except discord.Forbidden:
+            await ctx.send("My permissions won't let me ban members, sowwy.")
         except Exception as e:
             await ctx.send(e)
 
@@ -127,6 +133,24 @@ class Moderator:
             await ctx.send("Am i allowed to manage roles? :thinking:")
         except Exception as e:
             await ctx.send(e)
+
+    @commands.command()
+    @commands.guild_only()
+    @permissions.has_permissions(ban_members=True)
+    async def hackban(self, ctx, user: int, *, reason: str=None):
+        """Bans a user before being able to join the server via ID"""
+        user = discord.Object(id=user)
+        if reason:
+            reason = f"{reason}\n [{ctx.author}]"
+        else:
+            reason = f"no reason specified.\n [{ctx.author}]"
+        try:
+            await guild.ban(user, reason=reason)
+            await ctx.send("done -w-")
+        except Exception as e:
+            await ctx.send(e)
+        except discord.Forbidden:
+            await ctx.send("i don't have ban perms, sowwy.")
 
     @commands.command()
     @commands.guild_only()

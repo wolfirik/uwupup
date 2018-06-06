@@ -97,7 +97,7 @@ class ship:
         #elif user.id == user2.id:
             #await ctx.send("{} >:1".format(user.name))
         #else:
-            
+
             #await ctx.send("")
 
 def setup(bot):
