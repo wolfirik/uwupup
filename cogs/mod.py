@@ -76,7 +76,7 @@ class Moderator:
         else:
             reason = reason
         try:
-            await member.send(f"You've been banned from {ctx.guild.name}\nReason:\n```{reason}```")
+            await discord.Object(id=member).send(f"You've been banned from {ctx.guild.name}\nReason:\n```{reason}```")
             await ctx.guild.ban(discord.Object(id=member), reason=default.responsible(ctx.author, reason))
             await ctx.send("bai bai")
         except Exception as e:
