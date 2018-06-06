@@ -71,9 +71,14 @@ class Moderator:
     @permissions.has_permissions(ban_members=True)
     async def ban(self, ctx, member: MemberID, *, reason: str = None):
         """ Bans a user from the current server. """
+        if not reason:
+            reason = "no reason specified"
+        else:
+            reason = reason
         try:
+            await member.send(f"You've been banned from {ctx.guild.name}\nReason:\n```{reason}```")
             await ctx.guild.ban(discord.Object(id=member), reason=default.responsible(ctx.author, reason))
-            await ctx.send(default.actionmessage("banned"))
+            await ctx.send("bai bai")
         except Exception as e:
             await ctx.send(e)
 
