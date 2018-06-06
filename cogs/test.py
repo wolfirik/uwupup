@@ -1,10 +1,10 @@
 import sqlite3
 import discord
+from utils import default
 
 class sql_test_cog:
     def __init__(self, bot):
         self.bot = bot
-        self.counter = Counter()
         self.config = default.get("config.json")
 
 conn = sqlite3.connect('owo.db')
