@@ -19,22 +19,6 @@ print("-w- zzz...")
 
 bot = Bot(command_prefix=commands.when_mentioned_or("owo "), prefix=commands.when_mentioned_or("owo "), pm_help=True)
 
-def init_function(bot):
-	global cursor, engine, Session
-	if bot.dev_mode:
-		db = 'owo'
-	elif bot.self_bot:
-		db = 'owo'
-	else:
-		db = 'owo'
-	engine = create_engine('mysql+pymysql://0:@localhost/{1}?charset=utf8mb4'.format(db), encoding='utf8')
-	session_factory = sessionmaker(bind=engine)
-	Session = scoped_session(session_factory)
-	bot.mysql = Object()
-	engine = bot.mysql.engine = engine
-	cursor = bot.mysql.cursor = bot.get_cursor
-
-
 for file in os.listdir("cogs"):
     if file.endswith(".py"):
         name = file[:-3]
