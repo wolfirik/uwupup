@@ -1,4 +1,11 @@
 import sqlite3
+import discord
+
+class sql_test_cog:
+    def __init__(self, bot):
+        self.bot = bot
+        self.counter = Counter()
+        self.config = default.get("config.json")
 
 conn = sqlite3.connect('owo.db')
 print("Opened database successfully")
@@ -30,3 +37,6 @@ for row in cursor:
    print("SALARY = ", row[3], "\n")
 
 conn.close()
+
+def setup(bot):
+    bot.add_cog(sql_test_cog(bot))
