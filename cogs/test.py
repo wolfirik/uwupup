@@ -17,8 +17,9 @@ class sql_test_cog:
           (BADGE_NAME      TEXT    NOT NULL,
           EMOTE           TEXT    NOT NULL,
           DESCRIPTION     TEXT    NOT NULL);''')
-       conn.close()
-       await ctx.send("done")
+
+        conn.close()
+        await ctx.send("done")
 
 def setup(bot):
     bot.add_cog(sql_test_cog(bot))
