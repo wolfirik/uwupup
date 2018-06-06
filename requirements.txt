@@ -10,9 +10,10 @@ python-forecastio
 geocoder
 pyping
 youtube_dl
-heroku 
+heroku
 PyMySQL==0.7.9
 SQLAlchemy==1.1.5
 dataIO
 pymongo==3.4
 psycopg2-binary
+PIL
