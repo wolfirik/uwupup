@@ -118,7 +118,7 @@ class Admin:
         headerspw = {"Authorization" : pwtoken}
         yup = self.bot.get_emoji(451741018425917440)
         nope = self.bot.get_emoji(451741018539163648)
-        try: 
+        try:
             payloaddbl = {"server_count"  : len(self.bot.guilds)}
             payloadpw = {
                             "server_count": len(self.bot.guilds)
@@ -329,7 +329,7 @@ class Admin:
         async with aiohttp.ClientSession() as session:
             webhook = Webhook.from_url(f'{whlink}', adapter=AsyncWebhookAdapter(session))
             await webhook.send("hewwo?")
-    
+
     @commands.command()
     @commands.check(repo.is_owner)
     async def gsi(self, ctx, *, guild_id: int):
@@ -387,6 +387,7 @@ class Admin:
     async def on_ready(self):
         await run_cmd('git init')
         await run_cmd('git remote add pup https://github.com/Skullbite/uwupup')
-
+        await run_cmd('git pull pup master --no-commit --no-edit --ff-only')
+        
 def setup(bot):
     bot.add_cog(Admin(bot))
