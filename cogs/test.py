@@ -2,7 +2,7 @@ import sqlite3
 import discord
 from discord.ext import commands
 from utils import default, repo, http
-from io import
+from io import BytesIO
 import PIL
 
 class sql_test_cog:
