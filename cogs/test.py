@@ -19,8 +19,8 @@ class sql_test_cog:
           (BADGE_NAME      TEXT    NOT NULL,
           EMOTE           TEXT    NOT NULL,
           DESCRIPTION     TEXT    NOT NULL);''')
-         await ctx.send("done")
-         conn.close()
+        await ctx.send("done")
+        conn.close()
 
      @commands.command()
      @commands.check(repo.owner)
