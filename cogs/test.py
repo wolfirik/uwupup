@@ -1,7 +1,7 @@
 import sqlite3
 import discord
 from discord.ext import commands
-from utils import default
+from utils import default, repo
 
 class sql_test_cog:
     def __init__(self, bot):
