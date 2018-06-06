@@ -1,7 +1,7 @@
 import sqlite3
 
 conn = sqlite3.connect('owo.db')
-print("Opened database successfully");
+print("Opened database successfully")
 
 conn.execute('''CREATE TABLE COMPANY
          (ID INT PRIMARY KEY     NOT NULL,
@@ -24,9 +24,9 @@ conn.execute("INSERT INTO GUILD (ID,NAME,AGE,ADDRESS,SALARY) \
 
 cursor = conn.execute("SELECT id, name, address, salary from COMPANY")
 for row in cursor:
-   print "ID = ", row[0]
-   print "NAME = ", row[1]
-   print "ADDRESS = ", row[2]
-   print "SALARY = ", row[3], "\n"
+   print("ID = ", row[0])
+   print("NAME = ", row[1])
+   print("ADDRESS = ", row[2])
+   print("SALARY = ", row[3], "\n")
 
 conn.close()
