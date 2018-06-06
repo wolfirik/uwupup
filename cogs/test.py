@@ -29,7 +29,7 @@ class sql_test_cog:
          img = await PIL.ImageOps.colorize(bio, rgb(255,0,0), rgb(153,0,0))
          final = BytesIO()
          img = img.save(final, 'png')
-         await ctx.send(file=discord.File(img, filename="color.png")
+         await ctx.send(file=discord.File(img, filename="color.png"))
 
 def setup(bot):
     bot.add_cog(sql_test_cog(bot))
