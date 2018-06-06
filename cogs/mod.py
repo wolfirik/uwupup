@@ -145,10 +145,10 @@ class Moderator:
         else:
             reason = f"no reason specified.\n [{ctx.author}]"
         try:
-            await guild.ban(user, reason=reason)
+            await ctx.guild.ban(user, reason=reason)
             await ctx.send("done -w-")
         except Exception as e:
-            await ctx.send(e)
+            await ctx.send("hmm... this isn't a valid user ID.")
         except discord.Forbidden:
             await ctx.send("i don't have ban perms, sowwy.")
 
