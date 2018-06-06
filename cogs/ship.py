@@ -8,7 +8,7 @@ class ship:
 
     def __init__(self, bot):
         self.bot = bot
-        
+
 
     @commands.command()
     @commands.guild_only()
@@ -44,7 +44,7 @@ class ship:
             if n == 100:
                 bar = "██████████"
                 emoji = '💞'
-            elif n > 90: 
+            elif n > 90:
                 bar = "█████████ "
                 emoji = '💕'
             elif n > 80:
@@ -55,7 +55,7 @@ class ship:
                 emoji = '💗'
             elif n > 60:
                 bar = "██████    "
-                
+
             elif n > 50:
                 bar = '█████     '
                 emoji = '❤'
@@ -83,21 +83,22 @@ class ship:
             await ctx.send(embed=ship)
             # < the invisible character if needed.
 
-    @commands.command()
-    @commands.guild_only()
-    async def shipname(self, ctx, user : discord.Member=None, user2 : discord.Member=None):     
-        """Generates a shipname for two users owo"""
-        author = ctx.message.author
-        if not user2:
-            user2 = author
-       
-        elif not user:
-            await ctx.send("ack, i need people y'know :P")
-        
-        elif user.id == user2.id:
-            await ctx.send("{} >:1".format(user.name))
-        else:
-            await ctx.send("lemme work! \n- Skull")
-    
+    #@commands.command()
+    #@commands.guild_only()
+    #async def shipname(self, ctx, user : discord.Member=None, user2 : discord.Member=None):
+        #"""Generates a shipname for two users owo"""
+        #author = ctx.message.author
+        #if not user2:
+            #user2 = author
+
+        #elif not user:
+            #await ctx.send("ack, i need people y'know :P")
+
+        #elif user.id == user2.id:
+            #await ctx.send("{} >:1".format(user.name))
+        #else:
+            
+            #await ctx.send("")
+
 def setup(bot):
     bot.add_cog(ship(bot))
