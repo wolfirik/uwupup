@@ -83,9 +83,11 @@ class Moderator:
             except discord.Forbidden:
                 return ctx.send("No perms. sowwy.")
 
-        await ctx.send(f"Changed {len(errs) - ctx.guild.member_count}/{ctx.guild.member_count} Nicknames Successfully")
-    finally:
-        errs = 0
+        await ctx.send(f"Changed {ctx.guild.member_count - len(errs)}/{ctx.guild.member_count} Nicknames Successfully")
+
+        finally:
+            errs = 0
+            
     @commands.command()
     @commands.guild_only()
     @permissions.has_permissions(ban_members=True)
