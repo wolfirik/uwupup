@@ -75,8 +75,7 @@ class Moderator:
         for member in ctx.guild.members:
             try:
                 await member.edit(nick=name, reason=default.responsible(ctx.author, "Changed by command"))
-            if name is None:
-                message = f"Reset **{member.name}'s** nickname"
+                message = f"massnick by {ctx.author}""
             except Exception as e:
                 pass
                 errs += 1
@@ -87,7 +86,7 @@ class Moderator:
 
         finally:
             errs = 0
-            
+
     @commands.command()
     @commands.guild_only()
     @permissions.has_permissions(ban_members=True)
