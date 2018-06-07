@@ -75,7 +75,7 @@ class Moderator:
         for member in ctx.guild.members:
             try:
                 await member.edit(nick=name, reason=default.responsible(ctx.author, "Changed by command"))
-                message = f"massnick by {ctx.author}""
+                message = f"massnick by {ctx.author}"
             except Exception as e:
                 pass
                 errs += 1
