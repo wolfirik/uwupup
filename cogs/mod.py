@@ -66,26 +66,26 @@ class Moderator:
         except Exception as e:
             await ctx.send(e)
 
-    @commands.command()
-    @commands.guild_only()
-    @permissions.has_permissions(manage_nicknames=True)
-    async def massnick(self, ctx, *, name: str = None):
-        """ Nicknames a user from the current server. """
-        member = ctx.guild.member
-        for member in ctx.guild.members:
-            try:
-                await member.edit(nick=name, reason=default.responsible(ctx.author, "Changed by command"))
-                message = f"massnick by {ctx.author}"
-            except Exception as e:
-                pass
-                errs += 1
-            except discord.Forbidden:
-                return ctx.send("No perms. sowwy.")
+#    @commands.command()
+#    @commands.guild_only()
+#    @permissions.has_permissions(manage_nicknames=True)
+#    async def massnick(self, ctx, *, name: str = None):
+#        """ Nicknames a user from the current server. """
+#        member = ctx.guild.member
+#        for member in ctx.guild.members:
+#            try:
+#                await member.edit(nick=name, reason=default.responsible(ctx.author, "Changed by command"))
+#                message = f"massnick by {ctx.author}"
+#            except Exception as e:
+#                pass
+#                errs += 1
+#            except discord.Forbidden:
+#                return ctx.send("No perms. sowwy.")
+#
+#        await ctx.send(f"Changed {ctx.guild.member_count - len(errs)}/{ctx.guild.member_count} Nicknames Successfully")
 
-        await ctx.send(f"Changed {ctx.guild.member_count - len(errs)}/{ctx.guild.member_count} Nicknames Successfully")
-
-        finally:
-            errs = 0
+#        finally:
+#            errs = 0
 
     @commands.command()
     @commands.guild_only()
