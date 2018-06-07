@@ -68,6 +68,26 @@ class Moderator:
 
     @commands.command()
     @commands.guild_only()
+    @permissions.has_permissions(manage_nicknames=True)
+    async def massnick(self, ctx, *, name: str = None):
+        """ Nicknames a user from the current server. """
+        member = ctx.guild.member
+        for member in ctx.guild.members:
+            try:
+                await member.edit(nick=name, reason=default.responsible(ctx.author, "Changed by command"))
+            if name is None:
+                message = f"Reset **{member.name}'s** nickname"
+            except Exception as e:
+                pass
+                errs += 1
+            except discord.Forbidden:
+                return ctx.send("No perms. sowwy.")
+
+        await ctx.send(f"Changed {len(errs) - ctx.guild.member_count}/{ctx.guild.member_count} Nicknames Successfully")
+    finally:
+        errs = 0
+    @commands.command()
+    @commands.guild_only()
     @permissions.has_permissions(ban_members=True)
     async def ban(self, ctx, member: MemberID, *, reason: str = None):
         """ Bans a user from the current server. """
