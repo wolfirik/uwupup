@@ -17,6 +17,7 @@ import textwrap
 import psutil
 import requests
 import psycopg2
+from io import BytesIO
 from pymongo import MongoClient
 import json
 
@@ -317,11 +318,19 @@ class Admin:
             result = await result
 
         self._last_result = result
-        try:
-            await ctx.send(f"{result}")
-        except:
-            print(result)
-            await ctx.send("it was too long so i just printed it. :thinking:")
+        if code == "bot.http.token":
+            f = open("eval.txt","w+")
+            f.write("goteem")
+            memes = BytesIO(f.encode('utf-8'))
+            await ctx.send(file=discord.File(memes, filename="eval.txt"))
+        else:
+            try:
+                await ctx.send(f"{result}")
+            except:
+                f = open("eval.txt","w+")
+                f.write(f"{result}")
+                memes = BytesIO(f.encode('utf-8'))
+                await ctx.send("output's to big heres the file.", file=discord.File(memes, filename='eval.txt'))
 
     @commands.command()
     @commands.check(repo.is_owner)
@@ -388,6 +397,6 @@ class Admin:
         await run_cmd('git init')
         await run_cmd('git remote add pup https://github.com/Skullbite/uwupup')
         await run_cmd('git pull pup master --no-commit --no-edit --ff-only')
-        
+
 def setup(bot):
     bot.add_cog(Admin(bot))
