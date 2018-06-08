@@ -8,13 +8,13 @@ class welcomersupport:
         self.config = default.get("config.json")
 
 
-    async def on_message(self, msg):
-        if msg.channel.id != 443444305051254787:
+    async def on_message(self, message):
+        if message.channel.id != 443444305051254787:
             return
-        elif msg.author.bot:
+        elif message.author.bot:
             return
         else:
-            if msg.content.upper().startswith("help"):
+            if message.content.upper().startswith("help"):
                 bd = ":small_blue_diamond:"
                 welcomer = self.bot.get_user(330416853971107840)
                 help = discord.Embed(title="Welcomer Support", description=f"{bd} `1.` How do i setup welcomer?\n"
@@ -31,7 +31,7 @@ class welcomersupport:
                                                                            f"{bd} `13.` My question isn't here\n"
                                                                            "*send the number coressponding to your issue to get help*", color=discord.Color.blue())
                 help.set_footer(text="Thank You for choosing welcomer!", icon_url=welcomer.icon_url)
-                await msg.channel.send(content=f"{msg.author.mention}", embed=help)
+                await message.channel.send(content=f"{message.author.mention}", embed=help)
             else:
                 pass
 
