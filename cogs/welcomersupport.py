@@ -15,7 +15,7 @@ class welcomersupport:
         elif ctx.author.bot:
             return
         else:
-            if "help" in message.content:
+            if "help" in msg.content:
 
                 bd = ":small_blue_diamond:"
                 welcomer = self.bot.get_user(330416853971107840)
