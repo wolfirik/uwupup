@@ -10,7 +10,7 @@ class welcomersupport:
     async def on_message(self, msg):
         auto-help = self.bot.get_channel(454308883964362763)
         if ctx.channel != auto-help:
-            pass
+            return
         elif ctx.author.bot:
             return
         else:
