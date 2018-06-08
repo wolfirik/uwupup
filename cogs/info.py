@@ -43,8 +43,8 @@ class Information:
         ping = (time.monotonic() - before) * 1000
         await message.edit(content=f"Pong!\n`Edit {int(ping)}ms\nAPI {self.bot.latency}ms`")
 
-    @commands.command(aliases=['joinme', 'join', 'botinvite'])
-    async def links(self, ctx):
+    @commands.command(aliases=['joinme', 'links', 'botinvite'])
+    async def invites(self, ctx):
         """ Invite me to your server """
         invite = discord.Embed(description="[invite me OwO](https://discordapp.com/oauth2/authorize?client_id=365255872181567489&scope=bot&permissions=470150214)\n[join the support guild if you have questions uwu](https://discord.gg/tBrtd)", color=0x254d16)
         await ctx.send(embed=invite)
@@ -74,7 +74,7 @@ class Information:
                 await ctx.send("alright, i sent your suggestion!! ^w^")
                 async with aiohttp.ClientSession() as session:
                     webhook = Webhook.from_url(os.environ["SUGGESTHOOK"], adapter=AsyncWebhookAdapter(session))
-                suggestionem = discord.Embed(description=f"{suggestion}", color=color) 
+                suggestionem = discord.Embed(description=f"{suggestion}", color=color)
                 suggestionem.set_author(name=f"From {ctx.author}", icon_url=ctx.author.avatar_url)
                 suggestionem.set_footer(text=footer, icon_url=guild_pic)
                 await webhook.send(embed=suggestionem)
