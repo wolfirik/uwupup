@@ -9,14 +9,13 @@ class welcomersupport:
 
 
     async def on_message(self, msg):
-        helpchan = self.bot.get_channel(454308883964362763)
-        if ctx.channel != helpchan:
+        helpchan = self.bot.get_channel(443444305051254787)
+        if msg.channel.id != 443444305051254787:
             return
-        elif ctx.author.bot:
+        elif msg.author.bot:
             return
         else:
             if "help" in msg.content:
-
                 bd = ":small_blue_diamond:"
                 welcomer = self.bot.get_user(330416853971107840)
                 help = discord.Embed(title="Welcomer Support", description=f"{bd} `1.` How do i setup welcomer?\n"
