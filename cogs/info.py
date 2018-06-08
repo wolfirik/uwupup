@@ -44,9 +44,11 @@ class Information:
         await message.edit(content=f"Pong!\n`Edit {int(ping)}ms\nAPI {self.bot.latency}ms`")
 
     @commands.command(aliases=['joinme', 'links', 'botinvite'])
-    async def invites(self, ctx):
+    async def invite(self, ctx):
         """ Invite me to your server """
-        invite = discord.Embed(description="[invite me OwO](https://discordapp.com/oauth2/authorize?client_id=365255872181567489&scope=bot&permissions=470150214)\n[join the support guild if you have questions uwu](https://discord.gg/tBrtd)", color=0x254d16)
+        server = self.bot.get_emoji(314003252830011395)
+        bottag = self.bot.get_emoji(230105988211015680)
+        invite = discord.Embed(description=f"{bottag}[**Bot Invite**](https://discordapp.com/oauth2/authorize?client_id=365255872181567489&scope=bot&permissions=470150214)\n{server}[**Support Guild Invite**](https://discord.gg/tBrtd)", color=0x254d16)
         await ctx.send(embed=invite)
 
     @commands.command(aliases=['upvote'])
