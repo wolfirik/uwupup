@@ -1,5 +1,6 @@
 import discord
 from utils import default, repo, http
+import random
 
 class welcomersupport:
     def __init__(self, bot):
