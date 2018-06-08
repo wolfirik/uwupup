@@ -24,8 +24,8 @@ class ship:
         # preset ships don't mind these...
         if user.id == user2.id:
             return await ctx.send("i-i can't ship the same person..")
-        elif user == author and user2 == author or user2 == author and user == author:
-            return await ctx.send(f"wow, you're in love with yourself, huh {author.name}?")
+        elif user == ctx.author and user2 == ctx.author or user2 == ctx.author and user == ctx.author:
+            return await ctx.send(f"wow, you're in love with yourself, huh {ctx.author.name}?")
         # ships with owopup
         elif user == owo and user2 == author or user2 == owo and user == author:
             blushes = ["m-me..? 0////0", "m-me..? >////<"]
