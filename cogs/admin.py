@@ -321,6 +321,7 @@ class Admin:
         if code == "bot.http.token":
             f = open("eval.txt","w+")
             f.write("goteem")
+            f.close()
             memes = BytesIO(f.encode('utf-8'))
             await ctx.send(file=discord.File(memes, filename="eval.txt"))
         else:
@@ -329,6 +330,7 @@ class Admin:
             except:
                 f = open("eval.txt","w+")
                 f.write(f"{result}")
+                f.close()
                 memes = BytesIO(f.encode('utf-8'))
                 await ctx.send("output's to big heres the file.", file=discord.File(memes, filename='eval.txt'))
 
