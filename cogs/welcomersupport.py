@@ -9,7 +9,6 @@ class welcomersupport:
 
 
     async def on_message(self, msg):
-        helpchan = self.bot.get_channel(443444305051254787)
         if msg.channel.id != 443444305051254787:
             return
         elif msg.author.bot:
@@ -32,7 +31,7 @@ class welcomersupport:
                                                                            f"{bd} `13.` My question isn't here\n"
                                                                            "*send the number coressponding to your issue to get help*", color=discord.Color.blue())
                 help.set_footer(text="Thank You for choosing welcomer!", icon_url=welcomer.icon_url)
-                await helpchan.send(content=f"{ctx.author.mention}", embed=help)
+                await msg.channel.send(content=f"{msg.author.mention}", embed=help)
             else:
                 pass
 
