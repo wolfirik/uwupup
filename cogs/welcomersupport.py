@@ -14,7 +14,7 @@ class welcomersupport:
         elif msg.author.bot:
             return
         else:
-            if "help" in msg.content:
+            if msg.content.upper().startswith("help"):
                 bd = ":small_blue_diamond:"
                 welcomer = self.bot.get_user(330416853971107840)
                 help = discord.Embed(title="Welcomer Support", description=f"{bd} `1.` How do i setup welcomer?\n"
