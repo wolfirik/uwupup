@@ -41,7 +41,7 @@ class Events:
             _traceback = ''.join(_traceback)
             error = ('{}:\n{}').format(type(err).__name__, err)
             error = error.replace(".heroku", "owo")
-            errem = discord.Embed(title="error!", description=f"{error}")
+            errem = discord.Embed(title="error occured!", description=f"{error}")
             await ctx.send(embed=errem)
 
         elif isinstance(err, errors.CheckFailure):
