@@ -48,7 +48,7 @@ class Information:
         """ Invite me to your server """
         server = self.bot.get_emoji(314003252830011395)
         bottag = self.bot.get_emoji(230105988211015680)
-        invite = discord.Embed(title="Bot link", description=f"{bottag}[**Bot Invite**](https://discordapp.com/oauth2/authorize?client_id=365255872181567489&scope=bot&permissions=470150214)\n{server}[**Support Guild Invite**](https://discord.gg/tBrtd)", color=0x254d16)
+        invite = discord.Embed(title="Bot links", description=f"{bottag}[**Bot Invite**](https://discordapp.com/oauth2/authorize?client_id=365255872181567489&scope=bot&permissions=470150214)\n{server}[**Support Guild Invite**](https://discord.gg/tBrtd)", color=0x254d16)
         await ctx.send(embed=invite)
 
     @commands.command(aliases=['upvote'])
@@ -82,7 +82,7 @@ class Information:
                 await webhook.send(embed=suggestionem)
             except Exception as e:
                 await ctx.send("uhm.. something went wrong, try again later..")
-# not working x~x
+
 
     @commands.command()
     async def source(self, ctx):
