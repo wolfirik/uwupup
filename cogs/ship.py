@@ -23,19 +23,19 @@ class ship:
             user2 = author
         # preset ships don't mind these...
         if user.id == user2.id:
-            await ctx.send("i-i can't ship the same person..")
-        elif user == author and user2 == author:
-            await ctx.send(f"wow, you're in love with yourself, huh {author.name}?")
+            return await ctx.send("i-i can't ship the same person..")
+        elif user == author and user2 == author or user2 == author and user == author:
+            return await ctx.send(f"wow, you're in love with yourself, huh {author.name}?")
         # ships with owopup
         elif user == owo and user2 == author or user2 == owo and user == author:
             blushes = ["m-me..? 0////0", "m-me..? >////<"]
-            await ctx.send(random.choice(blushes))
+            return await ctx.send(random.choice(blushes))
         elif user == draggy and user2 == skull or user2 == draggy and user == skull:
             ship = discord.Embed(title=" " + user.display_name + "  x  " + user2.display_name + " ", description="**69%** **`██████████`** ❤", colour=0xDEADBF)
-            await ctx.send(embed=ship)
+            return await ctx.send(embed=ship)
         elif user2 == heh and user.id == skull or user.id == skull and user2.id == heh:
             ship = discord.Embed(title=" " + user.display_name + " x " + user2.display_name + " ", description="**100%** **`██████████`** 💞", colour=0xDEADBF)
-            await ctx.send(embed=ship)
+            return await ctx.send(embed=ship)
 
         else:
             n = randint(1, 100)
