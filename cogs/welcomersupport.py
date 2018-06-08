@@ -15,6 +15,7 @@ class welcomersupport:
             return
         else:
             if "help" in message.content:
+
                 bd = ":small_blue_diamond:"
                 welcomer = self.bot.get_user(330416853971107840)
                 help = discord.Embed(title="Welcomer Support", description=f"{bd} `1.` How do i setup welcomer?\n"
@@ -32,6 +33,7 @@ class welcomersupport:
                                                                            "*send the number coressponding to your issue to get help*", color=discord.Color.blue())
                 help.set_footer(text="Thank You for choosing welcomer!", icon_url=welcomer.icon_url)
                 await helpchan.send(content=f"{ctx.author.mention}", embed=help)
-
+            else:
+                pass
 def setup(bot):
     bot.add_cog(welcomersupport(bot))
