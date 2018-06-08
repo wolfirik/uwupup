@@ -17,7 +17,7 @@ class welcomersupport:
             if message.content.startswith('help'):
                 bd = ":small_blue_diamond:"
                 welcomer = self.bot.get_user(330416853971107840)
-                help = discord.embed(title="Welcomer Support", description=f"{bd} `1.` How do i setup welcomer?\n"
+                help = discord.Embed(title="Welcomer Support", description=f"{bd} `1.` How do i setup welcomer?\n"
                                                                            f"{bd} `2.` How do i enable/disable images and text?\n"
                                                                            f"{bd} `3.` How do i change image text?\n"
                                                                            f"{bd} `5.` How do i choose a welcoming channel?\n"
