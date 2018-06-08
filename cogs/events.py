@@ -39,9 +39,9 @@ class Events:
 
             _traceback = traceback.format_tb(err.__traceback__)
             _traceback = ''.join(_traceback)
-            error = ('error!\n{}:\n{}').format(type(err).__name__, err)
+            error = ('{}:\n{}').format(type(err).__name__, err)
             error = error.replace(".heroku", "owo")
-            errem = discord.Embed(description=f"{error}")
+            errem = discord.Embed(title="error!", description=f"{error}")
             await ctx.send(embed=errem)
 
         elif isinstance(err, errors.CheckFailure):
