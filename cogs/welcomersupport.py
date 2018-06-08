@@ -8,8 +8,8 @@ class welcomersupport:
 
 
     async def on_message(self, msg):
-        auto-help = self.bot.get_channel(454308883964362763)
-        if ctx.channel != auto-help:
+        helpchan = self.bot.get_channel(454308883964362763)
+        if ctx.channel != helpchan:
             return
         elif ctx.author.bot:
             return
@@ -31,7 +31,7 @@ class welcomersupport:
                                                                            f"{bd} `13.` My question isn't here\n"
                                                                            "*send the number coressponding to your issue to get help*", color=discord.Color.blue())
                 help.set_footer(text="Thank You for choosing welcomer!", icon_url=welcomer.icon_url)
-                await auto-help.send(content=f"{ctx.author.mention}", embed=help)
+                await helpchan.send(content=f"{ctx.author.mention}", embed=help)
 
 def setup(bot):
     bot.add_cog(welcomersupport(bot))
