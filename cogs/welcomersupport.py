@@ -35,5 +35,6 @@ class welcomersupport:
                 await helpchan.send(content=f"{ctx.author.mention}", embed=help)
             else:
                 pass
+
 def setup(bot):
     bot.add_cog(welcomersupport(bot))
