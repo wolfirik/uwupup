@@ -24,7 +24,7 @@ class ship:
         # preset ships don't mind these...
         if not user:
             await ctx.send("can't ship nothing y'know..")
-        if user.id == user2.id:
+        elif user.id == user2.id:
             await ctx.send("i-i can't ship the same person..")
         elif user.id and user2.id == author.id:
             return await ctx.send(f"wow, you're in love with yourself, huh {ctx.author.name}?")
