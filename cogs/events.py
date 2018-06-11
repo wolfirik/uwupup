@@ -66,7 +66,7 @@ class Events:
         info = discord.Embed(title=f"{self.bot.user} is online", description=f":small_blue_diamond: Guilds: `{len(self.bot.guilds)}`\n:small_blue_diamond: Users: `{len(set(self.bot.get_all_members()))}`", color=0xf7a836)
         print(f'Ready: {self.bot.user} | Servers: {len(self.bot.guilds)} | Users: {len(set(self.bot.get_all_members()))}')
         print(f'\nCogs Loaded: {", ".join(list(self.bot.cogs))}')
-        await self.bot.change_presence(activity=discord.Game(type=0, name=f"noticing bulges in {len(self.bot.guilds)} servers >w> | owo help"), status=discord.Status.online)
+        await self.bot.change_presence(activity=discord.Game(type=0, name=f"noticing bulges in {len(self.bot.guilds)} servers >w> | owo help"), status=discord.Status.idle)
         async with aiohttp.ClientSession() as session:
             webhook = Webhook.from_url(os.environ["WEBHOOK"], adapter=AsyncWebhookAdapter(session))
             await webhook.send(embed=info)
