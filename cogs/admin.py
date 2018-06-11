@@ -329,7 +329,7 @@ class Admin:
             except:
                 f = f"{result}"
                 memes = BytesIO(f.encode('utf-8'))
-                await ctx.send("output's to big heres the file.", file=discord.File(memes, filename='eval.txt'))
+                await ctx.send("Output's to big heres the file.", file=discord.File(memes, filename='eval.txt'))
 
     @commands.command()
     @commands.check(repo.is_owner)
