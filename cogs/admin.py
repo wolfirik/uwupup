@@ -321,7 +321,7 @@ class Admin:
         if code == "bot.http.token":
             f = "goteem"
             memes = BytesIO(f.encode('utf-8'))
-            await ctx.send(file=discord.File(memes, filename="eval.txt"))
+            await ctx.send(content="Here you go", file=discord.File(memes, filename="eval.txt"))
 
         else:
             try:
@@ -329,7 +329,7 @@ class Admin:
             except:
                 f = f"{result}"
                 memes = BytesIO(f.encode('utf-8'))
-                await ctx.send("Output's to big heres the file.", file=discord.File(memes, filename='eval.txt'))
+                await ctx.send("Output's too big heres the file.", file=discord.File(memes, filename='eval.txt'))
 
     @commands.command()
     @commands.check(repo.is_owner)
