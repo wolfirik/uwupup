@@ -38,7 +38,7 @@ class Fun_Commands:
         meow = discord.Embed(description=f"n-nya!!", color=0xcb27ff)
         meow.set_image(url=pic)
         await ctx.send(meow=pic)
-        
+
     @commands.command()
     @commands.cooldown(rate=1, per=1.5, type=commands.BucketType.user)
     async def cat(self, ctx):
@@ -47,24 +47,24 @@ class Fun_Commands:
         meow = discord.Embed(description=f"m-meow. hmph", color=0x002d55)
         meow.set_image(url=pic)
         await ctx.send(embed=meow)
-        
+
     @commands.command()
     @commands.cooldown(rate=1, per=1.5, type=commands.BucketType.user)
     async def dog(self, ctx):
         """ Posts a random dog """
         arf = await self.randomimageapi(ctx, 'https://random.dog/woof.json', 'url')
         await ctx.send(arf)
-        
+
     @commands.command()
     @commands.cooldown(rate=1, per=1.5, type=commands.BucketType.user)
     async def duck(self, ctx):
         """ Posts a random duck """
         quack = await self.randomimageapi(ctx, 'https://random-d.uk/api/v1/random', 'url')
-        await ctx.send(quack) 
-        
+        await ctx.send(quack)
+
     @commands.command(aliases=['fur'])
     async def floof(self, ctx):
-        """Posts a cute floof :3""" 
+        """Posts a cute floof :3"""
         try:
             r = requests.get('https://e926.net/post/index.json?limit=1&tags=cute%20order:random%20solo%20-equine%20fur') #a lot more complex than the other apis
             r = r.json()
@@ -81,17 +81,17 @@ class Fun_Commands:
     @commands.command(aliases=['hugge'])
     @commands.guild_only()
     async def hug(self, ctx, user: discord.Member=None):
-        """Give someone a hug >w<""" 
+        """Give someone a hug >w<"""
         if not user:
             await ctx.send("u-uhm who do you wanna hug..?")
         elif user == self.bot.user:
-            await ctx.send("d-don't hug me..!") 
+            await ctx.send("d-don't hug me..!")
         elif user == ctx.author:
             await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
 
         else:
             try:
-                r = requests.get('https://e926.net/post/index.json?limit=1&tags=cute%20order:random%20hug%20-equine%20fur') 
+                r = requests.get('https://e926.net/post/index.json?limit=1&tags=cute%20order:random%20hug%20-equine%20fur')
                 r = r.json()
                 link = r[0].get('file_url')
             except:
@@ -106,20 +106,48 @@ class Fun_Commands:
             except:
                 await ctx.send("something oofed..")
 
-    @commands.command(aliases=['snuggle'])
+    @commands.command()
     @commands.guild_only()
-    async def cuddle(self, ctx, user: discord.Member=None):
-        """cuddle a cutie uwu""" 
+    async def pat(self, ctx, user: discord.Member=None):
+        """pat pat :3 (not that may pats right now)"""
         if not user:
-            await ctx.send("u-uhm who do you wanna cuddle..? owo")
+            await ctx.send("who do you wanna pat..?")
         elif user == self.bot.user:
-            await ctx.send("d-don't cuddle me..!") 
+            await ctx.send("i-i'm good on pats for now but thanks.. uwu")
         elif user == ctx.author:
             await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
 
         else:
             try:
-                r = requests.get('https://e926.net/post/index.json?limit=1&tags=cuddle%20cute%20fur%20-equine%20order:random') 
+                r = requests.get('http://e926.net/post/index.json?tags=head_pat%20-young%20order:random&limit=1')
+                r = r.json()
+                link = r[0].get('file_url')
+            except:
+                return await ctx.send("I think e926 is being dumb.. try again later..")
+
+            hugge = discord.Embed(description=f"**{ctx.author.name} pat {user.name} on the head for being good..**", color=0x6a1b9a)
+            hugge.set_image(url=link)
+            try:
+                await ctx.send(embed=hugge)
+            except discord.Forbidden:
+                await ctx.send("aww i can't send embeds.. ;w;")
+            except:
+                await ctx.send("something oofed..")
+
+    @commands.command(aliases=['snuggle'])
+    @commands.guild_only()
+    async def cuddle(self, ctx, user: discord.Member=None):
+        """cuddle a cutie uwu"""
+        if not user:
+            await ctx.send("u-uhm who do you wanna cuddle..? owo")
+        elif user == self.bot.user:
+            await ctx.send("d-don't cuddle me..!")
+        elif user == ctx.author:
+            await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
+
+        else:
+            try:
+                r = requests.get('https://e926.net/post/index.json?limit=1&tags=cuddle%20cute%20fur%20-equine%20order:random')
                 r = r.json()
                 link = r[0].get('file_url')
                 thing = BytesIO(await http.get(link, res_method="read"))
@@ -138,16 +166,16 @@ class Fun_Commands:
     @commands.command()
     @commands.guild_only()
     async def lick(self, ctx, user: discord.Member=None):
-        """lick someone >w<""" 
+        """lick someone >w<"""
         if not user:
             await ctx.send("u-uhm who do you wanna lick..?")
         elif user == self.bot.user:
-            await ctx.send("d-don't lick me..! >~<") 
+            await ctx.send("d-don't lick me..! >~<")
         elif user == ctx.author:
             await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
         else:
             try:
-                r = requests.get('https://e926.net/post/index.json?limit=1&tags=-kiss%20order:random%20face_lick%20-equine%20-belly_expansion') 
+                r = requests.get('https://e926.net/post/index.json?limit=1&tags=-kiss%20order:random%20face_lick%20-equine%20-belly_expansion')
                 r = r.json()
                 link = r[0].get('file_url')
                 thing = BytesIO(await http.get(link, res_method="read"))
@@ -171,12 +199,12 @@ class Fun_Commands:
         if not user:
             await ctx.send("u-uhm who do you wanna kiss..?")
         elif user == self.bot.user:
-            await ctx.send("i-i don't want any k-kisses..!") 
+            await ctx.send("i-i don't want any k-kisses..!")
         elif user == ctx.author:
             await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
         else:
             try:
-                r = requests.get('https://e926.net/post/index.json?limit=1&tags=kiss%20cute%20fur%20-equine%20order:random') 
+                r = requests.get('https://e926.net/post/index.json?limit=1&tags=kiss%20cute%20fur%20-equine%20order:random')
                 r = r.json()
                 link = r[0].get('file_url')
                 thing = BytesIO(await http.get(link, res_method="read"))
@@ -204,7 +232,7 @@ class Fun_Commands:
         try:
             await ctx.send(embed=yiff)
             self.bot.counter["yiff_viewed"] += 1
-            
+
         except:
             await ctx.send("aww i can't send embeds ;w;")
 
@@ -306,10 +334,10 @@ class Fun_Commands:
 
     @commands.command(aliases=['owolang'])
     async def hewwo(self, ctx, *, text: str):
-        """Takes something you say and puts it in owo"""         
+        """Takes something you say and puts it in owo"""
         owo_t = text.replace("n", "ny").replace("l", "w").replace("r", "w") #i was gonna add an @everyone and @here blocker but the r to w change already handles that XD
         await ctx.send(f"OwO {owo_t}")
-        
+
     @commands.command()
     async def rate(self, ctx, *, thing: commands.clean_content):
         """ Rates what you desire """
