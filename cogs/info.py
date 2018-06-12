@@ -36,6 +36,24 @@ class Information:
         return fmt.format(d=days, h=hours, m=minutes, s=seconds)
 
     @commands.command()
+    async def test_help(self, ctx, *, commands : str=None):
+        if not commands:
+            help = self.bot.formatter.format_help_for(ctx, bot).replace("```", "`")
+            try:
+                for page in help:
+                    page = discord.Embed(description=page, color=0x254d16)
+                    await ctx.author.send(embed=page)
+                    await ctx.send("I slipped into your dms <w<")
+            except discord.Forbidden:
+                await ctx.send("ack, do you have dms disabled or something..?")
+        else:
+            try:
+                cmd_help = self.bot.formatter.format_help_for(ctx, commands)
+                await ctx.send(cmd_help)
+            except:
+                await ctx.send("ack, i couldn't find that command")
+
+    @commands.command()
     async def ping(self, ctx):
         """ Pong! """
         before = time.monotonic()
