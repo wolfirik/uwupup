@@ -44,8 +44,8 @@ class Information:
                     page = page.replace("```", "`")
                     page = discord.Embed(description=page, color=0x254d16)
                     await ctx.author.send(embed=page)
-                finally:
-                    await ctx.send("I slipped into your dms <w<")
+                    finally:
+                        await ctx.send("I slipped into your dms <w<")
             except discord.Forbidden:
                 return await ctx.send("ack, do you have dms disabled or something..?")
         else:
