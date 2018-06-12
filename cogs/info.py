@@ -38,7 +38,7 @@ class Information:
     @commands.command()
     async def testhelp(self, ctx, *, commands : str=None):
         if not commands:
-            help = await self.bot.formatter.format_help_for(ctx, bot).replace("```", "`")
+            help = await self.bot.formatter.format_help_for(ctx, self.bot).replace("```", "`")
             try:
                 for page in help:
                     page = discord.Embed(description=page, color=0x254d16)
