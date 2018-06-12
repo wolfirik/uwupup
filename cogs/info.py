@@ -41,11 +41,13 @@ class Information:
             help = await self.bot.formatter.format_help_for(ctx, self.bot)
             try:
                 for page in help:
+                    page = page.replace("```", "`")
                     page = discord.Embed(description=page, color=0x254d16)
                     await ctx.author.send(embed=page)
+                finally:
                     await ctx.send("I slipped into your dms <w<")
             except discord.Forbidden:
-                await ctx.send("ack, do you have dms disabled or something..?")
+                return await ctx.send("ack, do you have dms disabled or something..?")
         else:
             try:
                 cmd_help = await self.bot.formatter.format_help_for(ctx, commands)
