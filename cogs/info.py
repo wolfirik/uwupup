@@ -36,9 +36,9 @@ class Information:
         return fmt.format(d=days, h=hours, m=minutes, s=seconds)
 
     @commands.command()
-    async def test_help(self, ctx, *, commands : str=None):
+    async def testhelp(self, ctx, *, commands : str=None):
         if not commands:
-            help = self.bot.formatter.format_help_for(ctx, bot).replace("```", "`")
+            help = self.bot.formatter.format_help_for(ctx, self.bot).replace("```", "`")
             try:
                 for page in help:
                     page = discord.Embed(description=page, color=0x254d16)
