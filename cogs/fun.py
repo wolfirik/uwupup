@@ -37,7 +37,7 @@ class Fun_Commands:
         pic = await self.randomimageapi(ctx, 'https://nekos.life/api/v2/img/neko', 'url')
         meow = discord.Embed(description=f"n-nya!!", color=0xcb27ff)
         meow.set_image(url=pic)
-        await ctx.send(meow=pic)
+        await ctx.send(embed=meow)
 
     @commands.command()
     @commands.cooldown(rate=1, per=1.5, type=commands.BucketType.user)
@@ -53,7 +53,11 @@ class Fun_Commands:
     async def dog(self, ctx):
         """ Posts a random dog """
         arf = await self.randomimageapi(ctx, 'https://random.dog/woof.json', 'url')
-        await ctx.send(arf)
+        if arf.endswith(".mp4"):
+            await ctx.send(arf)
+        else:
+            embed = discord.Embed(title="arf arf", color=0x36393e).set_image(url=arf)
+            await ctx.send(embed=embed)
 
     @commands.command()
     @commands.cooldown(rate=1, per=1.5, type=commands.BucketType.user)
@@ -66,17 +70,36 @@ class Fun_Commands:
     async def floof(self, ctx):
         """Posts a cute floof :3"""
         try:
-            r = requests.get('https://e926.net/post/index.json?limit=1&tags=cute%20order:random%20solo%20-equine%20fur') #a lot more complex than the other apis
+            async with aiohttp.ClientSession() as session:
+                async with session.get('https://api.ksoft.si/meme/random-image', params={
+                    "tag": "floofs"
+                }, headers={"Authorization": "Token b46b0c17c5ad53fff384f625cabd390d16e64c47"}) as resp:
+                    data = await resp.json()
+        except:
+            return await ctx.send("I think the api is being dumb.. try again later..")
+        floof = discord.Embed(description=f"**{ctx.author.name}, heres a floof :feet:**", color=0xf44444)
+        floof.set_image(url=data["url"])
+        try:
+            await ctx.send(embed=floof)
+        except:
+            await ctx.send("aww i can't send embeds ;w;")
+
+    @commands.command()
+    async def blush(self, ctx):
+        """0///0"""
+        try:
+            r = requests.get('https://e926.net/post/index.json?limit=1&tags=order:random%20blush%20-equine%20fur%20solo') #a lot more complex than the other apis
             r = r.json()
             link = r[0].get('file_url')
         except:
             return await ctx.send("I think e926 is being dumb.. try again later..")
-        floof = discord.Embed(description=f"**{ctx.author.name}, heres a floof >w>**", color=0x002d55)
+        floof = discord.Embed(description=f"**{ctx.author.name}, you're bl-blushing..! 0////0**", color=0xf44444)
         floof.set_image(url=link)
         try:
             await ctx.send(embed=floof)
         except:
             await ctx.send("aww i can't send embeds ;w;")
+            
 
     @commands.command(aliases=['hugge'])
     @commands.guild_only()
@@ -220,22 +243,6 @@ class Fun_Commands:
             except:
                 await ctx.send("something oofed..")
 
-    @commands.command()
-    @commands.is_nsfw() # TODO: Make a nsfw cog.
-    async def yiff(self, ctx):
-        """posts a yiff >:3 [thanks waspy]"""
-        r = await self.randomimageapi(ctx, 'https://sheri.fun/api/v1/yiff', 'url')
-
-        yiff = discord.Embed(title=">w>", color=0xDEADBF)
-        yiff.set_image(url=r)
-
-        try:
-            await ctx.send(embed=yiff)
-            self.bot.counter["yiff_viewed"] += 1
-
-        except:
-            await ctx.send("aww i can't send embeds ;w;")
-
     @commands.command(aliases=['flip', 'coin'])
     async def coinflip(self, ctx):
         """ Coinflip! """
@@ -246,6 +253,8 @@ class Fun_Commands:
     @commands.cooldown(rate=1, per=2.0, type=commands.BucketType.user)
     async def urban(self, ctx, *, search: str):
         """ Find the 'best' definition to your words """
+        if not ctx.channel.is_nsfw():
+            return await ctx.send("Due to changes in the discord TOS, urban is a nsfw command now. Please use it in a nsfw channel.")
         if not permissions.can_embed(ctx):
             return await ctx.send("I cannot send embeds here ;-;")
 
@@ -336,7 +345,7 @@ class Fun_Commands:
     async def hewwo(self, ctx, *, text: str):
         """Takes something you say and puts it in owo"""
         owo_t = text.replace("n", "ny").replace("l", "w").replace("r", "w") #i was gonna add an @everyone and @here blocker but the r to w change already handles that XD
-        await ctx.send(f"OwO {owo_t}")
+        await ctx.send(owo_t)
 
     @commands.command()
     async def rate(self, ctx, *, thing: commands.clean_content):

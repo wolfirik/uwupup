@@ -3,7 +3,7 @@ from random import randint
 import random
 from discord.ext import commands
 
-class ship:
+class Ship:
     """hai"""
 
     def __init__(self, bot):
@@ -26,8 +26,8 @@ class ship:
             await ctx.send("can't ship nothing y'know..")
         elif user.id == user2.id:
             await ctx.send("i-i can't ship the same person..")
-        elif user.id and user2.id == author.id:
-            return await ctx.send(f"wow, you're in love with yourself, huh {ctx.author.name}?")
+        elif user.id == author.id and user2.id == author.id:
+            await ctx.send(f"wow, you're in love with yourself, huh {ctx.author.name}?")
         # ships with owopup
         elif user == owo and user2 == author or user2 == owo and user == author:
             blushes = ["m-me..? 0////0", "m-me..? >////<"]
@@ -105,4 +105,4 @@ class ship:
             #await ctx.send("")
 
 def setup(bot):
-    bot.add_cog(ship(bot))
+    bot.add_cog(Ship(bot))

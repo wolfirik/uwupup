@@ -14,13 +14,9 @@ class sql_test_cog:
     @commands.check(repo.is_owner)
     async def sql(self, ctx):
         """MEMES"""
-        conn = sqlite3.connect('owo.db')
-        conn.execute('''CREATE TABLE BADGES
-          (BADGE_NAME      TEXT    NOT NULL,
-          EMOTE           TEXT    NOT NULL,
-          DESCRIPTION     TEXT    NOT NULL);''')
-        await ctx.send("done")
-        conn.close()
+        thing = BytesIO(await http.get(f"{ctx.author.avatar_url}".replace("webp", "png"), res_method="read"))
+        myimage = Image.open(filename)
+        myimage.load()
 
 
 def setup(bot):

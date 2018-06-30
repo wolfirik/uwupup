@@ -1,7 +1,8 @@
 import time
 import datetime
 import subprocess
-from utils import repo, default, dataIO, http
+from utils import repo, default, http
+from utils.dataIO import dataIO
 from utils.chat_formatting import pagify, box
 from discord.ext import commands
 from copy import deepcopy
@@ -16,25 +17,21 @@ import inspect
 import textwrap
 import psutil
 import requests
-import psycopg2
 from io import BytesIO
-from pymongo import MongoClient
 import json
+import var
 
 async def run_cmd(cmd: str) -> str:
     """Runs a subprocess and returns the output."""
-    process = await asyncio.create_subprocess_shell(
+    process =\
+        await asyncio.create_subprocess_shell(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE)
     results = await process.communicate()
     return "".join(x.decode("utf-8") for x in results)
 
-db_uri = os.environ['MONGOLAB_NAVY_URI']
-
 class Admin:
     def __init__(self, bot):
         self.bot = bot
-        self.db_client = MongoClient(db_uri)
-        self.db = self.db_client['owopup']
         self.config = default.get("config.json")
         self._last_result = None
 
@@ -76,9 +73,11 @@ class Admin:
     @commands.command()
     async def amiadmin(self, ctx):
         """ Are you admin? """
+        friends = [185938944460980224, 415570038175825930, 185938944460980224, 119799610670579714, 296044953576931328, 303274633707126796]
         if ctx.author.id in repo.owners:
             return await ctx.send(f"Yes **{ctx.author.name}** you are admin! ✅")
-
+        elif ctx.author.id in friends:
+            return await ctx.send(f"No, but Skull does consider you his friend uwu")
         # Please do not remove this part.
         # I would love to be credited as the original creator of the source code.
         if ctx.author.id == 86477779717066752:
@@ -230,7 +229,7 @@ class Admin:
 
     @commands.command(hidden=True)
     @commands.check(repo.is_owner)
-    async def debug(self, ctx, *, command: str):
+    async def shell(self, ctx, *, command: str):
         """Run stuff"""
         with ctx.typing():
             await run_cmd('git init')
@@ -268,8 +267,12 @@ class Admin:
         guilds = sorted(list(self.bot.guilds),
                         key=lambda s: s.name.lower())
         msg = ""
-        for i, server in enumerate(guilds, 1):
-            msg += "`{}:` {}\n".format(i, server.name)
+        for i, guild in enumerate(guilds, 1):
+            members = set(guild.members)
+            bots = filter(lambda m: m.bot, members)
+            bots = set(bots)
+            members = len(members) - len(bots)
+            msg += "`{}:` {} `{} members, {} bots` \n".format(i, guild.name, members, len(bots))
 
         for page in pagify(msg, ['\n']):
             await ctx.send(page)
@@ -299,7 +302,7 @@ class Admin:
             'discord': discord,
             'commands': commands,
             'requests': requests,
-            'db': self.db,
+            'os': os,
             '_': self._last_result
         }
 
@@ -326,11 +329,25 @@ class Admin:
         else:
             try:
                 await ctx.send(f"{result}")
-            except:
+            except discord.HTTPException:
                 f = f"{result}"
                 memes = BytesIO(f.encode('utf-8'))
                 await ctx.send("Output's too big heres the file.", file=discord.File(memes, filename='eval.txt'))
+            except Exception as e:
+                await ctx.send(f"`{e}`")
 
+                          
+    @commands.command()
+    @commands.check(repo.is_owner)
+    async def sudo(self, ctx, user: discord.Member, *, command):
+        """Run a cmd under someone elses name
+        """
+        cmd = copy(ctx.message)
+        cmd.author = user
+        cmd.content = ctx.prefix + command
+
+        await self.bot.process_commands(cmd)
+                          
     @commands.command()
     @commands.check(repo.is_owner)
     async def whtest(self, ctx, whlink: str):
@@ -351,40 +368,16 @@ class Admin:
             if guild == ctx.guild:
                 roles = ", ".join([x.mention for x in guild.roles])
             else:
-                roles = "oof"
+                roles = ", ".join([x.name for x in guild.roles])
 
-            info = discord.Embed(title="Guild info", description=f":small_blue_diamond: | Name: {guild.name}\n:small_blue_diamond: | Members/Bots: {members}/{len(bots)}"
-                                                                  f"\n:small_blue_diamond: | Owner: {guild.owner}\n:small_blue_diamond: | Created at: {guild.created_at}"
-                                                                  f"\n:small_blue_diamond: | Roles: {roles}"
-                                                                  f"\n:small_blue_diamond: | Shard ID (useless rn): {guild.shard_id}", color=discord.Color.blue())
+            info = discord.Embed(title="Guild info", description=f"» Name: {guild.name}\n» Members/Bots: {members}/{len(bots)}"
+                                                                  f"\n» Owner: {guild.owner}\n» Created at: {guild.created_at}"
+                                                                  f"\n» Roles: {roles}"
+                                                                  f"\n» Shard ID (useless rn): {guild.shard_id}", color=discord.Color.blue())
             info.set_thumbnail(url=guild.icon_url)
             await ctx.send(embed=info)
         except:
             await ctx.send("Hmmph i got nothin. Either you gave an invalid server id or i'm not in that server")
-
-    @commands.command()
-    @commands.check(repo.is_owner)
-    async def mongo(self, ctx):
-        post_data = [{ 'name' : "jeff", 'meme': "null" }]
-        #post_data = json.loads(post_data)
-        headers = {'content-type': 'application/json'}
-        r = requests.post(f'https://api.mlab.com/api/1/databases/{os.environ["DB_NAME"]}/collections/test?apiKey={os.environ["MLAB_KEY"]}', data=post_data, headers=headers)
-        r = r.json()
-        await ctx.send(r)
-
-    @commands.command()
-    @commands.check(repo.is_owner)
-    async def recall(self, ctx):
-        r = requests.get(f'https://api.mlab.com/api/1/databases/{os.environ["DB_NAME"]}/collections/test/5b158cf5e7179a6034c6fd69?apiKey={os.environ["MLAB_KEY"]}')
-        r = r.json()
-        await ctx.send(r)
-
-    @commands.command()
-    @commands.check(repo.is_owner)
-    async def mon(self, ctx):
-        r = requests.get(f'https://api.mlab.com/api/1/databases?apiKey={os.environ["MLAB_KEY"]}')
-        r = r.json()
-        await ctx.send(r)
 
     @commands.command()
     @commands.check(repo.is_owner)

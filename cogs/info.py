@@ -7,8 +7,11 @@ from discord.ext import commands
 from discord import Webhook, AsyncWebhookAdapter
 import aiohttp
 from datetime import datetime
-from utils import repo, default
+from utils import repo, default, http
+from io import BytesIO
+import var
 
+from colormap import rgb2hex, hex2rgb
 
 class Information:
     def __init__(self, bot):
@@ -36,15 +39,16 @@ class Information:
         return fmt.format(d=days, h=hours, m=minutes, s=seconds)
 
     @commands.command()
-    async def testhelp(self, ctx, *, commands : str=None):
+    @commands.check(repo.is_owner)
+    async def fakehelp(self, ctx, *, commands : str=None):
         if not commands:
             help = await self.bot.formatter.format_help_for(ctx, self.bot)
             try:
-                await ctx.send("Alright, Sent! uwu")
                 for page in help:
                     page = page.replace("```", "`")
                     page = discord.Embed(description=page, color=0x254d16)
                     await ctx.author.send(embed=page)
+                    await ctx.send("Alright, Sent! uwu")
             except discord.Forbidden:
                 return await ctx.send("ack, do you have dms disabled or something..?")
         else:
@@ -60,7 +64,7 @@ class Information:
         before = time.monotonic()
         message = await ctx.send("Pong")
         ping = (time.monotonic() - before) * 1000
-        await message.edit(content=f"Pong!\n`Edit {int(ping)}ms\nAPI {self.bot.latency}ms`")
+        await message.edit(content=f"Pong!\n`MSG :: {int(ping)}ms\nAPI :: {round(self.bot.latency * 1000)}ms`")
 
     @commands.command(aliases=['joinme', 'links', 'botinvite'])
     async def invite(self, ctx):
@@ -91,16 +95,41 @@ class Information:
         if len(suggestion) > 2000:
             await ctx.send(f"xwx uhm... {ctx.author.mention} thats a bit too long for me to send. Shorten it and try again. (2000 character limit)")
         else:
+            suggestionem = discord.Embed(description=f"{suggestion}", color=color)
+            suggestionem.set_author(name=f"From {ctx.author}", icon_url=ctx.author.avatar_url)
+            suggestionem.set_footer(text=footer, icon_url=guild_pic)
             try:
-                await ctx.send("alright, i sent your suggestion!! ^w^")
+                await ctx.send("Alright, i sent your suggestion!! ^w^")
                 async with aiohttp.ClientSession() as session:
                     webhook = Webhook.from_url(os.environ["SUGGESTHOOK"], adapter=AsyncWebhookAdapter(session))
-                suggestionem = discord.Embed(description=f"{suggestion}", color=color)
-                suggestionem.set_author(name=f"From {ctx.author}", icon_url=ctx.author.avatar_url)
-                suggestionem.set_footer(text=footer, icon_url=guild_pic)
-                await webhook.send(embed=suggestionem)
+                    await webhook.send(embed=suggestionem)
             except Exception as e:
-                await ctx.send("uhm.. something went wrong, try again later..")
+                return await ctx.send("uhm.. something went wrong, try again later..")
+
+    @commands.command()
+    async def dbl(self, ctx, botto: discord.Member):
+        """generates a dbl widget [Bot must be on dbl]"""
+        if not botto.bot:
+            return await ctx.send(f'Wow, passing off a user as a bot, you\'re a fuckin\' genius {ctx.author.mention}')
+        elif botto == self.bot.user:
+            link = f"https://discordbots.org/api/widget/365255872181567489.png?topcolor=2b5a19&middlecolor=32681e&datacolor=ffffff&highlightcolor=254d16&labelcolor=ffffff&certifiedcolor=0d94ba"
+            thing = BytesIO(await http.get(link, res_method="read"))
+            with ctx.typing():
+                try:
+                    await ctx.send(file=discord.File(thing, filename="dbl.png"))
+                except:
+                    await ctx.send("oof")
+        else:
+            try:
+                with ctx.typing():
+                    color = botto.color
+                    link = f"https://discordbots.org/api/widget/{botto.id}.png?topcolor={color}&datacolor=ffffff&highlightcolor={color}&labelcolor=ffffff&certifiedcolor=0d94ba".replace("#", "")
+                    thing = BytesIO(await http.get(link, res_method="read"))
+                    await ctx.send(file=discord.File(thing, filename="dbl.png"))
+            except discord.Forbidden:
+                await ctx.send("Can i even send pics?")
+            except Exception as e:
+                await ctx.send(e)
 
 
     @commands.command()

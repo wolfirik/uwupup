@@ -7,6 +7,6 @@ bot = Bot(command_prefix=commands.when_mentioned_or("uwu "), prefix=commands.whe
 
 @bot.event
 async def on_message_delete(message):
-    author = ctx.author
+    author = author
     chan = bot.get_channel(453991541434744832)
     await chan.send("Message from {author} deleted\n```{message}```")

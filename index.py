@@ -5,8 +5,6 @@ from data import Bot
 from utils import permissions, default
 from discord import Webhook, AsyncWebhookAdapter
 import aiohttp
-from sqlalchemy import create_engine
-from sqlalchemy.orm import scoped_session, sessionmaker
 
 config = default.get("config.json")
 description = """
