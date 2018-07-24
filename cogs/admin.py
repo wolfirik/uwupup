@@ -19,7 +19,7 @@ import psutil
 import requests
 from io import BytesIO
 import json
-import var
+
 
 async def run_cmd(cmd: str) -> str:
     """Runs a subprocess and returns the output."""
