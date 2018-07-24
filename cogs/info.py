@@ -9,7 +9,6 @@ import aiohttp
 from datetime import datetime
 from utils import repo, default, http
 from io import BytesIO
-import var
 
 from colormap import rgb2hex, hex2rgb
 
