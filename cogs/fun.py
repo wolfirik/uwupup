@@ -88,7 +88,7 @@ class Fun_Commands:
     async def blush(self, ctx):
         """0///0"""
         try:
-            async with aiohttp.ClientSession() as session:
+            async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
                 async with session.get('https://e926.net/post/index.json?limit=1&tags=order:random%20blush%20-equine%20fur%20solo') as resp:
                     data = await resp.json()
             link = data["file_url"]
