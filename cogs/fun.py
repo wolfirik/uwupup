@@ -92,8 +92,8 @@ class Fun_Commands:
             r = client.get('https://e926.net/post/index.json?limit=1&tags=order:random%20blush%20-equine%20fur%20solo') #a lot more complex than the other apis
             r = await r.json()
             link = r[0].get('file_url')
-        except:
-            return await ctx.send("I think e926 is being dumb.. try again later..")
+        except Exception as e:
+            return await ctx.send(e)
         floof = discord.Embed(description=f"**{ctx.author.name}, you're bl-blushing..! 0////0**", color=0xf44444)
         floof.set_image(url=link)
         try:
