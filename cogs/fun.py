@@ -91,7 +91,7 @@ class Fun_Commands:
             client = aiohttp.ClientSession()
             r = client.get('https://e926.net/post/index.json?limit=1&tags=order:random%20blush%20-equine%20fur%20solo') #a lot more complex than the other apis
             r = await r.json()
-            link = r[0].get('file_url')
+            link = r["file_url"]
         except Exception as e:
             return await ctx.send(e)
         floof = discord.Embed(description=f"**{ctx.author.name}, you're bl-blushing..! 0////0**", color=0xf44444)
