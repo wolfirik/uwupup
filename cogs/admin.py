@@ -19,6 +19,7 @@ import psutil
 import requests
 from io import BytesIO
 import json
+from collections import Counter as c
 
 
 async def run_cmd(cmd: str) -> str:
@@ -299,6 +300,7 @@ class Admin:
             'commands': commands,
             'requests': requests,
             'os': os,
+            'c': c,
             '_': self._last_result
         }
 
