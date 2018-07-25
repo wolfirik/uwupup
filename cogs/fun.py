@@ -88,8 +88,9 @@ class Fun_Commands:
     async def blush(self, ctx):
         """0///0"""
         try:
-            r = requests.get('https://e926.net/post/index.json?limit=1&tags=order:random%20blush%20-equine%20fur%20solo') #a lot more complex than the other apis
-            r = r.json()
+            client = aiohttp.ClientSession()
+            r = client.get('https://e926.net/post/index.json?limit=1&tags=order:random%20blush%20-equine%20fur%20solo') #a lot more complex than the other apis
+            r = await r.json()
             link = r[0].get('file_url')
         except:
             return await ctx.send("I think e926 is being dumb.. try again later..")
