@@ -97,7 +97,7 @@ class Fun_Commands:
         floof = discord.Embed(description=f"**{ctx.author.name}, you're bl-blushing..! 0////0**", color=0xf44444)
         floof.set_image(url=link)
         try:
-            await ctx.send(link)
+            await ctx.send(data)
         except:
             await ctx.send("aww i can't send embeds ;w;")
             
