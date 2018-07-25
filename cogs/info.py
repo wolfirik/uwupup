@@ -10,7 +10,6 @@ from datetime import datetime
 from utils import repo, default, http
 from io import BytesIO
 
-from colormap import rgb2hex, hex2rgb
 
 class Information:
     def __init__(self, bot):
