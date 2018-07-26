@@ -89,17 +89,16 @@ class Fun_Commands:
         """0///0"""
         try:
             async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
-                async with session.get('https://e926.net/post/index.json?limit=1&tags=order:random%20blush%20-equine%20fur%20solo') as resp:
-                    data = await resp.json()
-            link = data["file_url"]
+                async with session.get(f'https://e926.net/post/index.json?limit=1&tags=order:random%20blush%20-equine%20fur%20solo') as get:
+                    resp = await get.json()
         except Exception as e:
             return await ctx.send(e)
         floof = discord.Embed(description=f"**{ctx.author.name}, you're bl-blushing..! 0////0**", color=0xf44444)
-        floof.set_image(url=link)
+        floof.set_image(url=resp['file_url'])
         try:
             await ctx.send(data)
         except:
-            await ctx.send("aww i can't send embeds ;w;")
+            await ctx.send("aww i can't send embeds ;w;")t send embeds ;w;")
             
 
     @commands.command(aliases=['hugge'])
