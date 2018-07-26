@@ -139,7 +139,7 @@ class Information:
     async def about(self, ctx):
         """ About the bot """
         ramUsage = self.process.memory_full_info().rss / 1024**2
-        color = 0x8464A9
+        color = 0x79589F
         owner = self.bot.get_user(158750488563679232)
 
         embed = discord.Embed(colour=color)
