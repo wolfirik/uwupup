@@ -139,18 +139,19 @@ class Information:
     async def about(self, ctx):
         """ About the bot """
         ramUsage = self.process.memory_full_info().rss / 1024**2
-        color = 0x33353
+        color = 0x8464A9
         owner = self.bot.get_user(158750488563679232)
 
         embed = discord.Embed(colour=color)
         embed.set_thumbnail(url=ctx.bot.user.avatar_url)
         embed.add_field(name="Uptime", value=self.get_bot_uptime(), inline=False)
-        embed.add_field(name="Dev", value=f"{owner}", inline=True)
+        embed.add_field(name="Dev", value=owner, inline=True)
         embed.add_field(name="Library", value="discord.py", inline=True)
         embed.add_field(name="Servers", value=len(ctx.bot.guilds), inline=True)
         embed.add_field(name="Commands used", value=self.bot.counter["cmds_ran"], inline=True)
         embed.add_field(name="Messages read", value=self.bot.counter["msgs_read"], inline=True)
         embed.add_field(name="RAM", value=f"{ramUsage:.2f} MB", inline=True)
+        embed.set_footer(text="Heroku Version")
 
         await ctx.send(content=f"ℹ About **{ctx.bot.user}**", embed=embed)
 
