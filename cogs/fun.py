@@ -98,7 +98,7 @@ class Fun_Commands:
         try:
             await ctx.send(data)
         except:
-            await ctx.send("aww i can't send embeds ;w;")t send embeds ;w;")
+            await ctx.send("aww i can't send embeds ;w;")
             
 
     @commands.command(aliases=['hugge'])
