@@ -91,10 +91,10 @@ class Fun_Commands:
             async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
                 async with session.get(f'https://e926.net/post/index.json?limit=1&tags=order:random%20blush%20-equine%20fur%20solo') as get:
                     resp = await get.json()
+                    floof = discord.Embed(description=f"**{ctx.author.name}, you're bl-blushing..! 0////0**", color=0xf44444)
+                    floof.set_image(url=resp['file_url'])
         except Exception as e:
             return await ctx.send(e)
-        floof = discord.Embed(description=f"**{ctx.author.name}, you're bl-blushing..! 0////0**", color=0xf44444)
-        floof.set_image(url=resp['file_url'])
         try:
             await ctx.send(data)
         except:
