@@ -93,6 +93,7 @@ class Fun_Commands:
                     resp = await get.json()
                     floof = discord.Embed(description=f"**{ctx.author.name}, you're bl-blushing..! 0////0**", color=0xf44444)
                     floof.set_image(url=resp['file_url'])
+                    await ctx.send(embed=floof)
         except Exception as e:
             return await ctx.send(e)
         try:
@@ -114,14 +115,14 @@ class Fun_Commands:
 
         else:
             try:
-                r = requests.get('https://e926.net/post/index.json?limit=1&tags=cute%20order:random%20hug%20-equine%20fur')
-                r = r.json()
-                link = r[0].get('file_url')
+                async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
+                async with session.get(f'https://e926.net/post/index.json?limit=1&tags=cute%20order:random%20hug%20-equine%20fur') as get:
+                    resp = await get.json()
+                    hugge = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a hug uwu**", color=0xd25e92)
+                    hugge.set_image(url=resp['file_url'])
+                    await ctx.send(embed=hugge)
             except Exception as e:
                 return await ctx.send(e)
-
-            hugge = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a hug uwu**", color=0xd25e92)
-            hugge.set_image(url=link)
             try:
                 await ctx.send(embed=hugge)
             except discord.Forbidden:
