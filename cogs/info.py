@@ -146,7 +146,7 @@ class Information:
                 desc = b.get("description")
                 prefix = b.get("prefix")
                 invites = b.get("invites")
-                owners = " ".join(b.get("owners")
+                owners = " ".join(b.get("owners"))
                 upvotes = b.get("upvotes")
                 invite = b.get("invite")
                 owner = self.bot.get_user(int(owner))
