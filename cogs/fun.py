@@ -384,7 +384,7 @@ class Fun_Commands:
         await ctx.send(result)
                          
      #ignore this command
-     @commands.command(aliases=['stacks', 'ss'], hidden=True)
+    @commands.command(aliases=['stacks', 'ss'], hidden=True)
     async def samurai(self, ctx):
         await ctx.send("Samurai sucks and is not a furry lol")
         await asyncio.sleep(3)
