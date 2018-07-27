@@ -16,6 +16,7 @@ class Information:
     def __init__(self, bot):
         self.bot = bot
         self.config = default.get("config.json")
+        self.color = 0x254d16
         self.process = psutil.Process(os.getpid())
 
     def get_bot_uptime(self, *, brief=False):
@@ -141,7 +142,7 @@ class Information:
                 return await ctx.send("uhhhhhh I couldn't find that bot.")
             else:
                 desc = base.get("description")
-                em = discord.Embed(title=f"Listcord stats for {bot}", description=desc)
+                em = discord.Embed(title=f"Listcord stats for {bot}", description=desc, color=self.color)
                 await ctx.send(embed=em)
             
     @commands.command()
