@@ -162,6 +162,7 @@ class Information:
                 em = discord.Embed(description=f"Bot Description:```{desc}```\n\nPrefix: `{prefix}`\nInvites: `{invites}`\nUpvotes: `{upvotes}`\n[Bot Invite]({invite})\n[Bot Page](https://listcord.com/bot/{bot.id})", color=self.color)
                 em.set_author(name=f"Listcord stats for {bot}", icon_url=emote.url)
                 em.set_thumbnail(url=bot.avatar_url)
+                em.set_image(url=f"https://nuggetbot.com/listcord/embed.png?id={bot.id}")
                 em.set_footer(text=f"", icon_url="")
                 await ctx.send(embed=em)
             
