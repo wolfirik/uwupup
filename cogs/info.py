@@ -129,7 +129,14 @@ class Information:
             except Exception as e:
                 await ctx.send(e)
 
-
+    @commands.command()
+    async def lcord(self, ctx, bot: discord.Member):
+        """gets a bots info from listcord"""
+        if not bot.bot:
+            return await ctx.send(f'Wow, passing off a user as a bot, you\'re a fuckin\' genius {ctx.author.mention}')
+        else:
+            base = requests.get(f"https://listcord.com/api/bot/{bot.user.id}").json()
+            await ctx.send(base)
     @commands.command()
     async def source(self, ctx):
         """ Credits """
