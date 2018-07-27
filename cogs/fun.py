@@ -146,7 +146,7 @@ class Fun_Commands:
                 async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
                     async with session.get(f'http://e926.net/post/index.json?tags=head_pat%20-young%20order:random&limit=1') as get:
                         resp = await get.json()
-                        pat = discord.Embed((description=f"**{ctx.author.name} pat {user.name} on the head for being good..**", color=0x6a1b9a)
+                        pat = discord.Embed(description=f"**{ctx.author.name} pat {user.name} on the head for being good..**", color=0x6a1b9a)
                         pat.set_image(url=resp['file_url'])
                         await ctx.send(embed=pat)
             except:
