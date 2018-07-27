@@ -97,7 +97,7 @@ class Fun_Commands:
         except Exception as e:
             return await ctx.send(e)
         try:
-            await ctx.send(data)
+            pass
         except:
             await ctx.send("aww i can't send embeds ;w;")
             
@@ -124,7 +124,7 @@ class Fun_Commands:
             except Exception as e:
                 return await ctx.send(e)
             try:
-                await ctx.send(embed=hugge)
+                pass
             except discord.Forbidden:
                 await ctx.send("aww i can't send embeds.. ;w;")
             except:
@@ -143,16 +143,16 @@ class Fun_Commands:
 
         else:
             try:
-                r = requests.get('http://e926.net/post/index.json?tags=head_pat%20-young%20order:random&limit=1')
-                r = r.json()
-                link = r[0].get('file_url')
+                async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
+                async with session.get(f'http://e926.net/post/index.json?tags=head_pat%20-young%20order:random&limit=1') as get:
+                    resp = await get.json()
+                    pat = discord.Embed((description=f"**{ctx.author.name} pat {user.name} on the head for being good..**", color=0x6a1b9a)
+                    pat.set_image(url=resp['file_url'])
+                    await ctx.send(embed=pat)
             except:
                 return await ctx.send("I think e926 is being dumb.. try again later..")
-
-            hugge = discord.Embed(description=f"**{ctx.author.name} pat {user.name} on the head for being good..**", color=0x6a1b9a)
-            hugge.set_image(url=link)
             try:
-                await ctx.send(embed=hugge)
+                pass
             except discord.Forbidden:
                 await ctx.send("aww i can't send embeds.. ;w;")
             except:
@@ -168,20 +168,18 @@ class Fun_Commands:
             await ctx.send("d-don't cuddle me..!")
         elif user == ctx.author:
             await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
-
         else:
             try:
-                r = requests.get('https://e926.net/post/index.json?limit=1&tags=cuddle%20cute%20fur%20-equine%20order:random')
-                r = r.json()
-                link = r[0].get('file_url')
-                thing = BytesIO(await http.get(link, res_method="read"))
+                async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
+                async with session.get(f'https://e926.net/post/index.json?limit=1&tags=cuddle%20cute%20fur%20-equine%20order:random') as get:
+                    resp = await get.json()
+                    cuddle = discord.Embed(description=f"**{ctx.author.name} cuddled {user.name} OwO**", color=0x3f51b5)
+                    cuddle.set_image(url=resp['file_url'])
+                    await ctx.send(embed=cuddle)
             except:
                 return await ctx.send("I think e926 is being dumb.. try again later..")
-
-            hugge = discord.Embed(description=f"**{ctx.author.name} cuddled {user.name} OwO**", color=0x3f51b5)
-            hugge.set_image(url=link)
             try:
-                await ctx.send(embed=hugge)
+                pass
             except discord.Forbidden:
                 await ctx.send("aww i can't send embeds.. ;w;")
             except:
@@ -199,17 +197,16 @@ class Fun_Commands:
             await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
         else:
             try:
-                r = requests.get('https://e926.net/post/index.json?limit=1&tags=-kiss%20order:random%20face_lick%20-equine%20-belly_expansion')
-                r = r.json()
-                link = r[0].get('file_url')
-                thing = BytesIO(await http.get(link, res_method="read"))
+                async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
+                async with session.get(f'https://e926.net/post/index.json?limit=1&tags=-kiss%20order:random%20face_lick%20-equine%20-belly_expansion') as get:
+                    resp = await get.json()
+                    lick = discord.Embed(description=f"**{ctx.author.name} licked {user.name} XP**", color=0x2e7d32)
+                    lick.set_image(url=resp['file_url'])
+                    await ctx.send(embed=lick)
             except:
                 return await ctx.send("I think e926 is being dumb.. try again later..")
-
-            lick = discord.Embed(description=f"**{ctx.author.name} licked {user.name} XP**", color=0x2e7d32)
-            lick.set_image(url=link)
             try:
-                await ctx.send(embed=lick)
+                pass
             except discord.Forbidden:
                 await ctx.send("aww i can't send embeds.. ;w;")
             except:
@@ -228,17 +225,16 @@ class Fun_Commands:
             await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
         else:
             try:
-                r = requests.get('https://e926.net/post/index.json?limit=1&tags=kiss%20cute%20fur%20-equine%20order:random')
-                r = r.json()
-                link = r[0].get('file_url')
-                thing = BytesIO(await http.get(link, res_method="read"))
+                async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
+                async with session.get(f'https://e926.net/post/index.json?limit=1&tags=kiss%20cute%20fur%20-equine%20order:random') as get:
+                    resp = await get.json()
+                    kiss = discord.Embed(description=f"**{ctx.author.name} kissed {user.name} \❤w\❤**", color=0xe91e63)
+                    kiss.set_image(url=resp['file_url'])
+                    await ctx.send(embed=kiss)
             except:
                 return await ctx.send("I think e926 is being dumb.. try again later..")
-
-            lick = discord.Embed(description=f"**{ctx.author.name} kissed {user.name} \❤w\❤**", color=0xe91e63)
-            lick.set_image(url=link)
             try:
-                await ctx.send(embed=lick)
+                pass
             except discord.Forbidden:
                 await ctx.send("aww i can't send embeds.. ;w;")
             except:
@@ -386,7 +382,13 @@ class Fun_Commands:
 
         result = f"**{ctx.author.name}** rolled the slots...\n**[ {a} {b} {c} ]**\n{message}"
         await ctx.send(result)
-
+                         
+     #ignore this command
+     @commands.command(aliases=['stacks', 'ss'], hidden=True)
+    async def samurai(self, ctx):
+        await ctx.send("Samurai sucks and is not a furry lol")
+        await asyncio.sleep(3)
+        await ctx.send("uwu fuck u samuwai")
 
 def setup(bot):
     bot.add_cog(Fun_Commands(bot))
