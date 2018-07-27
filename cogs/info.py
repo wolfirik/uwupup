@@ -137,7 +137,8 @@ class Information:
             pass
         else:
             base = requests.get(f"https://discordbots.org/api/bots/{bot.id}").json()
-            await ctx.send(base)
+            prefix = base.get("prefix")
+            await ctx.send(prefix)
             
                 
     @commands.command(aliases=["lc"])
