@@ -159,7 +159,7 @@ class Information:
                 owners = " ".join(b.get("owners"))
                 upvotes = b.get("votes")
                 invite = b.get("invite")
-                em = discord.Embed(description=f"Bot Description:```{desc}```\n\nPrefix: `{prefix}`\nInvites: `{invites}`\nUpvotes: `{upvotes}`\n[Bot Invite]({invite})", color=self.color)
+                em = discord.Embed(description=f"Bot Description:```{desc}```\n\nPrefix: `{prefix}`\nInvites: `{invites}`\nUpvotes: `{upvotes}`\n[Bot Invite]({invite})[Bot Page](https://listcord.com/bot/{bot.id}", color=self.color)
                 em.set_author(name=f"Listcord stats for {bot}", icon_url=emote.url)
                 em.set_thumbnail(url=bot.avatar_url)
                 em.set_footer(text=f"", icon_url="")
