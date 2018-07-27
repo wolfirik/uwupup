@@ -141,9 +141,12 @@ class Information:
             if base.get("code") == 0:
                 return await ctx.send("uhhhhhh I couldn't find that bot.")
             else:
+                emote = self.bot.get_emoji(462350611854262282)
                 b = requests.get(f"https://listcord.com/api/bot/{bot.id}").json()
                 desc = b.get("description")
-                em = discord.Embed(title=f"Listcord stats for {bot}", description=desc, color=self.color)
+                prefix = b.get("prefix")
+                em = discord.Embed(description=f"{desc}\nPrefix: `{prefix}`", color=self.color)
+                em.set_author(name=f"Listcord stats for {bot}", icon_url=emote.url)
                 em.set_thumbnail(url=bot.avatar_url)
                 await ctx.send(embed=em)
             
