@@ -131,7 +131,7 @@ class Information:
             except Exception as e:
                 await ctx.send(e)
 
-    @commands.command()
+    @commands.command(aliases=["lc"])
     async def lcord(self, ctx, bot: discord.Member):
         """gets a bots info from listcord"""
         if not bot.bot:
@@ -153,7 +153,7 @@ class Information:
                 em = discord.Embed(description=f"Bot Description:```{desc}```\n\nPrefix: `{prefix}`\nInvites: `{invites}`\nUpvotes: `{upvotes}`\n[Bot Invite]({invite})", color=self.color)
                 em.set_author(name=f"Listcord stats for {bot}", icon_url=emote.url)
                 em.set_thumbnail(url=bot.avatar_url)
-                em.set_footer(text=f"", icon_url=)
+                em.set_footer(text=f"", icon_url="")
                 await ctx.send(embed=em)
             
     @commands.command()
