@@ -141,8 +141,8 @@ class Information:
             if base.get("code") == 0:
                 return await ctx.send("uhhhhhh I couldn't find that bot.")
             else:
-                base = requests.get(f"https://listcord.com/api/bot/{bot.id}").json()
-                desc = base.get("description")
+                b = requests.get(f"https://listcord.com/api/bot/{bot.id}").json()
+                desc = b.get("description")
                 em = discord.Embed(title=f"Listcord stats for {bot}", description=desc, color=self.color)
                 em.set_thumbnail(url=bot.avatar_url)
                 await ctx.send(embed=em)
