@@ -147,7 +147,7 @@ class Information:
                 prefix = b.get("prefix")
                 invites = b.get("invites")
                 owners = " ".join(b.get("owners")
-                upvotes =b.get("upvotes")
+                upvotes = b.get("upvotes")
                 invite = b.get("invite")
                 owner = self.bot.get_user(int(owner))
                 em = discord.Embed(description=f"Bot Description:```{desc}```\n\nPrefix: `{prefix}`\nInvites: `{invites}`\nUpvotes: `{upvotes}`\n[Bot Invite]({invite})", color=self.color)
