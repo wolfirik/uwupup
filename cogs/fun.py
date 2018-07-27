@@ -116,11 +116,11 @@ class Fun_Commands:
         else:
             try:
                 async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
-                async with session.get(f'https://e926.net/post/index.json?limit=1&tags=cute%20order:random%20hug%20-equine%20fur') as get:
-                    resp = await get.json()
-                    hugge = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a hug uwu**", color=0xd25e92)
-                    hugge.set_image(url=resp['file_url'])
-                    await ctx.send(embed=hugge)
+                    async with session.get(f'https://e926.net/post/index.json?limit=1&tags=cute%20order:random%20hug%20-equine%20fur') as get:
+                        resp = await get.json()
+                        hugge = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a hug uwu**", color=0xd25e92)
+                        hugge.set_image(url=resp['file_url'])
+                        await ctx.send(embed=hugge)
             except Exception as e:
                 return await ctx.send(e)
             try:
@@ -144,11 +144,11 @@ class Fun_Commands:
         else:
             try:
                 async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
-                async with session.get(f'http://e926.net/post/index.json?tags=head_pat%20-young%20order:random&limit=1') as get:
-                    resp = await get.json()
-                    pat = discord.Embed((description=f"**{ctx.author.name} pat {user.name} on the head for being good..**", color=0x6a1b9a)
-                    pat.set_image(url=resp['file_url'])
-                    await ctx.send(embed=pat)
+                    async with session.get(f'http://e926.net/post/index.json?tags=head_pat%20-young%20order:random&limit=1') as get:
+                        resp = await get.json()
+                        pat = discord.Embed((description=f"**{ctx.author.name} pat {user.name} on the head for being good..**", color=0x6a1b9a)
+                        pat.set_image(url=resp['file_url'])
+                        await ctx.send(embed=pat)
             except:
                 return await ctx.send("I think e926 is being dumb.. try again later..")
             try:
@@ -171,11 +171,11 @@ class Fun_Commands:
         else:
             try:
                 async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
-                async with session.get(f'https://e926.net/post/index.json?limit=1&tags=cuddle%20cute%20fur%20-equine%20order:random') as get:
-                    resp = await get.json()
-                    cuddle = discord.Embed(description=f"**{ctx.author.name} cuddled {user.name} OwO**", color=0x3f51b5)
-                    cuddle.set_image(url=resp['file_url'])
-                    await ctx.send(embed=cuddle)
+                    async with session.get(f'https://e926.net/post/index.json?limit=1&tags=cuddle%20cute%20fur%20-equine%20order:random') as get:
+                        resp = await get.json()
+                        cuddle = discord.Embed(description=f"**{ctx.author.name} cuddled {user.name} OwO**", color=0x3f51b5)
+                        cuddle.set_image(url=resp['file_url'])
+                        await ctx.send(embed=cuddle)
             except:
                 return await ctx.send("I think e926 is being dumb.. try again later..")
             try:
@@ -198,11 +198,11 @@ class Fun_Commands:
         else:
             try:
                 async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
-                async with session.get(f'https://e926.net/post/index.json?limit=1&tags=-kiss%20order:random%20face_lick%20-equine%20-belly_expansion') as get:
-                    resp = await get.json()
-                    lick = discord.Embed(description=f"**{ctx.author.name} licked {user.name} XP**", color=0x2e7d32)
-                    lick.set_image(url=resp['file_url'])
-                    await ctx.send(embed=lick)
+                    async with session.get(f'https://e926.net/post/index.json?limit=1&tags=-kiss%20order:random%20face_lick%20-equine%20-belly_expansion') as get:
+                        resp = await get.json()
+                        lick = discord.Embed(description=f"**{ctx.author.name} licked {user.name} XP**", color=0x2e7d32)
+                        lick.set_image(url=resp['file_url'])
+                        await ctx.send(embed=lick)
             except:
                 return await ctx.send("I think e926 is being dumb.. try again later..")
             try:
@@ -226,11 +226,11 @@ class Fun_Commands:
         else:
             try:
                 async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
-                async with session.get(f'https://e926.net/post/index.json?limit=1&tags=kiss%20cute%20fur%20-equine%20order:random') as get:
-                    resp = await get.json()
-                    kiss = discord.Embed(description=f"**{ctx.author.name} kissed {user.name} \❤w\❤**", color=0xe91e63)
-                    kiss.set_image(url=resp['file_url'])
-                    await ctx.send(embed=kiss)
+                    async with session.get(f'https://e926.net/post/index.json?limit=1&tags=kiss%20cute%20fur%20-equine%20order:random') as get:
+                        resp = await get.json()
+                        kiss = discord.Embed(description=f"**{ctx.author.name} kissed {user.name} \❤w\❤**", color=0xe91e63)
+                        kiss.set_image(url=resp['file_url'])
+                        await ctx.send(embed=kiss)
             except:
                 return await ctx.send("I think e926 is being dumb.. try again later..")
             try:
