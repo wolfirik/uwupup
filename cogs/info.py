@@ -136,7 +136,7 @@ class Information:
         if not bot.bot:
             pass
         else:
-            base = requests.get(f"https://discordbots.org/api/bot/{bot.id}").json()
+            base = requests.get(f"https://discordbots.org/api/bots/{bot.id}").json()
             await ctx.send(base)
             
                 
