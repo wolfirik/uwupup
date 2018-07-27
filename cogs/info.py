@@ -137,9 +137,12 @@ class Information:
             return await ctx.send(f'Wow, passing off a user as a bot, you\'re a fuckin\' genius {ctx.author.mention}')
         else:
             base = requests.get(f"https://listcord.com/api/bot/{bot.id}").json()
-            desc = base.get("description")
-            em = discord.Embed(title=f"Listcord stats for {bot}", description=desc)
-            await ctx.send(embed=em)
+            if base.get("code") == 0:
+                return await ctx.send("uhhhhhh I couldn't find that bot.")
+            else:
+                desc = base.get("description")
+                em = discord.Embed(title=f"Listcord stats for {bot}", description=desc)
+                await ctx.send(embed=em)
             
     @commands.command()
     async def source(self, ctx):
