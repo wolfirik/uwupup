@@ -2,6 +2,7 @@ import time
 import discord
 import psutil
 import os
+import requests
 
 from discord.ext import commands
 from discord import Webhook, AsyncWebhookAdapter
