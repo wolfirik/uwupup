@@ -133,7 +133,7 @@ class Admin:
             dbl = dbl.json()
             pw = pw.json()
             lcord = lcord.json()
-            await ctx.send(f"{dblemote} | `{dbl}`\n{pwemote} | `{pw}`\n{lcordemote} | `{lcord}`")
+            await ctx.send(f"```Post stats```{dblemote} | `{dbl}`\n{pwemote} | `{pw}`\n{lcordemote} | `{lcord}`")
             await ctx.message.add_reaction(yup)
         except Exception as e:
             await ctx.send(e)
