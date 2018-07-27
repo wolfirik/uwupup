@@ -148,11 +148,11 @@ class Information:
                 invites = b.get("invites")
                 owners = b.get("owners")
                 invite = b.get("invite")
-        
+                owner = self.bot.get_user(int(list(owners)))
                 em = discord.Embed(description=f"Bot Description:```{desc}```\n\nPrefix: `{prefix}`\nInvites: `{invites}`\n[Bot Invite]({invite})", color=self.color)
                 em.set_author(name=f"Listcord stats for {bot}", icon_url=emote.url)
                 em.set_thumbnail(url=bot.avatar_url)
-                em.set_footer(text=f"Owner: {owners}")
+                em.set_footer(text=f"Owner: {owner}")
                 await ctx.send(embed=em)
             
     @commands.command()
