@@ -2,7 +2,6 @@ import time
 import discord
 import psutil
 import os
-import requests
 
 from discord.ext import commands
 from discord import Webhook, AsyncWebhookAdapter
@@ -10,6 +9,7 @@ import aiohttp
 from datetime import datetime
 from utils import repo, default, http
 from io import BytesIO
+import requests
 
 
 class Information:
