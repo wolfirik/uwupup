@@ -147,7 +147,7 @@ class Information:
                 prefix = b.get("prefix")
                 invites = b.get("invites")
                 owners = " ".join(b.get("owners"))
-                upvotes = b.get("upvotes")
+                upvotes = b.get("votes")
                 invite = b.get("invite")
                 em = discord.Embed(description=f"Bot Description:```{desc}```\n\nPrefix: `{prefix}`\nInvites: `{invites}`\nUpvotes: `{upvotes}`\n[Bot Invite]({invite})", color=self.color)
                 em.set_author(name=f"Listcord stats for {bot}", icon_url=emote.url)
