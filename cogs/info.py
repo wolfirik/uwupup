@@ -146,18 +146,14 @@ class Information:
                 desc = b.get("description")
                 prefix = b.get("prefix")
                 invites = b.get("invites")
-                owners = " ".join(b.get("owners"))
-                if len(owners) < 18:
-                    owner = owners[::-19]
-                    owner = int(owner)
-                else:
-                    owner = int(owner)
+                owners = " ".join(b.get("owners")
+                upvotes =b.get("upvotes")
                 invite = b.get("invite")
                 owner = self.bot.get_user(int(owner))
-                em = discord.Embed(description=f"Bot Description:```{desc}```\n\nPrefix: `{prefix}`\nInvites: `{invites}`\n[Bot Invite]({invite})", color=self.color)
+                em = discord.Embed(description=f"Bot Description:```{desc}```\n\nPrefix: `{prefix}`\nInvites: `{invites}`\nUpvotes: `{upvotes}`\n[Bot Invite]({invite})", color=self.color)
                 em.set_author(name=f"Listcord stats for {bot}", icon_url=emote.url)
                 em.set_thumbnail(url=bot.avatar_url)
-                em.set_footer(text=f"Owner: {owner}", icon_url=owner.avatar_url)
+                em.set_footer(text=f"", icon_url=)
                 await ctx.send(embed=em)
             
     @commands.command()
