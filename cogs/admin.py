@@ -113,6 +113,7 @@ class Admin:
         pwtoken = os.environ["PW_TOKEN"]
         dblemote = self.bot.get_emoji(338808864352763904)
         pwemote = self.bot.get_emoji(230104938858938368)
+        lcordemote = self.bot.get_emoji(462350611854262282)
         urldbl = "https://discordbots.org/api/bots/365255872181567489/stats"
         urlpw = "https://bots.discord.pw/api/bots/365255872181567489/stats"
         headersdbl = {"Authorization" : dbltoken}
