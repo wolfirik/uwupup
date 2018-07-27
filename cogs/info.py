@@ -139,7 +139,7 @@ class Information:
             base = requests.get(f"https://listcord.com/api/bot/{bot.id}").json()
             desc = base.get("description")
             em = discord.Embed(title=f"Listcord stats for {bot}", description=desc)
-            await ctx.send(base)
+            await ctx.send(embed=em)
             
     @commands.command()
     async def source(self, ctx):
