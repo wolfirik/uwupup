@@ -107,7 +107,7 @@ class Information:
                 return await ctx.send("uhm.. something went wrong, try again later..")
 
     @commands.command()
-    async def dbl(self, ctx, botto: discord.Member):
+    async def dblw(self, ctx, botto: discord.Member):
         """generates a dbl widget [Bot must be on dbl]"""
         if not botto.bot:
             return await ctx.send(f'Wow, passing off a user as a bot, you\'re a fuckin\' genius {ctx.author.mention}')
@@ -130,10 +130,19 @@ class Information:
                 await ctx.send("Can i even send pics?")
             except Exception as e:
                 await ctx.send(e)
-
+                
+    @commands.command()
+    async def dbli(self, ctx, bot: discord.Member):
+        if not bot.bot:
+            pass
+        else:
+            base = requests.get(f"https://discordbots.org/api/bot/{bot.id}").json()
+            await ctx.send(base)
+            
+                
     @commands.command(aliases=["lc"])
     async def lcord(self, ctx, bot: discord.Member):
-        """gets a bots info from listcord"""
+        """Gets a bots info from listcord"""
         if not bot.bot:
             return await ctx.send(f'Wow, passing off a user as a bot, you\'re a fuckin\' genius {ctx.author.mention}')
         else:
