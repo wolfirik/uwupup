@@ -148,9 +148,12 @@ class Information:
                 invites = b.get("invites")
                 owners = " ".join(b.get("owners"))
                 if len(owners) < 18:
-                    owners = owners[::-19]
+                    owner = owners[::-19]
+                    owner = int(owner)
+                else:
+                    owner = int(owner)
                 invite = b.get("invite")
-                owner = self.bot.get_user(int(owners))
+                owner = self.bot.get_user(int(owner))
                 em = discord.Embed(description=f"Bot Description:```{desc}```\n\nPrefix: `{prefix}`\nInvites: `{invites}`\n[Bot Invite]({invite})", color=self.color)
                 em.set_author(name=f"Listcord stats for {bot}", icon_url=emote.url)
                 em.set_thumbnail(url=bot.avatar_url)
