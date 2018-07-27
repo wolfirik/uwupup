@@ -111,25 +111,29 @@ class Admin:
     async def post(self, ctx):
         dbltoken = os.environ["DBL_TOKEN"]
         pwtoken = os.environ["PW_TOKEN"]
+        lcordtoken = os.environ["LCORD_TOKEN"]
         dblemote = self.bot.get_emoji(338808864352763904)
         pwemote = self.bot.get_emoji(230104938858938368)
         lcordemote = self.bot.get_emoji(462350611854262282)
         urldbl = "https://discordbots.org/api/bots/365255872181567489/stats"
         urlpw = "https://bots.discord.pw/api/bots/365255872181567489/stats"
+        urllcord = f"https://listcord.com/api/bot/{self.bot.user.id}/guilds"
         headersdbl = {"Authorization" : dbltoken}
         headerspw = {"Authorization" : pwtoken}
+        headerslcord = {"Authorization" : lcordtoken}
         yup = self.bot.get_emoji(451741018425917440)
         nope = self.bot.get_emoji(451741018539163648)
         try:
             payloaddbl = {"server_count"  : len(self.bot.guilds)}
-            payloadpw = {
-                            "server_count": len(self.bot.guilds)
-                        } #json's formatted differently.
+            payloadpw = {"server_count": len(self.bot.guilds)} 
+            payloadlcord ={"guilds": len(self.bot.guilds)}
             dbl = requests.post(urldbl, data=payloaddbl, headers=headersdbl)
             pw = requests.post(urlpw, data=payloadpw, headers=headerspw)
+            lcord = requests.post(urllcord, data=payloadlcord, headers=headerslcord)
             dbl = dbl.json()
             pw = pw.json()
-            await ctx.send(f"{dblemote} `{dbl}`\n{pwemote} `{pw}`")
+            lcord = lcord.json()
+            await ctx.send(f"{dblemote} | `{dbl}`\n{pwemote} | `{pw}`\n{lcordemote} | `{lcord}`")
             await ctx.message.add_reaction(yup)
         except Exception as e:
             await ctx.send(e)
