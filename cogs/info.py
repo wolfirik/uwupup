@@ -140,7 +140,7 @@ class Information:
             
             prefix = base.get("prefix")
             owners = base.get("owners")
-            m = discord,Embed(description=owners)
+            m = discord.Embed(description=owners)
             await ctx.send(content=prefix, embed=m)
             
                 
