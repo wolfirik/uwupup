@@ -125,11 +125,11 @@ class Events:
     async def on_message(self, msg):
         self.bot.counter["msgs_read"] += 1
     
-    async def on_message_edit(self, msg):
-        if not self.bot.is_ready() or msg.author.bot or not permissions.can_send(msg):
+    async def on_message_edit(self, before, after):
+        if not self.bot.is_ready() or after.author.bot or not permissions.can_send(after):
             return
 
-        await self.bot.process_commands(msg)
+        await self.bot.process_commands(after)
         self.bot.counter["cmds_ran"] += 1
         
     async def on_resumed(self):
