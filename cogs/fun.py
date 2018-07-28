@@ -170,12 +170,10 @@ class Fun_Commands:
             await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
         else:
             try:
-                async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
-                    async with session.get(f'https://e926.net/post/index.json?limit=1&tags=cuddle%20cute%20fur%20-equine%20order:random') as get:
-                        resp = await get.json()
-                        cuddle = discord.Embed(description=f"**{ctx.author.name} cuddled {user.name} OwO**", color=0x3f51b5)
-                        cuddle.set_image(url=resp['file_url'])
-                        await ctx.send(embed=cuddle)
+                 r = requests.get("https://sheri.fun/api/v1/img/cuddles", headers={"key": os.environ["MURR"]}).json().get("url")
+                 cuddle = discord.Embed(description=f"**{ctx.author.name} cuddled {user.name} OwO**", color=0x3f51b5)
+                 cuddle.set_image(url=r)
+                 await ctx.send(embed=cuddle)
             except:
                 return await ctx.send("I think e926 is being dumb.. try again later..")
             try:
