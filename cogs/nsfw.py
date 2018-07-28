@@ -22,7 +22,7 @@ class NSFW:
         return r[endpoint]
 
     @commands.command()
-    @commands.is_nsfw()  # TODO: Make a nsfw cog.
+    @commands.is_nsfw()  # TODO: Remove this stupid reminder
     async def yiff(self, ctx):
         """posts a yiff >:3c"""
         r = await self.randomimageapi(ctx, 'https://sheri.fun/api/v1/yiff', 'url')
@@ -41,17 +41,49 @@ class NSFW:
     @commands.is_nsfw()
     async def bulge(self, ctx):
         """you know what this is~"""
-        r = random.choice(lists.bulges)
+        r = requests.get("https://sheri.fun/api/v1/bulges", headers={"key": os.environ["MURR"]})
 
-        yiff = discord.Embed(title="What's this~?", color=0xDEADBF)
-        yiff.set_image(url=r)
+        dick = discord.Embed(title="What's this~?", color=0xDEADBF)
+        dick.set_image(url=r)
 
         try:
-            await ctx.send(embed=yiff)
+            await ctx.send(embed=dick)
             self.bot.counter["yiff_viewed"] += 1
 
         except discord.Forbidden:
             await ctx.send("aww i can't send embeds ;w;")
+            
+    @commands.command()
+    @commands.is_nsfw()
+    async def gay(self, ctx):
+        """ 2 doods.🌈🌈🌈"""
+        r = requests.get("https://sheri.fun/api/v1/gay", headers={"key": os.environ["MURR"]})
 
+        dicks = discord.Embed(title="🌈", color=0xDEADBF)
+        dicks.set_image(url=r)
+
+        try:
+            await ctx.send(embed=dicks)
+            self.bot.counter["yiff_viewed"] += 1
+
+        except discord.Forbidden:
+            await ctx.send("aww i can't send embeds")
+            
+    @commands.command()
+    @commands.is_nsfw()
+    async def gif(self, ctx):
+        """Animated yiff"""
+        r = requests.get("https://sheri.fun/api/v1/bulges", headers={"key": os.environ["MURR"]})
+
+        gyiff = discord.Embed(title="Have a gif", color=0xDEADBF)
+        gyiff.set_image(url=r)
+
+        try:
+            await ctx.send(embed=gyiff)
+            self.bot.counter["yiff_viewed"] += 1
+            
+        except discord.Forbidden:
+            await ctx.send("aww i can't send embeds")
+            
 def setup(bot):
     bot.add_cog(NSFW(bot))
