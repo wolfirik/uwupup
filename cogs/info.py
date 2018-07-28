@@ -142,7 +142,7 @@ class Information:
             owners = list(base.get("owners"))
             for owner in owners:
                 wew = self.bot.get_user(int(owner)).mention
-                owners = " ".join(wew)
+                owners = "".join(wew)
             m = discord.Embed(description=owners)
             await ctx.send(content=prefix, embed=m)
             
