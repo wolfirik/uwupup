@@ -4,7 +4,7 @@ import json
 from collections import Counter
 from discord.ext import commands
 from utils import lists, permissions, http, default
-
+import requests
 
 
 class NSFW:
