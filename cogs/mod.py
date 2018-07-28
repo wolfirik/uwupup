@@ -98,10 +98,11 @@ class Moderator:
             reason = reason
         try:
             try:
-                await member.send(f"You've been banned from {ctx.guild.name}\nReason:\n```{reason}```") #try to tell the user they've been banned
+                await ctx.guild.ban(member, reason=default.responsible(ctx.author, reason))
+                await member.send(f"You've been banned from {ctx.guild.name}\nReason:\n```{reason}```")
+                await ctx.send("bai bai") # try to tell the user they've been banned
             except discord.Forbidden:
                 pass
-            await ctx.guild.ban(member, reason=default.responsible(ctx.author, reason))
             await ctx.send("bai bai")
         except discord.Forbidden:
             await ctx.send("My permissions won't let me ban members, sowwy.")
