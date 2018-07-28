@@ -137,8 +137,14 @@ class Information:
             pass
         else:
             base = requests.get(f"https://discordbots.org/api/bots/{bot.id}").json()
+            
             prefix = base.get("prefix")
-            await ctx.send(prefix)
+            owners = list(b.get("owners"))
+            for id in owners:
+                owners = self.bot.user(id).mention
+                owners = list(owners)
+            m = discord,Embed(description=" ".join(owners))
+            await ctx.send(content=prefix, embed=m)
             
                 
     @commands.command(aliases=["lc"])
