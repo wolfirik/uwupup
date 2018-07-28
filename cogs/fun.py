@@ -224,7 +224,7 @@ class Fun_Commands:
                 async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
                     async with session.get(f'https://e926.net/post/index.json?limit=1&tags=kiss%20cute%20fur%20-equine%20order:random') as get:
                         resp = await get.json()
-                        r = requests.get("https://sheri.fun/api/v1/img/cuddles", headers={"key": os.environ["MURR"]}).json().get("url")
+                        r = requests.get("https://sheri.fun/api/v1/img/kiss", headers={"key": os.environ["MURR"]}).json().get("url")
                         kiss = discord.Embed(description=f"**{ctx.author.name} kissed {user.name} \❤w\❤**", color=0xe91e63)
                         kiss.set_image(url=r)
                         await ctx.send(embed=kiss)
