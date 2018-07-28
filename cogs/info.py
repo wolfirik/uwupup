@@ -137,15 +137,17 @@ class Information:
             pass
         else:
             base = requests.get(f"https://discordbots.org/api/bots/{bot.id}").json()
-            emote = self.bot.get_emoji(338808864352763904)
+            emote = self.bot.get_emoji(393548363879940108)
             prefix = base.get("prefix")
+            desc = base.get("shortdesc")
             owners = list(base.get("owners"))
             
             for owner in owners:
                 owners = self.bot.get_user(int(owner))
-            m = discord.Embed(description="`quality place holder`")
+            m = discord.Embed(description=f"```{desc}```")
             m.set_footer(text=f"Primary Owner: {owners}", icon_url=owners.avatar_url)
             m.set_author(name=f"DBL stats for {bot}", icon_url=emote.url)
+            m.set_thumbnail(url=bot.avatar_url)
             await ctx.send(content=prefix, embed=m)
             
                 
