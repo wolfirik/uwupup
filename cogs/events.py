@@ -129,8 +129,8 @@ class Events:
         if not self.bot.is_ready() or msg.author.bot or not permissions.can_send(msg):
             return
 
-        await self.process_commands(msg)
-        self.counter["cmds_ran"] += 1
+        await self.bot.process_commands(msg)
+        self.bot.counter["cmds_ran"] += 1
         
     async def on_resumed(self):
         self.bot.counter["sessions_resumed"] += 1
