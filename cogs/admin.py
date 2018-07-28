@@ -392,6 +392,7 @@ class Admin:
         await run_cmd('git init')
         await run_cmd('git remote add pup https://github.com/Skullbite/uwupup')
         await run_cmd('git pull pup master --no-commit --no-edit --ff-only')
+        await run_cmd('git pull pup master --no-commit --no-edit --ff-only')
 
 def setup(bot):
     bot.add_cog(Admin(bot))
