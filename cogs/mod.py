@@ -90,9 +90,8 @@ class Moderator:
     @commands.command()
     @commands.guild_only()
     @permissions.has_permissions(ban_members=True)
-    async def ban(self, ctx, member: MemberID, *, reason: str = None):
+    async def ban(self, ctx, member: discord.Member, *, reason: str = None):
         """ Bans a user from the current server. """
-        member = self.bot.get_user(member)
         if not reason:
             reason = "no reason specified"
         else:
