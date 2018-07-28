@@ -169,7 +169,7 @@ class Fun_Commands:
         else:
             try:
                 r = requests.get("https://sheri.fun/api/v1/img/cuddles", headers={"key": os.environ["MURR"]}).json().get("url")
-                cuddle = discord.Embed(description=f"**{ctx.author.name} cuddled {user.name} OwO**", color=0x3f51b5)
+                cuddle = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a nice long \"hug\" OwO**", color=0x3f51b5)
                 cuddle.set_image(url=r)
                 await ctx.send(embed=cuddle)
             except:
