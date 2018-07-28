@@ -5,6 +5,7 @@ from collections import Counter
 from discord.ext import commands
 from utils import lists, permissions, http, default
 import requests
+import os
 
 
 class NSFW:
