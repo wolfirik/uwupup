@@ -195,7 +195,7 @@ class Fun_Commands:
             try:
                 async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
                     async with session.get(f'https://e926.net/post/index.json?limit=1&tags=-kiss%20order:random%20face_lick%20-equine%20-belly_expansion') as get:
-                        resp = await get.json(
+                        resp = await get.json()
                         r = requests.get("https://sheri.fun/api/v1/img/lick", headers={"key": os.environ["MURR"]}).json().get("url")
                         lick = discord.Embed(description=f"**{ctx.author.name} decided to wet {user.name}'s fur**", color=0x2e7d32)
                         lick.set_image(url=r)
