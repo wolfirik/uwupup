@@ -139,7 +139,10 @@ class Information:
             base = requests.get(f"https://discordbots.org/api/bots/{bot.id}").json()
             
             prefix = base.get("prefix")
-            owners = " ".join(base.get("owners"))
+            owners = list(base.get("owners"))
+            for owner in owners:
+                wew = self.bot.get_user(owner).mention
+                owners = " ".join(wew)
             m = discord.Embed(description=owners)
             await ctx.send(content=prefix, embed=m)
             
