@@ -141,9 +141,8 @@ class Information:
             prefix = base.get("prefix")
             owners = list(base.get("owners"))
             for owner in owners:
-                wew = self.bot.get_user(int(owner))
-                owners = "".join(wew)
-            m = discord.Embed(description=owners)
+                owners = self.bot.get_user(int(owner))
+            m = discord.Embed(description="`quality place holder`")
             m.set_footer(text=f"Primary Owner: {owners}", icon_url=owners.avatar_url)
             await ctx.send(content=prefix, embed=m)
             
