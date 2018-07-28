@@ -168,10 +168,10 @@ class Fun_Commands:
             await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
         else:
             try:
-                 r = requests.get("https://sheri.fun/api/v1/img/cuddles", headers={"key": os.environ["MURR"]}).json().get("url")
-                 cuddle = discord.Embed(description=f"**{ctx.author.name} cuddled {user.name} OwO**", color=0x3f51b5)
-                 cuddle.set_image(url=r)
-                 await ctx.send(embed=cuddle)
+                r = requests.get("https://sheri.fun/api/v1/img/cuddles", headers={"key": os.environ["MURR"]}).json().get("url")
+                cuddle = discord.Embed(description=f"**{ctx.author.name} cuddled {user.name} OwO**", color=0x3f51b5)
+                cuddle.set_image(url=r)
+                await ctx.send(embed=cuddle)
             except:
                 return await ctx.send("I think e926 is being dumb.. try again later..")
             try:
@@ -195,9 +195,10 @@ class Fun_Commands:
             try:
                 async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
                     async with session.get(f'https://e926.net/post/index.json?limit=1&tags=-kiss%20order:random%20face_lick%20-equine%20-belly_expansion') as get:
-                        resp = await get.json()
+                        resp = await get.json(
+                        r = requests.get("https://sheri.fun/api/v1/img/lick", headers={"key": os.environ["MURR"]}).json().get("url")
                         lick = discord.Embed(description=f"**{ctx.author.name} licked {user.name} XP**", color=0x2e7d32)
-                        lick.set_image(url=resp['file_url'])
+                        lick.set_image(url=r])
                         await ctx.send(embed=lick)
             except:
                 return await ctx.send("I think e926 is being dumb.. try again later..")
@@ -338,7 +339,7 @@ class Fun_Commands:
     @commands.command(aliases=['owolang'])
     async def hewwo(self, ctx, *, text: str):
         """Takes something you say and puts it in owo"""
-        owo_t = text.replace("n", "ny").replace("l", "w").replace("r", "w") #i was gonna add an @everyone and @here blocker but the r to w change already handles that XD
+        owo_t = text.replace("n", "ny").replace("l", "w").replace("r", "w").replace("N", "NY").replace("L", "W").replace("R", "W") #i was gonna add an @everyone and @here blocker but the r to w change already handles that XD
         await ctx.send(owo_t)
 
     @commands.command()
