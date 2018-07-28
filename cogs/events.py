@@ -5,7 +5,7 @@ import datetime
 from discord.ext.commands import errors
 from discord import Webhook, AsyncWebhookAdapter
 import aiohttp
-from utils import default
+from utils import default, permissions
 from collections import Counter
 import os
 from datetime import datetime
@@ -124,7 +124,14 @@ class Events:
 
     async def on_message(self, msg):
         self.bot.counter["msgs_read"] += 1
+    
+    async def on_message_edit(self, msg):
+        if not self.bot.is_ready() or msg.author.bot or not permissions.can_send(msg):
+            return
 
+        await self.process_commands(msg)
+        self.counter["cmds_ran"] += 1
+        
     async def on_resumed(self):
         self.bot.counter["sessions_resumed"] += 1
 
