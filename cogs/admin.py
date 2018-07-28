@@ -44,7 +44,7 @@ class Admin:
 
         # remove `foo`
         return content.strip('` \n')
-
+    @staticmethod
     def get_syntax_error(e):
         """Format a syntax error to send to the user.
         Returns a string representation of the error formatted as a codeblock.
