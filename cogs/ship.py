@@ -35,7 +35,7 @@ class Ship:
         elif user == draggy and user2 == skull or user2 == draggy and user == skull:
             ship = discord.Embed(title=" " + user.display_name + "  x  " + user2.display_name + " ", description="**69%** **`██████████`** ❤", colour=0xDEADBF)
             return await ctx.send(embed=ship)
-        elif user2 == heh and user.id == skull or user.id == skull and user2.id == heh:
+        elif user2 == heh and user == skull or user == skull and user2 == heh:
             ship = discord.Embed(title=" " + user.display_name + " x " + user2.display_name + " ", description="**100%** **`██████████`** 💞", colour=0xDEADBF)
             return await ctx.send(embed=ship)
 
