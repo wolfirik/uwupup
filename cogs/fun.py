@@ -168,7 +168,7 @@ class Fun_Commands:
 
         else:
             try:
-                r = await kr().get('https://sheri.fun/api/v1/img/boop')
+                r = await kr().get('https://sheri.fun/api/v1/img/boop', headers={"key": os.environ["MURR"]})
                 pat = discord.Embed(description=f"**{ctx.author.name} pat {user.name} on the head for being a good hecc..**", color=0x6a1b9a)
                 pat.set_image(url=r['url'])
                 await ctx.send(embed=pat)
