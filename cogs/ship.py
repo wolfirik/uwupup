@@ -8,6 +8,7 @@ class Ship:
 
     def __init__(self, bot):
         self.bot = bot
+        self.color = 0x254d16
 
 
     @commands.command()
@@ -36,7 +37,7 @@ class Ship:
             ship = discord.Embed(title=" " + user.display_name + "  x  " + user2.display_name + " ", description="**69%** **`██████████`** ❤", colour=0xDEADBF)
             return await ctx.send(embed=ship)
         elif user2 == heh and user == skull or user == skull and user2 == heh:
-            ship = discord.Embed(title=" " + user.display_name + " x " + user2.display_name + " ", description="**100%** **`██████████`** 💞", colour=0xDEADBF)
+            ship = discord.Embed(title=" " + user.display_name + " x " + user2.display_name + " ", description="**100%** **`██████████`** 💞", colour=self.color)
             return await ctx.send(embed=ship)
 
         else:
@@ -83,7 +84,7 @@ class Ship:
                 emoji ='🖤'
 
             link = "https://cdn.discordapp.com/emojis/359420199050674176.png" # never used this :P
-            ship = discord.Embed(title=" " + user.display_name + "  x  " + user2.display_name + " ", description="**{}%** **`{}`** {}".format(n, bar, emoji), colour=0xDEADBF)
+            ship = discord.Embed(title=" " + user.display_name + "  x  " + user2.display_name + " ", description="**{}%** **`{}`** {}".format(n, bar, emoji), color=self.color)
             await ctx.send(embed=ship)
             # < the invisible character if needed.
 
