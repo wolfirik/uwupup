@@ -10,6 +10,7 @@ from discord import Webhook, AsyncWebhookAdapter
 import aiohttp
 import urllib.request
 import requests
+from utils.http2 import krequest as kr
 
 class Fun_Commands:
     def __init__(self, bot):
@@ -115,9 +116,9 @@ class Fun_Commands:
 
         else:
             try:
-                r = requests.get("https://sheri.fun/api/v1/img/hug", headers={"key": os.environ["MURR"]}).json().get("url")
+                r = kr().get("https://sheri.fun/api/v1/img/hug", headers={"key": os.environ["MURR"]}) 
                 hugge = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a hug uwu**", color=0xd25e92)
-                hugge.set_image(url=r)
+                hugge.set_image(url=r["url"])
                 await ctx.send(embed=hugge)
             except Exception as e:
                 return await ctx.send(e)
