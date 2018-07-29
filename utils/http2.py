@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import asyncio
 import logging
 import sys
@@ -7,10 +6,11 @@ import traceback
 
 import aiohttp
 
-from . import __version__
-from .errors import *
+from utils.errors import *
 
 logger = logging.getLogger()
+__version__ = "1.2.3"
+
 
 
 class Route:
