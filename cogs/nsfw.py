@@ -6,6 +6,7 @@ from discord.ext import commands
 from utils import lists, permissions, http, default
 import requests
 import os
+import aiohttp
 
 
 class NSFW:
