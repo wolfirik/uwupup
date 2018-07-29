@@ -15,10 +15,11 @@ class Discord_Info:
         """ Get the avatar of you or someone else """
         if user is None:
             user = ctx.author
-
+        avatar = user.avatar_url
+        avatar = avatar.replace("webp", "png")
         embed = discord.Embed(colour=0xC29FAF)
         embed.description = f"Avatar to **{user.name}**\nClick [here]({user.avatar_url}) to get image"
-        embed.set_thumbnail(url=user.avatar_url)
+        embed.set_image(url=avatar)
         await ctx.send(embed=embed)
 
     @commands.command()
