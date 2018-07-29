@@ -380,13 +380,6 @@ class Fun_Commands:
 
         result = f"**{ctx.author.name}** rolled the slots...\n**[ {a} {b} {c} ]**\n{message}"
         await ctx.send(result)
-                         
-     #ignore this command
-    @commands.command(aliases=['stacks', 'ss'], hidden=True)
-    async def samurai(self, ctx):
-        await ctx.send("Samurai sucks and is not a furry lol")
-        await asyncio.sleep(3)
-        await ctx.send("uwu fuck u samuwai")
 
 def setup(bot):
     bot.add_cog(Fun_Commands(bot))
