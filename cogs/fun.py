@@ -169,7 +169,7 @@ class Fun_Commands:
         else:
             try:
                 r = await kr().get('https://sheri.fun/api/v1/img/boop', headers={"key": os.environ["MURR"]})
-                pat = discord.Embed(description=f"**{ctx.author.name} gave {user.name}'s snout a tap, ehe**", color=0x6a1b9a)
+                pat = discord.Embed(description=f"**{ctx.author.name} gave {user.name}'s snout a nuzzling, ehe~**", color=0x6a1b9a)
                 pat.set_image(url=r['url'])
                 await ctx.send(embed=pat)
             except:
