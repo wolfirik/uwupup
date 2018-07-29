@@ -20,6 +20,7 @@ import requests
 from io import BytesIO
 import json
 from collections import Counter as c
+from utils.http2 import krequest as kr
 
 
 async def run_cmd(cmd: str) -> str:
@@ -306,6 +307,7 @@ class Admin:
             'requests': requests,
             'os': os,
             'c': c,
+            'kr': kr,
             '_': self._last_result
         }
 
