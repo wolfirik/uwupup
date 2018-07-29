@@ -18,7 +18,7 @@ class Ship:
         owo = self.bot.get_user(365255872181567489)
         skull = self.bot.get_user(158750488563679232)
         draggy = self.bot.get_user(254599284425621505)
-        heh = self.bot.get_user(212726258188943360)
+        heh = self.bot.get_user(185938944460980224)
         if not user2:
             user2 = author
         # preset ships don't mind these...
