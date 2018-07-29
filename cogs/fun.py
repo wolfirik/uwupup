@@ -116,9 +116,9 @@ class Fun_Commands:
 
         else:
             try:
-                r = requests.get("https://sheri.fun/api/v1/img/hug", headers={"key": os.environ["MURR"]}).json()
+                r = await kr().get("https://sheri.fun/api/v1/img/hug", headers={"key": os.environ["MURR"]})
                 hugge = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a hug uwu**", color=0xd25e92)
-                hugge.set_image(url=r.get("url"))
+                hugge.set_image(url=r["url"])
                 await ctx.send(embed=hugge)
             except Exception as e:
                 return await ctx.send(e)
