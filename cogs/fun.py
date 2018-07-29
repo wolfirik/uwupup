@@ -142,12 +142,10 @@ class Fun_Commands:
 
         else:
             try:
-                async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
-                    async with session.get(f'http://e926.net/post/index.json?tags=head_pat%20-young%20order:random&limit=1') as get:
-                        resp = await get.json()
-                        pat = discord.Embed(description=f"**{ctx.author.name} pat {user.name} on the head for being good..**", color=0x6a1b9a)
-                        pat.set_image(url=resp['file_url'])
-                        await ctx.send(embed=pat)
+                resp = await kr().get('http://e926.net/post/index.json?tags=head_pat%20-young%20order:random&limit=1')
+                pat = discord.Embed(description=f"**{ctx.author.name} pat {user.name} on the head for being a good hecc..**", color=0x6a1b9a)
+                pat.set_image(url=resp['file_url'])
+                await ctx.send(embed=pat)
             except:
                 return await ctx.send("I think e926 is being dumb.. try again later..")
             try:
@@ -169,9 +167,9 @@ class Fun_Commands:
             await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
         else:
             try:
-                r = requests.get("https://sheri.fun/api/v1/img/cuddles", headers={"key": os.environ["MURR"]}).json().get("url")
+                r = await kr().get("https://sheri.fun/api/v1/img/cuddles", headers={"key": os.environ["MURR"]})
                 cuddle = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a nice long \"hug\" OwO**", color=0x3f51b5)
-                cuddle.set_image(url=r)
+                cuddle.set_image(url=r["url"])
                 await ctx.send(embed=cuddle)
             except:
                 return await ctx.send("I think e926 is being dumb.. try again later..")
@@ -197,9 +195,9 @@ class Fun_Commands:
                 async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
                     async with session.get(f'https://e926.net/post/index.json?limit=1&tags=-kiss%20order:random%20face_lick%20-equine%20-belly_expansion') as get:
                         resp = await get.json()
-                        r = requests.get("https://sheri.fun/api/v1/img/lick", headers={"key": os.environ["MURR"]}).json().get("url")
+                        r = await kr().get("https://sheri.fun/api/v1/img/lick", headers={"key": os.environ["MURR"]})
                         lick = discord.Embed(description=f"**{ctx.author.name} decided to get {user.name}'s fur wet ~w~**", color=0x2e7d32)
-                        lick.set_image(url=r)
+                        lick.set_image(url=r["url"])
                         await ctx.send(embed=lick)
             except:
                 return await ctx.send("I think e926 is being dumb.. try again later..")
@@ -226,9 +224,9 @@ class Fun_Commands:
                 async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
                     async with session.get(f'https://e926.net/post/index.json?limit=1&tags=kiss%20cute%20fur%20-equine%20order:random') as get:
                         resp = await get.json()
-                        r = requests.get("https://sheri.fun/api/v1/img/kiss", headers={"key": os.environ["MURR"]}).json().get("url")
+                        r = await kr().get("https://sheri.fun/api/v1/img/kiss", headers={"key": os.environ["MURR"]})
                         kiss = discord.Embed(description=f"**{ctx.author.name} showed their feelings for {user.name} \❤w\❤**", color=0xe91e63)
-                        kiss.set_image(url=r)
+                        kiss.set_image(url=r["url"])
                         await ctx.send(embed=kiss)
             except:
                 return await ctx.send("I think e926 is being dumb.. try again later..")
