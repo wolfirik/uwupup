@@ -1,7 +1,6 @@
 import time
 import datetime
 import subprocess
-from utils import http2
 from utils import repo, default, http
 from utils.dataIO import dataIO
 from utils.chat_formatting import pagify, box
@@ -307,7 +306,6 @@ class Admin:
             'requests': requests,
             'os': os,
             'c': c,
-            'kr': http2.krequest,
             '_': self._last_result
         }
 
