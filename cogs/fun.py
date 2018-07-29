@@ -132,7 +132,7 @@ class Fun_Commands:
     @commands.command()
     @commands.guild_only()
     async def pat(self, ctx, user: discord.Member=None):
-        """pat pat :3 (not that may pats right now)"""
+        """pat pat :3"""
         if not user:
             await ctx.send("who do you wanna pat..?")
         elif user == self.bot.user:
@@ -145,6 +145,32 @@ class Fun_Commands:
                 resp = await kr().get('http://e926.net/post/index.json?tags=head_pat%20-young%20order:random&limit=1')
                 pat = discord.Embed(description=f"**{ctx.author.name} pat {user.name} on the head for being a good hecc..**", color=0x6a1b9a)
                 pat.set_image(url=resp['file_url'])
+                await ctx.send(embed=pat)
+            except:
+                return await ctx.send("I think e926 is being dumb.. try again later..")
+            try:
+                pass
+            except discord.Forbidden:
+                await ctx.send("aww i can't send embeds.. ;w;")
+            except:
+                await ctx.send("something oofed..")
+                
+    @commands.command()
+    @commands.guild_only()
+    async def boop(self, ctx, user: discord.Member=None):
+        """touch a snout or two"""
+        if not user:
+            await ctx.send("who do you wanna pat..?")
+        elif user == self.bot.user:
+            await ctx.send("i-i'm good on pats for now but thanks.. uwu")
+        elif user == ctx.author:
+            await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
+
+        else:
+            try:
+                resp = await kr().get('https://sheri.fun/api/v1/img/cuddles')
+                pat = discord.Embed(description=f"**{ctx.author.name} pat {user.name} on the head for being a good hecc..**", color=0x6a1b9a)
+                pat.set_image(url=resp['url'])
                 await ctx.send(embed=pat)
             except:
                 return await ctx.send("I think e926 is being dumb.. try again later..")
