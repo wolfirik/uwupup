@@ -62,7 +62,7 @@ class NSFW:
     @commands.is_nsfw()
     async def gay(self, ctx):
         """ 2 doods.🌈🌈🌈"""
-        r = await kr().get("https://sheri.fun/api/v1/gay", headers={"key": os.environ["MURR"]})
+        r = await kr().get("https://sheri.fun/api/v1/img/gay", headers={"key": os.environ["MURR"]})
         dicks = discord.Embed(title="🌈", color=0xDEADBF)
         dicks.set_image(url=r["url"])
 
@@ -77,7 +77,7 @@ class NSFW:
     @commands.is_nsfw()
     async def gif(self, ctx):
         """Animated yiff"""
-        r = await kr().get("https://sheri.fun/api/v1/gif", headers={"key": os.environ["MURR"]})
+        r = await kr().get("https://sheri.fun/api/v1/img/gif", headers={"key": os.environ["MURR"]})
         gyiff = discord.Embed(title="Have a gif", color=0xDEADBF)
         gyiff.set_image(url=r["url"])
 
