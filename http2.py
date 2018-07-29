@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import asyncio
 import logging
 import sys
@@ -7,11 +6,10 @@ import traceback
 
 import aiohttp
 
-from . import 1.0.0a
 from .errors import *
 
 logger = logging.getLogger()
-
+__version__ = "1.2.3"
 
 class Route:
     BASE = 'https://api.ksoft.si/'
