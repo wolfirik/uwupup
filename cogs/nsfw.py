@@ -7,7 +7,7 @@ from utils import lists, permissions, http, default
 import requests
 import os
 import aiohttp
-
+from utils.http2 import krequest
 
 class NSFW:
     def __init__(self, bot):
