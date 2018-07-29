@@ -7,7 +7,7 @@ import traceback
 
 import aiohttp
 
-from . import __version__
+from . import 1.0.0a
 from .errors import *
 
 logger = logging.getLogger()
