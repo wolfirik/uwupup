@@ -6,6 +6,7 @@ from discord.ext import commands
 from utils import lists, permissions, http, default
 import requests
 import os
+import aiohttp
 
 
 class NSFW:
@@ -42,10 +43,12 @@ class NSFW:
     @commands.is_nsfw()
     async def bulge(self, ctx):
         """you know what this is~"""
-        r = requests.get("https://sheri.fun/api/v1/bulges", headers={"key": os.environ["MURR"]}).json().get("url")
+        async with aiohttp.ClientSession() as session:
+                async with session.get('https://sheri.fun/api/v1/bulges',headers={"key": os.environ["MURR"]}) as resp:
+                    data = await resp.json()
 
         dick = discord.Embed(title="What's this~?", color=0xDEADBF)
-        dick.set_image(url=r)
+        dick.set_image(url=dats["url"])
 
         try:
             await ctx.send(embed=dick)
