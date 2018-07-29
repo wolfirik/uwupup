@@ -46,9 +46,10 @@ class NSFW:
         async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
             async with session.get('https://sheri.fun/api/v1/bulges',headers={"key": os.environ["MURR"]}) as resp:
                 data = await resp.json()
-
+                
+        r = requests.get("https://sheri.fun/api/v1/img/bulges", headers={"key": os.environ["MURR"]}).json().get("url")
         dick = discord.Embed(title="What's this~?", color=0xDEADBF)
-        dick.set_image(url=data["url"])
+        dick.set_image(url=r)
 
         try:
             await ctx.send(embed=dick)
