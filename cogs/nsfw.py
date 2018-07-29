@@ -1,4 +1,4 @@
-import random
+from random import choice
 import discord
 import json
 from collections import Counter
@@ -63,7 +63,9 @@ class NSFW:
     async def gay(self, ctx):
         """ 2 doods.🌈🌈🌈"""
         r = await kr().get("https://sheri.fun/api/v1/img/gay", headers={"key": os.environ["MURR"]})
-        dicks = discord.Embed(title="🌈", color=0xDEADBF)
+        color = ''.join([choice('0123456789ABCDEF') for x in range(6)])
+        color = int(color, 16)
+        dicks = discord.Embed(title="🌈", color=color)
         dicks.set_image(url=r["url"])
 
         try:
