@@ -7,7 +7,7 @@ from utils import lists, permissions, http, default
 import requests
 import os
 import aiohttp
-from utils.http2 import krequest
+from utils.http2 import krequest as kr
 
 class NSFW:
     def __init__(self, bot):
@@ -47,9 +47,9 @@ class NSFW:
        #     async with session.get('https://sheri.fun/api/v1/bulges',headers={"key": os.environ["MURR"]}) as resp:
        #         data = await resp.json()
                 
-        r = requests.get("https://sheri.fun/api/v1/img/bulges", headers={"key": os.environ["MURR"]}).json().get("url")
+        r = await kr().get("https://sheri.fun/api/v1/img/bulge", headers={"key": os.environ["MURR"]})
         dick = discord.Embed(title="What's this~?", color=0xDEADBF)
-        dick.set_image(url=r)
+        dick.set_image(url=r["url"])
 
         try:
             await ctx.send(embed=dick)
@@ -62,9 +62,9 @@ class NSFW:
     @commands.is_nsfw()
     async def gay(self, ctx):
         """ 2 doods.🌈🌈🌈"""
-        r = requests.get("https://sheri.fun/api/v1/gay", headers={"key": os.environ["MURR"]}).json().get("url")
+        r = await kr().get("https://sheri.fun/api/v1/gay", headers={"key": os.environ["MURR"]})
         dicks = discord.Embed(title="🌈", color=0xDEADBF)
-        dicks.set_image(url=r)
+        dicks.set_image(url=r["url"])
 
         try:
             await ctx.send(embed=dicks)
@@ -77,9 +77,9 @@ class NSFW:
     @commands.is_nsfw()
     async def gif(self, ctx):
         """Animated yiff"""
-        r = requests.get("https://sheri.fun/api/v1/bulges", headers={"key": os.environ["MURR"]}).json().get("url")
+        r = await kr().get("https://sheri.fun/api/v1/gif", headers={"key": os.environ["MURR"]})
         gyiff = discord.Embed(title="Have a gif", color=0xDEADBF)
-        gyiff.set_image(url=r)
+        gyiff.set_image(url=r["url"])
 
         try:
             await ctx.send(embed=gyiff)
