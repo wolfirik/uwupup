@@ -10,7 +10,7 @@ from collections import Counter
 import os
 from datetime import datetime
 import requests
-from utild.http2 import krequest as kr
+from utils.http2 import krequest as kr
 
 async def send_cmd_help(ctx):
     if ctx.invoked_subcommand:
