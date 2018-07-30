@@ -146,18 +146,23 @@ class Information:
         if not bot.bot:
             pass
         else:
-            base = requests.get(f"https://discordbots.org/api/bots/{bot.id}").json()
-            emote = self.bot.get_emoji(393548363879940108)
-            prefix = base.get("prefix")
-            cert = base.get("certifiedBot")
-            if cert == False:
-                cert = "Nyope, i don't think so..."
+            b = requests.get(f"https://discordbots.org/api/bots/{bot.id}").json()
+            if b.get("error") == "Not found":
+                return await ctx.send(f"uhhhh, i don't think {bot} is on DBL")
             else:
-                cert = "Uhhhh Yes!"
-            tags = ", ".join(base.get("tags"))
-            points = base.get("points")
-            lib = base.get("lib")
-            desc = base.get("shortdesc")
+                base = requests.get(f"https://discordbots.org/api/bots/{bot.id}").json()
+                base = requests.get(f"https://discordbots.org/api/bots/{bot.id}/guilds").json()
+                emote = self.bot.get_emoji(393548363879940108)
+                prefix = base.get("prefix")
+                cert = base.get("certifiedBot")
+                if cert == False:
+                    cert = "Nyope, i don't think so..."
+                else:
+                    cert = "Uhhhh Yes!"
+                tags = ", ".join(base.get("tags"))
+                points = base.get("points")
+                lib = base.get("lib")
+                desc = base.get("shortdesc")
             owners = list(base.get("owners"))
             link = f"https://discordbots.org/bot/{bot.id}"
             
