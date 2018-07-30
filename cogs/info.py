@@ -149,6 +149,11 @@ class Information:
             base = requests.get(f"https://discordbots.org/api/bots/{bot.id}").json()
             emote = self.bot.get_emoji(393548363879940108)
             prefix = base.get("prefix")
+            cert = base.get("certifiedBot")
+            if cert == False:
+                cert = "Nyope, i don't think so..."
+            else:
+                cert = "Uhhhh Yes!"
             tags = ", ".join(base.get("tags"))
             points = base.get("points")
             desc = base.get("shortdesc")
@@ -156,7 +161,7 @@ class Information:
             
             for owner in owners:
                 owners = self.bot.get_user(int(owner))
-            m = discord.Embed(description=f"```{desc}```\nTotal Votes: {points}\nPrefix: {prefix}\nTags: {tags}", color=self.color)
+            m = discord.Embed(description=f"```{desc}```\nTotal Votes: {points}\nPrefix: {prefix}\nTags: {tags}\nCertified? `{cert}`", color=self.color)
            # m.set_footer(text=f"Primary Owner: {owners}", icon_url=owners.avatar_url)
             m.set_author(name=f"DBL stats for {bot}", icon_url=emote.url)
             m.set_thumbnail(url=bot.avatar_url)
