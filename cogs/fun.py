@@ -220,7 +220,7 @@ class Fun_Commands:
                     async with session.get(f'https://e926.net/post/index.json?limit=1&tags=-kiss%20order:random%20face_lick%20-equine%20-belly_expansion') as get:
                         resp = await get.json()
                         r = await kr().get("https://sheri.fun/api/v1/img/lick", headers={"key": os.environ["MURR"]})
-                        lick = discord.Embed(description=f"**{ctx.author.name} decided to get {user.name}'s fur wet ~w~**", color=0x2e7d32)
+                        lick = discord.Embed(description=f"**{ctx.author.name} decided to make {user.name}'s fur a little slimy ~w~**", color=0x2e7d32)
                         lick.set_image(url=r["url"])
                         await ctx.send(embed=lick)
             except:
@@ -246,10 +246,8 @@ class Fun_Commands:
         else:
             try:
                 async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
-                    async with session.get(f'https://e926.net/post/index.json?limit=1&tags=kiss%20cute%20fur%20-equine%20order:random') as get:
-                        resp = await get.json()
                         r = await kr().get("https://sheri.fun/api/v1/img/kiss", headers={"key": os.environ["MURR"]})
-                        kiss = discord.Embed(description=f"**{ctx.author.name} showed their feelings for {user.name} \❤w\❤**", color=0xe91e63)
+                        kiss = discord.Embed(description=f"**{ctx.author.name} showed their true feelings for {user.name} \❤w\❤**", color=0xe91e63)
                         kiss.set_image(url=r["url"])
                         await ctx.send(embed=kiss)
             except:
