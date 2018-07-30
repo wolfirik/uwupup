@@ -151,7 +151,7 @@ class Information:
                 return await ctx.send(f"uhhhh, i don't think {bot} is on DBL")
             else:
                 base = requests.get(f"https://discordbots.org/api/bots/{bot.id}").json()
-                guilds = requests.get(f"https://discordbots.org/api/bots/{bot.id}/guilds").json()
+                guilds = requests.get(f"https://discordbots.org/api/bots/{bot.id}/stats").json()
                 emote = self.bot.get_emoji(393548363879940108)
                 prefix = base.get("prefix")
                 cert = base.get("certifiedBot")
