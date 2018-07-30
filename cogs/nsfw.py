@@ -90,5 +90,19 @@ class NSFW:
         except discord.Forbidden:
             await ctx.send("aww i can't send embeds")
             
+    @commands.command()
+    @commands.is_nsfw()
+    async def ncuddle(self, ctx):
+        """Like cuddle but with dicks"""
+        r = await kr().get("https://sheri.fun/api/v1/img/ncuddle", headers={"key": os.environ["MURR"]})
+        gyiff = discord.Embed(title="uwu", color=0xDEADBF)
+        gyiff.set_image(url=r["url"])
+
+        try:
+            await ctx.send(embed=gyiff)
+            self.bot.counter["yiff_viewed"] += 1
+            
+        except discord.Forbidden:
+            await ctx.send("aww i can't send embeds")
 def setup(bot):
     bot.add_cog(NSFW(bot))
