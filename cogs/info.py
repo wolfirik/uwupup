@@ -109,11 +109,11 @@ class Information:
     @commands.group()
     async def dbl(self, ctx):
         if ctx.invoked_subcommand is None:
-            _help = await ctx.bot.formatter.format_help_for(ctx, ctx.command)
+        emote = self.bot.get_emoji(393548363879940108)
 
-            for page in _help:
-                r = discord.Embed(description=page.replace("```", "`"), color=self.color)
-                await ctx.send(embed=r)
+        r = discord.Embed(description="Use `uwu dbl info/i` to get an embed with a bots info or `uwu dbl widget/w` to generate a widget", color=self.color)
+        r.set_author(name="DBL Menu", icon_url=emote.url)
+        await ctx.send(embed=r)
                 
     @dbl.command(name="widget", aliases=["w"])
     async def dbl_widget(self, ctx, botto: discord.Member):
