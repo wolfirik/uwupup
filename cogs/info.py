@@ -105,10 +105,19 @@ class Information:
                     await webhook.send(embed=suggestionem)
             except Exception as e:
                 return await ctx.send("uhm.. something went wrong, try again later..")
+    
+    @commands.group()
+    async def dbl(self, ctx):
+        if ctx.invoked_subcommand is None:
+            _help = await ctx.bot.formatter.format_help_for(ctx, ctx.command)
 
-    @commands.command()
-    async def dblw(self, ctx, botto: discord.Member):
-        """generates a dbl widget [Bot must be on dbl]"""
+            for page in _help:
+                r = discord.Embed(description=page.replace("```", "`"), color=self.color)
+                await ctx.send(embed=r)
+                
+    @dbl.command(name="widget", aliases=["w"])
+    async def dbl_widget(self, ctx, botto: discord.Member):
+        """Generates a discordbots.org widget"""
         if not botto.bot:
             return await ctx.send(f'Wow, passing off a user as a bot, you\'re a fuckin\' genius {ctx.author.mention}')
         elif botto == self.bot.user:
@@ -131,8 +140,9 @@ class Information:
             except Exception as e:
                 await ctx.send(e)
                 
-    @commands.command()
-    async def dbli(self, ctx, bot: discord.Member):
+    @dbl.command(name="info", aliases=["i"])
+    async def dbl_info(self, ctx, bot: discord.Member):
+        """Gets a bot's info from discordbots.org"""
         if not bot.bot:
             pass
         else:
