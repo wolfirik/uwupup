@@ -371,9 +371,9 @@ class Admin:
             bots = set(bots)
             members = len(members) - len(bots)
             if guild == ctx.guild:
-                roles = ", ".join([x.mention for x in guild.roles])
+                roles = ", ".join([x.mention for x in guild.roles != "@everyone"])
             else:
-                roles = ", ".join([x.name for x in guild.roles])
+                roles = ", ".join([x.name for x in guild.roles if x.name != "@everyone"])
 
             info = discord.Embed(title="Guild info", description=f"» Name: {guild.name}\n» Members/Bots: {members}/{len(bots)}"
                                                                   f"\n» Owner: {guild.owner}\n» Created at: {guild.created_at}"
