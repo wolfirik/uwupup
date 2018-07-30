@@ -80,7 +80,7 @@ class Events:
         dbltoken = os.environ["DBL_TOKEN"]
         pwtoken = os.environ["PW_TOKEN"]
         urldbl = "https://discordbots.org/api/bots/365255872181567489/stats"
-        urlpw = "https://bots.discord.pw/api/bots/{self.bot.user.id}/stats"
+        urlpw = f"https://bots.discord.pw/api/bots/{self.bot.user.id}/stats"
         urllcord = f"https://listcord.com/api/bot/{self.bot.user.id}/guilds"
         dblemote = self.bot.get_emoji(338808864352763904)
         pwemote = self.bot.get_emoji(230104938858938368)
