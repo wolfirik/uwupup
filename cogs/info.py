@@ -151,7 +151,7 @@ class Information:
                 return await ctx.send(f"uhhhh, i don't think {bot} is on DBL")
             else:
                 base = requests.get(f"https://discordbots.org/api/bots/{bot.id}").json()
-                base = requests.get(f"https://discordbots.org/api/bots/{bot.id}/guilds").json()
+                guilds = requests.get(f"https://discordbots.org/api/bots/{bot.id}/guilds").json()
                 emote = self.bot.get_emoji(393548363879940108)
                 prefix = base.get("prefix")
                 cert = base.get("certifiedBot")
@@ -164,11 +164,24 @@ class Information:
                 lib = base.get("lib")
                 desc = base.get("shortdesc")
                 owners = list(base.get("owners"))
+                servers = guilds.get("guild_count")
+                if servers == None:
+                    servers = "`No Guilds Posted...`"
+                else: 
+                    servers = guilds.get("guild_count")
+                    servers = f"Posted guild count: {servers}"
+                shards = guilds.get("shard_count")
+                if shards == None:
+                    shards = "`No Shards Posted...`"
+                else: 
+                    shards = guilds.get("shard_count")
+                    servers = f"Posted Shard Count: {shards}"
+                    
                 link = f"https://discordbots.org/bot/{bot.id}"
             
                 for owner in owners:
                     owners = self.bot.get_user(int(owner))
-                m = discord.Embed(description=f"```{desc}```\n\nTotal Votes: {points}\nLib: {lib}\nPrefix: {prefix}\nTags: {tags}\nCertified? `{cert}`\n\n[{bot.name}'s DBL Page]({link})", color=self.color)
+                m = discord.Embed(description=f"```{desc}```\n\nTotal Votes: {points}\nLib: {lib}\nPrefix: {prefix}\nTags: {tags}\nCertified? `{cert}`\n{servers}\n{shards}\n\n[{bot.name}'s DBL Page]({link})", color=self.color)
                # m.set_footer(text=f"Primary Owner: {owners}", icon_url=owners.avatar_url)
                 m.set_author(name=f"DBL stats for {bot}", icon_url=emote.url)
                 m.set_thumbnail(url=bot.avatar_url)
