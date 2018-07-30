@@ -164,8 +164,8 @@ class Information:
                 lib = base.get("lib")
                 desc = base.get("shortdesc")
                 owners = list(base.get("owners"))
-                servers = guilds.get("guild_count")
-                shards = guilds.get("shard_account")
+                servers = guilds.get("server_count")
+                shards = guilds.get("shard_count")
                 link = f"https://discordbots.org/bot/{bot.id}"
             
                 for owner in owners:
