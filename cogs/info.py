@@ -159,7 +159,7 @@ class Information:
             lib = base.get("lib")
             desc = base.get("shortdesc")
             owners = list(base.get("owners"))
-            link = "https://discordbots.org/bot/{bot.id}"
+            link = f"https://discordbots.org/bot/{bot.id}"
             
             for owner in owners:
                 owners = self.bot.get_user(int(owner))
