@@ -6,6 +6,7 @@ import os
 from discord.ext import commands
 from discord import Webhook, AsyncWebhookAdapter
 import aiohttp
+import random
 from datetime import datetime
 from utils import repo, default, http
 from io import BytesIO
@@ -109,7 +110,8 @@ class Information:
     @commands.group()
     async def dbl(self, ctx):
         if ctx.invoked_subcommand is None:
-            emote = self.bot.get_emoji(393548363879940108)
+            emote = random.choice([393548363879940108, 393548388664082444])
+            emote = self.bot.get_emoji(emote)
 
             r = discord.Embed(description="Use `uwu dbl info/i` to get an embed with a bots info or `uwu dbl widget/w` to generate a widget", color=self.color)
             r.set_author(name="DBL Menu", icon_url=emote.url)
