@@ -124,10 +124,16 @@ class Information:
             return await ctx.send(f'Wow, passing off a user as a bot, you\'re a fuckin\' genius {ctx.author.mention}')
         elif botto == self.bot.user:
             link = f"https://discordbots.org/api/widget/365255872181567489.png?topcolor=2b5a19&middlecolor=32681e&datacolor=ffffff&highlightcolor=254d16&labelcolor=ffffff&certifiedcolor=0d94ba"
-            thing = BytesIO(await http.get(link, res_method="read"))
+           # thing = BytesIO(await http.get(link, res_method="read"))
             with ctx.typing():
                 try:
-                    await ctx.send(file=discord.File(thing, filename="dbl.png"))
+                    emote = random.choice([393548363879940108, 393548388664082444])
+                    emote = self.bot.get_emoji(emote)
+                    m = discord.Embed(color=self.color)
+                    m.set_image(url=link)
+                    m.set_author(name=f"{bot}'s", icon_url=emote.url)
+                    await ctx.send(embed=m)
+                    #await ctx.send(file=discord.File(thing, filename="dbl.png"))
                 except:
                     await ctx.send("oof")
         else:
@@ -135,8 +141,20 @@ class Information:
                 with ctx.typing():
                     color = botto.color
                     link = f"https://discordbots.org/api/widget/{botto.id}.png?topcolor={color}&datacolor=ffffff&highlightcolor={color}&labelcolor=ffffff&certifiedcolor=0d94ba".replace("#", "")
-                    thing = BytesIO(await http.get(link, res_method="read"))
-                    await ctx.send(file=discord.File(thing, filename="dbl.png"))
+                    emote = random.choice([393548363879940108, 393548388664082444])
+                    emote = self.bot.get_emoji(emote)
+                    if botto.name.endswith("'s"):
+                        name = botto.name
+                    elif botto.name.endswith("'"):
+                        name = botto.name + "s"
+                    else:
+                        name = botto.name 
+                    m = discord.Embed(color=color)
+                    m.set_image(url=link)
+                    m.set_author(name=f"{name} DBL widget", icon_url=emote.url)
+                    await ctx.send(embed=m)
+                    #thing = BytesIO(await http.get(link, res_method="read"))
+                    #await ctx.send(file=discord.File(thing, filename="dbl.png"))
             except discord.Forbidden:
                 await ctx.send("Can i even send pics?")
             except Exception as e:
