@@ -308,7 +308,7 @@ class Admin:
             'os': os,
             'c': c,
             'kr': kr,
-            "emotes": em,
+            "em": emotes,
             '_': self._last_result
         }
 
@@ -328,15 +328,15 @@ class Admin:
 
         self._last_result = result
         if code == "bot.http.token":
-            f = "\nHA GOTEEM"
+            f = "Scroll\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHA GOTEEM"
             memes = BytesIO(f.encode('utf-8'))
-            await ctx.send(content="Here you go", file=discord.File(memes, filename="eval.txt"))
+            await ctx.send(content="None", file=discord.File(memes, filename="eval.txt"))
 
         else:
             try:
-                await ctx.send(f"{result}")
+                await ctx.send(result)
             except discord.HTTPException:
-                f = f"{result}"
+                f = result
                 memes = BytesIO(f.encode('utf-8'))
                 await ctx.send("Output's too big heres the file.", file=discord.File(memes, filename='eval.txt'))
             except Exception as e:
