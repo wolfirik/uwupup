@@ -226,7 +226,7 @@ class Admin:
         try:
             bio = await http.get(url, res_method="read")
             await self.bot.user.edit(avatar=bio)
-            await ctx.send(f"Successfully changed the avatar. Currently using:\n{url}")
+            await ctx.send(f"h-how do i look.,?")
         except aiohttp.InvalidURL:
             await ctx.send("The URL is invalid...")
         except discord.InvalidArgument:
