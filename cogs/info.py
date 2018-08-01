@@ -183,6 +183,10 @@ class Information:
                 tags = ", ".join(base.get("tags"))
                 points = base.get("points")
                 lib = base.get("lib")
+                if lib == "discord.py":
+                    lib = self.bot.get_emoji()
+                elif lib == "discord.js":
+                    lib = self.bot.get_emoji()
                 desc = base.get("shortdesc")
                 owners = list(base.get("owners"))
                 servers = guilds.get("server_count")
