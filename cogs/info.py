@@ -140,15 +140,16 @@ class Information:
             try:
                 with ctx.typing():
                     color = botto.color
+                    name = botto.name
                     link = f"https://discordbots.org/api/widget/{botto.id}.png?topcolor={color}&datacolor=ffffff&highlightcolor={color}&labelcolor=ffffff&certifiedcolor=0d94ba".replace("#", "")
                     emote = random.choice([393548363879940108, 393548388664082444])
                     emote = self.bot.get_emoji(emote)
-                    if botto.name.endswith("'s"):
-                        name = botto.name
+                    if name.endswith("'s"):
+                        name = name
                     elif botto.name.endswith("'"):
-                        name = botto.name + "s"
+                        name = name + "s"
                     else:
-                        name = botto.name 
+                        name = name 
                     m = discord.Embed(color=color)
                     m.set_image(url=link)
                     m.set_author(name=f"{name} DBL widget", icon_url=emote.url)
