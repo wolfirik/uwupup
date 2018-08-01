@@ -146,10 +146,10 @@ class Information:
                     emote = self.bot.get_emoji(emote)
                     if name.endswith("'s"):
                         name = name
-                    elif botto.name.endswith("'"):
+                    elif name.endswith("'"):
                         name = name + "s"
                     else:
-                        name = name 
+                        name = name + "'s"
                     m = discord.Embed(color=color)
                     m.set_image(url=link)
                     m.set_author(name=f"{name} DBL widget", icon_url=emote.url)
