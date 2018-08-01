@@ -8,7 +8,7 @@ from discord import Webhook, AsyncWebhookAdapter
 import aiohttp
 import random
 from datetime import datetime
-from utils import repo, default, http
+from utils import repo, default, http, emotes
 from io import BytesIO
 import requests
 
@@ -184,11 +184,13 @@ class Information:
                 points = base.get("points")
                 lib = base.get("lib")
                 if lib == "discord.py":
-                    lib = self.bot.get_emoji()
+                    lib = self.bot.get_emoji(emotes.py)
                 elif lib == "discord.js":
-                    lib = self.bot.get_emoji()
-                elif lib == "discord-rb":
-                    lib = self.bot.get_emoji()
+                    lib = self.bot.get_emoji(emotes.js)
+                elif lib == "discordrb":
+                    lib = self.bot.get_emoji(emotes.ruby)
+                elif lib == "JDA":
+                    lib = self.bot.get_emoji(emotes.java)
                 else:
                     lib = lib
                 desc = base.get("shortdesc")
