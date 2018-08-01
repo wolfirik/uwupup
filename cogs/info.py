@@ -187,6 +187,10 @@ class Information:
                     lib = self.bot.get_emoji()
                 elif lib == "discord.js":
                     lib = self.bot.get_emoji()
+                elif lib == "discord-rb":
+                    lib = self.bot.get_emoji()
+                else:
+                    lib = lib
                 desc = base.get("shortdesc")
                 owners = list(base.get("owners"))
                 servers = guilds.get("server_count")
