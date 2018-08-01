@@ -1,7 +1,7 @@
 import time
 import datetime
 import subprocess
-from utils import repo, default, http
+from utils import repo, default, http, emotes
 from utils.dataIO import dataIO
 from utils.chat_formatting import pagify, box
 from discord.ext import commands
@@ -308,6 +308,7 @@ class Admin:
             'os': os,
             'c': c,
             'kr': kr,
+            "emotes": em
             '_': self._last_result
         }
 
