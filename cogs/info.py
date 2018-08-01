@@ -218,7 +218,6 @@ class Information:
             if base.get("code") == 0:
                 return await ctx.send("uhhhhhh I couldn't find that bot.")
             else:
-                emote = self.bot.get_emoji(462350611854262282)
                 b = requests.get(f"https://listcord.com/api/bot/{bot.id}").json()
                 desc = b.get("description")
                 prefix = b.get("prefix")
@@ -227,7 +226,7 @@ class Information:
                 upvotes = b.get("votes")
                 invite = b.get("invite")
                 em = discord.Embed(description=f"Bot Description:```{desc}```\n\nPrefix: `{prefix}`\nInvites: `{invites}`\nUpvotes: `{upvotes}`\n[Bot Invite]({invite})\n[Bot Page](https://listcord.com/bot/{bot.id})", color=self.color)
-                em.set_author(name=f"Listcord stats for {bot}", icon_url=emote.url)
+                em.set_author(name=f"Listcord stats for {bot}")
                 em.set_thumbnail(url=bot.avatar_url)
                 em.set_image(url=f"https://nuggetbot.com/listcord/embed.png?id={bot.id}")
                 em.set_footer(text=f"", icon_url="")
