@@ -142,7 +142,7 @@ class Fun_Commands:
             try:
                 resp = await kr().get('http://e926.net/post/index.json?tags=head_pat%20-young%20order:random&limit=1')
                 pat = discord.Embed(description=f"**{ctx.author.name} pat {user.name} on the head for being a good hecc..**", color=0x6a1b9a)
-                pat.set_image(url=resp['file_url'])
+                pat.set_image(url=resp[0]['file_url'])
                 await ctx.send(embed=pat)
             except:
                 return await ctx.send("I think e926 is being dumb.. try again later..")
