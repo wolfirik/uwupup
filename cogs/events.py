@@ -5,7 +5,7 @@ import datetime
 from discord.ext.commands import errors
 from discord import Webhook, AsyncWebhookAdapter
 import aiohttp
-from utils import default, permissions
+from utils import default, permissions, emotes
 from collections import Counter
 import os
 from datetime import datetime
@@ -96,7 +96,7 @@ class Events:
         except IndexError:
             pass
         else:
-            await to_send.send("hewwooo!! ^w^")
+            pass
             invite_msg = f"[**Guild Invite**]({invite})"
         if len(bots) > members:
             sketchy_msg = "\n<:blobdoggothink:444122378260185088> **More Bots than users**"
