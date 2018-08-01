@@ -308,7 +308,7 @@ class Admin:
             'os': os,
             'c': c,
             'kr': kr,
-            "emotes": em
+            "emotes": em,
             '_': self._last_result
         }
 
