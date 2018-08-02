@@ -45,6 +45,7 @@ class Admin:
 
         # remove `foo`
         return content.strip('` \n')
+    
     @staticmethod
     def get_syntax_error(e):
         """Format a syntax error to send to the user.
@@ -54,7 +55,7 @@ class Admin:
             return box('{0.__class__.__name__}: {0}'.format(e), lang="py")
         return box(
             '{0.text}{1:>{0.offset}}\n{2}: {0}'
-            ''.format(e, '^', type(e).__name__),
+            ''.format(e, '\n^', type(e).__name__),
             lang="py")
 
 
