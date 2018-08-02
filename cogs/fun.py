@@ -91,7 +91,7 @@ class Fun_Commands:
         try:
             resp = await kr().get('https://e926.net/post/index.json?limit=1&tags=order:random%20blush%20-equine%20fur%20solo')
             floof = discord.Embed(description=f"**{ctx.author.name}, you're bl-blushing..! 0////0**", color=0xf44444)
-            floof.set_image(url=resp['file_url'])
+            floof.set_image(url=resp[0]['file_url'])
             await ctx.send(embed=floof)
         except Exception as e:
             return await ctx.send(e)
