@@ -250,18 +250,25 @@ class Admin:
 
     @commands.command(hidden=True, aliases=["pull"])
     @commands.check(repo.is_owner)
-    async def update(self, ctx):
+    async def update(self, ctx, silently: bool=false):
         """gets latest commits and applies them from git"""
-        yup = self.bot.get_emoji(451741018425917440)
-        pull = await run_cmd('git pull pup master --no-commit --no-edit --ff-only')
-        await run_cmd('git fetch --all')
-        ack = await run_cmd('git reset --hard pup/master')
-        pull = pull.replace('https://github.com/Skullbite/uwupup', 'owopup')
-        info = discord.Embed(description=f"ｏｗｏ:fast_forward: ```css\n{pull}```", color=0x254d16)
-        info2 = discord.Embed(description=f"{yup} pull complete uwu", color=0x254d16)
-        msg = await ctx.send(embed=info)
-        time.sleep(6)
-        await msg.edit(embed=info2)
+        yup = self.bot.get_emoji(emotes.ok_hand)
+        if silently:
+            pull = await run_cmd('git pull pup master --no-commit --no-edit --ff-only')
+            await run_cmd('git fetch --all')
+            ack = await run_cmd('git reset --hard pup/master')
+            await ctx.message.add_reaction(yup)
+        else:
+            yup = self.bot.get_emoji(451741018425917440)
+            pull = await run_cmd('git pull pup master --no-commit --no-edit --ff-only')
+            await run_cmd('git fetch --all')
+            ack = await run_cmd('git reset --hard pup/master')
+            pull = pull.replace('https://github.com/Skullbite/uwupup', 'owopup')
+            info = discord.Embed(description=f"ｏｗｏ:fast_forward: ```css\n{pull}```", color=0x254d16)
+            info2 = discord.Embed(description=f"{yup} pull complete uwu", color=0x254d16)
+            msg = await ctx.send(embed=info)
+            time.sleep(6)
+            await msg.edit(embed=info2)
 
     @commands.command()
     @commands.check(repo.is_owner)
