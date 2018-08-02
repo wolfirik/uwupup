@@ -85,7 +85,7 @@ class Fun_Commands:
         except:
             await ctx.send("aww i can't send embeds ;w;")
             
-    @commands.command()
+    @commands.command(aliases=["pounce"])
     async def tackle(self, ctx, user: discord.Member):
         """Give someone a surprise hug uwu"""
         tackle = await kr().get("https://e926.net/post/index.json?limit=1&tags=pounce%20-mlp%20-animated%20cute%20order:random")
