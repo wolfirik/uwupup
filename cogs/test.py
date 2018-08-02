@@ -17,6 +17,36 @@ class sql_test_cog:
         thing = BytesIO(await http.get(f"{ctx.author.avatar_url}".replace("webp", "png"), res_method="read"))
         myimage = Image.open(filename)
         myimage.load()
+        
+    @commands.command(pass_context=True, no_pm=True, aliases=['piltest'])
+    async def pilt(self, ctx, *, message):
+        if ctx.message.author.bot: return
+        else:
+
+            author = ctx.message.author
+            channel = ctx.message.channel
+
+            im = Image.open("red.jpg")
+
+            draw = ImageDraw.Draw(im)
+
+            w = im.size[0]
+            h = im.size[1]
+
+            font = ImageFont.truetype('arial.ttf', 100)
+            f_w, f_h = font.getsize('PITEST')
+
+            x = (w - f_w) / 2
+            y = (h - f_h) / 2
+
+            draw.text((x, y), message, font=font, fill=(0, 0, 0, 255))
+
+            bytes = BytesIO()
+            im.save(bytes, 'PNG')
+            bytes.seek(0)
+
+            await ctx.send(file=discord.File(bytes, filename='red.jpg'))
+ 
 
 
 def setup(bot):
