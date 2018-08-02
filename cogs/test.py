@@ -3,7 +3,7 @@ import discord
 from discord.ext import commands
 from utils import default, repo, http
 from io import BytesIO
-
+from pil import *
 
 class sql_test_cog:
     def __init__(self, bot):
