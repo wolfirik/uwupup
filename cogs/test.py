@@ -26,7 +26,7 @@ class sql_test_cog:
             author = ctx.message.author
             channel = ctx.message.channel
 
-            im = Image.open("red.jpg")
+            im = Image.open("config/red.jpg")
 
             draw = ImageDraw.Draw(im)
 
