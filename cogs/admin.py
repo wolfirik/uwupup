@@ -250,7 +250,7 @@ class Admin:
 
     @commands.command(hidden=True, aliases=["pull"])
     @commands.check(repo.is_owner)
-    async def update(self, ctx, silently: bool=false):
+    async def update(self, ctx, silently: bool=False):
         """gets latest commits and applies them from git"""
         yup = self.bot.get_emoji(emotes.ok_hand)
         if silently:
