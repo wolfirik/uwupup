@@ -84,7 +84,15 @@ class Fun_Commands:
             await ctx.send(embed=floof)
         except:
             await ctx.send("aww i can't send embeds ;w;")
-
+            
+    @commands.command()
+    async def tackle(self, ctx, user: discord.Member):
+        """Give someone a surprise hug uwu"""
+        tackle = await kr().get("https://e926.net/post/index.json?limit=1&tags=tackle%20-mlp%20-animated%20duo%20order:random")
+        tack = discord.Embed(description=f"**{ctx.author.name} ran up and dropped {user.name} to the floor >w<**")
+        tack.set_image(url=tackle[0]["file_url"])
+        await ctx.send(embed=tack)
+        
     @commands.command()
     async def blush(self, ctx):
         """0///0"""
