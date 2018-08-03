@@ -216,9 +216,24 @@ class Information:
             guilds = await kr().get(f"https://discordbots.org/api/bots/{bot.id}/stats")
             guilds = guilds["server_count"]
             points = base["points"]
-            widget_base = f"http://172.96.162.194:4006/widget?name={bot.name}&server_count={guilds}&votes={points}&owner=---[h]---&status=0&avatar={bot.id}|{bot.avatar}"
+            owner = list(base["owners"])
+            ownerr = await self.bot.get_user_info(int(owner[0]))
+            owner_name = ownerr.name + '[h]' + ownerr.discriminator
+            status = str(bot.status)
+            statuss = None
+            if status in 'online':
+                statuss = 0
+            if status in 'idle':
+                statuss = 1
+            if status in 'dnd':
+                statuss = 2
+            if status in 'offline':
+                statuss = 3
+            if status in 'streaming':
+                statuss = 4
+            widget_base = f"http://172.96.162.194:4006/widget?name={bot.name}&server_count={guilds}&votes={points}&owner={owner_name}&status=0&avatar={bot.id}|{bot.avatar}"
             await ctx.send(widget_base)
-            
+    
     @commands.command(aliases=["lc"])
     async def lcord(self, ctx, bot: discord.Member):
         """Gets a bots info from listcord"""
@@ -233,7 +248,7 @@ class Information:
                 desc = b.get("description")
                 prefix = b.get("prefix")
                 invites = b.get("invites")
-                owners = " ".join(b.get("owners"))
+                owners = b.get("owners")
                 upvotes = b.get("votes")
                 invite = b.get("invite")
                 em = discord.Embed(description=f"Bot Description:```{desc}```\n\nPrefix: `{prefix}`\nInvites: `{invites}`\nUpvotes: `{upvotes}`\n[Bot Invite]({invite})\n[Bot Page](https://listcord.com/bot/{bot.id})", color=self.color)
