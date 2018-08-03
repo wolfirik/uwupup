@@ -207,8 +207,8 @@ class Information:
                 m.set_thumbnail(url=bot.avatar_url)
                 await ctx.send(embed=m)
             
-    @dbl.command(aliases=["tw"])
-    async def testwidget(self, ctx, bot: discord.Member):
+    @dbl.command(aliases=["bw"])
+    async def betawidget(self, ctx, bot: discord.Member):
         if not bot.bot:
             pass
         else:
@@ -235,7 +235,7 @@ class Information:
                 statuss = 3
             if status in 'streaming':
                 statuss = 4
-            link = f"http://172.96.162.194:4006/widget?name={bot.name}&server_count={guilds}&votes={points}&owner={owner_name}&status={statuss}&avatar={bot.id}|{bot.avatar}"
+            link = f"http://172.96.162.194:4006/widget?name={bot}&server_count={guilds}&votes={points}&owner={owner_name}&status={statuss}&avatar={bot.id}|{bot.avatar}"
             if name.endswith("'s"):
                 name = name
             elif name.endswith("'"):
