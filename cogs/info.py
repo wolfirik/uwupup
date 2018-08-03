@@ -212,10 +212,13 @@ class Information:
         if not bot.bot:
             pass
         else:
+            emote = random.choice([393548363879940108, 393548388664082444])
+            emote = self.bot.get_emoji(emote)
             base = await kr().get(f"https://discordbots.org/api/bots/{bot.id}")
             guilds = requests.get(f"https://discordbots.org/api/bots/{bot.id}/stats").json()
             guilds = guilds.get("server_count")
             points = base["points"]
+            name = bot.name
             owner = list(base["owners"])
             ownerr = await self.bot.get_user_info(int(owner[0]))
             owner_name = ownerr.name + '[h]' + ownerr.discriminator
@@ -231,8 +234,19 @@ class Information:
                 statuss = 3
             if status in 'streaming':
                 statuss = 4
-            widget_base = f"http://172.96.162.194:4006/widget?name={bot.name}&server_count={guilds}&votes={points}&owner={owner_name}&status={statuss}&avatar={bot.id}|{bot.avatar}"
-            await ctx.send(widget_base)
+            link = f"http://172.96.162.194:4006/widget?name={bot.name}&server_count={guilds}&votes={points}&owner={owner_name}&status={statuss}&avatar={bot.id}|{bot.avatar}"
+            if name.endswith("'s"):
+                        name = name
+                    elif name.endswith("'"):
+                        name = name + "s"
+                    else:
+                        name = name + "'s"
+            m = discord.Embed(color=bot.color)
+            m.set_image(url=link)
+            m.set_author(name=f"{name} DBL widget", icon_url=emote.url)
+            m.set_footer(text=f"Credit for this widget goes to {tyonyy}", icon_url=tyonyy.avatar_url)
+            await ctx.send(embed=m) 
+            
     
     @commands.command(aliases=["lc"])
     async def lcord(self, ctx, bot: discord.Member):
