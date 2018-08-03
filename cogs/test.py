@@ -12,11 +12,9 @@ class sql_test_cog:
 
     @commands.command()
     @commands.check(repo.is_owner)
-    async def sql(self, ctx):
+    async def test(self, ctx, *, ree: str):
         """MEMES"""
-        thing = BytesIO(await http.get(f"{ctx.author.avatar_url}".replace("webp", "png"), res_method="read"))
-        myimage = Image.open(filename)
-        myimage.load()
+        await ctx.send(ree.format(guild, ctx.author))
         
     @commands.command(pass_context=True, no_pm=True, aliases=['piltest'])
     async def pilt(self, ctx, *, message):
