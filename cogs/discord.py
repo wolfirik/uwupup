@@ -70,7 +70,7 @@ class Discord_Info:
         if user is None:
             user = ctx.author
 
-        embed = discord.Embed()
+        embed = discord.Embed(color=user.color)
         embed.set_thumbnail(url=user.avatar_url)
 
         embed.add_field(name="Full name", value=user, inline=True)
