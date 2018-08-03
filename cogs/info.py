@@ -11,7 +11,7 @@ from datetime import datetime
 from utils import repo, default, http, emotes
 from io import BytesIO
 import requests
-
+from utils.http2 import krequest as kr
 
 class Information:
     def __init__(self, bot):
