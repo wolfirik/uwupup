@@ -113,7 +113,7 @@ class Information:
             emote = random.choice([393548363879940108, 393548388664082444])
             emote = self.bot.get_emoji(emote)
 
-            r = discord.Embed(description="Use `uwu dbl info/i` to get an embed with a bots info or `uwu dbl widget/w` to generate a widget", color=self.color)
+            r = discord.Embed(description="Use `uwu dbl info/i` to get an embed with a bots info, `uwu dbl widget/w` to generate a widget or `uwu dbl betawidget/bw` to use an alternate widget", color=self.color)
             r.set_author(name="DBL Menu", icon_url=emote.url)
             await ctx.send(embed=r)
                 
