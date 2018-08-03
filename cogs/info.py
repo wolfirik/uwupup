@@ -204,12 +204,12 @@ class Information:
                 desc = base.get("shortdesc")
                 invite = base.get("invite")
                 github = base.get("github")
-                if github == None:
+                if github == "":
                     github = "No Github"
                 else:
                     github = github
                 website = base.get("website")
-                if website == None:
+                if website == "":
                     website = "No website"
                 else:
                     website = website
