@@ -152,7 +152,7 @@ class Information:
                         name = name + "'s"
                     m = discord.Embed(color=color)
                     m.set_image(url=link)
-                    m.set_author(name=f"{name} DBL widget", icon_url=emote.url)
+                    m.set_author(name=f"{name} DBL Widget", icon_url=emote.url)
                     await ctx.send(embed=m)
                     #thing = BytesIO(await http.get(link, res_method="read"))
                     #await ctx.send(file=discord.File(thing, filename="dbl.png"))
@@ -254,7 +254,7 @@ class Information:
                     name = name + "'s"
                 m = discord.Embed(color=bot.color)
                 m.set_image(url=link)
-                m.set_author(name=f"{name} Custom DBL widget", icon_url=emote.url)
+                m.set_author(name=f"{name} Custom DBL Widget", icon_url=emote.url)
                 m.set_footer(text=f"Credit for this widget goes to {tyonyy}", icon_url=tyonyy.avatar_url)
                 await ctx.send(embed=m) 
             
