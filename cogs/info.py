@@ -214,7 +214,9 @@ class Information:
         else:
             base = await kr().get(f"https://discordbots.org/api/bots/{bot.id}")
             guilds = await kr().get(f"https://discordbots.org/api/bots/{bot.id}/stats")
-            widget_base = f"http://172.96.162.194:4006/widget?name={bot.name}&server_count={guilds["server_count"]}&votes={base["points"]}&owner=---[h]---&status=0&avatar={bot.id}|{bot.avatar}"
+            guilds = guilds["server_count"]
+            points = base["points"]
+            widget_base = f"http://172.96.162.194:4006/widget?name={bot.name}&server_count={guilds}&votes={points}&owner=---[h]---&status=0&avatar={bot.id}|{bot.avatar}"
             await ctx.send(widget_base)
             
     @commands.command(aliases=["lc"])
