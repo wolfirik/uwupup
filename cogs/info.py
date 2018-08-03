@@ -193,6 +193,13 @@ class Information:
                     lib = self.bot.get_emoji(emotes.java)
                 else:
                     lib = lib
+                    
+                if name.endswith("'s"):
+                    name = name
+                elif name.endswith("'"):
+                    name = name + "s"
+                else:
+                    name = name + "'s"
                 desc = base.get("shortdesc")
                 owners = list(base.get("owners"))
                 servers = guilds.get("server_count")
