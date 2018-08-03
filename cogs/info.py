@@ -222,6 +222,10 @@ class Information:
             name = bot.name
             owner = list(base["owners"])
             cert = base["certifiedBot"]
+            if cert == False:
+                cert = "false"
+            else:
+                cert = "true"
             ownerr = await self.bot.get_user_info(int(owner[0]))
             owner_name = ownerr.name + '[h]' + ownerr.discriminator
             status = str(bot.status)
