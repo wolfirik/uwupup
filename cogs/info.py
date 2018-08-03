@@ -62,11 +62,11 @@ class Information:
     @commands.command()
     async def ping(self, ctx):
         """ Pong! """
-        ping = self.bot.get_emoji(emotes.ping)
+        pong = self.bot.get_emoji(emotes.ping)
         before = time.monotonic()
         message = await ctx.send("Pong")
         ping = (time.monotonic() - before) * 1000
-        await message.edit(content=f"{ping} REEEE\n`MSG :: {int(ping)}ms\nAPI :: {round(self.bot.latency * 1000)}ms`")
+        await message.edit(content=f"{pong} REEEE\n`MSG :: {int(ping)}ms\nAPI :: {round(self.bot.latency * 1000)}ms`")
 
     @commands.command(aliases=['joinme', 'links', 'botinvite'])
     async def invite(self, ctx):
