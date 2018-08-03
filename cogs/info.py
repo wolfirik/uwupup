@@ -212,7 +212,7 @@ class Information:
                 if website == "":
                     wwebsite = "No website"
                 else:
-                    wwebsite = f"[Website]({website})
+                    wwebsite = f"[Website]({website})"
                 owners = list(base.get("owners"))
                 servers = guilds.get("server_count")
                 shards = guilds.get("shard_count")
