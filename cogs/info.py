@@ -212,8 +212,8 @@ class Information:
         if not bot.bot:
             return await ctx.send(f'Wow, passing off a user as a bot, you\'re a fuckin\' genius {ctx.author.mention}')
         else:
-            b = await kr().get(f"https://discordbots.org/api/bots/{bot.id}")
-            if b["error"] == "Not found":
+            b = requests.get(f"https://discordbots.org/api/bots/{bot.id}").json()
+            if b.get("error") == "Not found":
                 return await ctx.send(f"uhhhh, I don't think {bot} is on DBL")
             else:
                 tyonyy = self.bot.get_user(296044953576931328)
