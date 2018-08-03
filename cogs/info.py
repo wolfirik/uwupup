@@ -207,12 +207,12 @@ class Information:
                 if github == "":
                     ggithub = "No Github"
                 else:
-                    ggithub = github
+                    ggithub = f"[Github]({github})"
                 website = base.get("website")
                 if website == "":
                     wwebsite = "No website"
                 else:
-                    wwebsite = website
+                    wwebsite = f"[Website]({website})
                 owners = list(base.get("owners"))
                 servers = guilds.get("server_count")
                 shards = guilds.get("shard_count")
@@ -220,7 +220,7 @@ class Information:
             
                 for owner in owners:
                     owners = self.bot.get_user(int(owner))
-                m = discord.Embed(description=f"```{desc}```\n\nTotal Votes: {points}\nLib: {lib}\nPrefix: {prefix}\nTags: {tags}\nCertified? `{cert}`\nPosted Guild Count: {servers}\nPosted Shard Count: {shards}\n\n[DBL Page]({link}) | [Invite]({invite}) | [Github]({ggithub}) | [Website]({wwebsite})", color=self.color)
+                m = discord.Embed(description=f"```{desc}```\n\nTotal Votes: {points}\nLib: {lib}\nPrefix: {prefix}\nTags: {tags}\nCertified? `{cert}`\nPosted Guild Count: {servers}\nPosted Shard Count: {shards}\n\n[DBL Page]({link}) | [Invite]({invite}) | {ggithub} | {wwebsite}", color=self.color)
                # m.set_footer(text=f"Primary Owner: {owners}", icon_url=owners.avatar_url)
                 m.set_author(name=f"DBL stats for {bot}", icon_url=emote.url)
                 m.set_thumbnail(url=bot.avatar_url)
