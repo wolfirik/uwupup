@@ -112,8 +112,9 @@ class Fun_Commands:
     async def fbi(self, ctx, user: discord.Member=None):
         fbi = ["https://derpyenterprises.org/fbi4.gif", "https://derpyenterprises.org/fbi3.gif", "https://derpyenterprises.org/fbi2.gif", "https://derpyenterprises.org/fbi.gif"]
         gif = random.choice(fbi)
+        name = user.name
         if user:
-            text = f"Meanwhile at {user.name}'s house..."
+            text = f"Meanwhile at {name}'s house..."
         else:
             text = "FBI GO GO GO!!1"
         em = discord.Embed(title=text)
