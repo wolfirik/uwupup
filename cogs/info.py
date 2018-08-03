@@ -204,7 +204,15 @@ class Information:
                 desc = base.get("shortdesc")
                 invite = base.get("invite")
                 github = base.get("github")
+                if github == None:
+                    github = "No Github"
+                else:
+                    github = github
                 website = base.get("website")
+                if website == None:
+                    website = "No website"
+                else:
+                    website = website
                 owners = list(base.get("owners"))
                 servers = guilds.get("server_count")
                 shards = guilds.get("shard_count")
