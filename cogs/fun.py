@@ -108,7 +108,18 @@ class Fun_Commands:
         except:
             await ctx.send("aww i can't send embeds ;w;")
             
-
+    @commands.command()
+    async def fbi(self, ctx, user: discord.Member=None):
+        fbi = ["https://derpyenterprises.org/fbi4.gif", "https://derpyenterprises.org/fbi3.gif", "https://derpyenterprises.org/fbi2.gif", "https://derpyenterprises.org/fbi.gif"]
+        gif = random.choice(fbi)
+        if user:
+            text = "Meanwhile at {user.name}'s house..."
+        else:
+            text = "FBI GO GO GO!!1"
+        em = discord.Embed(title=text)
+        em.set_image(url=gif)
+        await ctx.send(embed=em)
+    
     @commands.command(aliases=['hugge'])
     @commands.guild_only()
     async def hug(self, ctx, user: discord.Member=None):
