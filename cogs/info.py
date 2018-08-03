@@ -203,7 +203,7 @@ class Information:
                     name = bot.name + "'s"
                 desc = base.get("shortdesc")
                 invite = base.get("invite")
-                github = base,get("github")
+                github = base.get("github")
                 website = base.get("website")
                 owners = list(base.get("owners"))
                 servers = guilds.get("server_count")
