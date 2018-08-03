@@ -213,8 +213,8 @@ class Information:
             pass
         else:
             base = await kr().get(f"https://discordbots.org/api/bots/{bot.id}")
-            guilds = await kr().get(f"https://discordbots.org/api/bots/{bot.id}/stats")
-            guilds = guilds["server_count"]
+            guilds = requests.get(f"https://discordbots.org/api/bots/{bot.id}/stats").json()
+            guilds = guilds.get("server_count")
             points = base["points"]
             owner = list(base["owners"])
             ownerr = await self.bot.get_user_info(int(owner[0]))
@@ -231,7 +231,7 @@ class Information:
                 statuss = 3
             if status in 'streaming':
                 statuss = 4
-            widget_base = f"http://172.96.162.194:4006/widget?name={bot.name}&server_count={guilds}&votes={points}&owner={owner_name}&status=0&avatar={bot.id}|{bot.avatar}"
+            widget_base = f"http://172.96.162.194:4006/widget?name={bot.name}&server_count={guilds}&votes={points}&owner={owner_name}&status={statuss}&avatar={bot.id}|{bot.avatar}"
             await ctx.send(widget_base)
     
     @commands.command(aliases=["lc"])
