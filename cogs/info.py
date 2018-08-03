@@ -169,7 +169,7 @@ class Information:
         else:
             b = requests.get(f"https://discordbots.org/api/bots/{bot.id}").json()
             if b.get("error") == "Not found":
-                return await ctx.send(f"uhhhh, i don't think {bot} is on DBL")
+                return await ctx.send(f"uhhhh, I don't think {bot} is on DBL")
             else:
                 base = requests.get(f"https://discordbots.org/api/bots/{bot.id}").json()
                 guilds = requests.get(f"https://discordbots.org/api/bots/{bot.id}/stats").json()
@@ -210,49 +210,53 @@ class Information:
     @dbl.command(aliases=["bw"])
     async def betawidget(self, ctx, bot: discord.Member):
         if not bot.bot:
-            pass
+            return await ctx.send(f'Wow, passing off a user as a bot, you\'re a fuckin\' genius {ctx.author.mention}')
         else:
-            tyonyy = self.bot.get_user(296044953576931328)
-            emote = random.choice([393548363879940108, 393548388664082444])
-            emote = self.bot.get_emoji(emote)
-            base = await kr().get(f"https://discordbots.org/api/bots/{bot.id}")
-            guilds = requests.get(f"https://discordbots.org/api/bots/{bot.id}/stats").json()
-            guilds = guilds.get("server_count")
-            points = base["points"]
-            name = bot.name
-            owner = list(base["owners"])
-            cert = base["certifiedBot"]
-            if cert == False:
-                cert = "false"
+            b = await kr().get(f"https://discordbots.org/api/bots/{bot.id}")
+            if b["error"] == "Not found":
+                return await ctx.send(f"uhhhh, I don't think {bot} is on DBL")
             else:
-                cert = "true"
-            ownerr = await self.bot.get_user_info(int(owner[0]))
-            owner_name = ownerr.name + '[h]' + ownerr.discriminator
-            status = str(bot.status)
-            statuss = None
-            if status in 'online':
-                statuss = 0
-            if status in 'idle':
-                statuss = 1
-            if status in 'dnd':
-                statuss = 2
-            if status in 'offline':
-                statuss = 3
-            if status in 'streaming':
-                statuss = 4
-            botto = f"{bot.name}".replace(" ", "%20")
-            link = f"http://dblw.ddns.net:4006/widget?name={botto}&server_count={guilds}&votes={points}&owner={owner_name}&status={statuss}&avatar={bot.id}|{bot.avatar}&certified={cert}"
-            if name.endswith("'s"):
-                name = name
-            elif name.endswith("'"):
-                name = name + "s"
-            else:
-                name = name + "'s"
-            m = discord.Embed(color=bot.color)
-            m.set_image(url=link)
-            m.set_author(name=f"{name} Custom DBL widget", icon_url=emote.url)
-            m.set_footer(text=f"Credit for this widget goes to {tyonyy}", icon_url=tyonyy.avatar_url)
-            await ctx.send(embed=m) 
+                tyonyy = self.bot.get_user(296044953576931328)
+                emote = random.choice([393548363879940108, 393548388664082444])
+                emote = self.bot.get_emoji(emote)
+                base = await kr().get(f"https://discordbots.org/api/bots/{bot.id}")
+                guilds = requests.get(f"https://discordbots.org/api/bots/{bot.id}/stats").json()
+                guilds = guilds.get("server_count")
+                points = base["points"]
+                name = bot.name
+                owner = list(base["owners"])
+                cert = base["certifiedBot"]
+                if cert == False:
+                    cert = "false"
+                else:
+                    cert = "true"
+                ownerr = await self.bot.get_user_info(int(owner[0]))
+                owner_name = ownerr.name + '[h]' + ownerr.discriminator
+                status = str(bot.status)
+                statuss = None
+                if status in 'online':
+                    statuss = 0
+                if status in 'idle':
+                    statuss = 1
+                if status in 'dnd':
+                    statuss = 2
+                if status in 'offline':
+                    statuss = 3
+                if status in 'streaming':
+                    statuss = 4
+                botto = f"{bot.name}".replace(" ", "%20")
+                link = f"http://dblw.ddns.net:4006/widget?name={botto}&server_count={guilds}&votes={points}&owner={owner_name}&status={statuss}&avatar={bot.id}|{bot.avatar}&certified={cert}"
+                if name.endswith("'s"):
+                    name = name
+                elif name.endswith("'"):
+                    name = name + "s"
+                else:
+                    name = name + "'s"
+                m = discord.Embed(color=bot.color)
+                m.set_image(url=link)
+                m.set_author(name=f"{name} Custom DBL widget", icon_url=emote.url)
+                m.set_footer(text=f"Credit for this widget goes to {tyonyy}", icon_url=tyonyy.avatar_url)
+                await ctx.send(embed=m) 
             
     
     @commands.command(aliases=["lc"])
