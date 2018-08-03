@@ -212,6 +212,7 @@ class Information:
         if not bot.bot:
             pass
         else:
+            tyonyy = self.bot.get_user(296044953576931328)
             emote = random.choice([393548363879940108, 393548388664082444])
             emote = self.bot.get_emoji(emote)
             base = await kr().get(f"https://discordbots.org/api/bots/{bot.id}")
@@ -243,7 +244,7 @@ class Information:
                         name = name + "'s"
             m = discord.Embed(color=bot.color)
             m.set_image(url=link)
-            m.set_author(name=f"{name} DBL widget", icon_url=emote.url)
+            m.set_author(name=f"{name} Custom DBL widget", icon_url=emote.url)
             m.set_footer(text=f"Credit for this widget goes to {tyonyy}", icon_url=tyonyy.avatar_url)
             await ctx.send(embed=m) 
             
