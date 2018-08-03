@@ -221,6 +221,7 @@ class Information:
             points = base["points"]
             name = bot.name
             owner = list(base["owners"])
+            cert = base["certifiedBot"]
             ownerr = await self.bot.get_user_info(int(owner[0]))
             owner_name = ownerr.name + '[h]' + ownerr.discriminator
             status = str(bot.status)
@@ -235,7 +236,7 @@ class Information:
                 statuss = 3
             if status in 'streaming':
                 statuss = 4
-            link = f"http://172.96.162.194:4006/widget?name={bot}&server_count={guilds}&votes={points}&owner={owner_name}&status={statuss}&avatar={bot.id}|{bot.avatar}"
+            link = f"http://172.96.162.194:4006/widget?name={bot}&server_count={guilds}&votes={points}&owner={owner_name}&status={statuss}&avatar={bot.id}|{bot.avatar}&certified={cert}"
             if name.endswith("'s"):
                 name = name
             elif name.endswith("'"):
