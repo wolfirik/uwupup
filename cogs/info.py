@@ -215,7 +215,7 @@ class Information:
                 await ctx.send(embed=m)
             
     @dbl.command(aliases=["bw"])
-    async def betawidget(self, ctx, bot: discord.Member):
+    async def betawidget(self, ctx, bot: discord.Member, embed: bool=True):
         if not bot.bot:
             return await ctx.send(f'Wow, passing off a user as a bot, you\'re a fuckin\' genius {ctx.author.mention}')
         else:
@@ -259,11 +259,14 @@ class Information:
                     name = name + "s"
                 else:
                     name = name + "'s"
-                m = discord.Embed(color=bot.color)
-                m.set_image(url=link)
-                m.set_author(name=f"{name} Custom DBL Widget", icon_url=emote.url)
-                m.set_footer(text=f"Credit for this widget goes to {tyonyy}", icon_url=tyonyy.avatar_url)
-                await ctx.send(embed=m) 
+                if embed:
+                    m = discord.Embed(color=bot.color)
+                    m.set_image(url=link)
+                    m.set_author(name=f"{name} Custom DBL Widget", icon_url=emote.url)
+                    m.set_footer(text=f"Credit for this widget goes to {tyonyy}", icon_url=tyonyy.avatar_url)
+                    await ctx.send(embed=m) 
+                else:
+                    await ctx.send(f"{name} Custom DBL Widget\n{link}")
             
     
     @commands.command(aliases=["lc"])
