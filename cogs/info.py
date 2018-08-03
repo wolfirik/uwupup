@@ -237,11 +237,11 @@ class Information:
                 statuss = 4
             link = f"http://172.96.162.194:4006/widget?name={bot.name}&server_count={guilds}&votes={points}&owner={owner_name}&status={statuss}&avatar={bot.id}|{bot.avatar}"
             if name.endswith("'s"):
-                        name = name
-                    elif name.endswith("'"):
-                        name = name + "s"
-                    else:
-                        name = name + "'s"
+                name = name
+            elif name.endswith("'"):
+                name = name + "s"
+            else:
+                name = name + "'s"
             m = discord.Embed(color=bot.color)
             m.set_image(url=link)
             m.set_author(name=f"{name} Custom DBL widget", icon_url=emote.url)
