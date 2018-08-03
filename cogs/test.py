@@ -14,7 +14,7 @@ class sql_test_cog:
     @commands.check(repo.is_owner)
     async def test(self, ctx, *, ree: str):
         """MEMES"""
-        await ctx.send(ree.format(guild, ctx.author))
+        await ctx.send(ree.format(ctx.guild, ctx.author))
         
     @commands.command(pass_context=True, no_pm=True, aliases=['piltest'])
     async def pilt(self, ctx, *, message):
