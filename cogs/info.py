@@ -217,7 +217,7 @@ class Information:
                 if support == "":
                     ssupport = "No Support Server"
                 else:
-                    ssupport = f"[Support Server](https://discord.gg/{support})
+                    ssupport = f"[Support Server](https://discord.gg/{support})"
                 owners = list(base.get("owners"))
                 servers = guilds.get("server_count")
                 shards = guilds.get("shard_count")
