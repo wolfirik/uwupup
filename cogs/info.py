@@ -207,12 +207,18 @@ class Information:
                 m.set_thumbnail(url=bot.avatar_url)
                 await ctx.send(embed=m)
             
-                
+    @dbl.command(aliases=["tw"])
+    async def testwidget(self, ctx, bot: discord.Member):
+        if not bot.bot:
+            pass
+        else:
+            base = await kr().get(f"https://discordbots.org/api/bots/{bot.id}")
+            
     @commands.command(aliases=["lc"])
     async def lcord(self, ctx, bot: discord.Member):
         """Gets a bots info from listcord"""
         if not bot.bot:
-            return await ctx.send(f'Wow, passing off a user as a bot, you\'re a fuckin\' genius {ctx.author.mention}')
+            pass
         else:
             base = requests.get(f"https://listcord.com/api/bot/{bot.id}").json()
             if base.get("code") == 0:
