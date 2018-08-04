@@ -251,7 +251,7 @@ class Fun_Commands:
             await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
         else:
             try:
-                if channel.is_nsfw():
+                if ctx.channel.is_nsfw():
                     r = await kr().get("https://sheri.fun/api/v1/img/nlick", headers={"key": os.environ["MURR"]})
                     lick = discord.Embed(description=f"**{ctx.author.name} decided to make something on {user.name} a little slimy~**", color=0x2e7d32)
                     lick.set_image(url=r["url"])
