@@ -134,10 +134,16 @@ class Fun_Commands:
 
         else:
             try:
-                r = await kr().get("https://sheri.fun/api/v1/img/hug", headers={"key": os.environ["MURR"]})
-                hugge = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a hug uwu**", color=0xd25e92)
-                hugge.set_image(url=r["url"])
-                await ctx.send(embed=hugge)
+                if ctx.channel.is_nsfw():
+                        r = await kr().get("https://sheri.fun/api/v1/img/nhug", headers={"key": os.environ["MURR"]})
+                        hugge = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a lewd hug~**", color=0xd25e92)
+                        hugge.set_image(url=r["url"])
+                        await ctx.send(embed=hugge)
+                else:
+                    r = await kr().get("https://sheri.fun/api/v1/img/hug", headers={"key": os.environ["MURR"]})
+                    hugge = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a hug uwu**", color=0xd25e92)
+                    hugge.set_image(url=r["url"])
+                    await ctx.send(embed=hugge)
             except Exception as e:
                 return await ctx.send(e)
             try:
@@ -186,6 +192,7 @@ class Fun_Commands:
 
         else:
             try:
+                
                 r = await kr().get('https://sheri.fun/api/v1/img/boop', headers={"key": os.environ["MURR"]})
                 pat = discord.Embed(description=f"**{ctx.author.name} gave {user.name}'s snout a nuzzling, ehe~**", color=0x6a1b9a)
                 pat.set_image(url=r['url'])
@@ -211,10 +218,16 @@ class Fun_Commands:
             await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
         else:
             try:
-                r = await kr().get("https://sheri.fun/api/v1/img/cuddles", headers={"key": os.environ["MURR"]})
-                cuddle = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a nice long \"hug\" OwO**", color=0x3f51b5)
-                cuddle.set_image(url=r["url"])
-                await ctx.send(embed=cuddle)
+                if ctx.channel.is_nsfw():
+                    r = await kr().get("https://sheri.fun/api/v1/img/ncuddles", headers={"key": os.environ["MURR"]})
+                    cuddle = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a nice long \"hug\" OwO**", color=0x3f51b5)
+                    cuddle.set_image(url=r["url"])
+                    await ctx.send(embed=cuddle)
+                else:
+                    r = await kr().get("https://sheri.fun/api/v1/img/cuddles", headers={"key": os.environ["MURR"]})
+                    cuddle = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a nice long \"hug\" OwO**", color=0x3f51b5)
+                    cuddle.set_image(url=r["url"])
+                    await ctx.send(embed=cuddle)
             except:
                 return await ctx.send("I think e926 is being dumb.. try again later..")
             try:
@@ -236,15 +249,18 @@ class Fun_Commands:
             await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
         else:
             try:
-                async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
-                    async with session.get(f'https://e926.net/post/index.json?limit=1&tags=-kiss%20order:random%20face_lick%20-equine%20-belly_expansion') as get:
-                        resp = await get.json()
-                        r = await kr().get("https://sheri.fun/api/v1/img/lick", headers={"key": os.environ["MURR"]})
-                        lick = discord.Embed(description=f"**{ctx.author.name} decided to make {user.name}'s fur a little slimy ~w~**", color=0x2e7d32)
-                        lick.set_image(url=r["url"])
-                        await ctx.send(embed=lick)
+                if channel.is_nsfw():
+                    r = await kr().get("https://sheri.fun/api/v1/img/nlick", headers={"key": os.environ["MURR"]})
+                    lick = discord.Embed(description=f"**{ctx.author.name} decided to make something on {user.name} a little slimy~**", color=0x2e7d32)
+                    lick.set_image(url=r["url"])
+                    await ctx.send(embed=lick)
+                else:
+                    r = await kr().get("https://sheri.fun/api/v1/img/lick", headers={"key": os.environ["MURR"]})
+                    lick = discord.Embed(description=f"**{ctx.author.name} decided to make {user.name}'s fur a little slimy ~w~**", color=0x2e7d32)
+                    lick.set_image(url=r["url"])
+                    await ctx.send(embed=lick)
             except:
-                return await ctx.send("I think e926 is being dumb.. try again later..")
+                return await ctx.send("I think the api is being dumb.. try again later..")
             try:
                 pass
             except discord.Forbidden:
