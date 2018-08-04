@@ -226,7 +226,7 @@ class Music:
         await ctx.send('Removed **' + removed.title + '** from the queue.')
 
     @commands.command()
-    async def find(self, ctx, *, query):
+    async def look(self, ctx, *, query):
         if not query.startswith('ytsearch:') and not query.startswith('scsearch:'):
             query = 'ytsearch:' + query
 
@@ -247,7 +247,7 @@ class Music:
         await ctx.send(embed=embed)
 
     @commands.command(aliases=['dc'])
-    async def disconnect(self, ctx):
+    async def lave(self, ctx):
         player = self.bot.lavalink.players.get(ctx.guild.id)
 
         if not player.is_connected:
