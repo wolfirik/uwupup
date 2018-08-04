@@ -58,28 +58,25 @@ class Music:
         if not url_rx.match(query):
             query = f'ytsearch:{query}'
 
-        results = await self.bot.lavalink.get_tracks(query)
+        tracks = await self.bot.lavalink.get_tracks(query)
 
-        if not results or not results['tracks']:
-            return await ctx.send('Nothing found!')
+        if not tracks:
+            return await ctx.send('Nothing found 👀')
 
         embed = discord.Embed(colour=ctx.guild.me.top_role.colour)
 
-        if results['loadType'] == "PLAYLIST_LOADED":
-            tracks = results['tracks']
-
+        if 'list' in query and 'ytsearch:' not in query:
             for track in tracks:
                 player.add(requester=ctx.author.id, track=track)
 
             embed.title = "Playlist Enqueued!"
-            embed.description = f"{results['playlistInfo']['name']} - {len(tracks)} tracks"
+            embed.description = f"Imported {len(tracks)} tracks from the playlist :)"
             await ctx.send(embed=embed)
         else:
-            track = results['tracks'][0]
             embed.title = "Track Enqueued"
-            embed.description = f'[{track["info"]["title"]}]({track["info"]["uri"]})'
+            embed.description = f'[{tracks[0]["info"]["title"]}]({tracks[0]["info"]["uri"]})'
             await ctx.send(embed=embed)
-            player.add(requester=ctx.author.id, track=track)
+            player.add(requester=ctx.author.id, track=tracks[0])
 
         if not player.is_playing:
             await player.play()
@@ -233,12 +230,12 @@ class Music:
         if not query.startswith('ytsearch:') and not query.startswith('scsearch:'):
             query = 'ytsearch:' + query
 
-        results = await self.bot.lavalink.get_tracks(query)
+        tracks = await self.bot.lavalink.get_tracks(query)
 
-        if not results or not results['tracks']:
+        if not tracks:
             return await ctx.send('Nothing found')
 
-        tracks = results['tracks'][:10]  # First 10 results
+        tracks = tracks[:10]  # First 10 results
 
         o = ''
         for i, t in enumerate(tracks, start=1):
