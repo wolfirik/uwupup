@@ -219,7 +219,7 @@ class Fun_Commands:
         else:
             try:
                 if ctx.channel.is_nsfw():
-                    r = await kr().get("https://sheri.fun/api/v1/img/ncuddles", headers={"key": os.environ["MURR"]})
+                    r = await kr().get("https://sheri.fun/api/v1/img/ncuddle", headers={"key": os.environ["MURR"]})
                     cuddle = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a nice long \"hug\" OwO**", color=0x3f51b5)
                     cuddle.set_image(url=r["url"])
                     await ctx.send(embed=cuddle)
