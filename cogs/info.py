@@ -210,7 +210,7 @@ class Information:
                     ggithub = f"[Github]({github})"
                 website = base.get("website")
                 if website == "":
-                    wwebsite = "No website"
+                    wwebsite = "No Website"
                 else:
                     wwebsite = f"[Website]({website})"
                 support = base.get("support")
