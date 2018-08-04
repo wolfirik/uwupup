@@ -139,6 +139,7 @@ class Fun_Commands:
                         hugge = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a lewd hug~**", color=0xd25e92)
                         hugge.set_image(url=r["url"])
                         await ctx.send(embed=hugge)
+                        self.bot.counter["yiff_viewed"] += 1
                 else:
                     r = await kr().get("https://sheri.fun/api/v1/img/hug", headers={"key": os.environ["MURR"]})
                     hugge = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a hug uwu**", color=0xd25e92)
@@ -223,6 +224,7 @@ class Fun_Commands:
                     cuddle = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a nice long \"hug\" OwO**", color=0x3f51b5)
                     cuddle.set_image(url=r["url"])
                     await ctx.send(embed=cuddle)
+                    self.bot.counter["yiff_viewed"] += 1
                 else:
                     r = await kr().get("https://sheri.fun/api/v1/img/cuddles", headers={"key": os.environ["MURR"]})
                     cuddle = discord.Embed(description=f"**{ctx.author.name} gave {user.name} a nice long \"hug\" OwO**", color=0x3f51b5)
@@ -254,6 +256,7 @@ class Fun_Commands:
                     lick = discord.Embed(description=f"**{ctx.author.name} decided to make something on {user.name} a little slimy~**", color=0x2e7d32)
                     lick.set_image(url=r["url"])
                     await ctx.send(embed=lick)
+                    self.bot.counter["yiff_viewed"] += 1
                 else:
                     r = await kr().get("https://sheri.fun/api/v1/img/lick", headers={"key": os.environ["MURR"]})
                     lick = discord.Embed(description=f"**{ctx.author.name} decided to make {user.name}'s fur a little slimy ~w~**", color=0x2e7d32)
