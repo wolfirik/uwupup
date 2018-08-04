@@ -11,6 +11,7 @@ import os
 from datetime import datetime
 import requests
 from utils.http2 import krequest as kr
+import asyncio
 
 async def send_cmd_help(ctx):
     if ctx.invoked_subcommand:
@@ -29,6 +30,8 @@ class Events:
         self.bot = bot
         self.counter = Counter()
         self.config = default.get("config.json")
+        self.bot.loop.create_task(self.uptimer())
+
 
     async def on_command_error(self, ctx, err):
         if isinstance(err, errors.MissingRequiredArgument) or isinstance(err, errors.BadArgument):
@@ -144,7 +147,11 @@ class Events:
         
     async def on_resumed(self):
         self.bot.counter["sessions_resumed"] += 1
-
+        
+    async def uptimer(self):
+        while True:
+            print("a")
+            await asyncio.sleep(240)
 
 
 def setup(bot):
