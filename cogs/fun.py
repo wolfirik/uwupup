@@ -262,8 +262,8 @@ class Fun_Commands:
                     lick = discord.Embed(description=f"**{ctx.author.name} decided to make {user.name}'s fur a little slimy ~w~**", color=0x2e7d32)
                     lick.set_image(url=r["url"])
                     await ctx.send(embed=lick)
-            except:
-                return await ctx.send("I think the api is being dumb.. try again later..")
+            except Exception as e:
+                return await ctx.send()
             try:
                 pass
             except discord.Forbidden:
