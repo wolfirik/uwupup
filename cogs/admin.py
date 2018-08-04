@@ -110,7 +110,7 @@ class Admin:
 
     @commands.command()
     @commands.check(repo.is_owner)
-    async def post(self, ctx, silently: bool=false):
+    async def post(self, ctx, silently: bool=False):
         dbltoken = os.environ["DBL_TOKEN"]
         pwtoken = os.environ["PW_TOKEN"]
         lcordtoken = os.environ["LCORD_TOKEN"]
