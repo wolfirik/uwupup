@@ -110,7 +110,7 @@ class Admin:
 
     @commands.command()
     @commands.check(repo.is_owner)
-    async def post(self, ctx):
+    async def post(self, ctx, silently: bool=false):
         dbltoken = os.environ["DBL_TOKEN"]
         pwtoken = os.environ["PW_TOKEN"]
         lcordtoken = os.environ["LCORD_TOKEN"]
@@ -135,8 +135,11 @@ class Admin:
             dbl = dbl.json()
             pw = pw.json()
             lcord = lcord.json()
-            await ctx.send(f"```Post stats```{dblemote} | `{dbl}`\n{pwemote} | `{pw}`\n{lcordemote} | `{lcord}`")
-            await ctx.message.add_reaction(yup)
+            if not silently:
+                await ctx.send(f"```Post stats```{dblemote} | `{dbl}`\n{pwemote} | `{pw}`\n{lcordemote} | `{lcord}`")
+                await ctx.message.add_reaction(yup)
+            else:
+                await ctx.message.add_reaction(yup)
         except Exception as e:
             await ctx.send(e)
             await ctx.message.add_reaction(nope)
