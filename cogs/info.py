@@ -269,6 +269,7 @@ class Information:
                 if status in 'streaming':
                     statuss = 4
                 botto = f"{bot.name}".replace(" ", "%20")
+                hooman = owner_name.replace(" ", "%20")
                 link = f"http://172.96.162.194:4006/widget?name={botto}&server_count={guilds}&votes={points}&owner={owner_name}&status={statuss}&avatar={bot.id}|{bot.avatar}&certified={cert}"
                 if name.endswith("'s"):
                     name = name
