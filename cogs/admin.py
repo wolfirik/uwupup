@@ -104,7 +104,7 @@ class Admin:
     @commands.check(repo.is_owner)
     async def reboot(self, ctx):
         """ Reboot the bot """
-        await ctx.send('Rebooting now...')
+        await ctx.send('xwx bai bai')
         time.sleep(1)
         await self.bot.logout()
 
