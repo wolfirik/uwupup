@@ -20,7 +20,8 @@ class Discord_Info:
         thing = BytesIO(await http.get(avatar, res_method="read"))
         color = ColorThief(thing)
         color = '0x%02x%02x%02x' % color.get_color(quality=1)
-        embed = discord.Embed(colour=0)
+        hex_result = "".join([format(val, '02X') for val in color])
+        embed = discord.Embed(colour=hex_result)
         embed.description = f"Avatar to **{user.name}**\nClick [here]({avatar}) to get image"
         
         embed.set_image(url=avatar)
