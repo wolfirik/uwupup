@@ -218,15 +218,15 @@ class Information:
                     ssupport = "No Support Server"
                 else:
                     ssupport = f"[Support Server](https://discord.gg/{support})"
-                owners = list(base.get("owners"))
+                owner = list(base.get("owners"))
                 servers = guilds.get("server_count")
                 shards = guilds.get("shard_count")
                 link = f"https://discordbots.org/bot/{bot.id}"
             
-                for owner in owners:
-                    owners = self.bot.get_user(int(owner))
+                
+                owner = self.bot.get_user(int(owner[0]))
                 m = discord.Embed(description=f"```{desc}```\n\nTotal Votes: {points}\nLib: {lib}\nPrefix: {prefix}\nTags: {tags}\nCertified? `{cert}`\nPosted Guild Count: {servers}\nPosted Shard Count: {shards}\n\n[DBL Page]({link}) | [Invite]({invite}) | {ssupport} | {ggithub} | {wwebsite}", color=self.color)
-               # m.set_footer(text=f"Primary Owner: {owners}", icon_url=owners.avatar_url)
+                m.set_footer(text=f"Primary Owner: {owner}", icon_url=owner.avatar_url)
                 m.set_author(name=f"DBL stats for {bot}", icon_url=emote.url)
                 m.set_thumbnail(url=bot.avatar_url)
                 await ctx.send(embed=m)
@@ -282,7 +282,7 @@ class Information:
                 if embed:
                     m = discord.Embed(color=bot.color)
                     m.set_image(url=link)
-                    m.set_author(name=f"{name} Custom DBL Widget", icon_url=emote.url)
+                    m.set_author(name=f"{name} Custom DBL Widget".replace("%20", " "), icon_url=emote.url)
                     m.set_footer(text=f"Credit for this widget goes to {tyonyy}", icon_url=tyonyy.avatar_url)
                     await ctx.send(embed=m) 
                 else:
