@@ -1,9 +1,9 @@
 import discord
 from io import BytesIO
 
-from utils import default
+from utils import default, http
 from discord.ext import commands
-
+from colorthief import ColorThief
 
 class Discord_Info:
     def __init__(self, bot):
@@ -17,8 +17,10 @@ class Discord_Info:
             user = ctx.author
         avatar = user.avatar_url
         avatar = avatar.replace("webp", "png")
-        embed = discord.Embed(colour=0xC29FAF)
-        embed.description = f"Avatar to **{user.name}**\nClick [here]({user.avatar_url}) to get image"
+        thing = BytesIO(await http.get(avatar, res_method="read"))
+        color = ColorThief(thing)
+        embed = discord.Embed(colour=color.get_color(quality=1))
+        embed.description = f"Avatar to **{user.name}**\nClick [here]({avatar}) to get image"
         embed.set_image(url=avatar)
         await ctx.send(embed=embed)
 
