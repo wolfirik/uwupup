@@ -20,11 +20,11 @@ class Discord_Info:
         thing = BytesIO(await http.get(avatar, res_method="read"))
         color = ColorThief(thing)
         color = '0x%02x%02x%02x' % color.get_color(quality=1)
-        embed = discord.Embed(colour=color)
+        embed = discord.Embed(colour=0)
         embed.description = f"Avatar to **{user.name}**\nClick [here]({avatar}) to get image"
         
         embed.set_image(url=avatar)
-        await ctx.send(embed=embed)
+        await ctx.send(content=color, embed=embed)
         
     @commands.command()
     @commands.guild_only()
