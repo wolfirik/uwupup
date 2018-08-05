@@ -255,7 +255,9 @@ class Information:
                 else:
                     cert = "true"
                 ownerr = await self.bot.get_user_info(int(owner[0]))
-                owner_name = ownerr.name + '[h]' + ownerr.discriminator
+                name = ownerr.name
+                name = name.replace(" ", "%20")
+                owner_name = name + '[h]' + ownerr.discriminator
                 status = str(bot.status)
                 statuss = None
                 if status in 'online':
