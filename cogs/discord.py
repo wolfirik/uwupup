@@ -21,7 +21,7 @@ class Discord_Info:
         color = ColorThief(thing)
         color = color.get_color(quality=10)
         embed = discord.Embed(colour=discord.Color.from_rgb(*color))
-        embed.description = f"Avatar to **{user.name}**\nClick [here]({avatar}) to get image"
+        embed.description = f"Avatar to **{user.display_name}**\nClick [here]({avatar}) to get image"
         
         embed.set_image(url=avatar)
         await ctx.send(embed=embed)
