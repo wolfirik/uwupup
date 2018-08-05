@@ -19,11 +19,11 @@ class Discord_Info:
         avatar = avatar.replace("webp?size=2048", "png")
         thing = BytesIO(await http.get(avatar, res_method="read"))
         color = ColorThief(thing)
-        embed = discord.Embed(colour=0)
+        embed = discord.Embed(colour='#%02x%02x%02x' % color.get_color(quality=1))
         embed.description = f"Avatar to **{user.name}**\nClick [here]({avatar}) to get image"
         
         embed.set_image(url=avatar)
-        await ctx.send(content='#%02x%02x%02x' % color.get_color(quality=1), embed=embed)
+        await ctx.send(embed=embed)
         
     @commands.command()
     @commands.guild_only()
