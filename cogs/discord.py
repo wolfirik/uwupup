@@ -10,7 +10,7 @@ class Discord_Info:
         self.bot = bot
         self.config = default.get("config.json")
 
-    @commands.command()
+    @commands.command(aliases=["pfp"])
     async def avatar(self, ctx, user: discord.Member = None):
         """ Get the avatar of you or someone else """
         if user is None:
