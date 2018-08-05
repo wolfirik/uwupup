@@ -16,13 +16,14 @@ class Discord_Info:
         if user is None:
             user = ctx.author
         avatar = user.avatar_url
-        avatar = avatar.replace("webp", "png")
+        avatar = avatar.replace("webp?size=2048", "png")
         thing = BytesIO(await http.get(avatar, res_method="read"))
         color = ColorThief(thing)
-        embed = discord.Embed(colour=color.get_color(quality=1))
+        embed = discord.Embed(colour=0)
         embed.description = f"Avatar to **{user.name}**\nClick [here]({avatar}) to get image"
+        
         embed.set_image(url=avatar)
-        await ctx.send(embed=embed)
+        await ctx.send(content=color.get_color(quality=1), embed=embed)
 
     @commands.command()
     @commands.guild_only()
