@@ -18,3 +18,4 @@ dataIO
 pymongo==3.4
 psycopg2-binary
 pillow
+http://github.com/fengsp/color-thief-py/zipball/master#egg=color-thief-py-dev
