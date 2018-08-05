@@ -24,7 +24,7 @@ class Discord_Info:
         embed.description = f"Avatar to **{user.name}**\nClick [here]({avatar}) to get image"
         
         embed.set_image(url=avatar)
-        await ctx.send(content=color, embed=embed)
+        await ctx.send(embed=embed)
         
     @commands.command()
     @commands.guild_only()
