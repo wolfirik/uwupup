@@ -23,8 +23,8 @@ class Discord_Info:
         embed.description = f"Avatar to **{user.name}**\nClick [here]({avatar}) to get image"
         
         embed.set_image(url=avatar)
-        await ctx.send(content=color.get_color(quality=1), embed=embed)
-
+        await ctx.send(content='#%02x%02x%02x' % color.get_color(quality=1), embed=embed)
+        
     @commands.command()
     @commands.guild_only()
     async def roles(self, ctx):
