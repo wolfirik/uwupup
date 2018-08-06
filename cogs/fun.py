@@ -285,11 +285,11 @@ class Fun_Commands:
         else:
             try:
                 if ctx.channel.is_nsfw():
-                        r = await kr().get("https://sheri.fun/api/v1/img/nkiss", headers={"key": os.environ["MURR"]})
-                        kiss = discord.Embed(description=f"**{ctx.author.name} showed their true feelings for {user.name}~**", color=0xd25e92)
-                        kiss.set_image(url=r["url"])
-                        await ctx.send(embed=hugge)
-                        self.bot.counter["yiff_viewed"] += 1
+                    r = await kr().get("https://sheri.fun/api/v1/img/nkiss", headers={"key": os.environ["MURR"]})
+                    kiss = discord.Embed(description=f"**{ctx.author.name} showed their true feelings for {user.name}~**", color=0xd25e92)
+                    kiss.set_image(url=r["url"])
+                    await ctx.send(embed=hugge)
+                    self.bot.counter["yiff_viewed"] += 1
                         
                 try:
                     r = await kr().get("https://sheri.fun/api/v1/img/kiss", headers={"key": os.environ["MURR"]})
