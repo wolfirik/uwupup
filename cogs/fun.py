@@ -263,7 +263,7 @@ class Fun_Commands:
                     lick.set_image(url=r["url"])
                     await ctx.send(embed=lick)
             except Exception as e:
-                return await ctx.send()
+                return await ctx.send(e)
             try:
                 pass
             except discord.Forbidden:
@@ -288,7 +288,7 @@ class Fun_Commands:
                     r = await kr().get("https://sheri.fun/api/v1/img/nkiss", headers={"key": os.environ["MURR"]})
                     kiss = discord.Embed(description=f"**{ctx.author.name} showed their true feelings for {user.name}~**", color=0xd25e92)
                     kiss.set_image(url=r["url"])
-                    await ctx.send(embed=hugge)
+                    await ctx.send(embed=kiss)
                     self.bot.counter["yiff_viewed"] += 1
                         
                 else:
@@ -297,7 +297,7 @@ class Fun_Commands:
                     kiss.set_image(url=r["url"])
                     await ctx.send(embed=kiss)
             except:
-                return await ctx.send("I think e926 is being dumb.. try again later..")
+                return await ctx.send("I think my api is being dumb.. try again later..")
             try:
                 pass
             except discord.Forbidden:
