@@ -291,7 +291,7 @@ class Fun_Commands:
                     await ctx.send(embed=hugge)
                     self.bot.counter["yiff_viewed"] += 1
                         
-                try:
+                else:
                     r = await kr().get("https://sheri.fun/api/v1/img/kiss", headers={"key": os.environ["MURR"]})
                     kiss = discord.Embed(description=f"**{ctx.author.name} showed their true feelings for {user.name} \❤w\❤**", color=0xe91e63)
                     kiss.set_image(url=r["url"])
