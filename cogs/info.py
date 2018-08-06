@@ -187,7 +187,7 @@ class Information:
                 if lib == "discord.py":
                     lib = self.bot.get_emoji(emotes.py)
                 elif lib == "discord.js":
-                    lib = self.bot.get_emoji(emotes.js)
+                    lib = f"*cough* d.{self.bot.get_emoji(emotes.js)}
                 elif lib == "discordrb":
                     lib = self.bot.get_emoji(emotes.ruby)
                 elif lib == "JDA":
