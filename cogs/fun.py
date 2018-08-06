@@ -284,11 +284,18 @@ class Fun_Commands:
             await ctx.send(f"maybe someone other than your self {ctx.author.name}..?")
         else:
             try:
-                async with aiohttp.ClientSession(headers={'User-Agent': 'Chrome/60.0.3112.113'}) as session:
-                        r = await kr().get("https://sheri.fun/api/v1/img/kiss", headers={"key": os.environ["MURR"]})
-                        kiss = discord.Embed(description=f"**{ctx.author.name} showed their true feelings for {user.name} \❤w\❤**", color=0xe91e63)
+                if ctx.channel.is_nsfw():
+                        r = await kr().get("https://sheri.fun/api/v1/img/nkiss", headers={"key": os.environ["MURR"]})
+                        kiss = discord.Embed(description=f"**{ctx.author.name} showed their true feelings for {user.name}~**", color=0xd25e92)
                         kiss.set_image(url=r["url"])
-                        await ctx.send(embed=kiss)
+                        await ctx.send(embed=hugge)
+                        self.bot.counter["yiff_viewed"] += 1
+                        
+                try:
+                    r = await kr().get("https://sheri.fun/api/v1/img/kiss", headers={"key": os.environ["MURR"]})
+                    kiss = discord.Embed(description=f"**{ctx.author.name} showed their true feelings for {user.name} \❤w\❤**", color=0xe91e63)
+                    kiss.set_image(url=r["url"])
+                    await ctx.send(embed=kiss)
             except:
                 return await ctx.send("I think e926 is being dumb.. try again later..")
             try:
