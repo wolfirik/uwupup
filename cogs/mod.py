@@ -164,7 +164,7 @@ class Moderator:
         else:
             reason = f"no reason specified.\n [{ctx.author}]"
         try:
-            await bot.http.ban(guild_id=ctx.guild.id, user_id=user_id, reason=reason) 
+            await self.bot.http.ban(guild_id=ctx.guild.id, user_id=user_id, reason=reason) 
             await ctx.send("done -w-")
         except Exception as e:
             await ctx.send(e)
