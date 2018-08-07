@@ -160,9 +160,9 @@ class Moderator:
     async def hackban(self, ctx, user_id: int, *, reason: str=None):
         """Bans a user before being able to join the server via ID"""
         if reason:
-            reason = f"{reason}\n [{ctx.author}]"
+            reason = f"{reason} [{ctx.author}]"
         else:
-            reason = f"no reason specified.\n [{ctx.author}]"
+            reason = f"no reason specified. [{ctx.author}]"
         try:
             await self.bot.http.ban(guild_id=ctx.guild.id, user_id=user_id, reason=reason) 
             await ctx.send("done -w-")
