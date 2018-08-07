@@ -157,18 +157,17 @@ class Moderator:
     @commands.command()
     @commands.guild_only()
     @permissions.has_permissions(ban_members=True)
-    async def hackban(self, ctx, user: int, *, reason: str=None):
+    async def hackban(self, ctx, user_id: int, *, reason: str=None):
         """Bans a user before being able to join the server via ID"""
-        user = discord.Object(id=user)
         if reason:
             reason = f"{reason}\n [{ctx.author}]"
         else:
             reason = f"no reason specified.\n [{ctx.author}]"
         try:
-            await bot.http.ban(guild_id=ctx.guild.id, user_id=user.id, reason=reason) 
+            await bot.http.ban(guild_id=ctx.guild.id, user_id=user_id, reason=reason) 
             await ctx.send("done -w-")
         except Exception as e:
-            await ctx.send("hmm... this isn't a valid user ID.")
+            await ctx.send(e)
         except discord.Forbidden:
             await ctx.send("i don't have ban perms, sowwy.")
 
