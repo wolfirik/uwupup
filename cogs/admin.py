@@ -344,10 +344,10 @@ class Admin:
             await ctx.send(content="None", file=discord.File(memes, filename="eval.txt"))
 
         else:
-            if len(result) >= 1500:
+            if len(result) > 1500:
                 f = result
                 memes = BytesIO(f.encode('utf-8'))
-                await ctx.send("Output's too big heres the file.", file=discord.File(memes, filename='eval.txt'))
+                return await ctx.send("Output's too big heres the file.", file=discord.File(memes, filename='eval.txt'))
             else:
                 try:
                     await ctx.send(result)
