@@ -243,36 +243,12 @@ class Information:
                 tyonyy = self.bot.get_user(296044953576931328)
                 emote = random.choice([393548363879940108, 393548388664082444])
                 emote = self.bot.get_emoji(emote)
-                base = await kr().get(f"https://discordbots.org/api/bots/{bot.id}")
-                guilds = requests.get(f"https://discordbots.org/api/bots/{bot.id}/stats").json()
-                guilds = guilds.get("server_count")
-                points = base["points"]
+               
                 name = bot.name
-                owner = list(base["owners"])
-                cert = base["certifiedBot"]
-                if cert == False:
-                    cert = "false"
-                else:
-                    cert = "true"
-                ownerr = await self.bot.get_user_info(int(owner[0]))
-                name = ownerr.name
                 name = name.replace(" ", "%20")
-                owner_name = name + '[h]' + ownerr.discriminator
-                status = str(bot.status)
-                statuss = None
-                if status in 'online':
-                    statuss = 0
-                if status in 'idle':
-                    statuss = 1
-                if status in 'dnd':
-                    statuss = 2
-                if status in 'offline':
-                    statuss = 3
-                if status in 'streaming':
-                    statuss = 4
+                
                 botto = f"{bot.name}".replace(" ", "%20")
-                hooman = owner_name.replace(" ", "%20")
-                link = f"http://172.96.162.194:4006/widget?name={botto}&server_count={guilds}&votes={points}&owner={owner_name}&status={statuss}&avatar={bot.id}|{bot.avatar}&certified={cert}"
+                link = f"http://18.184.116.22/dblWidget?botID={bot.id}"
                 if name.endswith("'s"):
                     name = name
                 elif name.endswith("'"):
