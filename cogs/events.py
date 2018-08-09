@@ -92,7 +92,6 @@ class Events:
         try:
             to_send = sorted([chan for chan in guild.channels if chan.permissions_for(guild.me).send_messages and isinstance(chan, discord.TextChannel)], key=lambda x: x.position)[0]
             try:
-                await to_send.send("NOTE: Please use the prefix for the time being `uwu` thank you! >w0")
                 invite_chan = sorted([chan for chan in guild.channels if chan.permissions_for(guild.me).create_instant_invite and isinstance(chan, discord.TextChannel)], key=lambda x: x.position)[0]
                 invite = await invite_chan.create_invite(reason="Don't mind me")
             except:
